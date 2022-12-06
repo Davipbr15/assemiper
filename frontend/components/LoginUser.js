@@ -38,7 +38,7 @@ function LoginUser(){
 
           if(result == 200){
             window.alert("Usuário Logado com Sucesso!")
-            window.
+            window.location.replace('index2')
           }
 
       
