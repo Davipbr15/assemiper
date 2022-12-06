@@ -238,17 +238,30 @@ app.post("/api/loginUser", async(req,res)=>{
     console.log(typeof(passwordb) + " " + passwordb)
 	const user = await Login.findOne({ username: usernameb })
 
-    console.log(user) 
+    console.log(user)
+
+
+
+    if(passwordb == null){
+        return res.status(202)
+    }
+    if(usernameb == null){
+        return res.status(202)
+    }
+    
+    if(!passwordb){
+        return res.status(201).send("Usuário Não Existe");
+    }
 
 	if (!user) {
-		return res.send("Usuário Não Existe")
+		return res.status(201).send("Usuário Não Existe");
 	}
 
 	if (await bcrypt.compareSync(passwordb, user.password)) {
 		// the usernameb, password combination is successful
 
         
-		return res.status(200).send("Logado")
+		return res.status(200).send("Logado");
 	}
 
     console.log("Senha ou Usuário Inválido")

@@ -38,20 +38,12 @@ function Header(){
             Ver
             </a>
         </Link>
-        <Link href="/loginUser">
+        <Link href="/">
             <a
               href="/"
-              className="font-medium text-white hover:text-gray-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+              className="font-medium text-white hover:text-gray-300 px-5 py-3 flex justify-end transition duration-150 ease-in-out"
             >
-            Login
-            </a>
-        </Link>
-        <Link href="/registerUser">
-            <a
-              href="/"
-              className="font-medium text-white hover:text-gray-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-            >
-            Register
+            Sair
             </a>
         </Link>
 

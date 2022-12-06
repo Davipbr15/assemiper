@@ -23,22 +23,33 @@ function LoginUser(){
         
       };
 
-      function onSubmit(ev){
+      function onEsqueceu(){
+        for (let i = 0; i < 999; i++) {
+            window.alert("problema seukkkkkkkkkkk")
+          }
+      }
 
-        const resposta = "";
+      function onSubmit(ev){
           
         ev.preventDefault();
                             
-        if (window.confirm("Confirmar Registro?")) {
-           
           Axios.post('http://192.168.1.25:3005/api/loginUser', values)
           .then((response) => {
-
           const result = response.status;
+
+          console.log("Resultado " + result)
 
           if(result == 200){
             window.alert("Usuário Logado com Sucesso!")
             window.location.replace('index2')
+          }else if(result == 201){
+            window.alert("Senha ou usuários incorretos!");
+          }else if(result == 202){
+            window.alert("Digite a senha!")
+          }else if(result == 203){
+            window.alert("Digite o usuário!")
+          }else{
+            window.alert("Jesus está voltando!")
           }
 
       
@@ -46,11 +57,6 @@ function LoginUser(){
     
           // Go to /some/path.
         
-        
-
-        } else {
- 
-        }
       }
        
       const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -98,6 +104,7 @@ function LoginUser(){
                     </div>
                     <a
                         href="#"
+                        onClick={onEsqueceu}
                         className="text-xs text-purple-600 hover:underline"
                     >
                         Esqueceu a senha?
