@@ -241,16 +241,14 @@ app.post("/api/loginUser", async(req,res)=>{
     console.log(user) 
 
 	if (!user) {
-		return res.send("Logado")
+		return res.send("Usuário Não Existe")
 	}
- 
-    console.log("Passou")
 
 	if (await bcrypt.compareSync(passwordb, user.password)) {
 		// the usernameb, password combination is successful
 
-
-		return res.send("Logado")
+        
+		return res.status(200).send("Logado")
 	}
 
     console.log("Senha ou Usuário Inválido")
