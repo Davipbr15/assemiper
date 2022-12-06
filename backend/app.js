@@ -238,7 +238,7 @@ app.post("/api/loginUser", async(req,res)=>{
     console.log(typeof(passwordb) + " " + passwordb)
 	const user = await Login.findOne({ username: usernameb })
 
-    console.log(user)
+    console.log(user) 
 
 	if (!user) {
 		return console.log("Senha ou usuário inválido(s)")

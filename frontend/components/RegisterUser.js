@@ -73,8 +73,8 @@ function RegisterUser(){
                             id="nomeCompletoUserb"
                             onChange={onChange}
                             placeholder=""
-                        />
-                    </div>
+                        /> 
+                    </div> 
                     <div className="mb-2">
                         <label
                             htmlFor="usernameb"
