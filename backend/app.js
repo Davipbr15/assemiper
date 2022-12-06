@@ -241,7 +241,7 @@ app.post("/api/loginUser", async(req,res)=>{
     console.log(user) 
 
 	if (!user) {
-		return console.log("Senha ou usuário inválido(s)")
+		return res.send("Logado")
 	}
  
     console.log("Passou")
@@ -250,7 +250,7 @@ app.post("/api/loginUser", async(req,res)=>{
 		// the usernameb, password combination is successful
 
 
-		return console.log("Usuário Logado!")
+		return res.send("Logado")
 	}
 
     console.log("Senha ou Usuário Inválido")

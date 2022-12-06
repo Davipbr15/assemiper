@@ -24,6 +24,8 @@ function LoginUser(){
       };
 
       function onSubmit(ev){
+
+        const resposta = "";
           
         ev.preventDefault();
                             
@@ -32,13 +34,15 @@ function LoginUser(){
           Axios.post('http://192.168.1.25:3005/api/loginUser', values)
           .then((response) => {
 
-
+         const resposta = response;
       
           });
+
+          window.alert(resposta);
     
           // Go to /some/path.
         
-        window.location.replace('index2')
+        
 
         } else {
  
