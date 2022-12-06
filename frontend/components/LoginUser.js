@@ -34,11 +34,15 @@ function LoginUser(){
           Axios.post('http://192.168.1.25:3005/api/loginUser', values)
           .then((response) => {
 
-         const resposta = response;
+          const result = response.status;
+
+          if(result == 200){
+            window.alert("Usuário Logado com Sucesso!")
+            window.
+          }
+
       
           });
-
-          window.alert(resposta);
     
           // Go to /some/path.
         
