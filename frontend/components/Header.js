@@ -10,9 +10,9 @@ function Header(){
             <a
               href="/"
               className="font-medium text-white hover:text-gray-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-            > 
+            >
             Index
-            </a> 
+            </a>
         </Link>
         <Link href="/registrarAssociado">
             <a

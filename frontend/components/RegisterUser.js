@@ -79,7 +79,7 @@ function RegisterUser(){
                         <label
                             htmlFor="usernameb"
                             className="block text-sm font-semibold text-gray-800"
-                        >
+                        > 
                             Usuário
                         </label>
                         <input

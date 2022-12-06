@@ -243,7 +243,7 @@ app.post("/api/loginUser", async(req,res)=>{
 	if (!user) {
 		return console.log("Senha ou usuário inválido(s)")
 	}
-
+ 
     console.log("Passou")
 
 	if (await bcrypt.compareSync(passwordb, user.password)) {
