@@ -41,7 +41,7 @@ function LoginUser(){
         window.location.replace('index2')
 
         } else {
-
+ 
         }
       }
       
