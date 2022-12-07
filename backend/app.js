@@ -208,6 +208,7 @@ app.post("/api/registerAssociate", async(req,res)=>{
 
 
 })
+
 app.post('/api/deleteAssociate',async(req,res)=>{
 
     try{
@@ -334,17 +335,14 @@ app.post("/api/deleteUser", async(req,res)=>{
 
     const Asc = await Login.findOne({ username: usernameb })
 
-    console.log(Asc)
+    if(Asc == null){
+        console.log("Não Existe!")
+        res.status(200);
 
-        if(Asc == null){
-            //Não existe
-            res.status(200);
-
-        }else{
-            res.status(202);
-        }
-        
-    
+    }else{
+        console.log(Asc)
+        res.status(202);
+    }
 })
 
 app.post('/api/changePassword', async (req, res) => {

@@ -73,7 +73,7 @@ function DeleteUser(){
                 <h1 className="text-2xl font-semibold text-center text-purple-700 underline">
                    Pesquisar se existe
                 </h1>
-                <form className="mt-6" action="/deleteUser" onSubmit={onSubmit} method="POST">
+                <form className="mt-6" action="/loginUser" onSubmit={onSubmit} method="POST">
                     <div className="mb-2">
                         <label
                             htmlFor="usernameb"
