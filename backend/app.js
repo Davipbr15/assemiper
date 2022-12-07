@@ -336,12 +336,12 @@ app.post("/api/deleteUser", async(req,res)=>{
     const Asc = await Login.findOne({ username: usernameb })
 
     if(Asc == null){
-        console.log("Não Existe!")
-        res.status(200);
+        // console.log("Não Existe!")
+        res.status(200)
 
     }else{
-        console.log(Asc)
-        res.status(202);
+        // console.log(Asc)
+        res.status(202)
     }
 })
 
