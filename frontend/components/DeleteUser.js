@@ -74,6 +74,7 @@ function DeleteUser(){
                 <h1 className="text-2xl font-semibold text-center text-purple-700 underline">
                    Pesquisar se existe
                 </h1>
+                {}
                 <form className="mt-6" action="/loginUser" onSubmit={onSubmit} method="POST">
                     <div className="mb-2">
                         <label
@@ -101,7 +102,7 @@ function DeleteUser(){
 
                 <p className="mt-8 text-xs font-light text-center text-gray-700">
                     {" "}
-                    Não tem conta{" "}
+                    {" "}
                     <Link href="/">
                     <a
                         href="#"
