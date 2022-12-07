@@ -35,7 +35,7 @@ function DeleteUser(){
       
     ev.preventDefault();
                         
-      Axios.post('http://192.168.1.7:3005/api/deleteUser', values)
+      Axios.post('http://localhost:3005/api/deleteUser', values)
       .then((response) => {
 
         console.log(response.status)
