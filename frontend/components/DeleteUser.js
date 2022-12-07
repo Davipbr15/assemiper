@@ -7,7 +7,6 @@ function DeleteUser(){
     
   const initialValue = {
     usernameb: '',
-    passwordb: '',
   }
   
   const [values, setValues] = useState(initialValue);
