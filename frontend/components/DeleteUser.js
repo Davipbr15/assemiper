@@ -40,7 +40,9 @@ function DeleteUser(){
 
         console.log(response.status)
 
-      });
+      }).catch((error) =>{
+        console.log(error)
+      });;
 
       
       
