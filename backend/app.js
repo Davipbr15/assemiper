@@ -336,11 +336,11 @@ app.post("/api/deleteUser", async(req,res)=>{
 
     if(Asc == null){
         // console.log("Não Existe!")
-        res.status(200)
+        return res.status(200)
 
     }else{
         // console.log(Asc)
-        res.status(202)
+        return res.status(202)
     }
 })
 
