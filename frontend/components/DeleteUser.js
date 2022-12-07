@@ -37,7 +37,6 @@ function DeleteUser(){
                         
       Axios.post('http://localhost:3005/api/deleteUser', values)
       .then((response) => {
-
         console.log(response.status)
 
       }).catch((error) =>{
