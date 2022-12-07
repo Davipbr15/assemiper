@@ -28,24 +28,37 @@ function RegisterUser(){
       function onSubmit(ev){
           
         ev.preventDefault();
-                            
-        if (window.confirm("Confirmar Registro?")) {
-           
-          Axios.post('http://localhost:3005/api/registerUser', values)
+     
+          Axios.post('http://192.168.1.7:3005/api/registerUser', values)
           .then((response) => {
-      
+        
+          var result = response;
+
+          console.log(result)
+
+          }).catch((error) =>{
+            console.log(error)
           });
+          
+          if(result == 200){
+              alert(values.nomeCompletoUserb + " registrado com sucesso!")
+              window.location.replace('loginUser')
+          }else if(result == 201){
+              alert("Senha inválida.")
+          }else if(result == 202){
+              alert("Senha muito curta.")
+          }else if(result == 203){
+              alert("Inválido.")
+          }else if(result == 204){
+              alert("Esse usuário já existe.")
+          }else{
+            alert("eita")
+          }
       
-          window.alert(values.nomeCompletoUserb + " registrado com sucesso!")
 
           
           // Go to /some/path.
         
-        window.location.replace('loginUser')
-
-        } else {
-
-        }
       }
       
 

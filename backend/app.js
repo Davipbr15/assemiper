@@ -21,6 +21,7 @@ const jwt = require("jsonwebtoken");
 const { errorMonitor } = require("events");
 const { DEC8_BIN } = require("mysql/lib/protocol/constants/charsets");
 const { reset } = require("nodemon");
+const { homedir } = require("os");
 
 const JWT_SECRET = "sorv1veteque2rol5ei9tepikachu7portaab2acax1igeladei6rabrastemp";
 
@@ -268,41 +269,50 @@ app.post("/api/loginUser", async(req,res)=>{
 
 
 });
+
 app.post("/api/registerUser", async(req,res)=>{
     var salt = bcrypt.genSaltSync(10);
     console.log(req.body);
 
-    const { usernameb, passwordb, nomeCompletoUserb} = req.body;
+    const { usernameb, passwordb, nomeCompletoUserb} = await req.body;
 
+    const Asc = await Login.findOne({ username: usernameb })
+    if(Asc == null){
+        
+        
 	if (!usernameb || typeof usernameb !== 'string') {
-		return res.json({ status: 'error', error: 'Invalid usernameb' });
+		console.log("200")
+        return res.status(200);
+        //Invalid usernameb
 	}
 
 	if (!passwordb || typeof passwordb !== 'string') {
-		return res.json({ status: 'error', error: 'Invalid password' });
+		console.log("201")
+        return res.status(201)
+        //res.json({ status: 'error', error: 'Invalid password' });
 	}
 
 	if (passwordb.length < 5) {
-		return res.json({
-			status: 'error',
-			error: 'Sua senha é muito cura deve ter mais de 6 caracteres'
-		})
+        console.log("202")
+		return res.status(202)
+        //mt curto
 	}
 
 	const password = await bcrypt.hash(passwordb, salt)
 
 	try {
-		const response = await Login.create({
+		const respost = await Login.create({
+            nomeCompletoUser:nomeCompletoUserb,
 			username:usernameb,
 			password
-
-            
         })
-		console.log('Usuário criado com sucesso: ', response)
+		console.log('Usuário criado com sucesso: ', respost)
 	} catch(error){
 		if (error.code === 11000) {
 			// duplicate key
-			return console.log("Username In Use")
+            // Error
+            console.log("203")
+			return res.status(203);
             
 		}
         
@@ -310,12 +320,37 @@ app.post("/api/registerUser", async(req,res)=>{
         
 	}
 
+
 	res.json({ status: 'ok' })
     console.log(usernameb + " registrado com sucesso.")
 
-    res.status(201);
+    return res.status(201);
+    }
+    else{
+        console.log("204")
+        return res.status(204);
 
+}})
+
+app.post("/api/deleteUser", async(req,res)=>{
+
+    var {usernameb} = await req.body;
+
+    const Asc = await Login.findOne({ username: usernameb })
+
+    console.log(Asc)
+
+        if(Asc == null){
+            //Não existe
+            return res.status(200)
+
+        }else{
+            return res.status(202)
+        }
+        
+    
 })
+
 app.post('/api/changePassword', async (req, res) => {
 	const { token, newPassword: passwordb } = req.body
 	if (!passwordb || typeof passwordb !== 'string') {

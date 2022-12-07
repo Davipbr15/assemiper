@@ -19,7 +19,7 @@ function ShowAssociate(){
     }, [])
     const [assc, setAssociate ] = useState([]);
     useEffect(()=>{
-        axios.get("http://localhost:3005/api/searchAssociate")
+        axios.get("http://192.168.1.7:3005/api/searchAssociate")
         .then(response => {
             setAssociate(response.data);
         })

@@ -7,7 +7,6 @@ function LoginUser(){
     
     const initialValue = {
         usernameb: '',
-        passwordb: '',
       }
       
       const [values, setValues] = useState(initialValue);
@@ -24,16 +23,18 @@ function LoginUser(){
       };
 
       function onEsqueceu(){
-        for (let i = 0; i < 999; i++) {
-            window.alert("problema seukkkkkkkkkkk")
-          }
+
+            window.alert("vai ficar pra jesus em...")
+
+            window.location.replace("deleteUser")
+
       }
 
       function onSubmit(ev){
           
         ev.preventDefault();
                             
-          Axios.post('http://192.168.1.25:3005/api/loginUser', values)
+          Axios.post('http://192.168.1.7:3005/api/loginUser', values)
           .then((response) => {
           const result = response.status;
 
