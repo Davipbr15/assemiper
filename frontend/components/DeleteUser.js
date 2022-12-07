@@ -38,22 +38,27 @@ function DeleteUser(){
                         
       Axios.post('http://192.168.1.7:3005/api/deleteUser', values)
       .then((response) => {
-      
-      const result = response.status;
 
-      window.alert("Resultado " + result)
+        console.log(response.status)
 
-      if(result == 200){
-        if(window.confirm("Não existe! Deseja criar um novo usuário?")){
-          window.location.replace('registerUser')
-        }
-      }else if(result == 202){
-        window.alert("Este usuário existe!")
-      }else{
-        window.alert("A")
-      }
-  
       });
+
+      
+      
+      // const result = response.status;
+
+      // window.alert("Resultado " + result)
+
+      // if(result == 200){
+      //   if(window.confirm("Não existe! Deseja criar um novo usuário?")){
+      //   window.location.replace('registerUser')
+      //   }
+      // }else if(result == 202){
+      //   window.alert("Este usuário existe!")
+      // }else{
+      //   window.alert("A")
+      // }
+  
 
       // Go to /some/path.
     

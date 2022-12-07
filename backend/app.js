@@ -281,20 +281,17 @@ app.post("/api/registerUser", async(req,res)=>{
         
         
 	if (!usernameb || typeof usernameb !== 'string') {
-		console.log("200")
-        return res.status(200);
+        res.status(200);
         //Invalid usernameb
 	}
 
 	if (!passwordb || typeof passwordb !== 'string') {
-		console.log("201")
-        return res.status(201)
+        res.status(201)
         //res.json({ status: 'error', error: 'Invalid password' });
 	}
 
 	if (passwordb.length < 5) {
-        console.log("202")
-		return res.status(202)
+	    res.status(202)
         //mt curto
 	}
 
@@ -312,7 +309,7 @@ app.post("/api/registerUser", async(req,res)=>{
 			// duplicate key
             // Error
             console.log("203")
-			return res.status(203);
+			res.status(203);
             
 		}
         
@@ -324,17 +321,16 @@ app.post("/api/registerUser", async(req,res)=>{
 	res.json({ status: 'ok' })
     console.log(usernameb + " registrado com sucesso.")
 
-    return res.status(201);
+        res.status(201).send("");
     }
     else{
-        console.log("204")
-        return res.status(204);
+        res.status(204).send("");
 
 }})
 
 app.post("/api/deleteUser", async(req,res)=>{
 
-    var {usernameb} = await req.body;
+    const {usernameb} = await req.body;
 
     const Asc = await Login.findOne({ username: usernameb })
 
@@ -342,10 +338,10 @@ app.post("/api/deleteUser", async(req,res)=>{
 
         if(Asc == null){
             //Não existe
-            return res.status(200)
+            res.status(200);
 
         }else{
-            return res.status(202)
+            res.status(202);
         }
         
     
