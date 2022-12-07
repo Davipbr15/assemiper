@@ -309,7 +309,6 @@ app.post("/api/registerUser", async(req,res)=>{
 		if (error.code === 11000) {
 			// duplicate key
             // Error
-            console.log("203")
 			res.status(203);
             
 		}
