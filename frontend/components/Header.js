@@ -6,33 +6,33 @@ function Header(){
   const [result, setResult ] = useState([])
 
 
-  useEffect(()=>{
+//   useEffect(()=>{
 
-  try{
-    const resposta = Axios.post('http://localhost:3005/api/headerResponse', values);
+//   try{
+//     const resposta = Axios.post('http://localhost:3005/api/headerResponse', values);
 
-    var result = resposta?.status;
+//     var result = resposta?.status;
     
-  }catch(error){
-      console.log(error);
-  }
+//   }catch(error){
+//       console.log(error);
+//   }
 
 
-    // Go to /some/path.
-    if (typeof window !== "undefined") {
-      window.alert(result);
-    }
+//     // Go to /some/path.
+//     if (typeof window !== "undefined") {
+//       window.alert(result);
+//     }
 
-    var logged = false;
-      if(result == 200){
-        logged = true;  
-      }else{
-        if (typeof window !== "undefined") {
-            window.location.replace("/")
-        }
-    }
+//     var logged = false;
+//       if(result == 200){
+//         logged = true;  
+//       }else{
+//         if (typeof window !== "undefined") {
+//             window.location.replace("/")
+//         }
+//     }
 
-},[]);
+// },[]);
 
 
       const [navbarOpen, setNavbarOpen] = React.useState(false);

@@ -103,12 +103,12 @@ app.post("/api/loginUser", async(req,res)=>{
 
 app.post("/api/headerResponse", async(req,res)=>{
 
-    if(logged == true){
-       console.log("Navegando..")
-       return res.status(200);
-    }else{
-       console.log("Deslogado entrando..")
-    }
+    // if(logged == true){
+    //    console.log("Navegando..")
+    //    return res.status(200);
+    // }else{
+    //    console.log("Deslogado entrando..")
+    // }
     
 
 })

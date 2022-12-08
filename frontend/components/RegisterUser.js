@@ -36,7 +36,7 @@ function RegisterUser(){
           
           }catch(error){
               console.log(error);
-          }localhost
+          }
 
           console.log("Resultado " + result);
 
