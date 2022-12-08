@@ -36,7 +36,7 @@ function RegisterUser(){
           
           }catch(error){
               console.log(error);
-          }
+          }localhost
 
           console.log("Resultado " + result);
 
@@ -54,9 +54,7 @@ function RegisterUser(){
           }else{
               window.alert("eita")
           }    
-             
           // Go to /some/path.
-        
       }
       
 

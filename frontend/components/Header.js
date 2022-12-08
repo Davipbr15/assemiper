@@ -8,16 +8,10 @@ function Header(){
 
   useEffect(()=>{
 
-},[]);
-
-const onSubmit = async(ev) => {
-          
-  ev.preventDefault();
-
   try{
-    const resposta = await Axios.post('http://localhost:3005/api/loginUser', values);
+    const resposta = Axios.post('http://localhost:3005/api/headerResponse', values);
 
-    const result = resposta?.status;
+    var result = resposta?.status;
     
   }catch(error){
       console.log(error);
@@ -25,11 +19,8 @@ const onSubmit = async(ev) => {
 
 
     // Go to /some/path.
-  
-}
-
     if (typeof window !== "undefined") {
-      window.alert(result)
+      window.alert(result);
     }
 
     var logged = false;
@@ -40,8 +31,9 @@ const onSubmit = async(ev) => {
             window.location.replace("/")
         }
     }
-        
-    
+
+},[]);
+
 
       const [navbarOpen, setNavbarOpen] = React.useState(false);
     return( 

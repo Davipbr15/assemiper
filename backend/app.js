@@ -61,11 +61,11 @@ app.post('/', async(req,res)=>{
 app.post("/api/loginUser", async(req,res)=>{
     var salt = bcrypt.genSaltSync(10);
     const { usernameb, passwordb } = await req.body;
-    console.log(typeof(usernameb) + " " + usernameb)
-    console.log(typeof(passwordb) + " " + passwordb)
+    //console.log(typeof(usernameb) + " " + usernameb)
+    //console.log(typeof(passwordb) + " " + passwordb)
 	const user = await Login.findOne({ username: usernameb })
 
-    console.log(user)
+    //console.log(user)
 
     async function teste(){
         if(passwordb == null){
@@ -103,12 +103,12 @@ app.post("/api/loginUser", async(req,res)=>{
 
 app.post("/api/headerResponse", async(req,res)=>{
 
-    //if(logged == true){
-    //    console.log("Navegando..")
-    //    return res.status(200);
-    //}else{
-    //    console.log("Deslogado entrando..")
-    //}
+    if(logged == true){
+       console.log("Navegando..")
+       return res.status(200);
+    }else{
+       console.log("Deslogado entrando..")
+    }
     
 
 })
