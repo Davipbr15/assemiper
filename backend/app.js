@@ -50,11 +50,8 @@ var logged = false;
 
 app.post('/', async(req,res)=>{
 
+    console.log("Entrou na página inicial/Deslogou.");
     logged = false;
-
-    console.log("Deslogou")
-
-    res.send("Entrou no site.")
 
 })
 
@@ -101,14 +98,17 @@ app.post("/api/loginUser", async(req,res)=>{
 
 });
 
-app.post("/api/headerResponse", async(req,res)=>{
+app.get("/api/headerResponse", async(req,res)=>{
 
-    // if(logged == true){
-    //    console.log("Navegando..")
-    //    return res.status(200);
-    // }else{
-    //    console.log("Deslogado entrando..")
-    // }
+    console.log("Chegou no Head")
+
+    if(logged == true){
+       console.log("Navegando..")
+       return res.status(200);
+    }else{
+       console.log("Deslogado entrando..")
+       res.redirect("/")
+    }
     
 
 })

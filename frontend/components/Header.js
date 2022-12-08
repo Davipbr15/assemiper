@@ -5,35 +5,30 @@ import React, { useEffect, useState } from 'react';
 function Header(){
   const [result, setResult ] = useState([])
 
+  const onCharge = async(ev) => {
 
-//   useEffect(()=>{
+  try{
+    const resposta = await Axios.get('http://localhost:3005/api/headerResponse');
+    var result = resposta?.status;
+  }catch(error){
+      console.log(error);
+  }
+    // Go to /some/path.
+    console.log(result)
+      if(result == 200){
+        window.alert("Licitamente Licito")
+      }else{
+        if (typeof window !== "undefined") {
+          window.alert("Rapa Fora")
+            window.location.replace("/")
+        }
+    }
+  }
 
-//   try{
-//     const resposta = Axios.post('http://localhost:3005/api/headerResponse', values);
-
-//     var result = resposta?.status;
-    
-//   }catch(error){
-//       console.log(error);
-//   }
-
-
-//     // Go to /some/path.
-//     if (typeof window !== "undefined") {
-//       window.alert(result);
-//     }
-
-//     var logged = false;
-//       if(result == 200){
-//         logged = true;  
-//       }else{
-//         if (typeof window !== "undefined") {
-//             window.location.replace("/")
-//         }
-//     }
-
-// },[]);
-
+  useEffect(() => {
+    onCharge();
+  },[]);
+  
 
       const [navbarOpen, setNavbarOpen] = React.useState(false);
     return( 

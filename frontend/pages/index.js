@@ -12,12 +12,16 @@ import Axios from 'axios';
 
 export default function Home() {
 
-useEffect(()=>{
-      Axios.post("http://192.168.1.7:3005/")
-      .then(response => {
-      })
-},[]);
 
+  const OnCharge = async(ev) =>{
+      const resposta = await Axios.post("http://localhost:3005/");
+
+      const resultado = resposta.status;
+
+      window.alert(resultado)
+  }
+
+  OnCharge();
 
   return (
     <div>
