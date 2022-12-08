@@ -67,30 +67,36 @@ app.post("/api/loginUser", async(req,res)=>{
 
     console.log(user)
 
-    if(passwordb == null){
-        return res.status(202)
-    }
-    if(usernameb == null){
-        return res.status(202)
-    }
+    async function teste(){
+        if(passwordb == null){
+            return res.status(202)
+        }
+        if(usernameb == null){
+            return res.status(202)
+        }
+        
+        if(!passwordb){
+            return res.status(201).send("Usuário Não Existe");
+        }
     
-    if(!passwordb){
-        return res.status(201).send("Usuário Não Existe");
+        if (!user) {
+            return res.status(201).send("Usuário Não Existe");
+        }
+    
+        if (await bcrypt.compareSync(passwordb, user.password)) {
+            // the usernameb, password combination is successful
+    
+            logged = true;
+            return res.status(200).send("Logado");
+        }
+    
+        console.log("Senha ou Usuário Inválido")
+            return res.status(201)
     }
 
-	if (!user) {
-		return res.status(201).send("Usuário Não Existe");
-	}
+    teste();
 
-	if (await bcrypt.compareSync(passwordb, user.password)) {
-		// the usernameb, password combination is successful
-
-        logged = true;
-		return res.status(200).send("Logado");
-	}
-
-    console.log("Senha ou Usuário Inválido")
-        return res.status(201)
+    
 
 
 });
