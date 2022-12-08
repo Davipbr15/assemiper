@@ -41,9 +41,6 @@ function LoginUser(){
           .then((response) => {
             
           
-          if(window.confirm("a")){
-            setResult(response.status)
-            console.log("Resultado " + result)
           if(result == 200){
             window.alert("Usuário Logado com Sucesso!")
             window.location.replace('index2')
@@ -54,7 +51,7 @@ function LoginUser(){
           }else if(result == 203){
             window.alert("Digite o usuário!")
           }else{
-            window.alert("Jesus está voltando!")
+            window.alert("Erro!")
           }
         }
       

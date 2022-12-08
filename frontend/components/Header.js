@@ -10,8 +10,6 @@ function Header(){
       .then(response => {
       setResult(response.status)
       console.log(result)
-          
-      });
 
       if (typeof window !== "undefined") {
         window.alert(result)
@@ -25,6 +23,8 @@ function Header(){
               window.location.replace("/")
           }
       }
+          
+      });
 },[]);
     
 

@@ -67,8 +67,6 @@ app.post("/api/loginUser", async(req,res)=>{
 
     console.log(user)
 
-
-
     if(passwordb == null){
         return res.status(202)
     }
