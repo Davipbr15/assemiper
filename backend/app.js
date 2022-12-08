@@ -113,7 +113,82 @@ app.post("/api/headerResponse", async(req,res)=>{
 
 })
 
+app.post("/api/registerUser", async(req,res)=>{
+    var salt = bcrypt.genSaltSync(10);
+    console.log(req.body);
 
+    const { usernameb, passwordb, nomeCompletoUserb} = await req.body;
+
+    const Asc = await Login.findOne({ username: usernameb })
+    
+    async function registrar(){
+    if(Asc == null){
+
+        if (!usernameb || typeof usernameb !== 'string') {
+            return res.status(200)
+            //Invalid usernameb
+        }
+
+        if (!passwordb || typeof passwordb !== 'string') {
+            return  res.status(201)
+            //res.json({ status: 'error', error: 'Invalid password' });
+        }
+
+        if (passwordb.length < 5) {
+            return res.status(202)
+            //mt curto
+        }
+
+        const password = await bcrypt.hash(passwordb, salt)
+
+        try {
+            const respost = await Login.create({
+                nomeCompletoUser:nomeCompletoUserb,
+                username:usernameb,
+                password
+            })
+            console.log('Usuário criado com sucesso: ', respost)
+        } catch(error){
+            if (error.code === 11000) {
+                // duplicate key
+                // Error
+                return res.status(203);
+                
+            }
+            
+            throw error
+            
+        }
+
+
+        console.log(usernameb + " registrado com sucesso.")
+        return res.status(201)
+        }
+    else{
+        console.log("ERR já existe")
+        return res.status(204)
+
+    }
+    }
+
+    registrar();
+})
+
+app.post("/api/deleteUser", async(req,res)=>{
+
+    const {usernameb} = await req.body;
+
+    const Asc = await Login.findOne({ username: usernameb })
+
+    if(Asc == null){
+        // console.log("Não Existe!")
+        return res.status(200)
+
+    }else{
+        // console.log(Asc)
+        return res.status(202)
+    }
+})
 
 app.get('/api/home',async(req,res)=>{
 
@@ -292,81 +367,6 @@ app.post('/api/deleteAssociate',async(req,res)=>{
     //         res.status(500).send(error);
     //     });
 
-})
-
-
-
-app.post("/api/registerUser", async(req,res)=>{
-    var salt = bcrypt.genSaltSync(10);
-    console.log(req.body);
-
-    const { usernameb, passwordb, nomeCompletoUserb} = await req.body;
-
-    const Asc = await Login.findOne({ username: usernameb })
-    if(Asc == null){
-        
-        
-	if (!usernameb || typeof usernameb !== 'string') {
-        res.status(200);
-        //Invalid usernameb
-	}
-
-	if (!passwordb || typeof passwordb !== 'string') {
-        res.status(201)
-        //res.json({ status: 'error', error: 'Invalid password' });
-	}
-
-	if (passwordb.length < 5) {
-	    res.status(202)
-        //mt curto
-	}
-
-	const password = await bcrypt.hash(passwordb, salt)
-
-	try {
-		const respost = await Login.create({
-            nomeCompletoUser:nomeCompletoUserb,
-			username:usernameb,
-			password
-        })
-		console.log('Usuário criado com sucesso: ', respost)
-	} catch(error){
-		if (error.code === 11000) {
-			// duplicate key
-            // Error
-			res.status(203);
-            
-		}
-        
-		throw error
-        
-	}
-
-
-	res.json({ status: 'ok' })
-    console.log(usernameb + " registrado com sucesso.")
-
-        res.status(201).send("");
-    }
-    else{
-        res.status(204).send("");
-
-}})
-
-app.post("/api/deleteUser", async(req,res)=>{
-
-    const {usernameb} = await req.body;
-
-    const Asc = await Login.findOne({ username: usernameb })
-
-    if(Asc == null){
-        // console.log("Não Existe!")
-        return res.status(200)
-
-    }else{
-        // console.log(Asc)
-        return res.status(202)
-    }
 })
 
 app.post('/api/changePassword', async (req, res) => {

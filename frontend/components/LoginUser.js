@@ -30,12 +30,6 @@ function LoginUser(){
 
       }
 
-      const [result, setResult] = useState();
-
-      function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
       const onSubmit = async(ev) => {
           
         ev.preventDefault();
@@ -46,7 +40,8 @@ function LoginUser(){
 
           const result = resposta?.status;
 
-          console.log("Resultado " + result)
+          console.log("Resultado " + result);
+          
           if(result == 200){
             window.alert("Usuário Logado com Sucesso!")
             window.location.replace('index2')

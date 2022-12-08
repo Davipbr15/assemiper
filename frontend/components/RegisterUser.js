@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { browserHistory } from 'react-router'
-
 import Link from 'next/link';
 import Axios from 'axios';
 
@@ -25,42 +24,37 @@ function RegisterUser(){
         
       };
 
-      function onSubmit(ev){
+    const onSubmit = async(ev) => {
           
         ev.preventDefault();
-     
-          Axios.post('http://192.168.1.7:3005/api/registerUser', values)
-          .then((response) => {
-    
-          console.log(response.status)
 
-          var result = response.status;
+        try{
 
-          if(result == 200){
-            alert(values.nomeCompletoUserb + " registrado com sucesso!")
-            window.location.replace('loginUser')
+            const resposta = await Axios.post('http://localhost:3005/api/registerUser', values);
+  
+            const result = resposta?.status;
+
+            console.log("Resultado " + result);
+
+            if(result == 200){
+                window.alert(values.nomeCompletoUserb + " registrado com sucesso!")
+                window.location.replace('loginUser')
             }else if(result == 201){
-            alert("Senha inválida.")
+                window.alert("Senha inválida.")
             }else if(result == 202){
-            alert("Senha muito curta.")
+                window.alert("Senha muito curta.")
             }else if(result == 203){
-            alert("Inválido.")
+                window.alert("Inválido.")
             }else if(result == 204){
-            alert("Esse usuário já existe.")
+                window.alert("Esse usuário já existe.")
             }else{
-            alert("eita")
-            }
-
+                window.alert("eita")
+            }    
           
-
-          }).catch((error) =>{
-            console.log(error)
-          });
-
-
-      
-
-          
+          }catch(error){
+              console.log(error);
+          }
+             
           // Go to /some/path.
         
       }
@@ -74,7 +68,7 @@ function RegisterUser(){
                 <h1 className="text-3xl font-semibold text-center text-purple-700 underline">
                    Register
                 </h1>
-                <form className="mt-6" action="/loginUser" onSubmit={onSubmit} method="POST">
+                <form className="mt-6" action="/registerUser" onSubmit={onSubmit} method="POST">
                 <div className="mb-2">
                         <label
                             htmlFor="nomeCompletoUserb"
@@ -129,7 +123,7 @@ function RegisterUser(){
                         />
                     </div>
                     <div className="mt-6">
-                        <button type="submit" className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
+                        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
                             Registras
                         </button>
                     </div>
