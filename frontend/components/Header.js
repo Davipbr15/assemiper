@@ -3,29 +3,44 @@ import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 function Header(){
-  const [result, setResult ] = useState([]);
+  const [result, setResult ] = useState([])
+
 
   useEffect(()=>{
-      Axios.post("http://192.168.1.7:3005/api/headerResponse")
-      .then(response => {
-      setResult(response.status)
-      console.log(result)
 
-      if (typeof window !== "undefined") {
-        window.alert(result)
-      }
-
-      var logged = false;
-        if(result == 200){
-          logged = true;  
-        }else{
-          if (typeof window !== "undefined") {
-              window.location.replace("/")
-          }
-      }
-          
-      });
 },[]);
+
+const onSubmit = async(ev) => {
+          
+  ev.preventDefault();
+
+  try{
+    const resposta = await Axios.post('http://localhost:3005/api/loginUser', values);
+
+    const result = resposta?.status;
+    
+  }catch(error){
+      console.log(error);
+  }
+
+
+    // Go to /some/path.
+  
+}
+
+    if (typeof window !== "undefined") {
+      window.alert(result)
+    }
+
+    var logged = false;
+      if(result == 200){
+        logged = true;  
+      }else{
+        if (typeof window !== "undefined") {
+            window.location.replace("/")
+        }
+    }
+        
     
 
       const [navbarOpen, setNavbarOpen] = React.useState(false);

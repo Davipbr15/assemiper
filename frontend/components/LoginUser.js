@@ -36,16 +36,17 @@ function LoginUser(){
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-      async function onSubmit(ev){
+      const onSubmit = async(ev) => {
           
         ev.preventDefault();
-              
-          Axios.post('http://localhost:3005/api/loginUser', values)
-          .then((response) => {
- 
-            setResult(response.status)
-            
-            console.log("Resultado " + result)
+
+        try{
+
+          const resposta = await Axios.post('http://localhost:3005/api/loginUser', values); 
+
+          const result = resposta?.status;
+
+          console.log("Resultado " + result)
           if(result == 200){
             window.alert("Usuário Logado com Sucesso!")
             window.location.replace('index2')
@@ -59,8 +60,9 @@ function LoginUser(){
             window.alert("Erro!")
           }
         
-      
-          });
+        }catch(error){
+            console.log(error);
+        }
 
           
     
