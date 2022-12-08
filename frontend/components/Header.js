@@ -8,15 +8,11 @@ function Header(){
   useEffect(()=>{
       Axios.post("http://192.168.1.7:3005/api/headerResponse")
       .then(response => {
-          setAssociate(response.data);
-
-          setResult(response.status);
+      setResult(response.status)
+      console.log(result)
           
-      })
-      function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-      }
-      sleep(300);
+      });
+
       if (typeof window !== "undefined") {
         window.alert(result)
       }

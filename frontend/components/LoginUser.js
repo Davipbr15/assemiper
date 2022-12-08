@@ -40,8 +40,10 @@ function LoginUser(){
           Axios.post('http://localhost:3005/api/loginUser', values)
           .then((response) => {
             
-          setResult(response.status)
-          console.log("Resultado " + result)
+          
+          if(window.confirm("a")){
+            setResult(response.status)
+            console.log("Resultado " + result)
           if(result == 200){
             window.alert("Usuário Logado com Sucesso!")
             window.location.replace('index2')
@@ -54,6 +56,7 @@ function LoginUser(){
           }else{
             window.alert("Jesus está voltando!")
           }
+        }
       
           });
 
@@ -103,6 +106,8 @@ function LoginUser(){
                             className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                             name="passwordb"
                             required
+                            minLength="5"
+                            maxLength="24"
                             id="passwordb"
                             onChange={onChange}
                             placeholder=""

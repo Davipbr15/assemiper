@@ -92,18 +92,19 @@ app.post("/api/loginUser", async(req,res)=>{
 	}
 
     console.log("Senha ou Usuário Inválido")
+        return res.status(201)
 
 
 });
 
 app.post("/api/headerResponse", async(req,res)=>{
 
-    if(logged == true){
-        console.log("Navegando..")
-        return res.status(200);
-    }else{
-        console.log("Deslogado entrando..")
-    }
+    //if(logged == true){
+    //    console.log("Navegando..")
+    //    return res.status(200);
+    //}else{
+    //    console.log("Deslogado entrando..")
+    //}
     
 
 })
