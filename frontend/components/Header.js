@@ -1,7 +1,37 @@
-import React from "react";
 import Link from 'next/link';
+import Axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 function Header(){
+  const [result, setResult ] = useState([]);
+
+  useEffect(()=>{
+      Axios.post("http://192.168.1.7:3005/api/headerResponse")
+      .then(response => {
+          setAssociate(response.data);
+
+          setResult(response.status);
+          
+      })
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+      sleep(300);
+      if (typeof window !== "undefined") {
+        window.alert(result)
+      }
+
+      var logged = false;
+        if(result == 200){
+          logged = true;  
+        }else{
+          if (typeof window !== "undefined") {
+              window.location.replace("/")
+          }
+      }
+},[]);
+    
+
       const [navbarOpen, setNavbarOpen] = React.useState(false);
     return( 
            

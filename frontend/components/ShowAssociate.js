@@ -32,6 +32,7 @@ function ShowAssociate(){
             <h1>{ip}</h1>
             <br></br>
             <div className="grid grid-cols-1 justify-center">
+
             {assc.map((ascData, index) => {
                 return(
                 <div key={index} className="block justify-center max-w-2xl p-6 m-5 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -117,7 +118,12 @@ function ShowAssociate(){
                 <br></br>
                 </div>
                 );
-            })}
+            
+        }
+            )}
+
+            
+            
             </div>
 
         </div>

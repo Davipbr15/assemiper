@@ -30,16 +30,18 @@ function LoginUser(){
 
       }
 
+      const [result, setResult] = useState();
+
+
       function onSubmit(ev){
           
         ev.preventDefault();
                             
-          Axios.post('http://192.168.1.7:3005/api/loginUser', values)
+          Axios.post('http://localhost:3005/api/loginUser', values)
           .then((response) => {
-          const result = response.status;
-
+            
+          setResult(response.status)
           console.log("Resultado " + result)
-
           if(result == 200){
             window.alert("Usuário Logado com Sucesso!")
             window.location.replace('index2')
@@ -52,13 +54,16 @@ function LoginUser(){
           }else{
             window.alert("Jesus está voltando!")
           }
-
       
           });
+
+          
     
           // Go to /some/path.
         
       }
+    
+      
        
       const [navbarOpen, setNavbarOpen] = React.useState(false);
     return( 

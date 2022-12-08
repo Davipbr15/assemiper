@@ -76,7 +76,6 @@ function onSubmit(ev){
     Axios.post('http://192.168.1.7:3005/api/registerAssociate', values)
     .then((response) => {
 
-
     });
 
     window.alert(values.nomeCompletob + " registrado com sucesso!")
@@ -85,7 +84,6 @@ function onSubmit(ev){
 
   }
 }
-
 
 return(
 

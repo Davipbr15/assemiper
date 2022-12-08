@@ -46,12 +46,69 @@ require("./userDetails");
 require("./loginDetail");
 const Login = mongoose.model("LoginUser");
 const Associate = mongoose.model("AssociateInfo");
+var logged = false;
 
-app.get('/', async(req,res)=>{
+app.post('/', async(req,res)=>{
+
+    logged = false;
+
+    console.log("Deslogou")
 
     res.send("Entrou no site.")
 
 })
+
+app.post("/api/loginUser", async(req,res)=>{
+    var salt = bcrypt.genSaltSync(10);
+    const { usernameb, passwordb } = await req.body;
+    console.log(typeof(usernameb) + " " + usernameb)
+    console.log(typeof(passwordb) + " " + passwordb)
+	const user = await Login.findOne({ username: usernameb })
+
+    console.log(user)
+
+
+
+    if(passwordb == null){
+        return res.status(202)
+    }
+    if(usernameb == null){
+        return res.status(202)
+    }
+    
+    if(!passwordb){
+        return res.status(201).send("Usuário Não Existe");
+    }
+
+	if (!user) {
+		return res.status(201).send("Usuário Não Existe");
+	}
+
+	if (await bcrypt.compareSync(passwordb, user.password)) {
+		// the usernameb, password combination is successful
+
+        logged = true;
+		return res.status(200).send("Logado");
+	}
+
+    console.log("Senha ou Usuário Inválido")
+
+
+});
+
+app.post("/api/headerResponse", async(req,res)=>{
+
+    if(logged == true){
+        console.log("Navegando..")
+        return res.status(200);
+    }else{
+        console.log("Deslogado entrando..")
+    }
+    
+
+})
+
+
 
 app.get('/api/home',async(req,res)=>{
 
@@ -233,43 +290,6 @@ app.post('/api/deleteAssociate',async(req,res)=>{
 })
 
 
-app.post("/api/loginUser", async(req,res)=>{
-    var salt = bcrypt.genSaltSync(10);
-    const { usernameb, passwordb } = await req.body;
-    console.log(typeof(usernameb) + " " + usernameb)
-    console.log(typeof(passwordb) + " " + passwordb)
-	const user = await Login.findOne({ username: usernameb })
-
-    console.log(user)
-
-
-
-    if(passwordb == null){
-        return res.status(202)
-    }
-    if(usernameb == null){
-        return res.status(202)
-    }
-    
-    if(!passwordb){
-        return res.status(201).send("Usuário Não Existe");
-    }
-
-	if (!user) {
-		return res.status(201).send("Usuário Não Existe");
-	}
-
-	if (await bcrypt.compareSync(passwordb, user.password)) {
-		// the usernameb, password combination is successful
-
-        
-		return res.status(200).send("Logado");
-	}
-
-    console.log("Senha ou Usuário Inválido")
-
-
-});
 
 app.post("/api/registerUser", async(req,res)=>{
     var salt = bcrypt.genSaltSync(10);
