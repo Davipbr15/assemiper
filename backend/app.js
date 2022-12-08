@@ -119,10 +119,10 @@ app.post("/api/registerUser", async(req,res)=>{
 
     const { usernameb, passwordb, nomeCompletoUserb} = await req.body;
 
-    const Asc = await Login.findOne({ username: usernameb })
-    
+    const asc = await Login.findOne({ username: usernameb })
+
     async function registrar(){
-    if(Asc == null){
+    if(asc == null){
 
         if (!usernameb || typeof usernameb !== 'string') {
             return res.status(200)
@@ -147,7 +147,7 @@ app.post("/api/registerUser", async(req,res)=>{
                 username:usernameb,
                 password
             })
-            console.log('Usuário criado com sucesso: ', respost)
+
         } catch(error){
             if (error.code === 11000) {
                 // duplicate key
@@ -156,7 +156,7 @@ app.post("/api/registerUser", async(req,res)=>{
                 
             }
             
-            throw error
+            console.log(error);
             
         }
 

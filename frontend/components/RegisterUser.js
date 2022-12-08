@@ -32,28 +32,28 @@ function RegisterUser(){
 
             const resposta = await Axios.post('http://localhost:3005/api/registerUser', values);
   
-            const result = resposta?.status;
-
-            console.log("Resultado " + result);
-
-            if(result == 200){
-                window.alert(values.nomeCompletoUserb + " registrado com sucesso!")
-                window.location.replace('loginUser')
-            }else if(result == 201){
-                window.alert("Senha inválida.")
-            }else if(result == 202){
-                window.alert("Senha muito curta.")
-            }else if(result == 203){
-                window.alert("Inválido.")
-            }else if(result == 204){
-                window.alert("Esse usuário já existe.")
-            }else{
-                window.alert("eita")
-            }    
+            var result = resposta?.status;
           
           }catch(error){
               console.log(error);
           }
+
+          console.log("Resultado " + result);
+
+          if(result == 200){
+              window.alert(values.nomeCompletoUserb + " registrado com sucesso!")
+              window.location.replace('loginUser')
+          }else if(result == 201){
+              window.alert("Senha inválida.")
+          }else if(result == 202){
+              window.alert("Senha muito curta.")
+          }else if(result == 203){
+              window.alert("Inválido.")
+          }else if(result == 204){
+              window.alert("Esse usuário já existe.")
+          }else{
+              window.alert("eita")
+          }    
              
           // Go to /some/path.
         

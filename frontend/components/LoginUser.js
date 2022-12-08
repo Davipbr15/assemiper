@@ -38,9 +38,15 @@ function LoginUser(){
 
           const resposta = await Axios.post('http://localhost:3005/api/loginUser', values); 
 
-          const result = resposta?.status;
+          var result = resposta?.status;
 
-          console.log("Resultado " + result);
+          console.log(result)
+        
+        }catch(error){
+            console.log(error);
+        }
+
+        console.log("Resultado " + result);
           
           if(result == 200){
             window.alert("Usuário Logado com Sucesso!")
@@ -54,10 +60,6 @@ function LoginUser(){
           }else{
             window.alert("Erro!")
           }
-        
-        }catch(error){
-            console.log(error);
-        }
 
           
     
