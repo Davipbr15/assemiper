@@ -15,9 +15,8 @@ export default function Home() {
     <div>
 
 
-    <Dashboard />
+    <Header />
 
-    <Sidebar />
 
     </div>
   )

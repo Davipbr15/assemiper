@@ -26,6 +26,8 @@ export default function Home() {
   return (
     <div>
       
+    
+
     <LoginUser />
 
     </div>

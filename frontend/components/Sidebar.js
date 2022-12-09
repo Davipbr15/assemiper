@@ -16,15 +16,10 @@ const Sidebar = () => {
         </div>
         <div className="my-2 bg-gray-600 h-[1px]"></div>
       </div>
-      <div
-        className="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-gray-700 text-white"
-      >
-        <i className="bi bi-search text-sm"></i>
-        <input
-          type="text"
-          placeholder="Search"
-          className="text-[15px] ml-4 w-full bg-transparent focus:outline-none"
-        />
+      <h1 className="text-white text-md font-bold">Seja bem-vindo(a)</h1>
+      <div className="my-2 bg-gray-600 h-[1px]"></div>
+      
+      <div>
       </div>
       <div
         className="p-2.5 mt-3 btn-13 flex items-center rounded-md px-4 duration-300 hover:bg-assemiperBlack cursor-pointer text-white"
