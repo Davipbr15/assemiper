@@ -33,7 +33,7 @@ app.use(bodyParser.json());
 const mongoUrl="mongodb+srv://davipbr15:C8b65GpDNrNJxNu1@cluster0.asrju.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(mongoUrl,{
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true 
 }).then(()=>{
     console.log("   |        Conectado         |");
 }).catch((e) => console.log(e));
