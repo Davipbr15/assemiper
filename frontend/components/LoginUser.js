@@ -78,6 +78,11 @@ function LoginUser(){
                    Login
                 </h1>
                 <form className="mt-6" action="/loginUser" onSubmit={onSubmit} method="POST">
+                <div className="form__group field">
+                <input type="input" className="text-black form__field" placeholder="Name" name="name" id='name' required />
+                <label for="name" className="form__label">Name</label>
+                </div>
+                    
                     <div className="mb-2">
                         <label
                             htmlFor="usernameb"

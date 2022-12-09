@@ -56,6 +56,7 @@ app.post('/', async(req,res)=>{
 })
 
 app.post("/api/loginUser", async(req,res)=>{
+    logged = false;
     var salt = bcrypt.genSaltSync(10);
     const { usernameb, passwordb } = await req.body;
     //console.log(typeof(usernameb) + " " + usernameb)
