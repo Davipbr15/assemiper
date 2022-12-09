@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Header from "../components/Header.js";
 import LoginUser from "../components/LoginUser.js";
+import Dashboard from "../components/Dashboard.js";
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Link from "next/link";
@@ -14,7 +15,7 @@ export default function Home() {
       
     <Header />
 
-    <h1> Entrou.</h1>
+    <Dashboard />
 
     </div>
   )
