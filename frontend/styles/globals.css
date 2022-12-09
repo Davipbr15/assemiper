@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "Regular";   /*Can be any text*/
-  src: local("Poppins-Regular"),
-    url("/font/Poppins/Poppins-Regular") format("truetype");
-}
 
 * {
   box-sizing: border-box;
@@ -14,7 +9,6 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
