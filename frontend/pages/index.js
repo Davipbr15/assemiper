@@ -24,10 +24,8 @@ export default function Home() {
   OnCharge();
 
   return (
-    <div>
+    <div className="App">
       
-    
-
     <LoginUser />
 
     </div>

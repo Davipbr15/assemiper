@@ -36,7 +36,7 @@ function Header(){
         <div className="flex">
           <>
         <div
-      className="sidebar sticky top-0 bottom-0 lg:left-0 p-2 w-[300px] h-screen overflow-y-auto text-center bg-gray-900"
+      className="sidebar sticky top-0 bottom-0 lg:left-0 p-2 w-[300px] h-screen overflow-y-auto text-center bg-assemiperBlack"
     >
       <div className="text-gray-100 text-xl">
         <div className="p-2.5 mt-1 flex items-center">
