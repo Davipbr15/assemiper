@@ -54,18 +54,18 @@ const Sidebar = () => {
         className="text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold"
         id="submenu"
       >
-        <h1 className="cursor-pointer hover:bg-assemiperBlack p-2 placeholder:rounded-md mt-1">
+        <h1 className="cursor-pointer btn-13 hover:bg-assemiperBlack p-2 placeholder:rounded-md mt-1">
           Documentos
         </h1>
-        <h1 className="cursor-pointer hover:bg-assemiperBlack p-2 rounded-md mt-1">
+        <h1 className="cursor-pointer btn-13 hover:bg-assemiperBlack p-2 rounded-md mt-1">
           Imprimir
         </h1>
-        <h1 className="cursor-pointer p-2 hover:bg-assemiperBlack rounded-md mt-1">
+        <h1 className="cursor-pointer btn-13 p-2 hover:bg-assemiperBlack rounded-md mt-1">
           Relação
         </h1>
       </div>
       <div
-        className="p-2.5 mt-3 hover:bg-assemiperBlack flex items-center rounded-md px-4 duration-300 cursor-pointeR text-white"
+        className="p-2.5 mt-3 btn-13 hover:bg-assemiperBlack flex items-center rounded-md px-4 duration-300 cursor-pointeR text-white"
       >
         <i className="bi bi-box-arrow-in-right"></i>
         <span className="text-sm ml-4 text-gray-200 font-bold">Sair</span>

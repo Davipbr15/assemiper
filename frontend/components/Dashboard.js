@@ -27,9 +27,6 @@ function Dashboard(){
     return( 
            
         <div className="App flex">
-
-        
-
                         {/* <span
       className="fixed text-white text-4xl top-5 left-4 cursor-pointer"
       onClick={openSidebar}
