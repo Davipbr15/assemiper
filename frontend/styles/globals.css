@@ -7,6 +7,13 @@
   font-family: Arial;
 }
 
+body {
+  font-family: 'Poppins', sans-serif;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -88,7 +95,7 @@ html::-webkit-scrollbar-thumb {
  }
   .form__field {
     font-family: inherit;
-    width: 100%;
+    width: 200%;
     border: 0;
     border-bottom: 2px solid #9b9b9b;
     outline: 0;

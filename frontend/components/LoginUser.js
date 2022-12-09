@@ -78,28 +78,15 @@ function LoginUser(){
                    Login
                 </h1>
                 <form className="mt-6" action="/loginUser" onSubmit={onSubmit} method="POST">
-                <div className="form__group field">
-                <input type="input" className="text-black form__field" placeholder="Name" name="name" id='name' required />
-                <label for="name" className="form__label">Name</label>
-                </div>
-                    
-                    <div className="mb-2">
-                        <label
-                            htmlFor="usernameb"
-                            className="block text-sm font-semibold text-gray-800"
-                        >
-                            Usuário
-                        </label>
-                        <input
-                            type="text"
-                            className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                <div className="form__group field mb-2">
+                <input type="input" className="text-black form__field" 
                             name="usernameb"
                             required
                             id="usernameb"
                             onChange={onChange}
-                            placeholder=""
-                        />
-                    </div>
+                            placeholder="" />
+                <label for="name" className="form__label">Usuário</label>
+                </div>
                     <div className="mb-2">
                         <label
                             htmlFor="passwordb"
