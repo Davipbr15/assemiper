@@ -10,7 +10,7 @@ function App() {
 
   return (
 
-    <div className="App flex animate-blur">
+    <div className="App flex">
 
     <Header />
 
