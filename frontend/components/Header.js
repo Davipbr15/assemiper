@@ -1,14 +1,19 @@
 import Link from 'next/link';
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import {ipatual} from './ip.js';
 
 function Header(){
   const [result, setResult ] = useState([])
 
+  const ip = ipatual;
+
+  console.log(ip);
+
   const onCharge = async(ev) => {
 
   try{
-    const resposta = await Axios.get('http://localhost:3005/api/headerResponse');
+    const resposta = await Axios.get('http://'+ ip +'/api/headerResponse');
     var result = resposta?.status;
   }catch(error){
       console.log(error);
@@ -56,7 +61,6 @@ function Header(){
         <i className="bi bi-house-door-fill"></i>
         <Link href="/index2">
             <a
-              href="/"
               className="text-[15px] ml-4 text-gray-200 font-bold"
             >
             Home

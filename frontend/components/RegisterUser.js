@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { browserHistory } from 'react-router'
 import Link from 'next/link';
 import Axios from 'axios';
+import {ipatual} from './ip.js';
 
 function RegisterUser(){
 
@@ -30,7 +31,7 @@ function RegisterUser(){
 
         try{
 
-            const resposta = await Axios.post('http://localhost:3005/api/registerUser', values);
+            const resposta = await Axios.post('http://'+ipatual+'/api/registerUser', values);
   
             var result = resposta?.status;
           
@@ -132,7 +133,6 @@ function RegisterUser(){
                     Já tem conta?{" "}
                     <Link href="/loginUser">
                     <a
-                    href="/"
                     className="justify-center font-medium text-gray-600 hover:text-purple-700 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                     >
                     Logar

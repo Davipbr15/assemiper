@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Axios from 'axios';
+import {ipatual} from './ip.js';
 
 function LoginUser(){
 
@@ -36,7 +37,7 @@ function LoginUser(){
 
         try{
 
-          const resposta = await Axios.post('http://localhost:3005/api/loginUser', values); 
+          const resposta = await Axios.post('http://'+ipatual+'/api/loginUser', values); 
 
           var result = resposta?.status;
 

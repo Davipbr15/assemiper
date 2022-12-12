@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import axios from "axios";
 import React, { useEffect, useState } from 'react';
+import {ipatual} from './ip.js';
 
 function ShowAssociate(){
 
@@ -19,7 +20,7 @@ function ShowAssociate(){
     }, [])
     const [assc, setAssociate ] = useState([]);
     useEffect(()=>{
-        axios.get("http://localhost:3005/api/searchAssociate")
+        axios.get("http://"+ipatual+"/api/searchAssociate")
         .then(response => {
             setAssociate(response.data);
         })

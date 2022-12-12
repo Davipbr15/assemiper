@@ -3,6 +3,7 @@ import Axios from "axios";
 import { useHistory } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import {ipatual} from './ip.js';
 
 function App() {
 
@@ -76,7 +77,7 @@ function onSubmit(ev){
                       
   if (window.confirm("Você deseja realmente registrar este associado?")) {
      
-    Axios.post('http://localhost:3005/api/registerAssociate', values)
+    Axios.post('http://'+ipatual+'/api/registerAssociate', values)
     .then((response) => {
 
     });

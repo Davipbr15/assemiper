@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Axios from "axios";
 import React, { useEffect, useState } from 'react';
+import {ipatual} from './ip.js';
 
 function DeleteUser(){
 
@@ -35,7 +36,7 @@ function DeleteUser(){
       
     ev.preventDefault();
                         
-      Axios.post('http://localhost:3005/api/deleteUser', values)
+      Axios.post('http://'+ipatual+'/api/deleteUser', values)
       .then((response) => {
         console.log(response.status)
 

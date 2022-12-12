@@ -6,7 +6,7 @@ import Sidebar from "../components/Sidebar.js";
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Link from "next/link";
-
+import Homepag from "../public/img/homepage.jpg";
 
 
 
@@ -17,6 +17,11 @@ export default function Home() {
 
     <Header />
 
+    <Image
+    src="/img/homepage.jpg"
+    width={20000}
+    height={2000}
+    />
 
     </div>
   )
