@@ -17,11 +17,11 @@ export default function Home() {
 
     <Header />
 
-    <Image
-    src="/img/homepage.jpg"
-    width={20000}
-    height={2000}
-    />
+      <Image
+      src="/img/homepage.jpg"
+      width={266670}
+      height={15000}
+      />
 
     </div>
   )

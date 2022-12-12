@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import {ipatual} from './ip.js';
+import Image from 'next/image';
 
 function Header(){
   const [result, setResult ] = useState([])
@@ -45,7 +46,9 @@ function Header(){
     >
       <div className="text-gray-100 text-xl">
         <div className="p-2.5 mt-1 flex items-center">
-          <i className="bi bi-app-indicator px-2 py-1 rounded-md bg-assemiper"></i>
+        <Image 
+        
+        />
           <h1 className="font-bold text-gray-200 text-[15px] ml-3">Assemiper</h1>
         </div>
         <div className="my-2 bg-gray-600 h-[1px]"></div>
