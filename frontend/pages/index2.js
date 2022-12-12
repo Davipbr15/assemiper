@@ -21,6 +21,7 @@ export default function Home() {
       src="/img/homepage.jpg"
       width={266670}
       height={15000}
+      alt="Imagem não encontrada"
       />
 
     </div>

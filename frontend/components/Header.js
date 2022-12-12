@@ -54,6 +54,7 @@ function Header(){
           src="/img/logo.png"
           width={77}
           height={77}
+          alt="Imagem não encontrada"
         />
         
           <h1 className="font-bold text-gray-200 text-[20px] ml-2">ASSEMIPER</h1>

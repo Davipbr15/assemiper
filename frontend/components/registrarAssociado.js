@@ -71,20 +71,29 @@ function onChange(ev) {
   
 };
 
-
-function onSubmit(ev){
+const onSubmit = async(ev) => {
+          
   ev.preventDefault();
-                      
-  if (window.confirm("Você deseja realmente registrar este associado?")) {
-     
-    Axios.post('http://'+ipatual+'/api/registerAssociate', values)
-    .then((response) => {
 
-    });
+  try{
 
-    window.alert(values.nomeCompletob + " registrado com sucesso!")
+    if (window.confirm("Você deseja realmente registrar este associado?")) {
 
-  } else {}
+      const resposta = await Axios.post('http://'+ipatual+'/api/registerAssociate', values);
+
+      var result = resposta?.status;
+
+      window.alert(nomeCompletob + " registrado com sucesso.")
+
+    }else{
+
+    }
+    
+    }catch(error){
+        console.log(error);
+    }
+    
+    // Go to /some/path.
 }
 
 
