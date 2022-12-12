@@ -7,9 +7,6 @@ import {ipatual} from './ip.js';
 
 function App() {
 
-
-
-
 const initialValue = {
   nomeCompletob: '',
   estadoCivilb: '',
@@ -83,7 +80,9 @@ const onSubmit = async(ev) => {
 
       var result = resposta?.status;
 
-      window.alert(nomeCompletob + " registrado com sucesso.")
+      if(result == 200){
+        window.alert("Registrado com sucesso.")
+      }
 
     }else{
 

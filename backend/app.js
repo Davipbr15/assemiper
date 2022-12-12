@@ -217,14 +217,19 @@ app.get('/api/home',async(req,res)=>{
 
 app.get("/api/searchAssociate", async(req,res)=>{  
 
-    try{
-        const Asc = await Associate.find().sort({ associateId: -1 });
-        res.status(200).json(Asc);
-    }catch(error){
-        res.status(400).json({message : error.message })
+    async function run() {
+        try {
+            const Asc = await Associate.find().sort({ associateId: -1 });
+            res.status(200).json(Asc);
+        } catch (e) {
+            console.error(e);
+        } finally {
+            console.log('We do cleanup here');
+        }
     }
     
-
+    run();
+    
 })
 app.post("/api/editAssociate", async(req,res)=>{
 
