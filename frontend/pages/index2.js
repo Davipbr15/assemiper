@@ -12,17 +12,21 @@ import Homepag from "../public/img/homepage.jpg";
 
 export default function Home() {
   return (
-    <div className="App flex">
+    <div className="App flex bg-assemiperBlack">
 
 
     <Header />
-
+    <div className='image-container'>
       <Image
-      src="/img/homepage.jpg"
-      width={266670}
-      height={15000}
-      alt="Imagem não encontrada"
-      />
+        src="/img/homepage.jpg"
+        alt="Imagem não encontrada"
+        className='image'
+        width={1000}
+        height={540}
+        layout="responsive"
+        />
+    </div>
+
 
     </div>
   )

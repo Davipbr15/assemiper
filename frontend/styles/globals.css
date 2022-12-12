@@ -142,3 +142,9 @@ html::-webkit-scrollbar-thumb {
     box-shadow: none;
  }
   
+ .image-container {
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  display: block;
+}

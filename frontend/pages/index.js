@@ -19,7 +19,7 @@ export default function Home() {
   OnCharge();
 
   return (
-    <div className="App">
+    <div className="App animate-blur">
 
     <LoginUser />
 

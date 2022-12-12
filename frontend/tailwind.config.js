@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       colors:{
         'assemiperBlack':'#0F0F0F'
-      }
+      },
     },
   },
   plugins: [],
