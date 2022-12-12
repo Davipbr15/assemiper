@@ -4,36 +4,25 @@ import React, { useEffect, useState } from 'react';
 import {ipatual} from './ip.js';
 
 function ShowAssociate(){
-
-    const [ip, setIP] = useState('');
-        
-    //creating function to load ip address from the API
-    const getData = async () => {
-      const res = await axios.get('https://geolocation-db.com/json/')
-      setIP(res.data.IPv4)
-    }
-    
-    useEffect( () => {
-      //passing getData method to the lifecycle method
-      getData()
-  
-    }, [])
     const [assc, setAssociate ] = useState([]);
-    useEffect(()=>{
-        axios.get("http://"+ipatual+"/api/searchAssociate")
-        .then(response => {
-            setAssociate(response.data);
-        })
-},[]);
+    
+            const fetchData = async() =>{
+                try{
+    
+                    const resposta = await axios.get('http://'+ ipatual +'/api/searchAssociate')
+                    setAssociate(resposta.data);
+                  
+                  }catch(error){
+                      console.log(error);
+                  }
+            }
+
+            fetchData();
 
     return( 
            
         <div className="App">
-            <p className="text-md">Testes</p>
-            <h1>{ip}</h1>
-            <br></br>
             <div className="grid grid-cols-1 justify-center">
-
             {assc.map((ascData, index) => {
                 return(
                 <div key={index} className="block justify-center max-w-2xl p-6 m-5 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">

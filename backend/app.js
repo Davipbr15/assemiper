@@ -215,7 +215,7 @@ app.get('/api/home',async(req,res)=>{
 
 // });
 
-app.get("/api/searchAssociate", async(req,res)=>{
+app.get("/api/searchAssociate", async(req,res)=>{  
 
     try{
         const Asc = await Associate.find().sort({ associateId: -1 });
