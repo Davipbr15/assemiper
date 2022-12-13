@@ -125,6 +125,15 @@ return(
 <div className="App">
 
 <div className="grid grid-cols-1 justify-center">
+<table class="table-fixed bg-white text-black">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Razão Social</th>
+      <th>Nome Fantasia</th>
+    </tr>
+  </thead>
+
             {assc.map((ascData, index) => {
                 return(
                 <div key={index} className="block justify-center max-w-2xl p-6 m-5 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -149,11 +158,21 @@ return(
                     <b className="text-md">Nome Fantasia: <b className="font-normal">{ascData.dadosProfissionais?.nomeFantasia}</b></b>
                     </div>
                 <br></br>
+                <button className="text-green-600">
+                  Editar
+                </button>
+                <br></br>
+                <button className="text-red-500">
+                  Deletar
+                </button>
                 </div>
                 );
             
         }
             )}
+
+             
+</table>
 
             
             
