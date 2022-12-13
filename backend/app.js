@@ -229,29 +229,21 @@ app.post("/api/searchAssociate", async(req,res)=>{
     }
     
 })
+
 app.post("/api/editAssociate", async(req,res)=>{
 
-    Associate.find()
-    .then(user => {
-        res.send(user)
-    })
-    .catch(err => {
-        res.status(500).send({message : err.message || "Error Occurred while retriving user information"})
-    })
+    const {associateIdb} = req.body;
+    console.log("/api/editAssociate Resposne")
+    try {
+        const Asc = await Associate.find({_id:associateIdb})
+        console.log(Asc)
+        res.status(200).json(Asc);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        console.log("Running")
+    }
 
-    // const id = req.params.id;
-    // Associate.findByIdAndUpdate(id, req.body, {useFindAndModify: false})
-    // .then(data =>{
-    //     if(!data){
-    //         res.status(404).send({message: "Cannot Update user with ${id}, Maybe user not found!"})
-    //     }else{
-    //         res.send(data)
-    //     }
-
-    // })
-    // .catch(err =>{
-    //     res.status(500).send({message: "Error Update User Information"})
-    // })
 })
 
 app.post("/api/registerAssociate", async(req,res)=>{
