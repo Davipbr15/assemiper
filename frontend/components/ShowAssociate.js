@@ -108,27 +108,27 @@ function ShowAssociate(){
               return (
                 <tr className="bg-assemiperBlack font-bold border border-ltransition duration-300 ease-in-out hover:bg-red-700">
                   <td className="px-6 py-4 text-sm font-medium text-white">{ascData.associateId}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.nomeCompleto}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.estadoCivil}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.nacionalidade}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.naturalidade}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.dataDeNascimento}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.cpf}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.documentoIdentificacao}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.numeroDocumento}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.orgaoExpeditor}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.enderecoPessoal}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.numeroEnderecoPessoal}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.complementoPessoal}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.bairroPessoal}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.cep}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.cidadeEstadoPessoal}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.emailPessoal}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.telefoneFixoPessoal}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.celularPessoal}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosProfissionais?.nomeFantasia}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosProfissionais?.razaoSocial}</td>
-                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosProfissionais?.cnpj}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.nomeCompleto}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.estadoCivil}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.nacionalidade}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.naturalidade}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.dataDeNascimento}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.cpf}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.documentoIdentificacao}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.numeroDocumento}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.orgaoExpeditor}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.enderecoPessoal}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.numeroEnderecoPessoal}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.complementoPessoal}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.bairroPessoal}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.cep}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.cidadeEstadoPessoal}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.emailPessoal}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.telefoneFixoPessoal}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.celularPessoal}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.nomeFantasia}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.razaoSocial}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.cnpj}</td>
                   
                 </tr>
               )
