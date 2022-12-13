@@ -96,30 +96,41 @@ const onSubmit = async(ev) => {
     
     // Go to /some/path.
 }
-
+var load = false;
 const [assc, setAssociate ] = useState([]);
     
-void async function fetchData(){
-  try{
+if(load==false){
+  void async function fetchData(){
+  
+    try{
+      
+    const resposta = await Axios.get('http://'+ ipatual +'/api/searchAssociate')
+    setAssociate(resposta?.data)
+  
+    }catch(error){
+      console.log(error);
+    }
+  }();
+  load = true;
+}else{
+
+}
+
+
+// void async function editAssociate(){
+//   try{
     
-  const resposta = await Axios.get('http://'+ ipatual +'/api/searchAssociate')
-  setAssociate(resposta?.data)
+//   const resposta = await Axios.get('http://'+ ipatual +'/api/edit', values)
+//   setAssociate(resposta?.data)
 
-  }catch(error){
-    console.log(error);
-  }
-}()
-
-void async function editAssociate(){
-  try{
-    
-  const resposta = await Axios.get('http://'+ ipatual +'/api/edit', values)
-  setAssociate(resposta?.data)
-
-  }catch(error){
-    console.log(error);
-  }
-}()
+//   }catch(error){
+//     console.log(error);
+//   }
+// }()
+function getAssociate(){
+  let getAscValue = document.getElementById("deleteAsc").value;
+  return console.log("Deletar associado de id " + deleteAscValue)
+}
 
 return(
 
@@ -163,8 +174,8 @@ return(
                   <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">{ascData.dadosProfissionais?.nomeFantasia}</td>
                   <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">{ascData.dadosProfissionais?.razaoSocial}</td>
                   <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">{ascData.dadosProfissionais?.cnpj}</td>
-                  <td><button className="hover:scale-125 transition duration-150 linear text-sm text-green-600 bg-black bg-opacity-50 rounded-full p-2 bi bi-pencil"></button></td>
-                  <td><button className="hover:scale-125 transition duration-150 linear  text-red-800 bg-black bg-opacity-50 rounded-full p-2"><i className="bi bi-trash"></i></button></td>
+                  <td><button name="editAsc" id="editAsc" onClick={getAssociate} value={ascData.associateId} className="hover:scale-125 transition duration-150 linear text-sm text-green-600 bg-black bg-opacity-50 rounded-full p-2 bi bi-pencil"></button></td>
+                  <td><button name="deleteAsc" id="deleteAsc" onClick={getAssociate} value={ascData.associateId} className="hover:scale-125 transition duration-150 linear  text-red-800 bg-black bg-opacity-50 rounded-full p-2"><i className="bi bi-trash"></i></button></td>
                 </tr>
               )
             })
