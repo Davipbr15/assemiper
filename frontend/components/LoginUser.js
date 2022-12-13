@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Axios from 'axios';
 import {ipatual} from './ip.js';
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function LoginUser(){
+
+    const [view, setView] = useState();
 
     
     const initialValue = {
@@ -105,7 +108,7 @@ function LoginUser(){
                             Senha
                         </label>
                         <input
-                            type="password"
+                            type={view ? "text" : "password"}
                             className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                             name="passwordb"
                             required
@@ -116,6 +119,11 @@ function LoginUser(){
                             placeholder=""
                         />
                     </div>
+                    <div onClick={() => setView((prev) => !prev)} className="pt-2 pb-2 text-sm text-purple-600">
+                    
+                    <i className={view ? "bi bi-eye" : "bi bi-eye-slash"} id="togglePassword"></i> Mostrar Senha
+                    </div>
+                    <hr></hr>
                     <a
                         href="#"
                         onClick={onEsqueceu}

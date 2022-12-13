@@ -98,19 +98,27 @@ const onSubmit = async(ev) => {
 
 const [assc, setAssociate ] = useState([]);
     
-const fetchData = async(resposta) =>{
+void async function fetchData(){
   try{
     
-  resposta = await Axios.get('http://'+ ipatual +'/api/searchAssociate')
-                  
+  const resposta = await Axios.get('http://'+ ipatual +'/api/searchAssociate')
+  setAssociate(resposta?.data)
+
   }catch(error){
     console.log(error);
   }
-}
+}()
 
-fetchData().then(resposta => {
-  console.log(resposta)
-})
+void async function editAssociate(){
+  try{
+    
+  const resposta = await Axios.get('http://'+ ipatual +'/api/edit', values)
+  setAssociate(resposta?.data)
+
+  }catch(error){
+    console.log(error);
+  }
+}()
 
 return(
 
