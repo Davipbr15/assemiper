@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import * as ReactDOM from 'react-dom';
 import Axios from "axios";
 import { useHistory } from 'react-router-dom';
 import { useForm } from "react-hook-form";
@@ -124,8 +125,27 @@ return(
 
 <div className="App">
 
-<div className="grid grid-cols-1 justify-center">
-<table class="table-fixed bg-white text-black">
+<div className="justify-center">
+
+            {/* {assc.map((ascData, index) => {
+                return(
+            
+                );
+              }
+            )} */}
+
+            
+            
+</div>
+
+</div>
+)
+}
+
+function Card(props){
+  return (
+    <div>
+      <table class="table-fixed bg-white text-black">
   <thead>
     <tr>
       <th>Nome</th>
@@ -133,53 +153,26 @@ return(
       <th>Nome Fantasia</th>
     </tr>
   </thead>
-
-            {assc.map((ascData, index) => {
-                return(
-                <div key={index} className="block justify-center max-w-2xl p-6 m-5 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                    <h1 className="text-2xl text-center">{ascData.dadosProfissionais?.nomeFantasia}</h1>
-                    <b className="">ID do Associado: {ascData.associateId}</b>
-                    <br></br>
-                    <b className="">Pasta: {ascData.numeroDaPasta}</b>
-                    <hr></hr>
-                    <div>
-                    <b className="text-2xl">Dados Pessoais</b>
-                    <br></br>
-                    <b className="text-md">Nome: <b className="font-normal">{ascData.dadosPessoais?.nomeCompleto}</b></b>
-                    <br></br>
-                    </div>
-                    <br></br>
-                    <div>
-                    <hr></hr>
-                    <b className="text-2xl">Dados Profissionais</b>
-                    <br></br>
-                    <b className="text-md">Razão Social: <b className="font-normal">{ascData.dadosProfissionais?.razaoSocial}</b></b>
-                    <br></br>
-                    <b className="text-md">Nome Fantasia: <b className="font-normal">{ascData.dadosProfissionais?.nomeFantasia}</b></b>
-                    </div>
-                <br></br>
-                <button className="text-green-600">
-                  Editar
-                </button>
-                <br></br>
-                <button className="text-red-500">
-                  Deletar
-                </button>
-                </div>
-                );
-            
-        }
-            )}
-
-             
+  <tbody>
+    <tr>
+      <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+      <td>Malcolm Lockyer</td>
+      <td>1961</td>
+    </tr>
+    <tr>
+      <td>Witchy Woman</td>
+      <td>The Eagles</td>
+      <td>1972</td>
+    </tr>
+    <tr>
+      <td>Shining Star</td>
+      <td>Earth, Wind, and Fire</td>
+      <td>1975</td>
+    </tr>
+  </tbody>
 </table>
-
-            
-            
-            </div>
-
-</div>
-)
+    </div>
+  )
 }
 
 export default App;
