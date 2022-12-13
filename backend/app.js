@@ -224,7 +224,7 @@ app.get("/api/searchAssociate", async(req,res)=>{
         } catch (e) {
             console.error(e);
         } finally {
-            console.log('We do cleanup here');
+            
         }
     }
     

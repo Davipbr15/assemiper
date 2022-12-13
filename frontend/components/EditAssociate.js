@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import * as ReactDOM from 'react-dom';
 import Axios from "axios";
 import { useHistory } from 'react-router-dom';
@@ -124,20 +124,58 @@ void async function editAssociate(){
 return(
 
 <div className="App">
+<div class="flex flex-col">
+  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="overflow-hidden">
+          <table className="table-fixed min-w-screen">
+            <thead>
+              <tr>
+                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                  ID
+                </th>
+                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                  Nome Completo
+                </th>
+                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                 Nome Fantasia
+                </th>
+                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                 Razão Social
+                </th>
+                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                 CNPJ
+                </th>
+                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                 Editar
+                </th>
+                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                 Deletar
+                </th>
+              </tr>
+            </thead>
+          <tbody>
+            {assc.map((ascData, index) => {
+              return (
+                <tr className="bg-assemiperBlack font-bold border-b transition duration-300 ease-in-out hover:bg-red-700">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">{ascData.associateId}</td>
+                  <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.nomeCompleto}</td>
+                  <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">{ascData.dadosProfissionais?.nomeFantasia}</td>
+                  <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">{ascData.dadosProfissionais?.razaoSocial}</td>
+                  <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">{ascData.dadosProfissionais?.cnpj}</td>
+                  <td><button className="hover:scale-125 transition duration-150 linear text-sm text-green-600 bg-black bg-opacity-50 rounded-full p-2 bi bi-pencil"></button></td>
+                  <td><button className="hover:scale-125 transition duration-150 linear  text-red-800 bg-black bg-opacity-50 rounded-full p-2"><i className="bi bi-trash"></i></button></td>
+                </tr>
+              )
+            })
+            }
+          </tbody>
+          </table>
 
-<div className="justify-center">
-
-            {/* {assc.map((ascData, index) => {
-                return(
-            
-                );
-              }
-            )} */}
-
-            
-            
 </div>
-
+</div>
+</div>
+</div>
 </div>
 )
 }
@@ -146,28 +184,11 @@ function Card(props){
   return (
     <div>
       <table class="table-fixed bg-white text-black">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Razão Social</th>
-      <th>Nome Fantasia</th>
-    </tr>
-  </thead>
   <tbody>
     <tr>
-      <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+      <td>{props.nomeCompleto}</td>
       <td>Malcolm Lockyer</td>
       <td>1961</td>
-    </tr>
-    <tr>
-      <td>Witchy Woman</td>
-      <td>The Eagles</td>
-      <td>1972</td>
-    </tr>
-    <tr>
-      <td>Shining Star</td>
-      <td>Earth, Wind, and Fire</td>
-      <td>1975</td>
     </tr>
   </tbody>
 </table>
