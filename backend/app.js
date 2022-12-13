@@ -46,17 +46,17 @@ require("./userDetails");
 require("./loginDetail");
 const Login = mongoose.model("LoginUser");
 const Associate = mongoose.model("AssociateInfo");
-var logged = false;
+var logged = true;
 
 app.post('/', async(req,res)=>{
 
     console.log("Entrou na página inicial/Deslogou.");
-    logged = false;
+    logged = true;
 
 })
 
 app.post("/api/loginUser", async(req,res)=>{
-    logged = false;
+    logged = true;
     var salt = bcrypt.genSaltSync(10);
     const { usernameb, passwordb } = await req.body;
     //console.log(typeof(usernameb) + " " + usernameb)
@@ -215,20 +215,18 @@ app.get('/api/home',async(req,res)=>{
 
 // });
 
-app.get("/api/searchAssociate", async(req,res)=>{  
 
-    async function run() {
-        try {
-            const Asc = await Associate.find().sort({ associateId: -1 });
-            res.status(200).json(Asc);
-        } catch (e) {
-            console.error(e);
-        } finally {
-            console.log("Running")
-        }
+app.post("/api/searchAssociate", async(req,res)=>{  
+    console.log("Procurou os associados")
+
+    try {
+        const Asc = await Associate.find().sort({ associateId: -1 });
+        res.status(200).json(Asc);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        console.log("Running")
     }
-    
-    run();
     
 })
 app.post("/api/editAssociate", async(req,res)=>{
@@ -264,7 +262,7 @@ app.post("/api/registerAssociate", async(req,res)=>{
 }*/
  /*dadosPessoais:{ nomeCompleto:nomeCompletob, estadoCivil:estadoCivilb, nacionalidade:nacionalidadeb, naturalidade:naturalidadeb, dataDeNascimento:dataDeNascimentob, cpf:cpfb, profissao:profissaob, documentoIdentificacao:documentoIdentificacaob, numeroDocumento:numeroDocumentob, orgaoExpeditor:orgaoExpeditorb, enderecoPessoal:enderecoPessoalb, numeroEnderecoPessoal:numeroEnderecoPessoalb, complementoPessoal:complementoPessoalb, bairroPessoal:bairroPessoalb, cep:cepb, cidadeEstadoPessoal:cidadeEstadoPessoalb, emailPessoal:emailPessoalb, telefoneFixoPessoal:telefoneFixoPessoalb, celularPessoal:celularPessoalb }
     });*/
-    const {validadeAlvarab,areaM2Funcionamentob,numeroInscricaoMunicipalb,dataDeEmissaoBombeirosb,dataDeValidadeBombeirosb,areaM2Bombeirosb,dataDeValidadeVigilanciab,inscricaoVigilanciaSanitariab,dataDeEmissaoLicencaAmbientalb,dataDeValidadeLicencaAmbientalb,tipoContratob,baixadab,numeroDaPastab,nomeCompletob,estadoCivilb,nacionalidadeb,naturalidadeb,dataDeNascimentob,cpfb,profissaob,documentoIdentificacaob,numeroDocumentob,orgaoExpeditorb,enderecoPessoalb,numeroEnderecoPessoalb,complementoPessoalb,bairroPessoalb,cepb,cidadeEstadoPessoalb,emailPessoalb,telefoneFixoPessoalb,celularPessoalb,razaoSocialb,nomeFantasiab,cnpjb,numeroInscricaob,enderecoSedeb,numeroSedeb,complementoSedeb,bairroSedeb,cepSedeb,cidadeEstadoSedeb,emailProfissionalb,dataDeAberturab,quantidadePessoasOcupadasb,ramoDaAtividadeb,} = req.body;
+    const {validadeAlvarab,areaM2Funcionamentob,numeroInscricaoMunicipalb,dataDeEmissaoBombeirosb,dataDeValidadeBombeirosb,areaM2Bombeirosb,dataDeValidadeVigilanciab,inscricaoVigilanciaSanitariab,dataDeEmissaoLicencaAmbientalb,dataDeValidadeLicencaAmbientalb,tipoContratob,baixadab,numeroDaPastab,nomeCompletob,estadoCivilb,nacionalidadeb,naturalidadeb,dataDeNascimentob,cpfb,profissaob,documentoIdentificacaob,numeroDocumentob,orgaoExpeditorb,enderecoPessoalb,numeroEnderecoPessoalb,complementoPessoalb,bairroPessoalb,cepb,cidadeEstadoPessoalb,emailPessoalb,telefoneFixoPessoalb,celularPessoalb,razaoSocialb,nomeFantasiab,cnpjb,numeroInscricaob,enderecoSedeb ,numeroSedeb,complementoSedeb,bairroSedeb,cepSedeb,cidadeEstadoSedeb,emailProfissionalb,dataDeAberturab,quantidadePessoasOcupadasb,ramoDaAtividadeb,} = req.body;
     //console.log(req.body);
     //console.log(nomeCompletob);
     try{
@@ -354,11 +352,18 @@ app.post("/api/registerAssociate", async(req,res)=>{
 
 app.post('/api/deleteAssociate',async(req,res)=>{
 
+    const {associateIdb} = req.body;
+    console.log(associateIdb);
+    console.log(typeof(associateIdb));
+    var query = { _id:associateIdb };
     try{
-
-        Associate.deleteOne({ associateId: 7 });
-
-        res.send("A luz");
+        Associate.deleteOne(query).then(function(){
+            console.log("Tentou remover.")
+            return res.status(200)
+        }).catch(function(error){
+            console.log(error);
+        })
+        
 
     }catch(error){
         res.status(500).send(error);

@@ -12,30 +12,29 @@ function Header(){
   const ip = ipatual;
 
   console.log(ip);
-
-  const onCharge = async(ev) => {
-
-  try{
-    const resposta = await Axios.get('http://'+ ip +'/api/headerResponse');
-    var result = resposta?.status;
-  }catch(error){
-      console.log(error);
-  }
-    // Go to /some/path.
-    console.log(result)
-      if(result == 200){
-        window.alert("Licitamente Licito")
-      }else{
-        if (typeof window !== "undefined") {
-          window.alert("Rapa Fora")
-            window.location.replace("/")
-        }
-    }
-  }
-
   useEffect(() => {
-    onCharge();
-  },[onCharge()]);
+    const onCharge = async(ev) => {
+
+      try{
+        const resposta = await Axios.get('http://'+ ip +'/api/headerResponse');
+        var result = resposta?.status;
+      }catch(error){
+          console.log(error);
+      }
+        // Go to /some/path.
+        console.log(result)
+          if(result == 200){
+            window.alert("Licitamente Licito")
+          }else{
+            if (typeof window !== "undefined") {
+              // window.alert("Rapa Fora")
+              //   window.location.replace("/")
+            }
+        }
+      }
+
+      onCharge();
+  }, []);
 
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isNavOpen2, setIsNavOpen2] = useState(false);

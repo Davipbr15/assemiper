@@ -54,6 +54,7 @@ const initialValue = {
   dataDeValidadeLicencaAmbientalb:'',
   tipoContratob:'',
   baixadab:'',
+  associateIdb:"",
 }
 
 const [values, setValues] = useState(initialValue);
@@ -96,25 +97,27 @@ const onSubmit = async(ev) => {
     
     // Go to /some/path.
 }
-var load = false;
+
 const [assc, setAssociate ] = useState([]);
-    
-if(load==false){
-  void async function fetchData(){
+const [count, setCount] = useState(0);
+
+useEffect(() => {
   
+  async function fetchData(){
     try{
       
-    const resposta = await Axios.get('http://'+ ipatual +'/api/searchAssociate')
+    const resposta = await Axios.post('http://'+ ipatual +'/api/searchAssociate')
     setAssociate(resposta?.data)
-  
     }catch(error){
       console.log(error);
     }
-  }();
-  load = true;
-}else{
+  };
 
-}
+  fetchData();
+}, []);
+
+
+  // fetchData();
 
 
 // void async function editAssociate(){
@@ -127,19 +130,47 @@ if(load==false){
 //     console.log(error);
 //   }
 // }()
-function getAssociate(){
-  let getAscValue = document.getElementById("deleteAsc").value;
-  return console.log("Deletar associado de id " + deleteAscValue)
+
+const [deletado, setDeletado ] = useState([]);
+
+    // Go to /some/path.
+  const reload = ()=>{
+    window.location.reload();
+  }
+
+  const deleteAssociate = async(value) => {
+    console.log("Apertou " + value)
+    try{ 
+      console.log("Try")
+      values.associateIdb = value;
+      const resposta = await Axios.post('http://'+ ipatual +'/api/deleteAssociate', values).then(
+      window.alert("Deletado com Sucesso!"),
+      window.location.reload()
+      )
+    }catch(error){
+      console.log(error);
+    }
+  };
+
+
+async function getDeleteAssociate(value){
+  var getAscValue = value;
+  console.log("Deletar associado de id " + getAscValue)
+  deleteAssociate(getAscValue);
+}
+async function getEditAssociate(value){
+  let getAscValue = value;
+  console.log("Edit associado de id " + getAscValue)
 }
 
 return(
 
 <div className="App">
-<div class="flex flex-col">
-  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-      <div class="overflow-hidden">
-          <table className="table-fixed min-w-screen">
+<div className="flex flex-col">
+  <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div className="py-2 inline-block  sm:px-6 lg:px-8">
+      <div className="overflow-hidden ">
+          <table className="table-fixed min-w-screen ">
             <thead>
               <tr>
                 <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
@@ -168,14 +199,14 @@ return(
           <tbody>
             {assc.map((ascData, index) => {
               return (
-                <tr className="bg-assemiperBlack font-bold border-b transition duration-300 ease-in-out hover:bg-red-700">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">{ascData.associateId}</td>
-                  <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.nomeCompleto}</td>
-                  <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">{ascData.dadosProfissionais?.nomeFantasia}</td>
-                  <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">{ascData.dadosProfissionais?.razaoSocial}</td>
-                  <td className="text-sm text-white font-light px-6 py-4 whitespace-nowrap">{ascData.dadosProfissionais?.cnpj}</td>
-                  <td><button name="editAsc" id="editAsc" onClick={getAssociate} value={ascData.associateId} className="hover:scale-125 transition duration-150 linear text-sm text-green-600 bg-black bg-opacity-50 rounded-full p-2 bi bi-pencil"></button></td>
-                  <td><button name="deleteAsc" id="deleteAsc" onClick={getAssociate} value={ascData.associateId} className="hover:scale-125 transition duration-150 linear  text-red-800 bg-black bg-opacity-50 rounded-full p-2"><i className="bi bi-trash"></i></button></td>
+                <tr className=" bg-assemiperBlack font-bold border-b transition duration-300 ease-in-out hover:bg-red-700">
+                  <td className="px-6 py-1 text-sm font-medium text-white">{ascData.associateId}</td>
+                  <td className="text-sm text-white font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.nomeCompleto}</td>
+                  <td className="text-sm text-white font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.nomeFantasia}</td>
+                  <td className="text-sm text-white font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.razaoSocial}</td>
+                  <td className="text-sm text-white font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.cnpj}</td>
+                  <td><button name="editAsc" onClick={() => getEditAssociate(ascData._id)} className="hover:scale-125 transition duration-150 linear text-sm text-green-600 bg-black bg-opacity-50 rounded-full p-2 bi bi-pencil"></button></td>
+                  <td><button name="deleteAsc" onClick={() => getDeleteAssociate(ascData._id)} className="deleteAsc hover:scale-125 transition duration-150 linear  text-red-800 bg-black bg-opacity-50 rounded-full p-2"><i className="bi bi-trash"></i></button></td>
                 </tr>
               )
             })
@@ -194,7 +225,7 @@ return(
 function Card(props){
   return (
     <div>
-      <table class="table-fixed bg-white text-black">
+      <table className="table-fixed bg-white text-black">
   <tbody>
     <tr>
       <td>{props.nomeCompleto}</td>
