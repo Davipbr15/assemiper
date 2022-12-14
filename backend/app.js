@@ -230,10 +230,26 @@ app.post("/api/searchAssociate", async(req,res)=>{
     
 })
 
+app.post("/api/fakeResult", async(req,res)=>{  
+    console.log("Pegando Resultado Fake")
+    console.log("/api/fakeResult RESPONSE")
+
+    try {
+        const Asc = await Associate.find({_id:"639a11ea3efece641b62d477"})
+        console.log(Asc)
+        res.status(200).json(Asc);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        console.log("Running")
+    }
+    
+})
+
 app.post("/api/editAssociate", async(req,res)=>{
 
     const {associateIdb} = req.body;
-    console.log("/api/editAssociate Resposne")
+    console.log("/api/editAssociate RESPONSE")
     try {
         const Asc = await Associate.find({_id:associateIdb})
         console.log(Asc)
