@@ -511,7 +511,7 @@ return(
     <input type="text"
        name="cidadeEstadoPessoalb"
        required
-  defaultValue={editando[0].dadosPessoais.cidadeEstadoPessoalb}
+  defaultValue={editando[0].dadosPessoais.cidadeEstadoPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
        id="cidadeEstadoPessoalI"
        onChange={onChange}
@@ -525,7 +525,7 @@ return(
     <input type="text"
        name="emailPessoalb"
        required
-  defaultValue={editando[0].dadosPessoais.emailPessoalb}
+  defaultValue={editando[0].dadosPessoais.emailPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
        id="emailPessoalI"
        onChange={onChange}
@@ -768,7 +768,7 @@ return(
     <input type="text"
       name="numeroDaPastab"
       required
-  defaultValue={editando[0].dadosProfissionais.numeroDaPasta}
+      defaultValue={editando[0].dadosProfissionais.numeroDaPasta}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
       id="numeroDaPastaI"
       onChange={onChange}
