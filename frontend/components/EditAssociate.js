@@ -225,7 +225,7 @@ return(
           <tbody>
             {assc.map((ascData, index) => {
               return (
-                <tr className=" bg-assemiperBlack font-bold border-b transition duration-300 ease-in-out hover:bg-red-700">
+                <tr key={index} className=" bg-assemiperBlack font-bold border-b transition duration-300 ease-in-out hover:bg-red-700">
                   <td className="px-6 py-1 text-sm font-medium text-white">{ascData.associateId}</td>
                   <td className="text-sm text-white font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.nomeCompleto}</td>
                   <td className="text-sm text-white font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.nomeFantasia}</td>

@@ -1,1 +1,1 @@
-export const ipatual = '192.168.1.9:3005';
+export const ipatual = '192.168.1.12:3005';
