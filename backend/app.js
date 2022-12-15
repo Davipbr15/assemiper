@@ -267,9 +267,9 @@ app.post("/api/updateAssociate", async(req,res)=>{
         const {associateIdb} = req.body;
 
         const {validadeAlvarab,areaM2Funcionamentob,numeroInscricaoMunicipalb,dataDeEmissaoBombeirosb,dataDeValidadeBombeirosb,areaM2Bombeirosb,dataDeValidadeVigilanciab,inscricaoVigilanciaSanitariab,dataDeEmissaoLicencaAmbientalb,dataDeValidadeLicencaAmbientalb,tipoContratob,baixadab,numeroDaPastab,nomeCompletob,estadoCivilb,nacionalidadeb,naturalidadeb,dataDeNascimentob,cpfb,profissaob,documentoIdentificacaob,numeroDocumentob,orgaoExpeditorb,enderecoPessoalb,numeroEnderecoPessoalb,complementoPessoalb,bairroPessoalb,cepb,cidadeEstadoPessoalb,emailPessoalb,telefoneFixoPessoalb,celularPessoalb,razaoSocialb,nomeFantasiab,cnpjb,numeroInscricaob,enderecoSedeb ,numeroSedeb,complementoSedeb,bairroSedeb,cepSedeb,cidadeEstadoSedeb,emailProfissionalb,dataDeAberturab,quantidadePessoasOcupadasb,ramoDaAtividadeb,} = req.body;
-        
+
+        console.log(req.body)
         console.log("/api/editAssociate RESPONSE")
-        console.log(nomeFantasiab);
         try {
             const Asc = await Associate.updateOne({_id:associateIdb}, {$set:{
                 numeroDaPasta:numeroDaPastab,
@@ -338,8 +338,7 @@ app.post("/api/updateAssociate", async(req,res)=>{
                         baixada:baixadab,
                     }
             }}})
-            console.log(Asc)
-            res.status(200).json(Asc);
+            res.status(200);
         } catch (e) {
             console.error(e);
         } finally {

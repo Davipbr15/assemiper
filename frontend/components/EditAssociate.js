@@ -57,8 +57,8 @@ const initialValue = {
   dataDeValidadeLicencaAmbientalb:'',
   tipoContratob:'',
   baixadab:'',
-  associateIdb:"",
-  numeroDaPasta:"",
+  associateIdb:'',
+  numeroDaPasta:'',
 }
 
 const [values, setValues] = useState(initialValue);
@@ -80,58 +80,284 @@ const onSubmit = async(ev) => {
   ev.preventDefault();
 
   try{
-    values.nomeCompletob = editando[0].dadosPessoais.nomeCompletob ?? null;
-    values.estadoCivilb = editando[0].dadosPessoais.estadoCivil ?? null;
-    values.nacionalidadeb = editando[0].dadosPessoais.nacionalidade ?? null;
-    values.naturalidadeb = editando[0].dadosPessoais.naturalidade ?? null;
-    values.dataDeNascimentob = editando[0].dadosPessoais.dataDeNascimento ?? null;
-    values.cpfb = editando[0].dadosPessoais.cpf ?? null;
-    values.profissaob = editando[0].dadosPessoais.profissao ?? null;
-    values.documentoIdentificacaob = editando[0].dadosPessoais.documentoIdentificacao ?? null;
-    values.numeroDocumentob = null ?? editando[0].dadosPessoais.numeroDocumento;
-    values.orgaoExpeditorb = null ?? editando[0].dadosPessoais.orgaoExpeditor;
-    values.enderecoPessoalb = null ?? editando[0].dadosPessoais.enderecoPessoal;
-    values.numeroEnderecoPessoalb = null ?? editando[0].dadosPessoais.numeroEnderecoPessoal;
-    values.complementoPessoalb = null ?? editando[0].dadosPessoais.complementoPessoal;
-    values.bairroPessoalb = null ?? editando[0].dadosPessoais.bairroPessoal;
-    values.cepb = null ?? editando[0].dadosPessoais.cep;
-    values.cidadeEstadoPessoalb = null ?? editando[0].dadosPessoais.cidadeEstadoPessoal;
-    values.emailPessoalb = null ?? editando[0].dadosPessoais.emailPessoal;
-    values.telefoneFixoPessoalb = null ?? editando[0].dadosPessoais.telefoneFixoPessoal;
-    values.celularPessoalb = null ?? editando[0].dadosPessoais.celularPessoal;
-    values.razaoSocialb = null ?? editando[0].dadosProfissionais.razaoSocial;
-    values.nomeFantasiab = null ?? editando[0].dadosProfissionais.nomeFantasia;
-    values.cnpjb = null ?? editando[0].dadosProfissionais.cnpj;
-    values.numeroInscricaob = null ?? editando[0].dadosProfissionais.numeroInscricao;
-    values.numeroSedeb = null ?? editando[0].dadosProfissionais.numeroSede;
-    values.complementoSedeb = null ?? editando[0].dadosProfissionais.complementoSede;
-    values.bairroSedeb = null ?? editando[0].dadosProfissionais.bairroSede;
-    values.cepSedeb = null ?? editando[0].dadosProfissionais.cepSede;
-    values.cidadeEstadoSedeb = null ?? editando[0].dadosProfissionais.cidadeEstadoSede;
-    values.emailProfissionalb = null ?? editando[0].dadosProfissionais.emailProfissional;
-    values.dataDeAbertura= editando[0].dadosProfissionais.dataDeAbertura;
-    values.quantidadePessoasOcupadasb = null ?? editando[0].dadosProfissionais.quantidadePessoasOcupadas;
-    values.ramoDaAtividadeb = null ?? editando[0].dadosProfissionais.ramoDaAtividade;
-    values.numeroDaPastab = null ?? editando[0].dadosProfissionais.numeroDaPasta;
-    values.validadeAlvarab = null ?? editando[0].pastaDeDocumentos.validadeAlvara;
-    values.areaM2Funcionamentob = null ?? editando[0].pastaDeDocumentos.areaM2Funcionamento;
-    values.numeroInscricaoMunicipalb = null ?? editando[0].pastaDeDocumentos.numeroInscricaoMunicipal;
-    values.dataDeEmissaoBombeirosb = null ?? editando[0].pastaDeDocumentos.dataDeEmissaoBombeiros;
-    values.dataDeValidadeBombeirosb = null ?? editando[0].pastaDeDocumentos.dataDeValidadeBombeiros;
-    values.areaM2Bombeirosb = null ?? editando[0].pastaDeDocumentos.areaM2Bombeiros;
-    values.dataDeValidadeVigilanciab = null ?? editando[0].pastaDeDocumentos.dataDeValidadeVigilancia;
-    values.inscricaoVigilanciaSanitariab = null ?? editando[0].pastaDeDocumentos.inscricaoVigilanciaSanitaria;
-    values.dataDeEmissaoLicencaAmbientalb = null ?? editando[0].pastaDeDocumentos.dataDeEmissaoLicencaAmbiental;
-    values.dataDeValidadeLicencaAmbientalb = null ?? editando[0].pastaDeDocumentos.dataDeValidadeLicencaAmbiental;
-    values.tipoContratob = null ?? editando[0].pastaDeDocumentos.tipoContrato;
-    values.baixadab = null ?? editando[0].pastaDeDocumentos.tipoContrato;
+    
+    // values.nomeCompletob = editando[0].dadosPessoais.nomeCompleto;
+    // values.estadoCivilb = editando[0].dadosPessoais.estadoCivil ?? null;
+      if(values.nomeCompletob == ''){
+        values.nomeCompletob = editando[0].dadosPessoais.nomeCompleto 
+      }else{
+        values.nomeCompletob = values.nomeCompletob 
+      }
 
+      if(values.estadoCivilb == ''){
+        values.estadoCivilb = editando[0].dadosPessoais.estadoCivil 
+      }else{
+        values.estadoCivilb = values.estadoCivilb 
+      }
 
+      if(values.nacionalidadeb == ''){
+        values.nacionalidadeb = editando[0].dadosPessoais.nacionalidade 
+      }else{
+        values.nacionalidadeb = values.nacionalidadeb 
+      }
+
+      if(values.naturalidadeb == ''){
+        values.naturalidadeb = editando[0].dadosPessoais.naturalidade 
+    }else{
+      values.naturalidadeb = values.naturalidadeb 
+    }
+
+      if(values.dataDeNascimentob == ''){
+        values.dataDeNascimentob  = editando[0].dadosPessoais.dataDeNascimento 
+      }else{
+        values.dataDeNascimentob = values.dataDeNascimentob 
+      }
+
+      if(values.cpfb == ''){
+        values.cpfb  = editando[0].dadosPessoais.cpf 
+    }else{
+        values.cpfb = values.cpfb 
+    }
+
+      if(values.profissaob == ''){
+        values.profissaob  = editando[0].dadosPessoais.profissao 
+      }else{
+    values.profissaob = values.profissaob 
+    }
+
+    if(values.documentoIdentificacaob == ''){
+      values.documentoIdentificacaob  = editando[0].dadosPessoais.documentoIdentificacao 
+  }else{
+    values.documentoIdentificacaob = values.documentoIdentificacaob 
+  }
+    
+    if(values.numeroDocumentob == ''){
+      values.numeroDocumentob = editando[0].dadosPessoais.numeroDocumento 
+    }else{
+      values.numeroDocumentob = values.numeroDocumentob 
+    }
+
+    if(values.orgaoExpeditorb == ''){
+      values.orgaoExpeditorb = editando[0].dadosPessoais.orgaoExpeditor 
+    }else{
+      values.orgaoExpeditorb = values.orgaoExpeditorb 
+    }
+
+    if(values.enderecoPessoalb  == ''){
+      values.enderecoPessoalb = editando[0].dadosPessoais.enderecoPessoal 
+    }else{
+      values.enderecoPessoalb = values.enderecoPessoalb 
+    }
+
+    if(values.numeroEnderecoPessoalb == ''){
+      values.numeroEnderecoPessoalb  = editando[0].dadosPessoais.numeroEnderecoPessoal 
+    }else{
+      values.numeroEnderecoPessoalb = values.numeroEnderecoPessoalb 
+    }
+
+    if(values.complementoPessoalb == ''){
+      values.complementoPessoalb  = editando[0].dadosPessoais.complementoPessoal 
+    }else{
+      values.complementoPessoalb = values.complementoPessoalb 
+    }
+      
+    if(values.bairroPessoalb == ''){
+      values.bairroPessoalb  = editando[0].dadosPessoais.bairroPessoal 
+    }else{
+      values.bairroPessoalb = values.bairroPessoalb 
+    }   
+        
+    if(values.cepb == ''){
+      values.cepb  = editando[0].dadosPessoais.cep 
+    }else{
+      values.cepb = values.cepb 
+    }
+
+    if(values.cidadeEstadoPessoalb == ''){
+      values.cidadeEstadoPessoalb = editando[0].dadosPessoais.cidadeEstadoPessoal 
+    }else{
+      values.cidadeEstadoPessoalb = values.cidadeEstadoPessoalb 
+    }
+
+    if(values.emailPessoalb == ''){
+      values.emailPessoalb  = editando[0].dadosPessoais.emailPessoal 
+    }else{
+      values.emailPessoalb = values.emailPessoalb 
+    }
+
+    if(values.telefoneFixoPessoalb == ''){
+      values.telefoneFixoPessoalb = editando[0].dadosPessoais.telefoneFixoPessoal 
+    }else{
+      values.telefoneFixoPessoalb = values.telefoneFixoPessoalb 
+    }
+        
+    if(values.celularPessoalb  == ''){
+      values.celularPessoalb   = editando[0].dadosPessoais.celularPessoal 
+    }else{
+      values.celularPessoalb  = values.celularPessoalb  
+    }
+
+    if(values.razaoSocialb  == ''){
+      values.razaoSocialb   = editando[0].dadosProfissionais.razaoSocial 
+    }else{
+      values.razaoSocialb  = values.razaoSocialb  
+    }
+
+    if(values.nomeFantasiab  == ''){
+      values.nomeFantasiab   = editando[0].dadosProfissionais.nomeFantasia 
+    }else{
+      values.nomeFantasiab  = values.nomeFantasiab  
+    }
+
+    if(values.cnpjb  == ''){
+      values.cnpjb   = editando[0].editando[0].dadosProfissionais.cnpj 
+    }else{
+      values.cnpjb  = values.cnpjb  
+    }
+
+    if(values.numeroInscricaob  == ''){
+      values.numeroInscricaob  = editando[0].dadosProfissionais.numeroInscricao 
+    }else{
+      values.numeroInscricaob  = values.numeroInscricaob 
+    }
+
+    if(values.numeroSedeb  == ''){
+      values.numeroSedeb = editando[0].dadosProfissionais.numeroSede 
+    }else{
+      values.numeroSedeb = values.numeroSedeb  
+    }
+
+    if(values.complementoSedeb == ''){
+      values.complementoSedeb  = editando[0].dadosProfissionais.complementoSede 
+    }else{
+      values.complementoSedeb  = values.complementoSedeb 
+    }
+      
+    if(values.bairroSedeb  == ''){
+      values.bairroSedeb = editando[0].dadosProfissionais.bairroSede 
+    }else{
+      values.bairroSedeb = values.bairroSedeb 
+    }
+
+    if(values.cepSedeb == ''){
+      values.cepSedeb  = editando[0].dadosProfissionais.cepSede 
+    }else{
+      values.cepSedeb  = values.cepSedeb 
+    }
+
+    if(values.cidadeEstadoSedeb == ''){
+      values.cidadeEstadoSedeb = editando[0].dadosProfissionais.cidadeEstadoSede 
+    }else{
+      values.cidadeEstadoSedeb = values.cidadeEstadoSedeb 
+    }
+
+    if(values.emailProfissionalb  == ''){
+      values.emailProfissionalb  = editando[0].dadosProfissionais.emailProfissional 
+    }else{
+      values.emailProfissionalb  = values.emailProfissionalb 
+    }
+
+    if(values.dataDeAbertura  == ''){
+      values.dataDeAbertura = editando[0].dadosProfissionais.dataDeAbertura 
+    }else{
+      values.dataDeAbertura = values.dataDeAbertura 
+    }
+
+    if(values.quantidadePessoasOcupadasb == ''){
+      values.quantidadePessoasOcupadasb = editando[0].dadosProfissionais.quantidadePessoasOcupadas 
+    }else{
+      values.quantidadePessoasOcupadasb = values.quantidadePessoasOcupadasb 
+    }
+
+    if(values.ramoDaAtividadeb == ''){
+      values.ramoDaAtividadeb = editando[0].dadosProfissionais.ramoDaAtividade 
+    }else{
+      values.ramoDaAtividadeb = values.ramoDaAtividadeb 
+    }
+
+    if(values.numeroDaPastab  == ''){
+      values.numeroDaPastab = editando[0].dadosProfissionais.numeroDaPasta 
+    }else{
+      values.numeroDaPastab = values.numeroDaPastab 
+    }
+
+    if(values.validadeAlvarab  == ''){
+      values.validadeAlvarab  = editando[0].pastaDeDocumentos.alvaraDeFuncionamento.validadeAlvara 
+    }else{
+      values.validadeAlvarab = values.validadeAlvarab 
+    }
+
+    if(values.areaM2Funcionamentob == ''){
+      values.areaM2Funcionamentob = editando[0].pastaDeDocumentos.alvaraDeFuncionamento.areaM2Funcionamento 
+    }else{
+      values.areaM2Funcionamentob = values.areaM2Funcionamentob 
+    }
+
+    if(values.numeroInscricaoMunicipalb == ''){
+      values.numeroInscricaoMunicipalb = editando[0].pastaDeDocumentos.alvaraDeFuncionamento.numeroInscricaoMunicipal 
+    }else{
+      values.numeroInscricaoMunicipalb = values.numeroInscricaoMunicipalb 
+    }
+
+    if(values.dataDeEmissaoBombeirosb == ''){
+      values.dataDeEmissaoBombeirosb = editando[0].pastaDeDocumentos.certificadoBombeiros.dataDeEmissaoBombeiros 
+    }else{
+      values.dataDeEmissaoBombeirosb = values.dataDeEmissaoBombeirosb 
+    }
+
+    if(values.dataDeValidadeBombeirosb == ''){
+      values.dataDeValidadeBombeirosb = editando[0].pastaDeDocumentos.certificadoBombeiros.dataDeValidadeBombeiros 
+    }else{
+      values.dataDeValidadeBombeirosb = values.dataDeValidadeBombeirosb 
+    }
+      
+    if(values.areaM2Bombeirosb == ''){
+      values.areaM2Bombeirosb = editando[0].pastaDeDocumentos.certificadoBombeiros.areaM2Bombeiros 
+    }else{
+      values.areaM2Bombeirosb = values.areaM2Bombeirosb 
+    }
+
+    if(values.dataDeValidadeVigilanciab == ''){
+      values.dataDeValidadeVigilanciab = editando[0].pastaDeDocumentos.alvaraDeVigilanciaSanitaria.dataDeValidadeVigilancia 
+    }else{
+      values.dataDeValidadeVigilanciab = values.dataDeValidadeVigilanciab 
+    }
+
+    if(values.inscricaoVigilanciaSanitariab == ''){
+      values.inscricaoVigilanciaSanitariab = editando[0].pastaDeDocumentos.alvaraDeVigilanciaSanitaria.inscricaoVigilanciaSanitaria 
+    }else{
+      values.inscricaoVigilanciaSanitariab = values.inscricaoVigilanciaSanitariab 
+    }
+
+    if(values.dataDeEmissaoLicencaAmbientalb == ''){
+      values.dataDeEmissaoLicencaAmbientalb = editando[0].pastaDeDocumentos.licencaAmbiental.dataDeEmissaoLicencaAmbiental 
+    }else{
+      values.dataDeEmissaoLicencaAmbientalb = values.dataDeEmissaoLicencaAmbientalb 
+    }
+
+    if(values.dataDeValidadeLicencaAmbientalb == ''){
+      values.dataDeValidadeLicencaAmbientalb = editando[0].pastaDeDocumentos.licencaAmbiental.dataDeValidadeLicencaAmbiental 
+    }else{
+      values.dataDeValidadeLicencaAmbientalb = values.dataDeValidadeLicencaAmbientalb 
+    }
+
+    if(values.tipoContratob == ''){
+      values.tipoContratob = editando[0].pastaDeDocumentos.contratoDeImovel.tipoContrato 
+    }else{
+      values.tipoContratob = values.tipoContratob 
+    }
+
+    if(values.baixadab == ''){
+      values.baixadab = editando[0].pastaDeDocumentos.declaracaoDeBaixaInscricao.baixada 
+    }else{
+      values.baixadab = values.baixadab 
+    }
+  
     if (window.confirm("Você deseja realmente editar este associado?")) {
 
-      const resposta = await Axios.post('http://'+ipatual+'/api/updateAssociate', values);
+      const resposta = await Axios.post('http://'+ipatual+'/api/updateAssociate', values) 
 
-      var result = resposta?.status;
+      var result = resposta?.status 
 
       if(result == 200){
         window.alert("Registrado com sucesso.")
@@ -849,7 +1075,7 @@ return(
     <label htmlFor="validadeAlvarab" className="form-label inline-block mb-2 text-white">Validade</label>
     <input type="text"
       name="validadeAlvarab"
-      defaultValue={editando[0].pastaDeDocumentos.validadeAlvara}
+      defaultValue={editando[0].pastaDeDocumentos.alvaraDeFuncionamento.validadeAlvara}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="validadeAlvaraI"
       onChange={onChange}
@@ -862,7 +1088,7 @@ return(
     </label>
     <input type="text"
       name="areaM2Funcionamentob"
-      defaultValue={editando[0].pastaDeDocumentos.areaM2Funcionamento}
+      defaultValue={editando[0].pastaDeDocumentos.alvaraDeFuncionamento.areaM2Funcionamento}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="areaM2FuncionamentoI"
       onChange={onChange}
@@ -877,7 +1103,7 @@ return(
       name="numeroInscricaoMunicipalb"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="numeroInscricaoMunicipalI"
-      defaultValue={editando[0].pastaDeDocumentos.numeroInscricaoMunicipal}
+      defaultValue={editando[0].pastaDeDocumentos.alvaraDeFuncionamento.numeroInscricaoMunicipal}
       onChange={onChange}
       placeholder="Número de Inscrição Municipal"
     />
@@ -894,7 +1120,7 @@ return(
       name="dataDeEmissaoBombeirosb"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeEmissaoBombeirosI"
-      defaultValue={editando[0].pastaDeDocumentos.dataDeEmissaoBombeiros}
+      defaultValue={editando[0].pastaDeDocumentos.certificadoBombeiros.dataDeEmissaoBombeiros}
       onChange={onChange}
       placeholder="Data de Emissão"
     />
@@ -907,7 +1133,7 @@ return(
       name="dataDeValidadeBombeirosb"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeValidadeBombeirosI"
-      defaultValue={editando[0].pastaDeDocumentos.dataDeValidadeBombeiros}
+      defaultValue={editando[0].pastaDeDocumentos.certificadoBombeiros.dataDeValidadeBombeiros}
       onChange={onChange}
       placeholder="Data de Validade"
     />
@@ -922,7 +1148,7 @@ return(
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="areaM2BombeirosI"
       onChange={onChange}
-      defaultValue={editando[0].pastaDeDocumentos.areaM2Bombeiros}
+      defaultValue={editando[0].pastaDeDocumentos.certificadoBombeiros.areaM2Bombeiros}
       placeholder="Área M²"
     />
   </div>
@@ -938,7 +1164,7 @@ return(
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeValidadeVigilanciaI"
       onChange={onChange}
-      defaultValue={editando[0].pastaDeDocumentos.dataDeValidadeVigilancia}
+      defaultValue={editando[0].pastaDeDocumentos.alvaraDeVigilanciaSanitaria.dataDeValidadeVigilancia}
       placeholder="Data de Validade"
     />
   </div>
@@ -951,7 +1177,7 @@ return(
       name="inscricaoVigilanciaSanitariab"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="inscricaoVigilanciaSanitariaI"
-      defaultValue={editando[0].pastaDeDocumentos.inscricaoVigilanciaSanitaria}
+      defaultValue={editando[0].pastaDeDocumentos.alvaraDeVigilanciaSanitaria.inscricaoVigilanciaSanitaria}
       onChange={onChange}
       placeholder="Inscrição Vigilância Sanitária"
     />
@@ -966,7 +1192,7 @@ return(
     </label>
     <input type="date"
       name="dataDeEmissaoLicencaAmbientalb"
-      defaultValue={editando[0].pastaDeDocumentos.dataDeEmissaoLicencaAmbiental}
+      defaultValue={editando[0].pastaDeDocumentos.licencaAmbiental.dataDeEmissaoLicencaAmbiental}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeEmissaoLicencaAmbientalI"
       onChange={onChange}
@@ -980,7 +1206,7 @@ return(
     </label>
     <input type="date"
       name="dataDeValidadeLicencaAmbientalb"
-      defaultValue={editando[0].pastaDeDocumentos.dataDeValidadeLicencaAmbiental}
+      defaultValue={editando[0].pastaDeDocumentos.licencaAmbiental.dataDeValidadeLicencaAmbiental}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeValidadeLicencaAmbientalI"
       onChange={onChange}
@@ -999,7 +1225,7 @@ return(
       name="tipoContratob"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="tipoContratoI"
-      defaultValue={editando[0].pastaDeDocumentos.tipoContrato}
+      defaultValue={editando[0].pastaDeDocumentos.contratoDeImovel.tipoContrato}
       onChange={onChange}
       placeholder="Tipo de Contrato"
     />
@@ -1016,7 +1242,7 @@ return(
       name="baixadab"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="baixadaI"
-      defaultValue={editando[0].pastaDeDocumentos.baixada}
+      defaultValue={editando[0].pastaDeDocumentos.declaracaoDeBaixaInscricao.baixada}
       onChange={onChange}
       placeholder="Baixada"
     />

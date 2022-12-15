@@ -101,6 +101,9 @@ function ShowAssociate(){
                 <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
                  CNPJ
                 </th>
+                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                 Baixado?
+                </th>
               </tr>
             </thead>
           <tbody>
@@ -129,6 +132,7 @@ function ShowAssociate(){
                   <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.nomeFantasia}</td>
                   <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.razaoSocial}</td>
                   <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.cnpj}</td>
+                  <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.pastaDeDocumentos?.declaracaoDeBaixaInscricao.baixada}</td>
                   
                 </tr>
               )
