@@ -80,15 +80,63 @@ const onSubmit = async(ev) => {
   ev.preventDefault();
 
   try{
+    values.nomeCompletob = editando[0].dadosPessoais.nomeCompletob ?? null;
+    values.estadoCivilb = editando[0].dadosPessoais.estadoCivil ?? null;
+    values.nacionalidadeb = editando[0].dadosPessoais.nacionalidade ?? null;
+    values.naturalidadeb = editando[0].dadosPessoais.naturalidade ?? null;
+    values.dataDeNascimentob = editando[0].dadosPessoais.dataDeNascimento ?? null;
+    values.cpfb = editando[0].dadosPessoais.cpf ?? null;
+    values.profissaob = editando[0].dadosPessoais.profissao ?? null;
+    values.documentoIdentificacaob = editando[0].dadosPessoais.documentoIdentificacao ?? null;
+    values.numeroDocumentob = null ?? editando[0].dadosPessoais.numeroDocumento;
+    values.orgaoExpeditorb = null ?? editando[0].dadosPessoais.orgaoExpeditor;
+    values.enderecoPessoalb = null ?? editando[0].dadosPessoais.enderecoPessoal;
+    values.numeroEnderecoPessoalb = null ?? editando[0].dadosPessoais.numeroEnderecoPessoal;
+    values.complementoPessoalb = null ?? editando[0].dadosPessoais.complementoPessoal;
+    values.bairroPessoalb = null ?? editando[0].dadosPessoais.bairroPessoal;
+    values.cepb = null ?? editando[0].dadosPessoais.cep;
+    values.cidadeEstadoPessoalb = null ?? editando[0].dadosPessoais.cidadeEstadoPessoal;
+    values.emailPessoalb = null ?? editando[0].dadosPessoais.emailPessoal;
+    values.telefoneFixoPessoalb = null ?? editando[0].dadosPessoais.telefoneFixoPessoal;
+    values.celularPessoalb = null ?? editando[0].dadosPessoais.celularPessoal;
+    values.razaoSocialb = null ?? editando[0].dadosProfissionais.razaoSocial;
+    values.nomeFantasiab = null ?? editando[0].dadosProfissionais.nomeFantasia;
+    values.cnpjb = null ?? editando[0].dadosProfissionais.cnpj;
+    values.numeroInscricaob = null ?? editando[0].dadosProfissionais.numeroInscricao;
+    values.numeroSedeb = null ?? editando[0].dadosProfissionais.numeroSede;
+    values.complementoSedeb = null ?? editando[0].dadosProfissionais.complementoSede;
+    values.bairroSedeb = null ?? editando[0].dadosProfissionais.bairroSede;
+    values.cepSedeb = null ?? editando[0].dadosProfissionais.cepSede;
+    values.cidadeEstadoSedeb = null ?? editando[0].dadosProfissionais.cidadeEstadoSede;
+    values.emailProfissionalb = null ?? editando[0].dadosProfissionais.emailProfissional;
+    values.dataDeAbertura= editando[0].dadosProfissionais.dataDeAbertura;
+    values.quantidadePessoasOcupadasb = null ?? editando[0].dadosProfissionais.quantidadePessoasOcupadas;
+    values.ramoDaAtividadeb = null ?? editando[0].dadosProfissionais.ramoDaAtividade;
+    values.numeroDaPastab = null ?? editando[0].dadosProfissionais.numeroDaPasta;
+    values.validadeAlvarab = null ?? editando[0].pastaDeDocumentos.validadeAlvara;
+    values.areaM2Funcionamentob = null ?? editando[0].pastaDeDocumentos.areaM2Funcionamento;
+    values.numeroInscricaoMunicipalb = null ?? editando[0].pastaDeDocumentos.numeroInscricaoMunicipal;
+    values.dataDeEmissaoBombeirosb = null ?? editando[0].pastaDeDocumentos.dataDeEmissaoBombeiros;
+    values.dataDeValidadeBombeirosb = null ?? editando[0].pastaDeDocumentos.dataDeValidadeBombeiros;
+    values.areaM2Bombeirosb = null ?? editando[0].pastaDeDocumentos.areaM2Bombeiros;
+    values.dataDeValidadeVigilanciab = null ?? editando[0].pastaDeDocumentos.dataDeValidadeVigilancia;
+    values.inscricaoVigilanciaSanitariab = null ?? editando[0].pastaDeDocumentos.inscricaoVigilanciaSanitaria;
+    values.dataDeEmissaoLicencaAmbientalb = null ?? editando[0].pastaDeDocumentos.dataDeEmissaoLicencaAmbiental;
+    values.dataDeValidadeLicencaAmbientalb = null ?? editando[0].pastaDeDocumentos.dataDeValidadeLicencaAmbiental;
+    values.tipoContratob = null ?? editando[0].pastaDeDocumentos.tipoContrato;
+    values.baixadab = null ?? editando[0].pastaDeDocumentos.tipoContrato;
 
-    if (window.confirm("Você deseja realmente registrar este associado?")) {
 
-      const resposta = await Axios.post('http://'+ipatual+'/api/editAssociate', values);
+    if (window.confirm("Você deseja realmente editar este associado?")) {
+
+      const resposta = await Axios.post('http://'+ipatual+'/api/updateAssociate', values);
 
       var result = resposta?.status;
 
       if(result == 200){
         window.alert("Registrado com sucesso.")
+      }else{
+        window.alert("Erro")
       }
 
     }else{
@@ -801,7 +849,7 @@ return(
     <label htmlFor="validadeAlvarab" className="form-label inline-block mb-2 text-white">Validade</label>
     <input type="text"
       name="validadeAlvarab"
-      defaultValue={editando[0].dadosProfissionais.validadeAlvara}
+      defaultValue={editando[0].pastaDeDocumentos.validadeAlvara}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="validadeAlvaraI"
       onChange={onChange}
@@ -814,7 +862,7 @@ return(
     </label>
     <input type="text"
       name="areaM2Funcionamentob"
-      defaultValue={editando[0].dadosProfissionais.areaM2Funcionamento}
+      defaultValue={editando[0].pastaDeDocumentos.areaM2Funcionamento}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="areaM2FuncionamentoI"
       onChange={onChange}
@@ -829,7 +877,7 @@ return(
       name="numeroInscricaoMunicipalb"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="numeroInscricaoMunicipalI"
-      defaultValue={editando[0].dadosProfissionais.numeroInscricaoMunicipal}
+      defaultValue={editando[0].pastaDeDocumentos.numeroInscricaoMunicipal}
       onChange={onChange}
       placeholder="Número de Inscrição Municipal"
     />
@@ -846,7 +894,7 @@ return(
       name="dataDeEmissaoBombeirosb"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeEmissaoBombeirosI"
-      defaultValue={editando[0].dadosProfissionais.dataDeEmissaoBombeiros}
+      defaultValue={editando[0].pastaDeDocumentos.dataDeEmissaoBombeiros}
       onChange={onChange}
       placeholder="Data de Emissão"
     />
@@ -859,7 +907,7 @@ return(
       name="dataDeValidadeBombeirosb"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeValidadeBombeirosI"
-      defaultValue={editando[0].dadosProfissionais.dataDeValidadeBombeiros}
+      defaultValue={editando[0].pastaDeDocumentos.dataDeValidadeBombeiros}
       onChange={onChange}
       placeholder="Data de Validade"
     />
@@ -874,7 +922,7 @@ return(
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="areaM2BombeirosI"
       onChange={onChange}
-      defaultValue={editando[0].dadosProfissionais.areaM2Bombeiros}
+      defaultValue={editando[0].pastaDeDocumentos.areaM2Bombeiros}
       placeholder="Área M²"
     />
   </div>
@@ -890,7 +938,7 @@ return(
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeValidadeVigilanciaI"
       onChange={onChange}
-      defaultValue={editando[0].dadosProfissionais.dataDeValidadeVigilancia}
+      defaultValue={editando[0].pastaDeDocumentos.dataDeValidadeVigilancia}
       placeholder="Data de Validade"
     />
   </div>
@@ -903,7 +951,7 @@ return(
       name="inscricaoVigilanciaSanitariab"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="inscricaoVigilanciaSanitariaI"
-      defaultValue={editando[0].dadosProfissionais.inscricaoVigilanciaSanitaria}
+      defaultValue={editando[0].pastaDeDocumentos.inscricaoVigilanciaSanitaria}
       onChange={onChange}
       placeholder="Inscrição Vigilância Sanitária"
     />
@@ -918,7 +966,7 @@ return(
     </label>
     <input type="date"
       name="dataDeEmissaoLicencaAmbientalb"
-      defaultValue={editando[0].dadosProfissionais.dataDeEmissaoLicencaAmbiental}
+      defaultValue={editando[0].pastaDeDocumentos.dataDeEmissaoLicencaAmbiental}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeEmissaoLicencaAmbientalI"
       onChange={onChange}
@@ -932,7 +980,7 @@ return(
     </label>
     <input type="date"
       name="dataDeValidadeLicencaAmbientalb"
-      defaultValue={editando[0].dadosProfissionais.dataDeValidadeLicencaAmbiental}
+      defaultValue={editando[0].pastaDeDocumentos.dataDeValidadeLicencaAmbiental}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeValidadeLicencaAmbientalI"
       onChange={onChange}
@@ -951,7 +999,7 @@ return(
       name="tipoContratob"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="tipoContratoI"
-      defaultValue={editando[0].dadosProfissionais.tipoContrato}
+      defaultValue={editando[0].pastaDeDocumentos.tipoContrato}
       onChange={onChange}
       placeholder="Tipo de Contrato"
     />
@@ -968,7 +1016,7 @@ return(
       name="baixadab"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="baixadaI"
-      defaultValue={editando[0].dadosProfissionais.baixada}
+      defaultValue={editando[0].pastaDeDocumentos.baixada}
       onChange={onChange}
       placeholder="Baixada"
     />

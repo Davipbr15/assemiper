@@ -103,7 +103,7 @@ function testeInfo(ev){
   values.estadoCivilb = "teste";
   values.nacionalidadeb = "teste";
   values.naturalidadeb = "teste";
-  values.dataDeNascimentob = "teste";
+  values.dataDeNascimentob = "1950-12-12";
   values.cpfb = "teste";
   values.profissaob = "teste";
   values.documentoIdentificacaob = "teste";
@@ -129,20 +129,20 @@ function testeInfo(ev){
   values.cepSedeb = "teste";
   values.cidadeEstadoSedeb = "teste";
   values.emailProfissionalb = "teste";
-  values.dataDeAberturab = "teste";
+  values.dataDeAberturab = "1950-12-12";
   values.quantidadePessoasOcupadasb = "teste";
   values.ramoDaAtividadeb = "teste";
   values.numeroDaPastab = "teste";
   values.validadeAlvarab = "teste";
   values.areaM2Funcionamentob = "teste";
   values.numeroInscricaoMunicipalb = "teste";
-  values.dataDeEmissaoBombeirosb = "teste";
-  values.dataDeValidadeBombeirosb = "teste";
+  values.dataDeEmissaoBombeirosb = "1950-12-12";
+  values.dataDeValidadeBombeirosb = "1950-12-12";
   values.areaM2Bombeirosb = "teste";
-  values.dataDeValidadeVigilanciab = "teste";
+  values.dataDeValidadeVigilanciab = "1950-12-12";
   values.inscricaoVigilanciaSanitariab = "teste";
-  values.dataDeEmissaoLicencaAmbientalb = "teste";
-  values.dataDeValidadeLicencaAmbientalb = "teste";
+  values.dataDeEmissaoLicencaAmbientalb = "1950-12-12";
+  values.dataDeValidadeLicencaAmbientalb = "1950-12-12";
   values.tipoContratob = "teste";
   values.baixadab = "teste";
 }

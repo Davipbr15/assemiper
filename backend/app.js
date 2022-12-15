@@ -249,6 +249,7 @@ app.post("/api/fakeResult", async(req,res)=>{
 app.post("/api/editAssociate", async(req,res)=>{
 
     const {associateIdb} = req.body;
+    const {validadeAlvarab,areaM2Funcionamentob,numeroInscricaoMunicipalb,dataDeEmissaoBombeirosb,dataDeValidadeBombeirosb,areaM2Bombeirosb,dataDeValidadeVigilanciab,inscricaoVigilanciaSanitariab,dataDeEmissaoLicencaAmbientalb,dataDeValidadeLicencaAmbientalb,tipoContratob,baixadab,numeroDaPastab,nomeCompletob,estadoCivilb,nacionalidadeb,naturalidadeb,dataDeNascimentob,cpfb,profissaob,documentoIdentificacaob,numeroDocumentob,orgaoExpeditorb,enderecoPessoalb,numeroEnderecoPessoalb,complementoPessoalb,bairroPessoalb,cepb,cidadeEstadoPessoalb,emailPessoalb,telefoneFixoPessoalb,celularPessoalb,razaoSocialb,nomeFantasiab,cnpjb,numeroInscricaob,enderecoSedeb ,numeroSedeb,complementoSedeb,bairroSedeb,cepSedeb,cidadeEstadoSedeb,emailProfissionalb,dataDeAberturab,quantidadePessoasOcupadasb,ramoDaAtividadeb,} = req.body;
     console.log("/api/editAssociate RESPONSE")
     try {
         const Asc = await Associate.find({_id:associateIdb})
@@ -258,8 +259,93 @@ app.post("/api/editAssociate", async(req,res)=>{
         console.error(e);
     } finally {
         console.log("Running")
+        console.log(req.body)
     }
+})
 
+app.post("/api/updateAssociate", async(req,res)=>{
+        const {associateIdb} = req.body;
+
+        const {validadeAlvarab,areaM2Funcionamentob,numeroInscricaoMunicipalb,dataDeEmissaoBombeirosb,dataDeValidadeBombeirosb,areaM2Bombeirosb,dataDeValidadeVigilanciab,inscricaoVigilanciaSanitariab,dataDeEmissaoLicencaAmbientalb,dataDeValidadeLicencaAmbientalb,tipoContratob,baixadab,numeroDaPastab,nomeCompletob,estadoCivilb,nacionalidadeb,naturalidadeb,dataDeNascimentob,cpfb,profissaob,documentoIdentificacaob,numeroDocumentob,orgaoExpeditorb,enderecoPessoalb,numeroEnderecoPessoalb,complementoPessoalb,bairroPessoalb,cepb,cidadeEstadoPessoalb,emailPessoalb,telefoneFixoPessoalb,celularPessoalb,razaoSocialb,nomeFantasiab,cnpjb,numeroInscricaob,enderecoSedeb ,numeroSedeb,complementoSedeb,bairroSedeb,cepSedeb,cidadeEstadoSedeb,emailProfissionalb,dataDeAberturab,quantidadePessoasOcupadasb,ramoDaAtividadeb,} = req.body;
+        
+        console.log("/api/editAssociate RESPONSE")
+        console.log(nomeFantasiab);
+        try {
+            const Asc = await Associate.updateOne({_id:associateIdb}, {$set:{
+                numeroDaPasta:numeroDaPastab,
+                dadosPessoais:{
+                nomeCompleto:nomeCompletob,
+                estadoCivil:estadoCivilb,
+                nacionalidade:nacionalidadeb,
+                naturalidade:naturalidadeb,
+                dataDeNascimento:dataDeNascimentob,
+                cpf:cpfb,profissao:profissaob,
+                documentoIdentificacao:documentoIdentificacaob,
+                numeroDocumento:numeroDocumentob,
+                orgaoExpeditor:orgaoExpeditorb,
+                enderecoPessoal:enderecoPessoalb,
+                numeroEnderecoPessoal:numeroEnderecoPessoalb,
+                complementoPessoal:complementoPessoalb,
+                bairroPessoal:bairroPessoalb,
+                cep:cepb,
+                cidadeEstadoPessoal:cidadeEstadoPessoalb,
+                emailPessoal:emailPessoalb,
+                telefoneFixoPessoal:telefoneFixoPessoalb,
+                celularPessoal:celularPessoalb,
+                }
+                ,
+                dadosProfissionais:{
+                razaoSocial:razaoSocialb,
+                nomeFantasia:nomeFantasiab,
+                cnpj:cnpjb,
+                numeroInscricao:numeroInscricaob,
+                enderecoSede:enderecoSedeb,
+                numeroSede:numeroSedeb,
+                complementoSede:complementoSedeb,
+                bairroSede:bairroSedeb,
+                cepSede:cepSedeb,
+                cidadeEstadoSede:cidadeEstadoSedeb,
+                emailProfissional:emailProfissionalb,
+                dataDeAbertura:dataDeAberturab,
+                quantidadePessoasOcupadas:quantidadePessoasOcupadasb,
+                ramoDaAtividade:ramoDaAtividadeb
+                }
+                ,
+                pastaDeDocumentos:{
+    
+                    alvaraDeFuncionamento:{
+                        validadeAlvara:validadeAlvarab,
+                        areaM2Funcionamento:areaM2Funcionamentob,
+                        numeroInscricaoMunicipal:numeroInscricaoMunicipalb,
+                    },
+                    certificadoBombeiros:{
+                        dataDeEmissaoBombeiros:dataDeEmissaoBombeirosb,
+                        dataDeValidadeBombeiros:dataDeValidadeBombeirosb,
+                        areaM2Bombeiros:areaM2Bombeirosb,
+                    },
+                    alvaraDeVigilanciaSanitaria:{
+                        dataDeValidadeVigilancia:dataDeValidadeVigilanciab,
+                        inscricaoVigilanciaSanitaria:inscricaoVigilanciaSanitariab,
+                    },
+                    licencaAmbiental:{
+                        dataDeEmissaoLicencaAmbiental:dataDeEmissaoLicencaAmbientalb,
+                        dataDeValidadeLicencaAmbiental:dataDeValidadeLicencaAmbientalb,
+                    },
+                    contratoDeImovel:{
+                        tipoContrato:tipoContratob,
+                    },
+                    declaracaoDeBaixaInscricao:{
+                        baixada:baixadab,
+                    }
+            }}})
+            console.log(Asc)
+            res.status(200).json(Asc);
+        } catch (e) {
+            console.error(e);
+        } finally {
+            console.log("Running")
+        }
+    
 })
 
 app.post("/api/registerAssociate", async(req,res)=>{
