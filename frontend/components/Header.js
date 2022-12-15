@@ -11,6 +11,48 @@ function Header(){
 
   const ip = ipatual;
 
+  
+  function scrollToTop(){
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+  
+  const [scrollTop, setScrollTop] = React.useState(false);
+  useEffect(() => {
+  
+    window.addEventListener("scroll", () => {
+      const scrollMaxValue = () => {
+        const body = document.body;
+        const html = document.documentElement;
+      
+        const documentHeight = Math.max(
+          body.scrollHeight,
+          body.offsetHeight,
+          html.clientHeight,
+          html.scrollHeight,
+          html.offsetHeight
+        );
+      
+        const windowHeight = window.innerHeight;
+      
+        return documentHeight - windowHeight;
+      };
+      var tamanhoMax = scrollMaxValue()
+      var tamanhoAtual = document.documentElement.scrollTop;
+  
+      console.log(scrollMaxValue())
+  
+      if (tamanhoAtual > (tamanhoMax - (tamanhoMax/2))) {
+        setScrollTop(true);
+      } else {
+        setScrollTop(false);
+      }
+    });
+  }, []);
+  
+
   console.log(ip);
   useEffect(() => {
     const onCharge = async(ev) => {
@@ -35,7 +77,6 @@ function Header(){
 
       onCharge();
   }, []);
-
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isNavOpen2, setIsNavOpen2] = useState(false);
 
@@ -156,6 +197,14 @@ function Header(){
         </div>
       
     </>
+
+    {scrollTop && (
+        <button x-data="topBtn" onClick={scrollToTop} id="topButton"
+        className="fixed z-50 show p-2 text-black bg-gray-100 rounded-full shadow-md bottom-10 right-5 animate-bounce">
+        <i className="bi bi-chevron-up"></i>
+      </button>
+      )}
+
         </div>
 
     )

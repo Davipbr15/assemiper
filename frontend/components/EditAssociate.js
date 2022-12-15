@@ -58,6 +58,7 @@ const initialValue = {
   tipoContratob:'',
   baixadab:'',
   associateIdb:"",
+  numeroDaPasta:"",
 }
 
 const [values, setValues] = useState(initialValue);
@@ -225,8 +226,12 @@ return(
                   ID
                 </th>
                 <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                  Número da Pasta
+                </th>
+                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
                   Nome Completo
                 </th>
+                
                 <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
                  Nome Fantasia
                 </th>
@@ -249,6 +254,7 @@ return(
               return (
                 <tr key={index} className=" bg-assemiperBlack font-bold border-b transition duration-300 ease-in-out hover:bg-red-700">
                   <td className="px-6 py-1 text-sm font-medium text-white">{ascData.associateId}</td>
+                  <td className="px-6 py-1 text-sm font-medium text-white">{ascData.numeroDaPasta}</td>
                   <td className="text-sm text-white font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.nomeCompleto}</td>
                   <td className="text-sm text-white font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.nomeFantasia}</td>
                   <td className="text-sm text-white font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.razaoSocial}</td>
@@ -269,24 +275,28 @@ return(
 
 {!clicko && <p></p>}
 {clicko && (
-  <div className="show">
-  <div className="App bg-gray-800">
-  
-  <form  action="#" onSubmit={onSubmit} method="POST" className="block p-4 rounded-lg justify-self-center mx-auto shadow-2xl bg-white max-w-2xl">
-  
+  <div className="show bg-assemiperBlack">
+  <div className="App bg-assemiperBlack">
+  <button onClick={reload} className="m-5 group hover:scale-110 bg-red-800 hover:bg-red-700 transition ease-in-out duration-150 relative flex justify-center py-2 px-6 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
+    Voltar
+  </button>
+  <form  action="#" onSubmit={onSubmit} method="POST" className="block p-4 rounded-lg justify-self-center mx-auto shadow-2xl bg-assemiperBlack min-w-screen">
+
   <div className="mb-5">
-  <h1 className="text-xl text-center text-black font-bold">Dados Pessoais</h1>
+  <h1 className="text-xl text-center text-white font-bold">Dados Pessoais</h1>
   </div>
+
+
   
   <div className="grid grid-cols-3 gap-6">
   
   <div className="col-span-3">
-    <label htmlFor="nomeCompletoI" className="form-label inline-block mb-2 text-gray-700">Nome completo</label>
+    <label htmlFor="nomeCompletoI" className="form-label inline-block mb-2 text-white">Nome completo</label>
     <input type="text"
       name="nomeCompletob"
       required
       defaultValue={editando[0].dadosPessoais.nomeCompleto}
-      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="nomeCompletoI"
       onChange={onChange}
       placeholder="Nome Completo"
@@ -294,12 +304,12 @@ return(
   </div>
   
   <div className="col-span-3">
-    <label htmlFor="estadoCivilI" className="form-label inline-block mb-2 text-gray-700">Estado Civil</label>
+    <label htmlFor="estadoCivilI" className="form-label inline-block mb-2 text-white">Estado Civil</label>
     <input type="text"
       name="estadoCivilb"
       required
       defaultValue={editando[0].dadosPessoais.estadoCivil}
-      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="estadoCivilI"
       onChange={onChange}
       placeholder="Estado Civil"
@@ -308,13 +318,13 @@ return(
   
   
   <div className="col-span-3">
-    <label htmlFor="nacionalidadeI" className="form-label inline-block mb-2 text-gray-700">
+    <label htmlFor="nacionalidadeI" className="form-label inline-block mb-2 text-white">
       Nacionalidade</label>
       <input type="text"
          name="nacionalidadeb"
          required
   defaultValue={editando[0].dadosPessoais.nacionalidade}
-         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+         className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
          id="nacionalidadeI"
          onChange={onChange}
          placeholder="Nacionalidade"
@@ -322,13 +332,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="naturalidadeI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="naturalidadeI" className="form-label inline-block mb-2 text-white">
     Naturalidade</label>
     <input type="text"
        name='naturalidadeb'
        required
   defaultValue={editando[0].dadosPessoais.naturalidade}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="naturalidadeI"
        onChange={onChange}
        placeholder="Naturalidade"
@@ -338,7 +348,7 @@ return(
   
   
   <div className="col-span-3">
-  <label htmlFor="dataDeNascimentoI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="dataDeNascimentoI" className="form-label inline-block mb-2 text-white">
     Data de Nascimento</label>
     <input type="date"
        name="dataDeNascimentob"
@@ -346,7 +356,7 @@ return(
        min="1910-05-01"
        required
        defaultValue={editando[0].dadosPessoais.dataDeNascimento}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="dataDeNascimentoI"
        onChange={onChange}
        placeholder="Data de Nascimento"
@@ -356,13 +366,13 @@ return(
   
   
   <div className="col-span-2">
-  <label htmlFor="cpfI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="cpfI" className="form-label inline-block mb-2 text-white">
     CPF</label>
     <input type="text"
        name='cpfb'
        required
        defaultValue={editando[0].dadosPessoais.cpf}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="cpfI"
        onChange={onChange}
        placeholder="CPF"
@@ -372,13 +382,13 @@ return(
   
   
   <div className="col-span-3">
-  <label htmlFor="profissaoI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="profissaoI" className="form-label inline-block mb-2 text-white">
     Profissão</label>
     <input type="text"
        name="profissaob"
        required
   defaultValue={editando[0].dadosPessoais.profissao}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="profissaoI"
        onChange={onChange}
        placeholder="Profissão"
@@ -388,13 +398,13 @@ return(
   
   
   <div className="col-span-3">
-  <label htmlFor="documentoIdentificacaoI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="documentoIdentificacaoI" className="form-label inline-block mb-2 text-white">
     Documento de identificação</label>
     <input type="text"
        name="documentoIdentificacaob"
        required
   defaultValue={editando[0].dadosPessoais.documentoIdentificacao}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="documentoIdentificacaoI"
        onChange={onChange}
        placeholder="Doc. de Identificação"
@@ -404,13 +414,13 @@ return(
   
   
   <div className="col-span-3">
-  <label htmlFor="numeroDocumentoI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="numeroDocumentoI" className="form-label inline-block mb-2 text-white">
     Nº do Documento</label>
     <input type="text"
        name="numeroDocumentob"
        required
   defaultValue={editando[0].dadosPessoais.numeroDocumento}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="numeroDocumentoI"
        onChange={onChange}
        placeholder="Número do Documento"
@@ -420,13 +430,13 @@ return(
   
   
   <div className="col-span-3">
-  <label htmlFor="orgaoExpeditorI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="orgaoExpeditorI" className="form-label inline-block mb-2 text-white">
     Orgão Expeditor</label>
     <input type="text"
        name="orgaoExpeditorb"
        required
   defaultValue={editando[0].dadosPessoais.orgaoExpeditor}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="orgaoExpeditorI"
        onChange={onChange}
        placeholder="Orgão Expeditor"
@@ -436,13 +446,13 @@ return(
   
   
   <div className="col-span-3">
-  <label htmlFor="enderecoPessoalI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="enderecoPessoalI" className="form-label inline-block mb-2 text-white">
     Endereço</label>
     <input type="text"
        name="enderecoPessoalb"
        required
   defaultValue={editando[0].dadosPessoais.enderecoPessoal}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="enderecoPessoalI"
        onChange={onChange}
        placeholder="Endereço Pessoal"
@@ -450,13 +460,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="numeroEnderecoPessoalI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="numeroEnderecoPessoalI" className="form-label inline-block mb-2 text-white">
     Nº Endereço</label>
     <input type="text"
        name="numeroEnderecoPessoalb"
        required
   defaultValue={editando[0].dadosPessoais.numeroEnderecoPessoal}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="numeroEnderecoPesssoalI"
        onChange={onChange}
        placeholder="Número Endereço"
@@ -464,13 +474,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="complementoPessoalI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="complementoPessoalI" className="form-label inline-block mb-2 text-white">
     Complemento</label>
     <input type="text"
        name="complementoPessoalb"
        required
   defaultValue={editando[0].dadosPessoais.complementoPessoal}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="complementoPessoalI"
        onChange={onChange}
        placeholder="Complemento Endereço"
@@ -478,13 +488,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="bairroPessoalI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="bairroPessoalI" className="form-label inline-block mb-2 text-white">
     Bairro</label>
     <input type="text"
        name="bairroPessoalb"
        required
   defaultValue={editando[0].dadosPessoais.bairroPessoal}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="bairroPessoalI"
        onChange={onChange}
        placeholder="Bairro"
@@ -492,13 +502,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="cepI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="cepI" className="form-label inline-block mb-2 text-white">
     CEP</label>
     <input type="text"
        name="cepb"
        required
   defaultValue={editando[0].dadosPessoais.cep}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="cepI"
        onChange={onChange}
        placeholder="CEP"
@@ -506,13 +516,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="cidadeEstadoPessoalI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="cidadeEstadoPessoalI" className="form-label inline-block mb-2 text-white">
     cidade e estado pessoal</label>
     <input type="text"
        name="cidadeEstadoPessoalb"
        required
   defaultValue={editando[0].dadosPessoais.cidadeEstadoPessoal}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="cidadeEstadoPessoalI"
        onChange={onChange}
        placeholder="Cidade e estado pessoal"
@@ -520,13 +530,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="emailPessoalI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="emailPessoalI" className="form-label inline-block mb-2 text-white">
     e-mail pessoal</label>
     <input type="text"
        name="emailPessoalb"
        required
   defaultValue={editando[0].dadosPessoais.emailPessoal}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="emailPessoalI"
        onChange={onChange}
        placeholder="E-mail pessoal"
@@ -534,13 +544,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="telefoneFixoPessoalI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="telefoneFixoPessoalI" className="form-label inline-block mb-2 text-white">
     telefone fixo pessoal</label>
     <input type="text"
        name="telefoneFixoPessoalb"
        required
   defaultValue={editando[0].dadosPessoais.telefoneFixoPessoal}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="telefoneFixoPessoalI"
        onChange={onChange}
        placeholder="Telefone fixo pessoal"
@@ -548,13 +558,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="celularPessoalI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="celularPessoalI" className="form-label inline-block mb-2 text-white">
     celular pessoal</label>
     <input type="tel"
        name="celularPessoalb"
        required
   defaultValue={editando[0].dadosPessoais.celularPessoal}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="celularPessoalI"
         maxLength="15"
        onChange={onChange}
@@ -564,17 +574,17 @@ return(
   <br></br>
   
   <div className="mb-5">
-  <h1 className="text-xl text-center text-black font-bold">Dados Profissonal</h1>
+  <h1 className="text-xl text-center text-white font-white">Dados Profissonal</h1>
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="razaoSocialI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="razaoSocialI" className="form-label inline-block mb-2 text-white">
     Razão Social</label>
     <input type="text"
        name="razaoSocialb"
        required
   defaultValue={editando[0].dadosProfissionais.razaoSocial}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="razaoSocialI"
        onChange={onChange}
        placeholder="Razão social"
@@ -582,13 +592,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="nomeFantasiaI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="nomeFantasiaI" className="form-label inline-block mb-2 text-white">
     Nome Fantasia</label>
     <input type="text"
        name="nomeFantasiab"
        required
   defaultValue={editando[0].dadosProfissionais.razaoSocial}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="nomeFantasiaI"
        onChange={onChange}
        placeholder="Nome fantasia"
@@ -596,13 +606,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="cnpjI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="cnpjI" className="form-label inline-block mb-2 text-white">
     CNPJ</label>
     <input type="text"
        name="cnpjb"
        required
   defaultValue={editando[0].dadosProfissionais.cnpj}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="cnpjI"
        onChange={onChange}
        placeholder="__.___.___/____-__"
@@ -610,13 +620,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="numeroInscricaoI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="numeroInscricaoI" className="form-label inline-block mb-2 text-white">
     Número de Inscrição</label>
     <input type="text"
        name="numeroInscricaob"
        required
   defaultValue={editando[0].dadosProfissionais.numeroInscricao}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="numeroInscricaoI"
        onChange={onChange}
        placeholder="Número de inscrição"
@@ -624,13 +634,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="enderecoSedeI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="enderecoSedeI" className="form-label inline-block mb-2 text-white">
     Endereço Sede</label>
     <input type="text"
        name="enderecoSedeb"
        required
   defaultValue={editando[0].dadosProfissionais.enderecoSede}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="enderecoSedeI"
        onChange={onChange}
        placeholder="Endereço sede"
@@ -638,13 +648,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="numeroSedeI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="numeroSedeI" className="form-label inline-block mb-2 text-white">
     Número Sede</label>
     <input type="text"
        name="numeroSedeb"
        required
   defaultValue={editando[0].dadosProfissionais.numeroSede}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="numeroSedeI"
        onChange={onChange}
        placeholder="Número sede"
@@ -652,13 +662,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="complementoSedeI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="complementoSedeI" className="form-label inline-block mb-2 text-white">
     Complemento Sede</label>
     <input type="text"
        name="complementoSedeb"
        required
   defaultValue={editando[0].dadosProfissionais.complementoSede}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="complementoSedeI"
        onChange={onChange}
        placeholder="Complemento sede"
@@ -666,13 +676,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="bairroSedeI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="bairroSedeI" className="form-label inline-block mb-2 text-white">
     Bairro Sede</label>
     <input type="text"
        name="bairroSedeb"
        required
   defaultValue={editando[0].dadosProfissionais.bairroSede}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="bairroSedeI"
        onChange={onChange}
        placeholder="Bairro sede"
@@ -680,13 +690,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="cepSedeI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="cepSedeI" className="form-label inline-block mb-2 text-white">
     CEP Sede</label>
     <input type="text"
        name="cepSedeb"
        required
   defaultValue={editando[0].dadosProfissionais.cepSede}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="cepSedeI"
        onChange={onChange}
        placeholder="CEP sede"
@@ -694,13 +704,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="cidadeEstadoSedeI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="cidadeEstadoSedeI" className="form-label inline-block mb-2 text-white">
     Cidade e Estado da Sede</label>
     <input type="text"
        name="cidadeEstadoSedeb"
        required
   defaultValue={editando[0].dadosProfissionais.cidadeEstadoSede}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="cidadeEstadoSedeI"
        onChange={onChange}
        placeholder="Cidade e estado da sede"
@@ -708,13 +718,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="emailProfissionalI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="emailProfissionalI" className="form-label inline-block mb-2 text-white">
     Email Profissional</label>
     <input type="text"
        name="emailProfissionalb"
        required
   defaultValue={editando[0].dadosProfissionais.emailProfissional}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="emailProfissionalI"
        onChange={onChange}
        placeholder="Email profissional"
@@ -722,13 +732,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="dataDeAberturaI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="dataDeAberturaI" className="form-label inline-block mb-2 text-white">
     Data de abertura</label>
     <input type="date"
        name="dataDeAberturab"
        required
   defaultValue={editando[0].dadosProfissionais.dataDeAbertura}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="dataDeAberturaI"
        onChange={onChange}
        placeholder="Data de Abertura"
@@ -736,13 +746,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="quantidadePessoasOcupadasI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="quantidadePessoasOcupadasI" className="form-label inline-block mb-2 text-white">
     Quantidade de Pessoas Ocupadas</label>
     <input type="text"
        name="quantidadePessoasOcupadasb"
        required
   defaultValue={editando[0].dadosProfissionais.quantidadePessoasOcupadas}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="quantidadePessoasOcupadasI"
        onChange={onChange}
        placeholder="Quantidade de pessoas ocupadas"
@@ -750,13 +760,13 @@ return(
   </div>
   
   <div className="col-span-3">
-  <label htmlFor="ramoDaAtividadeI" className="form-label inline-block mb-2 text-gray-700">
+  <label htmlFor="ramoDaAtividadeI" className="form-label inline-block mb-2 text-white">
     Ramo da Atividade</label>
     <input type="text"
        name="ramoDaAtividadeb"
        required
   defaultValue={editando[0].dadosProfissionais.ramoDaAtividade}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="ramoDaAtividadeI"
        onChange={onChange}
        placeholder="Ramo da atividade"
@@ -764,12 +774,12 @@ return(
   </div>
   
   <div className="col-span-3">
-    <label htmlFor="numeroDaPastab" className="form-label inline-block mb-2 text-gray-700">Número da Pasta</label>
+    <label htmlFor="numeroDaPastab" className="form-label inline-block mb-2 text-white">Número da Pasta</label>
     <input type="text"
       name="numeroDaPastab"
       required
-      defaultValue={editando[0].dadosProfissionais.numeroDaPasta}
-      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      defaultValue={editando[0].numeroDaPasta}
+      className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="numeroDaPastaI"
       onChange={onChange}
       placeholder="Número da Pasta"
@@ -779,45 +789,45 @@ return(
   <br></br>
   
   <div className="mb-5">
-  <h1 className="text-black font-bold text-center text-xl whitespace-nowrap">Pasta de Documentos</h1>
+  <h1 className="text-white font-white text-center text-xl whitespace-nowrap">Pasta de Documentos</h1>
   </div>
   
   <br></br>
   
-  <h1 className="text-black text-center font-bold whitespace-nowrap">Alvará de Funcionamento - </h1>
+  <h1 className="text-white text-center font-bold whitespace-nowrap">Alvará de Funcionamento - </h1>
   
   
   <div className="col-span-3">
-    <label htmlFor="validadeAlvarab" className="form-label inline-block mb-2 text-gray-700">Validade</label>
+    <label htmlFor="validadeAlvarab" className="form-label inline-block mb-2 text-white">Validade</label>
     <input type="text"
       name="validadeAlvarab"
       defaultValue={editando[0].dadosProfissionais.validadeAlvara}
-      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="validadeAlvaraI"
       onChange={onChange}
       placeholder="Validade Alvará"
     />
   </div>
   <div className="col-span-3">
-    <label htmlFor="areaM2Funcionamentob" className="form-label inline-block mb-2 text-gray-700">
+    <label htmlFor="areaM2Funcionamentob" className="form-label inline-block mb-2 text-white">
       Área M²
     </label>
     <input type="text"
       name="areaM2Funcionamentob"
       defaultValue={editando[0].dadosProfissionais.areaM2Funcionamento}
-      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="areaM2FuncionamentoI"
       onChange={onChange}
       placeholder="Área M²"
     />
   </div>
   <div className="col-span-3">
-    <label htmlFor="numeroInscricaoMunicipalb" className="form-label inline-block mb-2 text-gray-700">
+    <label htmlFor="numeroInscricaoMunicipalb" className="form-label inline-block mb-2 text-white">
       Número da Inscrição Municipal
     </label>
     <input type="text"
       name="numeroInscricaoMunicipalb"
-      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="numeroInscricaoMunicipalI"
       defaultValue={editando[0].dadosProfissionais.numeroInscricaoMunicipal}
       onChange={onChange}
@@ -826,15 +836,15 @@ return(
   </div>
   
   
-  <h1 className="text-black mt-10 text-center font-bold whitespace-nowrap">Certificado Conformidade Corpo de Bombeiros - </h1>
+  <h1 className="text-white mt-10 text-center font-bold whitespace-nowrap">Certificado Conformidade Corpo de Bombeiros - </h1>
   
   <div className="col-span-3">
-    <label htmlFor="dataDeEmissaoBombeirosb" className="form-label inline-block mb-2 text-gray-700">
+    <label htmlFor="dataDeEmissaoBombeirosb" className="form-label inline-block mb-2 text-white">
       Data de Emissão
     </label>
     <input type="date"
       name="dataDeEmissaoBombeirosb"
-      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeEmissaoBombeirosI"
       defaultValue={editando[0].dadosProfissionais.dataDeEmissaoBombeiros}
       onChange={onChange}
@@ -842,12 +852,12 @@ return(
     />
   </div>
   <div className="col-span-3">
-    <label htmlFor="dataDeValidadeBombeirosb" className="form-label inline-block mb-2 text-gray-700">
+    <label htmlFor="dataDeValidadeBombeirosb" className="form-label inline-block mb-2 text-white">
       Data de Validade
     </label>
     <input type="date"
       name="dataDeValidadeBombeirosb"
-      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeValidadeBombeirosI"
       defaultValue={editando[0].dadosProfissionais.dataDeValidadeBombeiros}
       onChange={onChange}
@@ -856,12 +866,12 @@ return(
   </div>
   
   <div className="col-span-3">
-    <label htmlFor="areaM2Bombeirosb" className="form-label inline-block mb-2 text-gray-700">
+    <label htmlFor="areaM2Bombeirosb" className="form-label inline-block mb-2 text-white">
       Área M²
     </label>
     <input type="text"
       name="areaM2Bombeirosb"
-      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="areaM2BombeirosI"
       onChange={onChange}
       defaultValue={editando[0].dadosProfissionais.areaM2Bombeiros}
@@ -869,15 +879,15 @@ return(
     />
   </div>
   
-  <h1 className="text-black mt-10 text-center font-bold whitespace-nowrap">Alvará de Vigilância Sanitária - </h1>
+  <h1 className="text-white mt-10 text-center font-bold whitespace-nowrap">Alvará de Vigilância Sanitária - </h1>
   
   <div className="col-span-3">
-    <label htmlFor="dataDeValidadeVigilanciab" className="form-label inline-block mb-2 text-gray-700">
+    <label htmlFor="dataDeValidadeVigilanciab" className="form-label inline-block mb-2 text-white">
       Data de Validade da Vigilância Sanitária
     </label>
     <input type="date"
       name="dataDeValidadeVigilanciab"
-      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeValidadeVigilanciaI"
       onChange={onChange}
       defaultValue={editando[0].dadosProfissionais.dataDeValidadeVigilancia}
@@ -886,12 +896,12 @@ return(
   </div>
   
   <div className="col-span-3">
-    <label htmlFor="inscricaoVigilanciaSanitariab" className="form-label inline-block mb-2 text-gray-700">
+    <label htmlFor="inscricaoVigilanciaSanitariab" className="form-label inline-block mb-2 text-white">
       Inscrição Vigilância Sanitária
     </label>
     <input type="text"
       name="inscricaoVigilanciaSanitariab"
-      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="inscricaoVigilanciaSanitariaI"
       defaultValue={editando[0].dadosProfissionais.inscricaoVigilanciaSanitaria}
       onChange={onChange}
@@ -899,17 +909,17 @@ return(
     />
   </div>
   
-  <h1 className="text-black mt-10 text-center font-bold whitespace-nowrap">Licença Ambiental - </h1>
+  <h1 className="text-white mt-10 text-center font-bold whitespace-nowrap">Licença Ambiental - </h1>
   
   
   <div className="col-span-3">
-    <label htmlFor="dataDeEmissaoLicencaAmbientalb" className="form-label inline-block mb-2 text-gray-700">
+    <label htmlFor="dataDeEmissaoLicencaAmbientalb" className="form-label inline-block mb-2 text-white">
       Data de Emissão
     </label>
     <input type="date"
       name="dataDeEmissaoLicencaAmbientalb"
       defaultValue={editando[0].dadosProfissionais.dataDeEmissaoLicencaAmbiental}
-      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeEmissaoLicencaAmbientalI"
       onChange={onChange}
       placeholder="Data de Emissão da Licença Ambiental"
@@ -917,29 +927,29 @@ return(
   </div>
   
   <div className="col-span-3">
-    <label htmlFor="dataDeValidadeLicencaAmbientalb" className="form-label inline-block mb-2 text-gray-700">
+    <label htmlFor="dataDeValidadeLicencaAmbientalb" className="form-label inline-block mb-2 text-white">
       Data de Validade da Licença Ambiental
     </label>
     <input type="date"
       name="dataDeValidadeLicencaAmbientalb"
       defaultValue={editando[0].dadosProfissionais.dataDeValidadeLicencaAmbiental}
-      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeValidadeLicencaAmbientalI"
       onChange={onChange}
       placeholder="Data de Validade da Licença Ambiental"
     />
   </div>
   
-  <h1 className="text-black mt-10 text-center font-bold whitespace-nowrap">Contrato de Imóvel - </h1>
+  <h1 className="text-white mt-10 text-center font-bold whitespace-nowrap">Contrato de Imóvel - </h1>
   
   
   <div className="col-span-3">
-    <label htmlFor="tipoContratob" className="form-label inline-block mb-2 text-gray-700">
+    <label htmlFor="tipoContratob" className="form-label inline-block mb-2 text-white">
       Tipo de Contrato
     </label>
     <input type="text"
       name="tipoContratob"
-      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="tipoContratoI"
       defaultValue={editando[0].dadosProfissionais.tipoContrato}
       onChange={onChange}
@@ -947,16 +957,16 @@ return(
     />
   </div>
   
-  <h1 className="text-black mt-10 text-center font-bold whitespace-nowrap">Declaração de Baixa de Inscrição Municipal  - </h1>
+  <h1 className="text-white mt-10 text-center font-bold whitespace-nowrap">Declaração de Baixa de Inscrição Municipal  - </h1>
   
   
   <div className="col-span-3">
-    <label htmlFor="baixadab" className="form-label inline-block mb-2 text-gray-700">
+    <label htmlFor="baixadab" className="form-label inline-block mb-2 text-white">
       Baixada
     </label>
     <input type="text"
       name="baixadab"
-      className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="baixadaI"
       defaultValue={editando[0].dadosProfissionais.baixada}
       onChange={onChange}
@@ -969,8 +979,8 @@ return(
   
   
   
-  <div className="col-span-3">
-          <button type="submit" className="group bg-blue-600 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
+  <div className="col-span-3 p-5">
+          <button type="submit" className="group bg-red-800 hover:bg-red-700 transition ease-in-out duration-300 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
               <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto fill-white" width="20pt" height="20pt" version="1.1" viewBox="0 0 700 700">
                 <g>
@@ -980,7 +990,7 @@ return(
                 </svg>
   
               </span>
-              <h2 className="text-white">Concluir Registro</h2>
+              <h2 className="text-white font-bold">CONCLUIR EDIÇÃO</h2>
           </button>
     </div>
   

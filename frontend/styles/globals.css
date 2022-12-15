@@ -8,6 +8,10 @@
   font-family: Arial;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   justify-content: center;
   align-items: center;
