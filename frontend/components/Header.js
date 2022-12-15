@@ -42,8 +42,6 @@ function Header(){
       var tamanhoMax = scrollMaxValue()
       var tamanhoAtual = document.documentElement.scrollTop;
   
-      console.log(scrollMaxValue())
-  
       if (tamanhoAtual > (tamanhoMax - (tamanhoMax/2))) {
         setScrollTop(true);
       } else {
@@ -52,8 +50,6 @@ function Header(){
     });
   }, []);
   
-
-  console.log(ip);
   useEffect(() => {
     const onCharge = async(ev) => {
 
@@ -178,9 +174,11 @@ function Header(){
         <h1 className="cursor-pointer btn-13 hover:bg-assemiperBlack p-2 placeholder:rounded-md mt-1">
           Documentos
         </h1>
+        <Link href="/imprimir">
         <h1 className="cursor-pointer btn-13 hover:bg-assemiperBlack p-2 rounded-md mt-1">
           Imprimir
         </h1>
+        </Link>
         <h1 className="cursor-pointer btn-13 p-2 hover:bg-assemiperBlack rounded-md mt-1">
           Relação
         </h1>

@@ -58,7 +58,6 @@ const initialValue = {
   tipoContratob:'',
   baixadab:'',
   associateIdb:'',
-  numeroDaPasta:'',
 }
 
 const [values, setValues] = useState(initialValue);
@@ -80,6 +79,8 @@ const onSubmit = async(ev) => {
   ev.preventDefault();
 
   try{
+
+    console.log(editando)
     
     // values.nomeCompletob = editando[0].dadosPessoais.nomeCompleto;
     // values.estadoCivilb = editando[0].dadosPessoais.estadoCivil ?? null;
@@ -210,7 +211,7 @@ const onSubmit = async(ev) => {
     }
 
     if(values.cnpjb  == ''){
-      values.cnpjb   = editando[0].editando[0].dadosProfissionais.cnpj 
+      values.cnpjb   = editando[0].dadosProfissionais.cnpj 
     }else{
       values.cnpjb  = values.cnpjb  
     }
@@ -276,7 +277,7 @@ const onSubmit = async(ev) => {
     }
 
     if(values.numeroDaPastab  == ''){
-      values.numeroDaPastab = editando[0].dadosProfissionais.numeroDaPasta 
+      values.numeroDaPastab = editando[0].numeroDaPasta
     }else{
       values.numeroDaPastab = values.numeroDaPastab 
     }
@@ -360,7 +361,8 @@ const onSubmit = async(ev) => {
       var result = resposta?.status 
 
       if(result == 200){
-        window.alert("Registrado com sucesso.")
+        window.alert("Editado com sucesso.")
+        window.location.reload()
       }else{
         window.alert("Erro")
       }
@@ -437,12 +439,16 @@ const [clicko, setClicko ] = useState(false);
   const deleteAssociate = async(value) => {
     console.log("Apertou " + value + " pra deletar")
     try{ 
+      if(window.confirm("Deseja realmente deletar este associado do sistema?")){
       console.log("Try")
       values.associateIdb = value;
       const resposta = await Axios.post('http://'+ ipatual +'/api/deleteAssociate', values).then(
       window.alert("Deletado com Sucesso!"),
       window.location.reload()
       )
+      }else{
+        window.alert("Delete cancelado.")
+      }
     }catch(error){
       console.log(error);
     }
