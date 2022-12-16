@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        'assemiperBlack':'#0F0F0F'
+        'assemiperBlack':'#0F0F0F',
+        'assemiperRed':"#cc0001"
       },
     },
   },

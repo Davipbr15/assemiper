@@ -42,11 +42,31 @@ app.listen(3005, ()=>{
     console.log("   |  Server Local Iniciado.  |");
 })
 
-require("./userDetails");
-require("./loginDetail");
+/*
+
+require("./details/services/banco/ataReuniaoDetail");
+const  = mongoose.model("LoginUser");
+const Associate = mongoose.model("AssociateInfo");
+
+*/
+
+require("./details/userDetails");
+require("./details/loginDetail");
 const Login = mongoose.model("LoginUser");
 const Associate = mongoose.model("AssociateInfo");
 var logged = true;
+
+const os = require('os');
+
+const networkInfo = os.networkInterfaces();
+
+const ipAtual = networkInfo['Wi-Fi'][3].address; // ip
+
+app.get("/api/ipConfig", async(req,res)=>{
+    
+    res.send(ipAtual);
+})
+
 
 app.post('/', async(req,res)=>{
 
