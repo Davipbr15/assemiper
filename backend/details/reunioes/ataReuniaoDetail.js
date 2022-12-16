@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 
-const ReuniaoSchema = new mongoose.Schema(
+const AtaReuniaoSchema = new mongoose.Schema(
     {
        // Data, Nome dos Presentes Na Reunião, Tema da Reunião
        dataReuniao:{type:String, trim:true, required: true},
@@ -14,4 +14,4 @@ const ReuniaoSchema = new mongoose.Schema(
     }
 );
 
-mongoose.model("AtaReuniao", ReuniaoSchema);
+mongoose.model("AtaReuniao", AtaReuniaoSchema);

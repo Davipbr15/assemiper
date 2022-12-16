@@ -48,12 +48,22 @@ Banco
 CF
 require("./details/services/banco/cadastroFisicaDetail");
 const BCF = mongoose.model("BancoCadastroFisica");
-
 Services
 Banco
 CJ
 require("./details/services/banco/cadastroJuridicoDetail");
-const BCF = mongoose.model("BancoCadastroJuridico");
+const BCJ = mongoose.model("BancoCadastroJuridico");
+*/
+/*
+Reuniões
+Ata Reunião
+require("./details/services/reunioes/ataReuniaoDetail");
+const AtaReuniao = mongoose.model("AtaReuniao");
+
+Reuniões
+Convite
+require("./details/services/reunioes/conviteReuniaoDetail");
+const ConviteReuniao = mongoose.model("conviteReuniao");
 
 */
 
