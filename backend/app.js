@@ -43,10 +43,11 @@ app.listen(3005, ()=>{
 })
 
 /*
-
-require("./details/services/banco/ataReuniaoDetail");
-const  = mongoose.model("LoginUser");
-const Associate = mongoose.model("AssociateInfo");
+Services
+Banco
+CF
+require("./details/services/banco/cadastroFisica");
+const Login = mongoose.model("LoginUser");
 
 */
 
