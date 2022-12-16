@@ -60,34 +60,35 @@ function ImprimirAssociado(){
           console.log(error);
         }
         await setImprimir(result)
-        setImprimindo(true)
       };
-
-      function viewData(){
-        const data1 = dataA()
-        var data = this.props.data1;
-      }
       
 
-      function dataA(){
-              window.alert()
-              const dataA = imprimir[0].dadosPessoais.dataDeNascimento
-              let dia  = dataA.getDate().toString();
-              let diaF = (dia.length == 1) ? '0'+dia : dia;
-              let mes  = (data.getMonth()+1).toString(); //+1 pois no getMonth Janeiro começa com zero.
-              let mesF = (mes.length == 1) ? '0'+mes : mes;
-              let anoF = data.getFullYear();
-              return diaF+"/"+mesF+"/"+anoF
+      async function dataA(){
+        try{
+              setDatab({object: { string: "data"}})
+              // console.log(imprimir[0].dadosPessoais.dataDeNascimento)
+              // let dia  = dataA.getDate().toString();
+              // let diaF = (dia.length == 1) ? '0'+dia : dia;
+              // let mes  = (dataA.getMonth()+1).toString(); //+1 pois no getMonth Janeiro começa com zero.
+              // let mesF = (mes.length == 1) ? '0'+mes : mes;
+              // let anoF = dataA.getFullYear();
+              // return diaF+"/"+mesF+"/"+anoF
+        }catch(err){
+          window.alert(err)
+        }
       };
+
+      var [dataB, setDatab] = React.useState([]);
 
       async function getPrintAssociate(value){
         let getAscValue = value;
         window.alert("Imprimir associado de id " + getAscValue)
         if(window.confirm("Confirmar impressão?")){
             window.alert("Imprimindo.")
-            viewData();
             setImprimir((prev) => !prev)
-            await imprimeAssociate(getAscValue);
+            await imprimeAssociate(getAscValue)
+            setImprimindo(true)
+            dataA()
         }else{
             window.alert("Impressão cancelada.")
         }
@@ -117,7 +118,7 @@ function ImprimirAssociado(){
           </div>
           <div className="flex">
             <h1 className="text-xl p-2">Data de Nascimento:</h1><h1 className="font-semibold p-2 text-xl">{
-              {data}
+              {dataB}
             }</h1>
           </div>
           <div className="flex">
