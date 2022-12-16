@@ -269,7 +269,7 @@ function ImprimirAssociado(){
           <h1 className="bg-assemiperRed text-3xl text-white font-bold rounded-xl p-1"
           >Dados Profissionais:</h1>
           
-          <h1 className="text-2xl text-black font-bold rounded-xl p-1"
+          <h1 className="text-2xl pt-3 text-black font-bold rounded-xl p-1"
               >Informações <i className="text-xl bi bi-chevron-down"></i> </h1>
             <ul className="pl-4">
           <li>
