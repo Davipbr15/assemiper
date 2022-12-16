@@ -46,8 +46,14 @@ app.listen(3005, ()=>{
 Services
 Banco
 CF
-require("./details/services/banco/cadastroFisica");
-const Login = mongoose.model("LoginUser");
+require("./details/services/banco/cadastroFisicaDetail");
+const BCF = mongoose.model("BancoCadastroFisica");
+
+Services
+Banco
+CJ
+require("./details/services/banco/cadastroJuridicoDetail");
+const BCF = mongoose.model("BancoCadastroJuridico");
 
 */
 
