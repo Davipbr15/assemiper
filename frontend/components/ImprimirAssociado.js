@@ -234,27 +234,33 @@ function ImprimirAssociado(){
               <h1 className="text-2xl text-black font-bold rounded-xl p-1"
               >Contato <i className="text-xl bi bi-chevron-down"></i> </h1>
             <ul className="pl-4">
-            <div className="flex">
-              <h1 className="text-xl p-1">
-                Email:</h1>
-              <h1 className="font-semibold p-1 text-xl">
-                {imprimir[0].dadosPessoais.emailPessoal}
-              </h1>
-            </div>
-            <div className="flex">
-              <h1 className="text-xl p-1">
-                Telefone Fixo:</h1>
-              <h1 className="font-semibold p-1 text-xl">
-                {imprimir[0].dadosPessoais.telefoneFixoPessoal}
-              </h1>
-            </div>
-            <div className="flex">
-              <h1 className="text-xl pb-5 p-1">
-                Telefone Celular:</h1>
-              <h1 className="font-semibold p-1 text-xl">
-                {imprimir[0].dadosPessoais.celularPessoal}
-              </h1>
-            </div>
+            <li>
+              <div className="flex">
+                <h1 className="text-xl p-1">
+                  Email:</h1>
+                <h1 className="font-semibold p-1 text-xl">
+                  {imprimir[0].dadosPessoais.emailPessoal}
+                </h1>
+              </div>
+            </li>
+            <li>
+              <div className="flex">
+                <h1 className="text-xl p-1">
+                  Telefone Fixo:</h1>
+                <h1 className="font-semibold p-1 text-xl">
+                  {imprimir[0].dadosPessoais.telefoneFixoPessoal}
+                </h1>
+              </div>
+            </li>
+            <li>
+              <div className="flex">
+                <h1 className="text-xl pb-5 p-1">
+                  Telefone Celular:</h1>
+                <h1 className="font-semibold p-1 text-xl">
+                  {imprimir[0].dadosPessoais.celularPessoal}
+                </h1>
+              </div>
+            </li>
             </ul>
           </div>
           {
@@ -262,111 +268,135 @@ function ImprimirAssociado(){
           }
           <h1 className="bg-assemiperRed text-3xl text-white font-bold rounded-xl p-1"
           >Dados Profissionais:</h1>
+          
           <h1 className="text-2xl text-black font-bold rounded-xl p-1"
               >Informações <i className="text-xl bi bi-chevron-down"></i> </h1>
             <ul className="pl-4">
-          <div className="flex">
-            <h1 className="text-xl p-1">
-              Razão Social:</h1>
-            <h1 className="font-semibold p-1 text-xl">
-              {imprimir[0].dadosProfissionais.razaoSocial}
-            </h1>
-          </div>
-          <div className="flex">
-            <h1 className="text-xl p-1">
-              Nome Fantasia:</h1>
-            <h1 className="font-semibold p-1 text-xl">
-              {imprimir[0].dadosProfissionais.nomeFantasia}
-            </h1>
-          </div>
-          <div className="flex">
-            <h1 className="text-xl p-1">
-              CNPJ:</h1>
-            <h1 className="font-semibold p-1 text-xl">
-              {imprimir[0].dadosProfissionais.cnpj}
-            </h1>
-          </div>
-          <div className="flex">
-            <h1 className="text-xl p-1">
-              Número de Inscrição:</h1>
-            <h1 className="font-semibold p-1 text-xl">
-              {imprimir[0].dadosProfissionais.numeroInscricao}
-            </h1>
-          </div>
-          <div className="flex">
-            <h1 className="text-xl p-1">
-              Endereço:</h1>
-            <h1 className="font-semibold p-1 text-xl">
-              {imprimir[0].dadosProfissionais.enderecoSede}
-            </h1>
-          </div>
-          <div className="flex">
-            <h1 className="text-xl p-1">
-              Número:</h1>
-            <h1 className="font-semibold p-1 text-xl">
-              {imprimir[0].dadosProfissionais.numeroSede}
-            </h1>
-          </div>
-          <div className="flex">
-            <h1 className="text-xl p-1">
-              Complemento:</h1>
-            <h1 className="font-semibold p-1 text-xl">
-              {imprimir[0].dadosProfissionais.complementoSede}
-            </h1>
-          </div>
-          <div className="flex">
-            <h1 className="text-xl p-1">
-              Bairro:</h1>
-            <h1 className="font-semibold p-1 text-xl">
-              {imprimir[0].dadosProfissionais.bairroSede}
-            </h1>
-          </div>
-          <div className="flex">
-            <h1 className="text-xl p-1">
-              CEP:</h1>
-            <h1 className="font-semibold p-1 text-xl">
-              {imprimir[0].dadosProfissionais.cepSede}
-            </h1>
-          </div>
-          <div className="flex">
-            <h1 className="text-xl p-1">
-              Cidade e Estado:</h1>
-            <h1 className="font-semibold p-1 text-xl">
-              {imprimir[0].dadosProfissionais.cidadeEstadoSede}
-            </h1>
-          </div>
-          <div className="flex">
-            <h1 className="text-xl p-1">
-              Email Profissional:</h1>
-            <h1 className="font-semibold p-1 text-xl">
-              {imprimir[0].dadosProfissionais.emailProfissional}
-            </h1>
-          </div>
-          <div className="flex">
-            <h1 className="text-xl p-1">
-              Data de abertura:</h1>
-            <h1 className="font-semibold p-1 text-xl">
-            {imprimir[0].dadosProfissionais.dataDeAbertura.charAt(8)+
-              imprimir[0].dadosProfissionais.dataDeAbertura.charAt(9)
-              +"/"+
-              imprimir[0].dadosProfissionais.dataDeAbertura.charAt(5)+
-              imprimir[0].dadosProfissionais.dataDeAbertura.charAt(6)
-              +"/"+
-              imprimir[0].dadosProfissionais.dataDeAbertura.charAt(0)+
-              imprimir[0].dadosProfissionais.dataDeAbertura.charAt(1)+
-              imprimir[0].dadosProfissionais.dataDeAbertura.charAt(2)+
-              imprimir[0].dadosProfissionais.dataDeAbertura.charAt(3)
-              }
-            </h1>
-          </div>
-          <div className="flex">
-            <h1 className="text-xl p-1">
-             Ramo da Atividade:</h1>
-            <h1 className="font-semibold p-1 text-xl">
-              {imprimir[0].dadosProfissionais.ramoDaAtividade}
-            </h1>
-          </div>
+          <li>
+            <div className="flex">
+              <h1 className="text-xl p-1">
+                Razão Social:</h1>
+              <h1 className="font-semibold p-1 text-xl">
+                {imprimir[0].dadosProfissionais.razaoSocial}
+              </h1>
+            </div>
+          </li>
+          <li>
+            <div className="flex">
+              <h1 className="text-xl p-1">
+                Nome Fantasia:</h1>
+              <h1 className="font-semibold p-1 text-xl">
+                {imprimir[0].dadosProfissionais.nomeFantasia}
+              </h1>
+            </div>
+          </li>
+          <li>
+            <div className="flex">
+              <h1 className="text-xl p-1">
+                CNPJ:</h1>
+              <h1 className="font-semibold p-1 text-xl">
+                {imprimir[0].dadosProfissionais.cnpj}
+              </h1>
+            </div>
+          </li>
+          <li>
+            <div className="flex">
+              <h1 className="text-xl p-1">
+                Número de Inscrição:</h1>
+              <h1 className="font-semibold p-1 text-xl">
+                {imprimir[0].dadosProfissionais.numeroInscricao}
+              </h1>
+            </div>
+          </li>
           </ul>
+          <div className="contato border-assemiperRed border-t pb-2 pt-2"/>
+          <h1 className="text-2xl text-black font-bold rounded-xl p-1"
+              >Endereço <i className="text-xl bi bi-chevron-down"></i> </h1>
+          <ul className="pl-4">
+            
+            <div className="flex">
+              <h1 className="text-xl p-1">
+                Endereço:</h1>
+              <h1 className="font-semibold p-1 text-xl">
+                {imprimir[0].dadosProfissionais.enderecoSede}
+              </h1>
+            </div>
+            <div className="flex">
+              <h1 className="text-xl p-1">
+                Número:</h1>
+              <h1 className="font-semibold p-1 text-xl">
+                {imprimir[0].dadosProfissionais.numeroSede}
+              </h1>
+            </div>
+            <div className="flex">
+              <h1 className="text-xl p-1">
+                Complemento:</h1>
+              <h1 className="font-semibold p-1 text-xl">
+                {imprimir[0].dadosProfissionais.complementoSede}
+              </h1>
+            </div>
+            <div className="flex">
+              <h1 className="text-xl p-1">
+                Bairro:</h1>
+              <h1 className="font-semibold p-1 text-xl">
+                {imprimir[0].dadosProfissionais.bairroSede}
+              </h1>
+            </div>
+            <div className="flex">
+              <h1 className="text-xl p-1">
+                CEP:</h1>
+              <h1 className="font-semibold p-1 text-xl">
+                {imprimir[0].dadosProfissionais.cepSede}
+              </h1>
+            </div>
+            <div className="flex">
+              <h1 className="text-xl p-1">
+                Cidade e Estado:</h1>
+              <h1 className="font-semibold p-1 text-xl">
+                {imprimir[0].dadosProfissionais.cidadeEstadoSede}
+              </h1>
+            </div>
+          </ul>
+
+          <div className="contato border-assemiperRed border-t pb-2 pt-2"/>
+          <h1 className="text-2xl text-black font-bold rounded-xl p-1"
+              >Outros <i className="text-xl bi bi-chevron-down"></i> </h1>
+          <ul className="pl-4">
+            
+  
+            <div className="flex">
+              <h1 className="text-xl p-1">
+                Email Profissional:</h1>
+              <h1 className="font-semibold p-1 text-xl">
+                {imprimir[0].dadosProfissionais.emailProfissional}
+              </h1>
+            </div>
+            <div className="flex">
+              <h1 className="text-xl p-1">
+                Data de abertura:</h1>
+              <h1 className="font-semibold p-1 text-xl">
+              {imprimir[0].dadosProfissionais.dataDeAbertura.charAt(8)+
+                imprimir[0].dadosProfissionais.dataDeAbertura.charAt(9)
+                +"/"+
+                imprimir[0].dadosProfissionais.dataDeAbertura.charAt(5)+
+                imprimir[0].dadosProfissionais.dataDeAbertura.charAt(6)
+                +"/"+
+                imprimir[0].dadosProfissionais.dataDeAbertura.charAt(0)+
+                imprimir[0].dadosProfissionais.dataDeAbertura.charAt(1)+
+                imprimir[0].dadosProfissionais.dataDeAbertura.charAt(2)+
+                imprimir[0].dadosProfissionais.dataDeAbertura.charAt(3)
+                }
+              </h1>
+            </div>
+            <div className="flex">
+              <h1 className="text-xl p-1">
+               Ramo da Atividade:</h1>
+              <h1 className="font-semibold p-1 text-xl">
+                {imprimir[0].dadosProfissionais.ramoDaAtividade}
+              </h1>
+            </div>
+          </ul>
+          
         </div>
         )   
         }
