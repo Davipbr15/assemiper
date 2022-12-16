@@ -11,7 +11,6 @@ function Header(){
 
   const ip = ipatual;
 
-  
   function scrollToTop(){
     window.scrollTo({
       top: 0,
@@ -171,9 +170,11 @@ function Header(){
         className="text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold"
         id="submenu"
       >
-        <h1 className="cursor-pointer btn-13 hover:bg-assemiperBlack p-2 placeholder:rounded-md mt-1">
-          Documentos
-        </h1>
+        <Link href="/pastaDocumentos">
+          <h1 className="cursor-pointer btn-13 hover:bg-assemiperBlack p-2 placeholder:rounded-md mt-1">
+            Documentos
+          </h1>
+        </Link>
         <Link href="/imprimir">
         <h1 className="cursor-pointer btn-13 hover:bg-assemiperBlack p-2 rounded-md mt-1">
           Imprimir

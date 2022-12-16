@@ -863,7 +863,7 @@ return(
     <input type="text"
        name="razaoSocialb"
        required
-  defaultValue={editando[0].dadosProfissionais.razaoSocial}
+        defaultValue={editando[0].dadosProfissionais.razaoSocial}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="razaoSocialI"
        onChange={onChange}
@@ -877,7 +877,7 @@ return(
     <input type="text"
        name="nomeFantasiab"
        required
-  defaultValue={editando[0].dadosProfissionais.razaoSocial}
+        defaultValue={editando[0].dadosProfissionais.nomeFantasia}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="nomeFantasiaI"
        onChange={onChange}
