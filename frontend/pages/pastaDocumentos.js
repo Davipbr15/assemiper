@@ -16,7 +16,7 @@ export default function Home() {
 
     <Header />
     
-    <h1>Oficios.</h1>
+    <h1>Work In Progress. . .</h1>
 
     </div>
   )

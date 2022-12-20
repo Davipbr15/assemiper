@@ -96,6 +96,7 @@ function ImprimirAssociado(){
       function print(){
         window.print()
       }
+      
       function voltar(){
         window.location.reload()
       }

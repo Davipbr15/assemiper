@@ -269,9 +269,6 @@ function Header(){
           Imprimir
         </h1>
         </Link>
-        <h1 className="cursor-pointer btn-13 p-2 hover:bg-assemiperBlack rounded-md mt-1">
-          Relação
-        </h1>
       </div>
       </div>
       <Link href="/">
