@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Axios from "axios";
-import { useHistory } from 'react-router-dom';
-import { useForm } from "react-hook-form";
-import { ErrorMessage } from "@hookform/error-message";
 import {ipatual} from './ip.js';
+import moment from 'moment';
 
 function App() {
+
+  var data = moment()
+  var data1 = data.defineLocale('pt-br')
+  var data2 = data1.format('LLLL')
+  if (typeof window !== 'undefined'){
+    window.alert(data2)
+  }else{
+  } 
+  
 
 const initialValue = {
   nomeCompletob: '',
@@ -54,10 +61,10 @@ const initialValue = {
   dataDeValidadeLicencaAmbientalb:'',
   tipoContratob:'',
   baixadab:'',
+  dataCriacaob:data,
 }
 
 const [values, setValues] = useState(initialValue);
-
 
 function onChange(ev) {
 

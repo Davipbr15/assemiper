@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 
 const AssociateInfoSchema = new mongoose.Schema(
     {
+      dataCriacao:{type:String,trim:true, required:true},
       numeroDaPasta:{type:String,trim:true, required:true},  
       dadosPessoais: {
 
