@@ -132,7 +132,7 @@ function ShowAssociate(){
           {dados[0].numeroDaPasta}
 
           <div className="App bg-assemiperBlack">
-  <button onClick={reload} className="m-5 group hover:scale-110 bg-red-800 hover:bg-red-700 transition ease-in-out duration-150 relative flex justify-center py-2 px-6 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
+  <button onClick={reload} className="text-center m-5 group hover:scale-110 bg-red-800 hover:bg-red-700 transition ease-in-out duration-150 flex justify-center py-2 px-6 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
     Voltar
   </button>
 
@@ -149,7 +149,6 @@ function ShowAssociate(){
     <input type="text"
       name="nomeCompletob"
       required
-disabled
       disabled
       defaultValue={dados[0].dadosPessoais.nomeCompleto}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -164,7 +163,7 @@ disabled
     <input type="text"
       name="estadoCivilb"
       required
-disabled
+      disabled
       defaultValue={dados[0].dadosPessoais.estadoCivil}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="estadoCivilI"
