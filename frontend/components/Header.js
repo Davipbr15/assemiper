@@ -75,6 +75,9 @@ function Header(){
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isNavOpen2, setIsNavOpen2] = useState(false);
   const [isNavOpen3, setIsNavOpen3] = useState(false);
+  const [isNavBanco, setIsNavBanco] = useState(false);
+  const [isNavBoletos, setIsNavBoletos] = useState(false);
+
 
 
     return( 
@@ -100,97 +103,141 @@ function Header(){
       <h1 className="text-white text-md font-bold">Seja bem-vindo(a)</h1>
       <div className="my-2 bg-gray-600 h-[1px]"></div>
       
-      <div>
-      </div>
-      <div
-        className="p-2.5 mt-3 btn-13 flex items-center rounded-md px-4 duration-300 hover:bg-assemiperBlack cursor-pointer text-white"
-      >
-        <i className="bi bi-house-door-fill"></i>
-        <Link href="/index2">
-            <a
-              className="text-[15px] ml-4 text-gray-200 font-bold"
-            >
-            Home
-            </a>
-        </Link>
+      <div className="Home-aba">
+          <div
+            className="p-2.5 mt-3 btn-13 flex items-center rounded-md px-4 duration-300 hover:bg-assemiperBlack cursor-pointer text-white"
+          >
+            <i className="bi bi-house-door-fill"></i>
+            <Link href="/index2">
+                <a
+                  className="text-[15px] ml-4 text-gray-200 font-bold"
+                >
+                Home
+                </a>
+            </Link>
+          </div>
       </div>
       
-      <div
-        className="p-2.5 mt-3 btn-13 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-assemiperBlack text-white"
-        onClick={() => setIsNavOpen((prev) => !prev)}      
-       >
-        <i className="bi bi-chat-left-text-fill"></i>
-        <div className="flex hover:bg-assemiperBlack justify-between w-full items-center">
-          <span className="text-[15px] ml-4 text-gray-200 font-bold">Associados</span>
-          <span className="text-sm rotate-180" id="arrow">
-          <div className={isNavOpen ? "bi-chevron-down" : "bi-chevron-up"}>
-          <i className="bi"></i>
+      <div className="Associados-aba">
+          <div
+            className="p-2.5 mt-3 btn-13 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-assemiperBlack text-white"
+            onClick={() => setIsNavOpen((prev) => !prev)}      
+          >
+            <i className="bi bi-chat-left-text-fill"></i>
+            <div className="flex hover:bg-assemiperBlack justify-between w-full items-center">
+              <span className="text-[15px] ml-4 text-gray-200 font-bold">Associados</span>
+              <span className="text-sm rotate-180" id="arrow">
+              <div className={isNavOpen ? "bi-caret-down" : "bi-caret-up"}>
+              <i className="bi"></i>
+              </div>
+              </span>
+            </div>
           </div>
-          </span>
-        </div>
-      </div>
-      <div className={isNavOpen ? "show" : "hidden"}>
-      <div
-        className="text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold"
-        id="submenu"
-      >
-        <Link href="/showAssociados">
-          <h1 className="cursor-pointer btn-13 p-2 hover:bg-assemiperBlack rounded-md mt-1">
-            Exibir
-          </h1>
-        </Link>
-        <Link href="/registrarAssociado">
-          <h1 className="cursor-pointer btn-13 hover:bg-assemiperBlack p-2 placeholder:rounded-md mt-1">
-            Registrar
-          </h1>
-        </Link>
-        <Link href="/editAssociate">
-          <h1 className="cursor-pointer btn-13 hover:bg-assemiperBlack p-2 rounded-md mt-1">
-            Editar
-          </h1>
-        </Link>
-      </div>
-      </div>
-
-
-
-      <div
-        className="p-2.5 mt-3 btn-13 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-assemiperBlack text-white"
-        onClick={() => setIsNavOpen2((prev) => !prev)}      
-       >
-        <i className="bi bi-chat-left-text-fill"></i>
-        <div className="flex hover:bg-assemiperBlack justify-between w-full items-center">
-          <span className="text-[15px] ml-4 text-gray-200 font-bold">Associados</span>
-          <span className="text-sm rotate-180" id="arrow">
-          <div className={isNavOpen2 ? "bi-chevron-down" : "bi-chevron-up"}>
-          <i className="bi"></i>
+          <div className={isNavOpen ? "show" : "hidden"}>
+          <div
+            className="text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold"
+            id="submenu"
+          >
+            <Link href="/showAssociados">
+              <h1 className="cursor-pointer btn-13 p-2 hover:bg-assemiperBlack rounded-md mt-1">
+                Exibir
+              </h1>
+            </Link>
+            <Link href="/registrarAssociado">
+              <h1 className="cursor-pointer btn-13 hover:bg-assemiperBlack p-2 placeholder:rounded-md mt-1">
+                Registrar
+              </h1>
+            </Link>
+            <Link href="/editAssociate">
+              <h1 className="cursor-pointer btn-13 hover:bg-assemiperBlack p-2 rounded-md mt-1">
+                Editar
+              </h1>
+            </Link>
           </div>
-          </span>
-        </div>
-      </div>
-      <div className={isNavOpen2 ? "show" : "hidden"}>
-      <div
-        className="text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold"
-        id="submenu"
-      >
-        <Link href="/showAssociados">
-          <h1 className="cursor-pointer btn-13 p-2 hover:bg-assemiperBlack rounded-md mt-1">
-            Exibir
-          </h1>
-        </Link>
-        <Link href="/registrarAssociado">
-          <h1 className="cursor-pointer btn-13 hover:bg-assemiperBlack p-2 placeholder:rounded-md mt-1">
-            Registrar
-          </h1>
-        </Link>
-        <Link href="/editAssociate">
-          <h1 className="cursor-pointer btn-13 hover:bg-assemiperBlack p-2 rounded-md mt-1">
-            Editar
-          </h1>
-        </Link>
-      </div>
+          </div>
       </div>
 
+      <div className="Servicos-aba">
+          <div
+            className="p-2.5 mt-3 btn-13 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-assemiperBlack text-white"
+            onClick={() => setIsNavOpen2((prev) => !prev)}      
+          >
+            <i className="bi bi-bag-fill"></i>
+            <div className="flex hover:bg-assemiperBlack justify-between w-full items-center">
+              <span className="text-[15px] ml-4 text-gray-200 font-bold">Serviços</span>
+              <span className="text-sm rotate-180" id="arrow">
+              <div className={isNavOpen2 ? "bi-caret-down" : "bi-caret-up"}>
+              <i className="bi"></i>
+              </div>
+              </span>
+            </div>
+          </div>
+
+          <div className={isNavOpen2 ? "show" : "hidden"}>
+            <div
+            className=" whitespace-nowrap text-left mt-2 w-4/5 mx-auto text-gray-200 font-bold"
+            id="submenu"
+            >
+
+                    <div className="TABELA-DE-SERVICOS">
+                      <Link href="/tabelaDeServicos">
+                      <div
+                        className="p-2.5 btn-13 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-assemiperBlack text-white"
+                      >
+                     <i className="bi bi-table"></i>
+                        <div className="flex hover:bg-assemiperBlack justify-between w-full items-center">
+                        <span className="text-[15px] ml-4 text-gray-200 font-bold">Tabela de Serviços</span>
+                        </div>
+                      </div>
+                      </Link>
+                      
+                    </div>
+
+                    <div className="BANCO">
+                      <div
+                        className="p-2.5 btn-13 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-assemiperBlack text-white"
+                        onClick={() => setIsNavBanco((prev) => !prev)}      
+                      >
+                     <i className="bi bi-bank"></i>
+                        <div className="flex hover:bg-assemiperBlack justify-between w-full items-center">
+                        <span className="text-[15px] ml-4 text-gray-200 font-bold">Banco</span>
+                        <span className="text-sm rotate-180" id="arrow">
+                          <div className={isNavBanco ? "bi-caret-down" : "bi-caret-up"}>
+                          <i className="bi"></i>
+              
+                          </div>
+              
+                         </span>
+              
+                        </div>
+            
+                      </div>
+                      <div className={isNavBanco ? "show" : "hidden"}>
+                      <div
+                    className="mr-2 whitespace-nowrap text-left w-4/5 mx-auto text-gray-200 font-bold"
+                    id="submenu"
+                      >
+                      <Link href="/cadastroPessoaFisica">
+                  
+                        <h4 className="whitespace-nowrap cursor-pointer text-sm btn-13 hover:bg-assemiperBlack p-2 placeholder:rounded-md">
+                        <i className="bi bi-file-earmark-person"></i> Pessoa Física
+                        </h4>
+                        </Link>
+                        <Link href="/cadastroPessoaJuridica">
+                          <h4 className="whitespace-nowrap  cursor-pointer text-sm btn-13 hover:bg-assemiperBlack p-2 placeholder:rounded-md">
+                          <i className="bi bi-file-earmark-person-fill"></i> Pessoa Jurídica
+                          </h4>
+                        </Link>
+                      </div>
+                      </div>
+                      
+                    </div>
+
+              </div>
+             </div>
+            </div>
+            
+            
 
       <div className="my-4 bg-gray-600 h-[1px]"></div>
       <div
@@ -201,7 +248,7 @@ function Header(){
         <div className="flex hover:bg-assemiperBlack justify-between w-full items-center">
           <span className="text-[15px] ml-4 text-gray-200 font-bold">Outros</span>
           <span className="text-sm rotate-180" id="arrow">
-          <div className={isNavOpen3 ? "bi-chevron-down" : "bi-chevron-up"}>
+          <div className={isNavOpen3 ? "bi-caret-down" : "bi-caret-up"}>
           <i className="bi"></i>
           </div>
           </span>
@@ -242,7 +289,7 @@ function Header(){
     {scrollTop && (
         <button x-data="topBtn" onClick={scrollToTop} id="topButton"
         className="fixed z-50 show p-2 text-black bg-gray-100 rounded-full shadow-md bottom-10 right-5 animate-bounce">
-        <i className="bi bi-chevron-up"></i>
+        <i className="bi bi-caret-up"></i>
       </button>
       )}
 
