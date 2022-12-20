@@ -127,10 +127,6 @@ function ShowAssociate(){
 
         <div className="App">
 
-          <h1>Hello World.</h1>
-
-          {dados[0].numeroDaPasta}
-
           <div className="App bg-assemiperBlack">
   <button onClick={reload} className="text-center m-5 group hover:scale-110 bg-red-800 hover:bg-red-700 transition ease-in-out duration-150 flex justify-center py-2 px-6 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
     Voltar
@@ -143,6 +139,8 @@ function ShowAssociate(){
 
   
   <div className="grid grid-cols-3 gap-6">
+
+    <h1 className="whitespace-nowrap text-sm">Data de criação do associado: {dados[0].dataCriacao}</h1>
   
   <div className="col-span-3">
     <label htmlFor="nomeCompletoI" className="form-label inline-block mb-2 text-white">Nome completo</label>
