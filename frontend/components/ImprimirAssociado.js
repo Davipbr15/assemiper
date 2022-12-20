@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Axios from 'axios';
+import Image from 'next/image';
 import Header from "../components/Header.js";
 import {ipatual} from './ip.js';
 import "bootstrap-icons/font/bootstrap-icons.css";
+import moment from 'moment';
+require('moment/locale/pt-br');
 
 function ImprimirAssociado(){
 
     const [view, setView] = useState();
 
-    
+    var dataFormatada = moment()
+    var dataAtual = dataFormatada.format('LLLL')  
+
     const initialValue = {
         razaoSocialb: '',
         nomeFantasiab: '',
@@ -29,7 +34,7 @@ function ImprimirAssociado(){
             console.log(error);
           }
         };
-      
+
         fetchData();
       }, []);
       
@@ -49,6 +54,10 @@ function ImprimirAssociado(){
     
       const [navbarOpen, setNavbarOpen] = React.useState(false);
 
+      function toggleZoomScreen() {
+        document.body.style.zoom = "55%";
+      } 
+      
       var result;
       async function imprimeAssociate(value){
         try{ 
@@ -60,15 +69,17 @@ function ImprimirAssociado(){
           console.log(error);
         }
         await setImprimir(result)
+        toggleZoomScreen();
       };
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
       
-
       const getPrintAssociate = async(value) => {
 
         let getAscValue = value;
         window.alert("Imprimir associado de id " + getAscValue)
         if(window.confirm("Confirmar impressão?")){
-            window.alert("Imprimindo.")
             setImprimir((prev) => !prev)
             await imprimeAssociate(getAscValue)
             setImprimindo(true)
@@ -88,10 +99,22 @@ function ImprimirAssociado(){
         {imprimindo &&
         (
         <div className="App2 p-5 whitespace-nowrap">
-          <h1>{
-          Date()
-          }</h1>
-          <h1 className="bg-assemiperRed text-3xl text-white font-bold rounded-xl p-2">Dados Pessoais:</h1>
+        <div className="flex justify-center"> 
+          <div className="w-2/5 justify-center">
+            <Image
+            src="/img/headerPDF.png"
+            alt="Imagem não encontrada"
+            className=''
+            width={1169}
+            height={441}
+            quality={100}
+            />
+          </div>
+        </div> 
+          <h1 className='text-sm text-right'>
+          Criado em: {imprimir[0].dataCriacao}
+          </h1>
+          <h1 className="bg-assemiperRed pl-6 text-3xl text-white font-bold rounded-xl p-2">Dados Pessoais:</h1>
           {/* <div className="bg-assemiperRed h-1">
           </div> */}
           <div className="informacoes pb-2 w-1/4 pt-2">
@@ -266,7 +289,7 @@ function ImprimirAssociado(){
           {
           //{DADOS PROFISSIONAIS}
           }
-          <h1 className="bg-assemiperRed text-3xl text-white font-bold rounded-xl p-1"
+          <h1 className="bg-assemiperRed pl-6 text-3xl text-white font-bold rounded-xl p-2"
           >Dados Profissionais:</h1>
           
           <h1 className="text-2xl pt-3 text-black font-bold rounded-xl p-1"
@@ -396,6 +419,10 @@ function ImprimirAssociado(){
               </h1>
             </div>
           </ul>
+
+          <div className="text-sm text-right">
+            <h1>Impresso em: {dataAtual}</h1>
+          </div>
           
         </div>
         )   

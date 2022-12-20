@@ -2,16 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Axios from "axios";
 import {ipatual} from './ip.js';
 import moment from 'moment';
+require('moment/locale/pt-br');
 
 function App() {
 
-  var data = moment()
-  var data1 = data.defineLocale('pt-br')
-  var data2 = data1.format('LLLL')
-  if (typeof window !== 'undefined'){
-    window.alert(data2)
-  }else{
-  } 
+  var dataFormatada = moment()
+  var dataFinal = dataFormatada.format('LLLL')
   
 
 const initialValue = {
@@ -61,7 +57,7 @@ const initialValue = {
   dataDeValidadeLicencaAmbientalb:'',
   tipoContratob:'',
   baixadab:'',
-  dataCriacaob:data,
+  dataCriacaob:dataFinal,
 }
 
 const [values, setValues] = useState(initialValue);
