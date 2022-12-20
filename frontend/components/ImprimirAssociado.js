@@ -93,12 +93,29 @@ function ImprimirAssociado(){
 
       // }
 
+      function print(){
+        window.print()
+      }
+      function voltar(){
+        window.location.reload()
+      }
+
 
     return( 
         <>
         {imprimindo &&
         (
         <div className="App2 p-5 whitespace-nowrap">
+          <button onClick={voltar} x-data="topBtn" id="topButton"
+            className="no-print motion-reduced fixed z-50 show p-5 text-2xl bg-red-500 text-white rounded-full shadow-md top-20 left-5">
+            <i className="pr-3 bi bi-arrow-left-circle-fill"></i>Voltar
+          </button>
+          <button onClick={print} x-data="topBtn" id="topButton"
+            className="no-print motion-reduced fixed z-50 show p-5 text-2xl bg-blue-600 text-white rounded-full shadow-md top-20 left-[180px] animate-pulse">
+            Imprimir<i className="pl-3 bi bi-printer"></i>
+          </button>
+          
+        
         <div className="flex justify-center"> 
           <div className="w-2/5 justify-center">
             <Image
