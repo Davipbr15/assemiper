@@ -77,8 +77,8 @@ function LoginUser(){
     return( 
 
 <div className="relative flex flex-col justify-center min-h-screen">
-            <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
-                <h1 className="text-3xl font-semibold text-center text-purple-700">
+            <div className="w-full p-6 m-auto bg-assemiperBlack shadow-md lg:max-w-xl">
+                <h1 className="text-3xl font-semibold text-center text-assemiperRed">
                    Login
                 </h1>
                 <form className="mt-6" action="/loginUser" onSubmit={onSubmit} method="POST">
@@ -86,13 +86,13 @@ function LoginUser(){
                     <div className="mb-2">
                         <label
                             htmlFor="usernameb"
-                            className="block text-sm font-semibold text-gray-800"
+                            className="block text-sm font-semibold text-white"
                         >
                             Usuário
                         </label>
                         <input
                             type="text"
-                            className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            className="block w-full px-4 py-2 mt-2 text-assemiperBlack bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                             name="usernameb"
                             required
                             id="usernameb"
@@ -103,13 +103,13 @@ function LoginUser(){
                     <div className="mb-2">
                         <label
                             htmlFor="passwordb"
-                            className="block text-sm font-semibold text-gray-800"
+                            className="block text-sm font-semibold text-white"
                         >
                             Senha
                         </label>
                         <input
                             type={view ? "text" : "password"}
-                            className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            className="block w-full px-4 py-2 mt-2 text-assemiperBlack bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                             name="passwordb"
                             required
                             minLength="5"
@@ -119,20 +119,22 @@ function LoginUser(){
                             placeholder=""
                         />
                     </div>
-                    <div onClick={() => setView((prev) => !prev)} className="pt-2 pb-2 text-sm text-purple-600">
+                    <div onClick={() => setView((prev) => !prev)} className="pt-2 pb-2 text-sm text-assemiperRed">
                     
                     <i className={view ? "bi bi-eye" : "bi bi-eye-slash"} id="togglePassword"></i> Mostrar Senha
                     </div>
                     <hr></hr>
-                    <a
-                        href="#"
-                        onClick={onEsqueceu}
-                        className="text-xs text-purple-600 hover:underline"
-                    >
-                        Esqueceu a senha?
-                    </a>
+                    <div className="pt-2">
+                        <a
+                            href="#"
+                            onClick={onEsqueceu}
+                            className="text-xs text-assemiperRed hover:underline"
+                        >
+                            Esqueceu a senha?
+                        </a>
+                    </div>
                     <div className="mt-6">
-                        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
+                        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-assemiperRed rounded-md hover:bg-gray-900 focus:outline-none focus:bg-red-700">
                             Logar
                         </button>
                     </div>
@@ -144,7 +146,7 @@ function LoginUser(){
                     <Link href="/registerUser">
                     <a
                         href="#"
-                        className="font-medium text-purple-600 hover:underline"
+                        className="font-medium text-assemiperRed hover:underline"
                     >
                        Registrar
                     </a>

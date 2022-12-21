@@ -23,6 +23,7 @@ const initialValue = {
   numeroDocumentob: '',
   orgaoExpeditorb: '',
   enderecoPessoalb: '',
+  enderecoSedeb: '',
   numeroEnderecoPessoalb: '',
   complementoPessoalb: '',
   bairroPessoalb: '',
@@ -58,6 +59,9 @@ const initialValue = {
   tipoContratob:'',
   baixadab:'',
   associateIdb:'',
+  dataDeAberturab:'',
+  idDelete:"",
+  nomeF:"",
 }
 
 const [values, setValues] = useState(initialValue);
@@ -276,6 +280,12 @@ const onSubmit = async(ev) => {
       values.ramoDaAtividadeb = values.ramoDaAtividadeb 
     }
 
+    if(values.dataDeAberturab == ''){
+      values.dataDeAberturab = editando[0].dadosProfissionais.dataDeAbertura
+    }else{
+      values.dataDeAberturab = values.dataDeAberturab
+    }
+
     if(values.numeroDaPastab  == ''){
       values.numeroDaPastab = editando[0].numeroDaPasta
     }else{
@@ -353,23 +363,26 @@ const onSubmit = async(ev) => {
     }else{
       values.baixadab = values.baixadab 
     }
+
+    if(values.enderecoSedeb == ''){
+      values.enderecoSedeb = editando[0].dadosProfissionais.enderecoSede
+    }else{
+      values.enderecoSedeb = values.enderecoSedeb 
+    }
   
-    if (window.confirm("Você deseja realmente editar este associado?")) {
 
       const resposta = await Axios.post('http://'+ipatual+'/api/updateAssociate', values) 
 
       var result = resposta?.status 
 
       if(result == 200){
-        window.alert("Editado com sucesso.")
-        window.location.reload()
+        openModalConfirmEdit()
       }else{
         window.alert("Erro")
       }
 
-    }else{
 
-    }
+
     
     }catch(error){
         console.log(error);
@@ -439,16 +452,11 @@ const [clicko, setClicko ] = useState(false);
   const deleteAssociate = async(value) => {
     console.log("Apertou " + value + " pra deletar")
     try{ 
-      if(window.confirm("Deseja realmente deletar este associado do sistema?")){
       console.log("Try")
       values.associateIdb = value;
       const resposta = await Axios.post('http://'+ ipatual +'/api/deleteAssociate', values).then(
-      window.alert("Deletado com Sucesso!"),
       window.location.reload()
       )
-      }else{
-        window.alert("Delete cancelado.")
-      }
     }catch(error){
       console.log(error);
     }
@@ -491,11 +499,70 @@ async function getEditAssociate(value){
   await editingAssociate(getAscValue);
 }
 
+const [deleting, setDeleting] = useState(false);
+
+async function openModalDelete(id, nomeF){
+  values.idDelete = id;
+  values.nomeF = nomeF;
+  setDeleting(true)
+}
+function closeModalDelete(){
+  setDeleting(false)
+}
+
+const [confirmEditar, setConfirmEditar] = useState(false);
+const [confirmEditarConfirm, setConfirmEditarConfirm] = useState(false);
+
+
+function openModalEdit(id, nomeF){
+  values.idDelete = id;
+  values.nomeF = nomeF;
+  setConfirmEditar(true)
+}
+
+function openModalConfirmEdit(){
+  setConfirmEditarConfirm(true)
+}
+function closeModalConfirmEdit(){
+  setConfirmEditarConfirm(false)
+}
+
+function closeModalEdit(){
+
+  setConfirmEditar(false)
+
+}
+
 return(
 
 <div className="App">
+{deleting && (
+
+<div id="popup-modal" tabindex="1" class="App3 whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+    <div class="fixed w-full h-full max-w-xl md:h-auto">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <button onClick={() => closeModalDelete()} type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                <span class="sr-only">Fechar</span>
+            </button>
+            <div class="p-6 text-center">
+                <svg aria-hidden="true" class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h3 class="mb-5 text-lg font-normal text-white dark:text-white">Tem certeza que deseja deletar empresa <b>"{values.nomeF}"</b>?</h3>
+                <button onClick={() => getDeleteAssociate(values.idDelete)} data-modal-toggle="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                    Sim, deletar
+                </button>
+                <button onClick={() => closeModalDelete()} data-modal-toggle="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Não, cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+)
+}
+
 <div className="flex flex-col">
   <div className={editing ? "show" : "hidden"}>
+
   <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div className="py-2 inline-block  sm:px-6 lg:px-8">
       <div className="overflow-hidden ">
@@ -540,7 +607,7 @@ return(
                   <td className="text-sm text-white font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.razaoSocial}</td>
                   <td className="text-sm text-white font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.cnpj}</td>
                   <td><button name="editAsc" onClick={() => getEditAssociate(ascData._id)}  className="hover:scale-125 transition duration-150 linear text-sm text-green-600 bg-black bg-opacity-50 rounded-full p-2 bi bi-pencil"></button></td>
-                  <td><button name="deleteAsc" onClick={() => getDeleteAssociate(ascData._id)} className="deleteAsc hover:scale-125 transition duration-150 linear  text-red-800 bg-black bg-opacity-50 rounded-full p-2"><i className="bi bi-trash"></i></button></td>
+                  <td><button name="deleteAsc" onClick={() => openModalDelete(ascData._id, ascData.dadosProfissionais.nomeFantasia)} className="deleteAsc hover:scale-125 transition duration-150 linear  text-red-800 bg-black bg-opacity-50 rounded-full p-2"><i className="bi bi-trash"></i></button></td>
                 </tr>
               )
             })
@@ -1255,12 +1322,54 @@ return(
   </div>
   
   
+  {confirmEditarConfirm && (
+
+<div id="popup-modal" tabindex="2" class="App3 whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+    <div class="fixed w-full h-full max-w-xl md:h-auto">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <button onClick={reload} type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                <span class="sr-only">Fechar</span>
+            </button>
+            <div class="p-6 text-center">
+                <svg aria-hidden="true" class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h3 class="mb-5 text-lg font-normal text-white dark:text-white">Editado com Sucesso.</h3>
+                <button data-modal-toggle="popup-modal" onClick={reload} class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                    Ok
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+)
+}
   
-  
-  
-  
+  {confirmEditar && (
+
+<div id="popup-modal" tabindex="1" class="App4 whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-20 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+    <div class="fixed w-full h-full max-w-xl md:h-auto">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <button onClick={() => closeModalDelete()} type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                <span class="sr-only">Fechar</span>
+            </button>
+            <div class="p-6 text-center">
+                <svg aria-hidden="true" class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h3 class="mb-5 text-lg font-normal text-white dark:text-white">Confirmar edição?</h3>
+                <button data-modal-toggle="popup-modal" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                    Sim, editar
+                </button>
+                <button onClick={() => closeModalEdit()} data-modal-toggle="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Não, cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+)
+}
   <div className="col-span-3 p-5">
-          <button type="submit" className="group bg-red-800 hover:bg-red-700 transition ease-in-out duration-300 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
+          <div onClick={() => openModalEdit()} className="group bg-red-800 hover:bg-red-700 transition ease-in-out duration-300 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
               <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto fill-white" width="20pt" height="20pt" version="1.1" viewBox="0 0 700 700">
                 <g>
@@ -1271,9 +1380,8 @@ return(
   
               </span>
               <h2 className="text-white font-bold">CONCLUIR EDIÇÃO</h2>
-          </button>
+          </div>
     </div>
-  
   </div>
   </form>
   
