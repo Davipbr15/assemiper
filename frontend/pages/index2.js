@@ -23,6 +23,7 @@ export default function Home() {
         className='image'
         width={1000}
         height={540}
+        quality={100}
         layout="responsive"
         />
     </div>

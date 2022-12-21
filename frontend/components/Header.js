@@ -91,12 +91,13 @@ function Header(){
         <div className="p-2.5 mt-1 flex items-center">
         <Image 
           src="/img/logo.png"
-          width={77}
-          height={77}
+          width={96}
+          height={89}
+          quality={100}
           alt="Imagem não encontrada"
         />
         
-          <h1 className="font-bold text-gray-200 text-[20px] ml-2">ASSEMIPER</h1>
+          <h1 className="font-bold text-white text-[30px] ml-2">ASSEMIPER</h1>
         </div>
         <div className="my-2 bg-gray-600 h-[1px]"></div>
       </div>
