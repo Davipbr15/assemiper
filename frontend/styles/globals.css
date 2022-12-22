@@ -1,53 +1,77 @@
 @tailwind base;
+
 @tailwind components;
+
 @tailwind utilities;
+
 
 .App{
 background: #0F0F0F;
+
 }
 
 .App2{
 min-height: 100%;
+
 min-width: 100%;
+
 background: white;
+
 color:black;
+
 }
 
 .App3{
 min-height: 100%;
+
 min-width: 100%;
+
 background: rgba(0,0,0,.5);
+
 }
 
 .App4{
 min-height: 100%;
+
 min-width: 100%;
+
 background: rgba(0,0,0,.1);
+
 }
 
 * {
   box-sizing: border-box;
+
   font-family: Arial;
+
 }
 
 html{
   scroll-behavior: smooth;
+
   overflow-x: hidden;
+
 }
 
 body {
   justify-content: center;
+
   align-items: center;
+
   min-height: 100vh;
+
 }
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+
   }
   body {
     color: white;
+
     background: white;
+
   }
 }
 
@@ -56,68 +80,101 @@ body {
     .no-print, .no-print *
     {
         display: none !important;
+
     }
 }
 
 
 
 html::-webkit-scrollbar {
-      width: 20px; 
+      width: 10px;
+ 
    }
 
 html::-webkit-scrollbar-track {
     background-color: #0F0F0F;
+
   }
 
 html::-webkit-scrollbar-thumb {
     background: white;
+
     border-radius: 25px;
+
   }
 
   .btn-13 {
     cursor: pointer;
+
     letter-spacing: 2px;
+
     height: 40px;
+
     position: relative;
+
     color: white;
+
     z-index: 1;
+
     transition: all 0.2s ease-in-out;
+
     border-radius: 5px;
+
     background-color: transparent;
+
   }
   
   .btn-13:hover {
     color: #f1f1f1;
+
     border-color: red;
+
   }
   
   .btn-13:hover:before {
     left: 0%;
+
     right: auto;
+
     width: 100%;
+
   }
   
   .btn-13:before {
     position: absolute;
+
     bottom: 0px;
+
     right: 0px;
+
     width: 0%;
+
     height: 10%;
+
     z-index: -1;
+
     content: "";
+
     color: #f1f1f1;
+
     background: red;
+
     transition: all 200ms ease-in-out;
+
   }
   
   .btn-13:active:before {
     background-color: white;
+
   }
   
   .btn-13:active {
     color: #333;
+
     background-color: #00a7fc;
+
     border-color: #00a7fc;
+
   }
   
   .btn-13:focus {
@@ -126,204 +183,403 @@ html::-webkit-scrollbar-thumb {
 
   .form__group {
     position: relative;
+
     padding: 15px 0 0;
+
     margin-top: 10px;
+
     width: 50%;
+
  }
   .form__field {
     font-family: inherit;
+
     width: 200%;
+
     border: 0;
+
     border-bottom: 2px solid #9b9b9b;
+
     outline: 0;
+
     font-size: 1.3rem;
+
     color: black;
+
     padding: 7px 0;
+
     background: transparent;
+
     transition: border-color 0.2s;
+
  }
   .form__field::placeholder {
     color: transparent;
+
  }
   .form__field:placeholder-shown ~ .form__label {
     font-size: 1.3rem;
+
     cursor: text;
+
     top: 20px;
+
  }
   .form__label {
     position: absolute;
+
     top: 0;
+
     display: block;
+
     transition: 0.2s;
+
     font-size: 1rem;
+
     color: #9b9b9b;
+
  }
   .form__field:focus {
     padding-bottom: 6px;
+
     font-weight: 700;
+
     border-width: 3px;
+
     border-image: linear-gradient(to right, #11998e, #38ef7d);
+
     border-image-slice: 1;
+
  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ .tg  {
+ border-collapse:collapse;
+
+ border-color:#aaa;
+
+ border-spacing:0px;
+
+
+
+ }
+.tg td{
+background-color:#fff;
+border-bottom-width:1px;
+border-color:black;
+border-style:solid;
+border-top-width:1px;
+border-width:0px;
+color:#333;
+font-family:Arial, sans-serif;
+overflow:hidden;
+padding:8px 50px;
+word-break:normal;
+
+}
+.tg th{
+background-color:#0F0F0F;
+border-bottom-width:1px;
+border-color:black;
+border-style:solid;
+border-top-width:1px;
+border-width:0px;
+color:#fff;
+font-family:Arial, sans-serif;
+font-weight:bold;
+overflow:hidden;
+word-break:normal;
+
+}
+.tg .tg-k4e5{
+border-color:inherit;
+position:-webkit-sticky;
+position:sticky;
+text-align:center;
+top:-1px;
+
+vertical-align:top;
+will-change:transform
+}
+.tg .tg-dg7a{
+border-left-width:1px;
+text-align:center;
+vertical-align:top;
+}
+
+
+
   .form__field:focus ~ .form__label {
     position: absolute;
+
     top: 0;
+
     display: block;
+
     transition: 0.2s;
+
     font-size: 1rem;
+
     color: #b80f0f;
+
     font-weight: 700;
+
  }
  /* reset input */
   .form__field:required, .form__field:invalid {
     box-shadow: none;
+
  }
   
  .image-container {
   width: 100%;
+
   text-align: center;
+
   margin: auto;
+
   display: block;
+
 }
 
 .container{
     position: relative;
+
     max-width: 430px;
+
     width: 100%;
+
     background: #fff;
+
     border-radius: 10px;
+
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
     overflow: hidden;
+
     margin: 0 20px;
+
 }
 .container .forms{
     display: flex;
+
     align-items: center;
+
     height: 440px;
+
     width: 200%;
+
     transition: height 0.2s ease;
+
 }
 .container .form{
     width: 50%;
+
     padding: 30px;
+
     background-color: #fff;
+
     transition: margin-left 0.18s ease;
+
 }
 .container.active .login{
     margin-left: -50%;
+
     opacity: 0;
+
     transition: margin-left 0.18s ease, opacity 0.15s ease;
+
 }
 .container .signup{
     opacity: 0;
+
     transition: opacity 0.09s ease;
+
 }
 .container.active .signup{
     opacity: 1;
+
     transition: opacity 0.2s ease;
+
 }
 .container.active .forms{
     height: 600px;
+
 }
 .container .form .title{
     position: relative;
+
     font-size: 27px;
+
     font-weight: 600;
+
 }
 .form .title::before{
     content: '';
+
     position: absolute;
+
     left: 0;
+
     bottom: 0;
+
     height: 3px;
+
     width: 30px;
+
     background-color: #f10b0b;
+
     border-radius: 25px;
+
 }
 .form .input-field{
     position: relative;
+
     height: 50px;
+
     width: 100%;
+
     margin-top: 30px;
+
 }
 .input-field input{
     position: absolute;
+
     height: 100%;
+
     width: 100%;
+
     padding: 0 35px;
+
     border: none;
+
     outline: none;
+
     font-size: 16px;
+
     border-bottom: 2px solid #ccc;
+
     border-top: 2px solid transparent;
+
     transition: all 0.2s ease;
+
 }
 .input-field input:is(:focus, :valid){
     border-bottom-color: #f10b0b;
+
 }
 .input-field i{
     position: absolute;
+
     top: 50%;
+
     transform: translateY(-50%);
+
     color: #999;
+
     font-size: 23px;
+
     transition: all 0.2s ease;
+
 }
 .input-field input:is(:focus, :valid) ~ i{
     color: #f10b0b;
+
 }
 .input-field i.icon{
     left: 0;
+
 }
 .input-field i.showHidePw{
     right: 0;
+
     cursor: pointer;
+
     padding: 10px;
+
 }
 .form .checkbox-text{
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     margin-top: 20px;
+
 }
 .checkbox-text .checkbox-content{
     display: flex;
+
     align-items: center;
+
 }
 .checkbox-content input{
     margin-right: 10px;
+
     accent-color: #f10b0b;
+
 }
 .form .text{
     color: #333;
+
     font-size: 14px;
+
 }
 .form a.text{
     color: #4070f4;
+
     text-decoration: none;
+
 }
 .form a:hover{
     text-decoration: underline;
+
 }
 .form .button{
     margin-top: 35px;
+
 }
 .form .button input{
     border: none;
+
     color: #fff;
+
     font-size: 16px;
+
     font-weight: 500;
+
     letter-spacing: 1px;
+
     border-radius: 6px;
+
     background-color: #000000;
+
     cursor: pointer;
+
     transition: all 0.3s ease;
+
 }
 .button input:hover{
     background-color: #f10b0b;
+
 }
 
 .form .login-signup{
     margin-top: 30px;
+
     text-align: center;
+
 }

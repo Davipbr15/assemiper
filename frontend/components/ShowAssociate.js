@@ -71,26 +71,27 @@ function ShowAssociate(){
         <>
         {!vendoDados && (
         <div className="App">
-        <div className="flex flex-col">
-          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-              <div className="overflow-hidden">
-                  <table className="table-fixed min-w-screen">
-                    <thead>
+
+        <div className="w-screen">
+          <div className="">
+            <div className="py-2">
+              <div className="">
+                  <table className="tg min-w-screen">
+                    <thead className="min-w-screen">
                       <tr>
-                        <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                        <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
                           ID
                         </th>
-                        <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
-                          Nome Completo
+                        <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
+                          Razão Social
                         </th>
-                        <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
-                        Estado Civil
+                        <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
+                         Nome Fantasia
                         </th>
-                        <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
-                        Nacionalidade
+                        <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
+                          CNPJ
                         </th>
-                        <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                        <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
                         Visualizar Dados
                         </th>
                       </tr>
@@ -98,13 +99,13 @@ function ShowAssociate(){
                   <tbody>
                     {assc.map((ascData, index) => {
                       return (
-                        <tr key={index} className="group bg-assemiperBlack font-bold border border-ltransition duration-300 ease-in-out hover:bg-red-700">
-                          <td className="px-6 py-4 text-sm font-medium text-white">{ascData.associateId}</td>
-                          <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.nomeCompleto}</td>
-                          <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.estadoCivil}</td>
-                          <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.nacionalidade}</td>
-                          <td className="text-sm text-center text-white border-l font-light px-6 py-4 whitespace-normal">
-                            <button onClick={() => getDados(ascData._id)} className="transition ease-in duration-300 cursor-pointer text-xl bg-red-600 w-12 group-hover:bg-assemiperBlack group-hover:text-white rounded-xl">
+                        <tr key={index} className="group bg-assemiperBlack font-bold border border-l transition duration-100 ease-in-out hover:bg-red-700">
+                          <td className="tg-dg7a group-hover:bg-slate-200 px-6 py-4 text-sm font-medium text-white">{ascData.associateId}</td>
+                          <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.razaoSocial}</td>
+                          <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.nomeFantasia}</td>
+                          <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.cnpj}</td>
+                          <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-center text-white border-l font-light px-6 py-4 whitespace-normal">
+                            <button onClick={() => getDados(ascData._id)} className="transition ease-in duration-100 cursor-pointer text-xl w-12 group-hover:text-assemiperBlack hover:scale-150 rounded-xl">
                             <i className="bi bi-eye"></i>
                             </button>
                             </td>
