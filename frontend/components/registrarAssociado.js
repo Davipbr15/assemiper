@@ -7,21 +7,6 @@ require('moment/locale/pt-br');
 import InputMask from 'react-input-mask';
 
 
-
-function CPFInput() {
-  return (
-    <InputMask
-      className="form-control bg-white block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-      mask='999.999.999-99'
-      name='cpfb'
-      id='cpfI'
-      required
-      placeholder='CPF'
-      onChange={onChange}
-      />
-  );
-}
-
 function App() {
 
   var dataFormatada = moment()
@@ -93,6 +78,8 @@ const onSubmit = async(ev) => {
           
   ev.preventDefault();
 
+  console.log(values)
+
   try{
 
       const resposta = await Axios.post('http://'+ipatual+'/api/registerAssociate', values);
@@ -100,7 +87,7 @@ const onSubmit = async(ev) => {
       var result = resposta?.status;
 
       if(result == 200){
-        
+        window.location.reload()
       }
     
     }catch(error){
@@ -176,12 +163,6 @@ function testeInfo(ev){
 const [confirmRegistro, setConfirmRegistro] = useState(false);
 
 function openModalConfirm(){
-
-  values.cpfb = cpfH;
-
-  console.log(cpfH);
-
-  console.log(values.cpfb);
 
   setConfirmRegistro(true)
 
@@ -311,9 +292,9 @@ CPF</label>
       <InputMask
       className="form-control bg-white block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
       mask='999.999.999-99'
-      id="cnpjI"
+      id="cpfI"
       name="cpfb"
-      placeholder='CNPJ'
+      placeholder='CPF'
       onChange={onChange}
       />
 </div>
@@ -491,7 +472,7 @@ CPF</label>
       mask='(99)99999-9999'
       id="telefoneFixoPessoalI"
       name="telefoneFixoPessoalb"
-      placeholder='CEP'
+      placeholder='(XX) XXXXX-XXXX ou N/A'
       onChange={onChange}
   />
 </div>
@@ -550,7 +531,7 @@ CPF</label>
       mask='999.999.999/9999-99'
       id="cnpjI"
       name="cnpjb"
-      placeholder='CEP'
+      placeholder='000.000.000/0000-00'
       onChange={onChange}
   />
 </div>
@@ -909,7 +890,7 @@ CPF</label>
             </button>
             <div className="p-6 text-center">
                 <svg aria-hidden="true" className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                <h3 className="mb-5 text-lg font-normal text-white dark:text-white">Confirmar edição?</h3>
+                <h3 className="mb-5 text-lg font-normal text-white dark:text-white">Confirmar registro?</h3>
                 <button data-modal-toggle="popup-modal" type="submit" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                     Sim, registrar
                 </button>

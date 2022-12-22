@@ -78,14 +78,9 @@ function ImprimirAssociado(){
       const getPrintAssociate = async(value) => {
 
         let getAscValue = value;
-        window.alert("Imprimir associado de id " + getAscValue)
-        if(window.confirm("Confirmar impressão?")){
             setImprimir((prev) => !prev)
             await imprimeAssociate(getAscValue)
             setImprimindo(true)
-        }else{
-            window.alert("Impressão cancelada.")
-        }
         // await editingAssociate(getAscValue);
       }
 

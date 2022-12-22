@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import {ipatual} from './ip.js';
+import InputMask from 'react-input-mask';
+
 
 function App() {
 
@@ -630,7 +632,7 @@ return(
   <form  action="#" onSubmit={onSubmit} method="POST" className="block p-4 rounded-lg justify-self-center mx-auto shadow-2xl bg-assemiperBlack min-w-screen">
 
   <div className="mb-5">
-  <h1 className="text-xl text-center text-white font-bold">Dados Pessoais</h1>
+  <h1 className="text-2xl text-center text-white font-bold">Dados Pessoais</h1>
   </div>
 
 
@@ -710,21 +712,19 @@ return(
      />
   </div>
   
-  
-  
   <div className="col-span-2">
   <label htmlFor="cpfI" className="form-label inline-block mb-2 text-white">
-    CPF</label>
-    <input type="text"
-       name='cpfb'
-       required
-       defaultValue={editando[0].dadosPessoais.cpf}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
-       id="cpfI"
-       onChange={onChange}
-       placeholder="CPF"
-     />
-  </div>
+  CPF</label>
+        <InputMask
+        className="form-control bg-white block w-full px-3 py-1.5 text-lg text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+        mask='999.999.999-99'
+        id="cpfI"
+        name="cpfb"
+        defaultValue={editando[0].dadosPessoais.cpf}
+        placeholder='CPF'
+        onChange={onChange}
+    />
+</div>
   
   
   
@@ -847,20 +847,21 @@ return(
        placeholder="Bairro"
      />
   </div>
-  
-  <div className="col-span-3">
-  <label htmlFor="cepI" className="form-label inline-block mb-2 text-white">
-    CEP</label>
-    <input type="text"
-       name="cepb"
-       required
-  defaultValue={editando[0].dadosPessoais.cep}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
-       id="cepI"
-       onChange={onChange}
-       placeholder="CEP"
-     />
-  </div>
+
+<div className="col-span-2">
+<label htmlFor="cepI" className="form-label inline-block mb-2 text-white">
+  CEP</label>
+        <InputMask
+        className="form-control bg-white block w-full px-3 py-1.5 text-lg text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+        mask='99999-99'
+        id="cepI"
+        required
+        name="cepb"
+        defaultValue={editando[0].dadosPessoais.cep}
+        placeholder='CEP'
+        onChange={onChange}
+    />
+</div>
   
   <div className="col-span-3">
   <label htmlFor="cidadeEstadoPessoalI" className="form-label inline-block mb-2 text-white">
@@ -868,7 +869,7 @@ return(
     <input type="text"
        name="cidadeEstadoPessoalb"
        required
-  defaultValue={editando[0].dadosPessoais.cidadeEstadoPessoal}
+        defaultValue={editando[0].dadosPessoais.cidadeEstadoPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="cidadeEstadoPessoalI"
        onChange={onChange}
@@ -882,7 +883,7 @@ return(
     <input type="text"
        name="emailPessoalb"
        required
-  defaultValue={editando[0].dadosPessoais.emailPessoal}
+      defaultValue={editando[0].dadosPessoais.emailPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="emailPessoalI"
        onChange={onChange}
@@ -890,38 +891,42 @@ return(
      />
   </div>
   
-  <div className="col-span-3">
-  <label htmlFor="telefoneFixoPessoalI" className="form-label inline-block mb-2 text-white">
-    telefone fixo pessoal</label>
-    <input type="text"
-       name="telefoneFixoPessoalb"
-       required
-  defaultValue={editando[0].dadosPessoais.telefoneFixoPessoal}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
-       id="telefoneFixoPessoalI"
-       onChange={onChange}
-       placeholder="Telefone fixo pessoal"
-     />
-  </div>
+<div className="col-span-2">
+<label htmlFor="telefoneFixoPessoalI" className="form-label inline-block mb-2 text-white">
+  Telefone fixo pessoal</label>
+  <InputMask
+    defaultValue={editando[0].dadosPessoais.telefoneFixoPessoal}
+      className="form-control bg-white block w-full px-3 py-1.5 text-lg  text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      mask='(99)99999-9999'
+      id="telefoneFixoPessoalI"
+      name="telefoneFixoPessoalb"
+      placeholder='(XX) XXXXX-XXXX ou N/A'
+      onChange={onChange}
+      required
+  />
+</div>
   
   <div className="col-span-3">
-  <label htmlFor="celularPessoalI" className="form-label inline-block mb-2 text-white">
-    celular pessoal</label>
-    <input type="tel"
-       name="celularPessoalb"
-       required
-  defaultValue={editando[0].dadosPessoais.celularPessoal}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
-       id="celularPessoalI"
-        maxLength="15"
-       onChange={onChange}
-       placeholder="Celular pessoal"
-     />
-  </div>
+<label htmlFor="celularPessoalI" className="form-label inline-block mb-2 text-white">
+  Celular pessoal</label>
+  <InputMask
+     defaultValue={editando[0].dadosPessoais.celularPessoal}
+      required
+      className="form-control bg-white block w-full px-3 py-1.5 text-lg  text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      mask='(99) 99999-9999'
+      id="celularPessoalI"
+      name="celularPessoalb"
+      placeholder='(XX) XXXXX-XXXX'
+      onChange={onChange}
+  />
+</div>
   <br></br>
+
+
+  
   
   <div className="mb-5">
-  <h1 className="text-xl text-center text-white font-white">Dados Profissonal</h1>
+  <h1 className="text-white font-bold p-5 font-white text-center text-2xl whitespace-nowrap">Dados Profissionais</h1>
   </div>
   
   <div className="col-span-3">
@@ -952,19 +957,20 @@ return(
      />
   </div>
   
-  <div className="col-span-3">
-  <label htmlFor="cnpjI" className="form-label inline-block mb-2 text-white">
-    CNPJ</label>
-    <input type="text"
-       name="cnpjb"
-       required
-  defaultValue={editando[0].dadosProfissionais.cnpj}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
-       id="cnpjI"
-       onChange={onChange}
-       placeholder="__.___.___/____-__"
-     />
-  </div>
+
+  <div className="col-span-2">
+<label htmlFor="cnpjI" className="form-label inline-block mb-2 text-white">
+  CNPJ</label>
+     <InputMask
+       defaultValue={editando[0].dadosProfissionais.cnpj}
+      className="form-control bg-white block w-full px-3 py-1.5 text-lg  text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      mask='999.999.999/9999-99'
+      id="cnpjI"
+      name="cnpjb"
+      placeholder='000.000.000/0000-00'
+      onChange={onChange}
+  />
+</div>
   
   <div className="col-span-3">
   <label htmlFor="numeroInscricaoI" className="form-label inline-block mb-2 text-white">
@@ -1035,20 +1041,20 @@ return(
        placeholder="Bairro sede"
      />
   </div>
-  
+
   <div className="col-span-3">
-  <label htmlFor="cepSedeI" className="form-label inline-block mb-2 text-white">
-    CEP Sede</label>
-    <input type="text"
-       name="cepSedeb"
-       required
-  defaultValue={editando[0].dadosProfissionais.cepSede}
-       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
-       id="cepSedeI"
-       onChange={onChange}
-       placeholder="CEP sede"
-     />
-  </div>
+<label htmlFor="cepSedeI" className="form-label inline-block mb-2 text-white">
+  CEP Sede</label>
+  <InputMask
+      defaultValue={editando[0].dadosProfissionais.cepSede}
+      className="form-control bg-white block w-full px-3 py-1.5 text-lg  text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      mask='99999-999'
+      id="cepSedeI"
+      name="cepSedeb"
+      placeholder='CEP'
+      onChange={onChange}
+  />
+</div>
   
   <div className="col-span-3">
   <label htmlFor="cidadeEstadoSedeI" className="form-label inline-block mb-2 text-white">
@@ -1084,7 +1090,7 @@ return(
     <input type="date"
        name="dataDeAberturab"
        required
-  defaultValue={editando[0].dadosProfissionais.dataDeAbertura}
+       defaultValue={editando[0].dadosProfissionais.dataDeAbertura}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="dataDeAberturaI"
        onChange={onChange}
@@ -1098,7 +1104,7 @@ return(
     <input type="text"
        name="quantidadePessoasOcupadasb"
        required
-  defaultValue={editando[0].dadosProfissionais.quantidadePessoasOcupadas}
+       defaultValue={editando[0].dadosProfissionais.quantidadePessoasOcupadas}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="quantidadePessoasOcupadasI"
        onChange={onChange}
@@ -1136,7 +1142,7 @@ return(
   <br></br>
   
   <div className="mb-5">
-  <h1 className="text-white font-white text-center text-xl whitespace-nowrap">Pasta de Documentos</h1>
+  <h1 className="text-white font-bold p-5 font-white text-center text-2xl whitespace-nowrap">Pasta de Documentos</h1>
   </div>
   
   <br></br>

@@ -133,7 +133,7 @@ function ShowAssociate(){
   </button>
 
   <div className="mb-5">
-  <h1 className="text-xl text-center text-white font-bold">Dados Pessoais</h1>
+  <h1 className="text-2xl text-center text-white font-bold">Dados Pessoais</h1>
   </div>
 
 
@@ -445,7 +445,7 @@ disabled
   <br></br>
   
   <div className="mb-5">
-  <h1 className="text-xl text-center text-white font-white">Dados Profissonal</h1>
+  <h1 className="text-white font-bold p-5 font-white text-center text-2xl whitespace-nowrap">Dados Profissionais</h1>
   </div>
   
   <div className="col-span-3">
@@ -514,8 +514,8 @@ disabled
     <input type="text"
        name="enderecoSedeb"
        required
-disabled
-  defaultValue={dados[0].dadosProfissionais.enderecoSede}
+      disabled
+      defaultValue={dados[0].dadosProfissionais.enderecoSede}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="enderecoSedeI"
        onChange={onChange}
@@ -675,7 +675,7 @@ disabled
   <br></br>
   
   <div className="mb-5">
-  <h1 className="text-white font-white text-center text-xl whitespace-nowrap">Pasta de Documentos</h1>
+  <h1 className="text-white font-bold p-5 font-white text-center text-2xl whitespace-nowrap">Pasta de Documentos</h1>
   </div>
   
   <br></br>
@@ -861,6 +861,11 @@ disabled
   </div>
   
   </div>  
+  </div>
+  <div className="flex justify-center">
+    <button onClick={reload} className="w-1/3 text-center m-5 group hover:scale-110 bg-red-800 hover:bg-red-700 transition ease-in-out duration-150 flex justify-center py-2 px-6 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
+      Voltar
+    </button>
   </div>
 
   </div>
