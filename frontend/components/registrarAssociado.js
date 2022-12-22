@@ -3,71 +3,88 @@ import Axios from "axios";
 import {ipatual} from './ip.js';
 import moment from 'moment';
 require('moment/locale/pt-br');
+// import $ from 'jquery';
+import InputMask from 'react-input-mask';
+
+
+
+function CPFInput() {
+  return (
+    <InputMask
+      className="form-control bg-white block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      mask='999.999.999-99'
+      name='cpfb'
+      id='cpfI'
+      required
+      placeholder='CPF'
+      onChange={onChange}
+      />
+  );
+}
 
 function App() {
 
   var dataFormatada = moment()
   var dataFinal = dataFormatada.format('LLLL')
-  
 
-const initialValue = {
-  nomeCompletob: '',
-  estadoCivilb: '',
-  nacionalidadeb: '',
-  naturalidadeb: '',
-  dataDeNascimentob: '',
-  cpfb: '',
-  profissaob: '',
-  documentoIdentificacaob: '',
-  numeroDocumentob: '',
-  orgaoExpeditorb: '',
-  enderecoPessoalb: '',
-  numeroEnderecoPessoalb: '',
-  complementoPessoalb: '',
-  bairroPessoalb: '',
-  cepb: '',
-  cidadeEstadoPessoalb: '',
-  emailPessoalb: '',
-  telefoneFixoPessoalb: '',
-  celularPessoalb: '',
-  razaoSocialb: '',
-  nomeFantasiab: '',
-  cnpjb: '',
-  numeroInscricaob: '',
-  numeroSedeb: '',
-  complementoSedeb: '',
-  bairroSedeb: '',
-  enderecoSedeb: '',
-  cepSedeb: '',
-  cidadeEstadoSedeb: '',
-  emailProfissionalb: '',
-  dataDeAberturab: '',
-  quantidadePessoasOcupadasb: '',
-  ramoDaAtividadeb: '',
-  numeroDaPastab: '',
-  validadeAlvarab: '',
-  areaM2Funcionamentob: '',
-  numeroInscricaoMunicipalb:'',
-  dataDeEmissaoBombeirosb:'',
-  dataDeValidadeBombeirosb:'',
-  areaM2Bombeirosb:'',
-  dataDeValidadeVigilanciab:'',
-  inscricaoVigilanciaSanitariab:'',
-  dataDeEmissaoLicencaAmbientalb:'',
-  dataDeValidadeLicencaAmbientalb:'',
-  tipoContratob:'',
-  baixadab:'',
-  dataCriacaob:dataFinal,
-}
+  const initialValue = {
+    nomeCompletob: '',
+    estadoCivilb: '',
+    nacionalidadeb: '',
+    naturalidadeb: '',
+    dataDeNascimentob: '',
+    cpfb: '',
+    profissaob: '',
+    documentoIdentificacaob: '',
+    numeroDocumentob: '',
+    orgaoExpeditorb: '',
+    enderecoPessoalb: '',
+    numeroEnderecoPessoalb: '',
+    complementoPessoalb: '',
+    bairroPessoalb: '',
+    cepb: '',
+    cidadeEstadoPessoalb: '',
+    emailPessoalb: '',
+    telefoneFixoPessoalb: '',
+    celularPessoalb: '',
+    razaoSocialb: '',
+    nomeFantasiab: '',
+    cnpjb: '',
+    numeroInscricaob: '',
+    numeroSedeb: '',
+    complementoSedeb: '',
+    bairroSedeb: '',
+    enderecoSedeb: '',
+    cepSedeb: '',
+    cidadeEstadoSedeb: '',
+    emailProfissionalb: '',
+    dataDeAberturab: '',
+    quantidadePessoasOcupadasb: '',
+    ramoDaAtividadeb: '',
+    numeroDaPastab: '',
+    validadeAlvarab: '',
+    areaM2Funcionamentob: '',
+    numeroInscricaoMunicipalb:'',
+    dataDeEmissaoBombeirosb:'',
+    dataDeValidadeBombeirosb:'',
+    areaM2Bombeirosb:'',
+    dataDeValidadeVigilanciab:'',
+    inscricaoVigilanciaSanitariab:'',
+    dataDeEmissaoLicencaAmbientalb:'',
+    dataDeValidadeLicencaAmbientalb:'',
+    tipoContratob:'',
+    baixadab:'',
+    dataCriacaob:dataFinal,
+  }
 
-const [values, setValues] = useState(initialValue);
+  const [values, setValues] = useState(initialValue);
 
-function onChange(ev) {
+  function onChange(ev) {
 
   const {name, value} = ev.target;
 
   console.log({name, value});
-
+  
   setValues({ ...values, [name]: value });
   
 };
@@ -92,6 +109,18 @@ const onSubmit = async(ev) => {
     
     // Go to /some/path.
 }
+
+const [cpfH, setCPF] = useState('');
+const [cnpjH, setCNPJ] = useState('');
+const [npH, setNP] = useState('');
+const [nsH, setNS] = useState('');
+
+const handleInputCPF = ({ target: { value } }) => {
+  setCPF(value)
+};
+const handleInputCNPJ = ({ target: { value } }) => setCNPJ(value);
+const handleInputNP = ({ target: { value } }) => setNP(value);
+const handleInputNS = ({ target: { value } }) => setNS(value);
 
 
 function testeInfo(ev){
@@ -148,6 +177,12 @@ const [confirmRegistro, setConfirmRegistro] = useState(false);
 
 function openModalConfirm(){
 
+  values.cpfb = cpfH;
+
+  console.log(cpfH);
+
+  console.log(values.cpfb);
+
   setConfirmRegistro(true)
 
 }
@@ -162,7 +197,7 @@ return(
 
 <div className="App bg-assemiperBlack">
 
-<form  action="#" onSubmit={onSubmit} method="POST" className="flex p-4 rounded-lg justify-self-center mx-auto shadow-2xl bg-assemiperBlack">
+{/* <form  action="#" onSubmit={onSubmit} method="POST" className="flex p-4 rounded-lg justify-self-center mx-auto shadow-2xl bg-assemiperBlack">
 <div className="col-span-3">
         <button type="submit" className="group bg-assemiperBlack relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
 						<span className="absolute left-0 inset-y-0 flex items-center pl-3">
@@ -177,7 +212,7 @@ return(
 					  <h2 className="text-white" onClick={testeInfo}>REGISTRO TESTE</h2>
 				</button>
   </div>
-</form>
+</form> */}
 
 <form  action="#" onSubmit={onSubmit} method="POST" className="p-4 rounded-lg justify-self-center mx-auto shadow-2xl bg-assemiperBlack min-w-screen">
 
@@ -245,8 +280,8 @@ return(
   Data de Nascimento</label>
   <input type="date"
      name="dataDeNascimentob"
-     max="2004-12-12"
-     min="1910-05-01"
+     max="2010-12-12"
+     min="1800-05-01"
      required
      className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
      id="dataDeNascimentoI"
@@ -257,19 +292,31 @@ return(
 
 
 
-<div className="col-span-2">
+{/* <div className="col-span-3">
 <label htmlFor="cpfI" className="form-label inline-block mb-2 text-white">
   CPF</label>
   <input type="text"
      name='cpfb'
      required
-     className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+     className="mascara-cpf form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
      id="cpfI"
+     maxLength="8"
      onChange={onChange}
      placeholder="CPF"
    />
+</div> */}
+<div className="col-span-2">
+<label htmlFor="cpfI" className="form-label inline-block mb-2 text-white">
+CPF</label>
+      <InputMask
+      className="form-control bg-white block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      mask='999.999.999-99'
+      id="cnpjI"
+      name="cpfb"
+      placeholder='CNPJ'
+      onChange={onChange}
+      />
 </div>
-
 
 
 <div className="col-span-3">
@@ -395,15 +442,14 @@ return(
 <div className="col-span-3">
 <label htmlFor="cepI" className="form-label inline-block mb-2 text-white">
   CEP</label>
-  <input type="text"
-     name="cepb"
-     required
-     maxLength="8"
-     className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="cepI"
-     onChange={onChange}
-     placeholder="CEP"
-   />
+  <InputMask
+      className="form-control bg-white block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      mask='99999-999'
+      id="cepI"
+      name="cepb"
+      placeholder='CEP'
+      onChange={onChange}
+  />
 </div>
 
 
@@ -424,7 +470,7 @@ return(
 
 <div className="col-span-3">
 <label htmlFor="emailPessoalI" className="form-label inline-block mb-2 text-white">
-  e-mail pessoal</label>
+  E-mail pessoal</label>
   <input type="text"
      name="emailPessoalb"
      required
@@ -439,15 +485,15 @@ return(
 
 <div className="col-span-3">
 <label htmlFor="telefoneFixoPessoalI" className="form-label inline-block mb-2 text-white">
-  telefone fixo pessoal</label>
-  <input type="text"
-     name="telefoneFixoPessoalb"
-     required
-     className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="telefoneFixoPessoalI"
-     onChange={onChange}
-     placeholder="Telefone fixo pessoal"
-   />
+  Telefone fixo pessoal</label>
+  <InputMask
+      className="form-control bg-white block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      mask='(99)99999-9999'
+      id="telefoneFixoPessoalI"
+      name="telefoneFixoPessoalb"
+      placeholder='CEP'
+      onChange={onChange}
+  />
 </div>
 
 
@@ -455,16 +501,15 @@ return(
 
 <div className="col-span-3">
 <label htmlFor="celularPessoalI" className="form-label inline-block mb-2 text-white">
-  celular pessoal</label>
-  <input type="tel"
-     name="celularPessoalb"
-     required
-     className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="celularPessoalI"
-      maxLength="15"
-     onChange={onChange}
-     placeholder="Celular pessoal"
-   />
+  Celular pessoal</label>
+  <InputMask
+      className="form-control bg-white block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      mask='(99) 99999-9999'
+      id="celularPessoalI"
+      name="celularPessoalb"
+      placeholder='(XX) XXXXX-XXXX'
+      onChange={onChange}
+  />
 </div>
 <br></br>
 <div className="mb-5">
@@ -500,14 +545,14 @@ return(
 <div className="col-span-3">
 <label htmlFor="cnpjI" className="form-label inline-block mb-2 text-white">
   CNPJ</label>
-  <input type="text"
-     name="cnpjb"
-     required
-     className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="cnpjI"
-     onChange={onChange}
-     placeholder="__.___.___/____-__"
-   />
+     <InputMask
+      className="form-control bg-white block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      mask='999.999.999/9999-99'
+      id="cnpjI"
+      name="cnpjb"
+      placeholder='CEP'
+      onChange={onChange}
+  />
 </div>
 
 <div className="col-span-3">
@@ -578,14 +623,14 @@ return(
 <div className="col-span-3">
 <label htmlFor="cepSedeI" className="form-label inline-block mb-2 text-white">
   CEP Sede</label>
-  <input type="text"
-     name="cepSedeb"
-     required
-     className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-     id="cepSedeI"
-     onChange={onChange}
-     placeholder="CEP sede"
-   />
+  <InputMask
+      className="form-control bg-white block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      mask='99999-999'
+      id="cepSedeI"
+      name="cepSedeb"
+      placeholder='CEP'
+      onChange={onChange}
+  />
 </div>
 
 <div className="col-span-3">
@@ -621,6 +666,8 @@ return(
   <input type="date"
      name="dataDeAberturab"
      required
+     max="2010-12-12"
+     min="1800-05-01"
      className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
      id="dataDeAberturaI"
      onChange={onChange}
@@ -723,6 +770,8 @@ return(
     name="dataDeEmissaoBombeirosb"
     className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
     id="dataDeEmissaoBombeirosI"
+    max="2010-12-12"
+    min="1800-05-01"
     onChange={onChange}
     placeholder="Data de Emissão"
   />
@@ -736,6 +785,8 @@ return(
     className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
     id="dataDeValidadeBombeirosI"
     onChange={onChange}
+      max="2010-12-12"
+     min="1800-05-01"
     placeholder="Data de Validade"
   />
 </div>
@@ -764,6 +815,8 @@ return(
     className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
     id="dataDeValidadeVigilanciaI"
     onChange={onChange}
+    max="2010-12-12"
+    min="1800-05-01"
     placeholder="Data de Validade"
   />
 </div>
@@ -847,20 +900,20 @@ return(
 
 {confirmRegistro && (
 
-<div id="popup-modal" tabindex="1" class="App4 whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-20 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-    <div class="fixed w-full h-full max-w-xl md:h-auto">
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <button onClick={() => closeModalDelete()} type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
-                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                <span class="sr-only">Fechar</span>
+<div id="popup-modal" tabIndex="1" className="App4 whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-20 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+    <div className="fixed w-full h-full max-w-xl md:h-auto">
+        <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <button onClick={() => closeModalDelete()} type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
+                <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                <span className="sr-only">Fechar</span>
             </button>
-            <div class="p-6 text-center">
-                <svg aria-hidden="true" class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                <h3 class="mb-5 text-lg font-normal text-white dark:text-white">Confirmar edição?</h3>
-                <button data-modal-toggle="popup-modal" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+            <div className="p-6 text-center">
+                <svg aria-hidden="true" className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h3 className="mb-5 text-lg font-normal text-white dark:text-white">Confirmar edição?</h3>
+                <button data-modal-toggle="popup-modal" type="submit" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                     Sim, registrar
                 </button>
-                <button onClick={() => closeModalConfirm()} data-modal-toggle="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Não, cancelar</button>
+                <button onClick={() => closeModalConfirm()} data-modal-toggle="popup-modal" type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Não, cancelar</button>
             </div>
         </div>
     </div>

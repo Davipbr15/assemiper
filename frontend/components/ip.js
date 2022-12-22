@@ -21,5 +21,5 @@ import React, { useEffect, useState } from 'react';
 
 //   console.log(ip)
 // }
-var ip = '192.168.1.10:3005'
+var ip = '192.168.1.15:3005'
 export const ipatual = ip;

@@ -154,6 +154,11 @@ function Header(){
                 Editar
               </h1>
             </Link>
+            <Link href="/imprimir">
+              <h1 className="cursor-pointer btn-13 hover:bg-assemiperBlack p-2 rounded-md mt-1">
+                Imprimir
+              </h1>
+            </Link>
           </div>
           </div>
       </div>
@@ -265,11 +270,7 @@ function Header(){
             Documentos
           </h1>
         </Link>
-        <Link href="/imprimir">
-        <h1 className="cursor-pointer btn-13 hover:bg-assemiperBlack p-2 rounded-md mt-1">
-          Imprimir
-        </h1>
-        </Link>
+
       </div>
       </div>
       <Link href="/">

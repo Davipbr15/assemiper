@@ -53,7 +53,6 @@ function LoginUser(){
         console.log("Resultado " + result);
           
           if(result == 200){
-            window.alert("Usuário Logado com Sucesso!")
             window.location.replace('index2')
           }else if(result == 201){
             window.alert("Senha ou usuários incorretos!");
@@ -77,22 +76,22 @@ function LoginUser(){
     return( 
 
 <div className="relative flex flex-col justify-center min-h-screen">
-            <div className="w-full p-6 m-auto bg-assemiperBlack shadow-md lg:max-w-xl">
-                <h1 className="text-3xl font-semibold text-center text-assemiperRed">
-                   Login
+            <div className="w-full p-6 m-auto bg-white shadow-md lg:max-w-xl">
+                <h1 className="text-3xl font-semibold text-center text-black">
+                   LOGIN
                 </h1>
                 <form className="mt-6" action="/loginUser" onSubmit={onSubmit} method="POST">
                     
                     <div className="mb-2">
                         <label
                             htmlFor="usernameb"
-                            className="block text-sm font-semibold text-white"
+                            className="block text-sm font-semibold text-black"
                         >
                             Usuário
                         </label>
                         <input
                             type="text"
-                            className="block w-full px-4 py-2 mt-2 text-assemiperBlack bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            className="block w-full px-4 py-2 mt-2 text-assemiperBlack bg-white border rounded-md focus:border-assemiperRed focus:ring-red-300 focus:outline-none focus:ring focus:ring-opacity-40"
                             name="usernameb"
                             required
                             id="usernameb"
@@ -103,13 +102,13 @@ function LoginUser(){
                     <div className="mb-2">
                         <label
                             htmlFor="passwordb"
-                            className="block text-sm font-semibold text-white"
+                            className="block text-sm font-semibold text-black"
                         >
                             Senha
                         </label>
                         <input
                             type={view ? "text" : "password"}
-                            className="block w-full px-4 py-2 mt-2 text-assemiperBlack bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                            className="block w-full px-4 py-2 mt-2 text-assemiperBlack bg-white border rounded-md focus:border-assemiperRed focus:ring-red-300 focus:outline-none focus:ring focus:ring-opacity-40"
                             name="passwordb"
                             required
                             minLength="5"
