@@ -464,6 +464,17 @@ const [clicko, setClicko ] = useState(false);
     }
   };
 
+  async function baixada(result){
+
+    if(result == "Sim"){
+      setSimBaixa(true);
+    }else{
+      setNaoBaixa(true);
+    }
+    
+  }
+
+
 
   var result = ""
   async function editingAssociate(value){
@@ -477,6 +488,8 @@ const [clicko, setClicko ] = useState(false);
     }
     await setEditando(result)
     setClicko(true);
+    baixada(result[0].pastaDeDocumentos.declaracaoDeBaixaInscricao.baixada)
+    // contrato()
   };
 
 
@@ -535,6 +548,47 @@ function closeModalEdit(){
 
 }
 
+
+const valorBaixa = ()=>{
+  var e = document.getElementById("baixa");
+  var value = e.value;
+  var text = e.options[e.selectedIndex].text;
+  console.log(value)
+  console.log(text)
+  if(value=="sim"){
+    values.baixadab = "Sim";
+  }else if(value=="nao"){
+    values.baixadab = "Não";
+  }else{
+
+  }
+}
+
+const valorContrato = ()=>{
+  var e = document.getElementById("contrato");
+  var value = e.value;
+  var text = e.options[e.selectedIndex].text;
+  console.log(value)
+  console.log(text)
+  if(value=="arrendamento"){
+    values.contratob = "Arrendamento";
+  }else if(value=="compraevenda"){
+    values.contratob = "Compra e venda";
+  }else if(value=="locacao"){
+    values.contratob = "Locação";
+  }else if(value=="aluguel"){
+    values.contratob = "Aluguel";
+  }else if(value=="comodato"){
+    values.contratob = "Comodato";
+  }else{
+
+  }
+}
+
+const [simBaixa, setSimBaixa] = useState(false);
+const [naoBaixa, setNaoBaixa] = useState(false);
+
+
 return(
 
 <div className="App">
@@ -565,35 +619,28 @@ return(
 <div className="flex flex-col">
   <div className={editing ? "show" : "hidden"}>
 
-  <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-    <div className="py-2 inline-block  sm:px-6 lg:px-8">
-      <div className="overflow-hidden ">
-          <table className="table-fixed min-w-screen ">
-            <thead>
+  <div className="w-screen sm:-mx-6 lg:-mx-8">
+    <div className="py-2 sm:px-6 lg:px-8">
+      <div className="">
+          <table className="tg min-w-screen">
+            <thead className="min-w-screen">
               <tr>
-                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
                   ID
                 </th>
-                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
                   Número da Pasta
                 </th>
-                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
                   Nome Completo
                 </th>
-                
-                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
-                 Nome Fantasia
-                </th>
-                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
                  Razão Social
                 </th>
-                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
-                 CNPJ
-                </th>
-                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
                  Editar
                 </th>
-                <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
                  Deletar
                 </th>
               </tr>
@@ -601,15 +648,13 @@ return(
           <tbody>
             {assc.map((ascData, index) => {
               return (
-                <tr key={index} className=" bg-assemiperBlack font-bold border-b transition duration-300 ease-in-out hover:bg-red-700">
-                  <td className="px-6 py-1 text-sm font-medium text-white">{ascData.associateId}</td>
-                  <td className="px-6 py-1 text-sm font-medium text-white">{ascData.numeroDaPasta}</td>
-                  <td className="text-sm text-white font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.nomeCompleto}</td>
-                  <td className="text-sm text-white font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.nomeFantasia}</td>
-                  <td className="text-sm text-white font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.razaoSocial}</td>
-                  <td className="text-sm text-white font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.cnpj}</td>
-                  <td className="text-center"><button name="editAsc" onClick={() => getEditAssociate(ascData._id)}  className="hover:scale-125 transition duration-150 linear text-sm text-green-600 bg-black bg-opacity-50 rounded-full p-2 bi bi-pencil"></button></td>
-                  <td className="text-center"><button name="deleteAsc" onClick={() => openModalDelete(ascData._id, ascData.dadosProfissionais.nomeFantasia)} className="deleteAsc hover:scale-125 transition duration-150 linear  text-red-800 bg-black bg-opacity-50 rounded-full p-2"><i className="bi bi-trash"></i></button></td>
+                <tr key={index} className="group bg-assemiperBlack font-bold border-b transition duration-300 ease-in-out hover:bg-red-700">
+                  <td className="tg-dg7a group-hover:bg-slate-200 px-6 py-4 text-sm font-bold text-white">{ascData.associateId}</td>
+                  <td className="tg-dg7a group-hover:bg-slate-200 px-6 py-4 text-sm font-light text-white">{ascData.numeroDaPasta}</td>
+                  <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.nomeCompleto}</td>
+                  <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.razaoSocial}</td>
+                  <td className=" group-hover:bg-slate-200 text-center tg-dg7a"><button name="editAsc" onClick={() => getEditAssociate(ascData._id)}  className="transition ease-in duration-100 cursor-pointer text-xl w-6 hover:scale-125 text-blue-500 hover:text-blue-600  rounded-xl bi bi-pencil"></button></td>
+                  <td className=" group-hover:bg-slate-200 text-center tg-dg7a"><button name="deleteAsc" onClick={() => openModalDelete(ascData._id, ascData.dadosProfissionais.nomeFantasia)} className="deleteAsc transition ease-in duration-100 cursor-pointer text-red-500 hover:text-red-700 text-xl w-6 hover:scale-150 rounded-xl"><i className="bi bi-trash"></i></button></td>
                 </tr>
               )
             })
@@ -974,7 +1019,7 @@ return(
   
   <div className="col-span-3">
   <label htmlFor="numeroInscricaoI" className="form-label inline-block mb-2 text-white">
-    Número de Inscrição</label>
+    Número de Inscrição Estadual</label>
     <input type="text"
        name="numeroInscricaob"
        required
@@ -1258,6 +1303,7 @@ return(
       id="inscricaoVigilanciaSanitariaI"
       defaultValue={editando[0].pastaDeDocumentos.alvaraDeVigilanciaSanitaria.inscricaoVigilanciaSanitaria}
       onChange={onChange}
+      onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
       placeholder="Inscrição Vigilância Sanitária"
     />
   </div>
@@ -1325,6 +1371,21 @@ return(
       onChange={onChange}
       placeholder="Baixada"
     />
+  {simBaixa && (
+        <select id="baixa" className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none" name="select" onChange={valorBaixa}>
+        <option value="sim" defaultValue>Sim</option>
+        <option value="nao">Não</option>
+      </select>
+  )
+  }
+  {naoBaixa && (
+        <select id="baixa" className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none" name="select" onChange={valorBaixa}>
+        <option value="sim">Sim</option>
+        <option value="nao" defaultValue>Não</option>
+      </select>
+  )
+  }
+
   </div>
   
   

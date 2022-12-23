@@ -72,8 +72,8 @@ function ShowAssociate(){
         {!vendoDados && (
         <div className="App">
 
-        <div className="w-screen">
-          <div className="">
+        <div className="w-screen sm:-mx-6 lg:-mx-8">
+          <div className="py-2 sm:px-6 lg:px-8">
             <div className="py-2">
               <div className="">
                   <table className="tg min-w-screen">

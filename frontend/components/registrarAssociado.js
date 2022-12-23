@@ -5,9 +5,15 @@ import moment from 'moment';
 require('moment/locale/pt-br');
 // import $ from 'jquery';
 import InputMask from 'react-input-mask';
+import Select from 'react-select';
 
 
 function App() {
+
+  const options = [
+    { value: 'SIM', label: 'SIM', name:'baixadab' },
+    { value: 'NÃO', label: 'NÃO', name:'baixadab' },
+  ]
 
   var dataFormatada = moment()
   var dataFinal = dataFormatada.format('LLLL')
@@ -174,6 +180,53 @@ function closeModalConfirm(){
 
 }
 
+function onlyNumbers(e) {
+  setTagInputVal(e.target.value.replace(/[^0-9]/g, ""));
+}
+
+const handleChangeBaixa = (selected) => {
+  var baixa = this.setState({ [selected.name]: selected.value })
+  console.log(baixa)
+}
+
+const valorBaixa = ()=>{
+  var e = document.getElementById("baixa");
+  var value = e.value;
+  var text = e.options[e.selectedIndex].text;
+  console.log(value)
+  console.log(text)
+  if(value=="sim"){
+    values.baixadab = "Sim";
+  }else if(value=="nao"){
+    values.baixadab = "Não";
+  }else{
+
+  }
+}
+
+const valorContrato = ()=>{
+  var e = document.getElementById("contrato");
+  var value = e.value;
+  var text = e.options[e.selectedIndex].text;
+  console.log(value)
+  console.log(text)
+  if(value=="arrendamento"){
+    values.contratob = "Arrendamento";
+  }else if(value=="compraevenda"){
+    values.contratob = "Compra e venda";
+  }else if(value=="locacao"){
+    values.contratob = "Locação";
+  }else if(value=="aluguel"){
+    values.contratob = "Aluguel";
+  }else if(value=="comodato"){
+    values.contratob = "Comodato";
+  }else{
+
+  }
+}
+
+
+
 return(
 
 <div className="App bg-assemiperBlack">
@@ -333,12 +386,14 @@ CPF</label>
 <div className="col-span-3">
 <label htmlFor="numeroDocumentoI" className="form-label inline-block mb-2 text-white">
   Nº do Documento</label>
-  <input type="text"
+  <input
+     type="text"
      name="numeroDocumentob"
      required
      className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
      id="numeroDocumentoI"
      onChange={onChange}
+     onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
      placeholder="Número do Documento"
    />
 </div>
@@ -384,6 +439,7 @@ CPF</label>
      className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
      id="numeroEnderecoPesssoalI"
      onChange={onChange}
+     onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
      placeholder="Número Endereço"
    />
 </div>
@@ -436,7 +492,7 @@ CPF</label>
 
 <div className="col-span-3">
 <label htmlFor="cidadeEstadoPessoalI" className="form-label inline-block mb-2 text-white">
-  cidade e estado pessoal</label>
+  Cidade e estado pessoal</label>
   <input type="text"
      name="cidadeEstadoPessoalb"
      required
@@ -538,13 +594,14 @@ CPF</label>
 
 <div className="col-span-3">
 <label htmlFor="numeroInscricaoI" className="form-label inline-block mb-2 text-white">
-  Número de Inscrição</label>
+  Número de Inscrição Estadual</label>
   <input type="text"
      name="numeroInscricaob"
      required
      className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
      id="numeroInscricaoI"
      onChange={onChange}
+     onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
      placeholder="Número de inscrição"
    />
 </div>
@@ -570,6 +627,7 @@ CPF</label>
      required
      className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
      id="numeroSedeI"
+     onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
      onChange={onChange}
      placeholder="Número sede"
    />
@@ -665,6 +723,7 @@ CPF</label>
      className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
      id="quantidadePessoasOcupadasI"
      onChange={onChange}
+     onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
      placeholder="Quantidade de pessoas ocupadas"
    />
 </div>
@@ -689,7 +748,9 @@ CPF</label>
     required
     className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
     id="numeroDaPastaI"
+    maxLength="3"
     onChange={onChange}
+    onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
     placeholder="Número da Pasta"
   />
 </div>
@@ -736,6 +797,8 @@ CPF</label>
     className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
     id="numeroInscricaoMunicipalI"
     onChange={onChange}
+    onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
+
     placeholder="Número de Inscrição Municipal"
   />
 </div>
@@ -851,30 +914,40 @@ CPF</label>
   <label htmlFor="tipoContratob" className="form-label inline-block mb-2 text-white">
     Tipo de Contrato
   </label>
-  <input type="text"
-    name="tipoContratob"
-    className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-    id="tipoContratoI"
-    onChange={onChange}
-    placeholder="Tipo de Contrato"
-  />
+      <select onChange={valorContrato} id="contrato" className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
+      <option value="comodato">Comodato</option>
+      <option value="arrendamento">Arrendamento</option>
+      <option value="compraevenda">Compra e Venda</option>
+      <option value="aluguel">Aluguel</option>
+      <option value="locacao">Locação</option>
+    </select>
 </div>
 
 <h1 className="text-white mt-10 text-center font-semibold whitespace-nowrap">Declaração de Baixa de Inscrição Municipal  - </h1>
 
-
 <div className="col-span-3">
-  <label htmlFor="baixadab" className="form-label inline-block mb-2 text-white">
-    Baixada
-  </label>
-  <input type="text"
+    <label htmlFor="baixadab" className="form-label inline-block mb-2 text-white">
+      Baixada
+    </label>
+    {/* <Select 
     name="baixadab"
-    className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-    id="baixadaI"
-    onChange={onChange}
-    placeholder="Baixada"
-  />
+    options={options}
+    onChange={handleChangeBaixa}
+    /> */}
+
+    <select id="baixa" className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none" name="select" onChange={valorBaixa}>
+      <option value="sim">Sim</option>
+      <option value="nao" defaultValue>Não</option>
+    </select>
+
 </div>
+
+
+
+
+
+
+
 
 
 
@@ -884,7 +957,7 @@ CPF</label>
 <div id="popup-modal" tabIndex="1" className="App4 whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-20 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
     <div className="fixed w-full h-full max-w-xl md:h-auto">
         <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <button onClick={() => closeModalDelete()} type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
+            <button onClick={() => closeModalConfirm()} type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
                 <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                 <span className="sr-only">Fechar</span>
             </button>
