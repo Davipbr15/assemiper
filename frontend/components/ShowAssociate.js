@@ -79,19 +79,19 @@ function ShowAssociate(){
                   <table className="tg min-w-screen">
                     <thead className="min-w-screen">
                       <tr>
-                        <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
+                        <th scope="col" className="tg-k4e5 w-64  text-sm font-medium text-white px-6 py-4 text-left">
                           ID
                         </th>
-                        <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
+                        <th scope="col" className="tg-k4e5 w-64 text-sm font-medium text-white px-6 py-4 text-left">
                           Razão Social
                         </th>
-                        <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
+                        <th scope="col" className="tg-k4e5 w-64 text-sm font-medium text-white px-6 py-4 text-left">
                          Nome Fantasia
                         </th>
-                        <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
+                        <th scope="col" className="tg-k4e5 w-64 text-sm font-medium text-white px-6 py-4 text-left">
                           CNPJ
                         </th>
-                        <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
+                        <th scope="col" className="tg-k4e5 w-64 text-sm font-medium text-white px-6 py-4 text-left">
                         Visualizar Dados
                         </th>
                       </tr>

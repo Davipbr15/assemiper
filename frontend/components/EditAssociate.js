@@ -620,22 +620,22 @@ return(
           <table className="tg min-w-screen">
             <thead className="min-w-screen">
               <tr>
-                <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
+                <th scope="col" className="tg-k4e5 w-64 text-sm font-medium text-white px-6 py-4 text-left">
                   ID
                 </th>
-                <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
+                <th scope="col" className="tg-k4e5 w-64 text-sm font-medium text-white px-6 py-4 text-left">
                   Número da Pasta
                 </th>
-                <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
+                <th scope="col" className="tg-k4e5 w-64 text-sm font-medium text-white px-6 py-4 text-left">
                   Nome Completo
                 </th>
-                <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
+                <th scope="col" className="tg-k4e5 w-64 text-sm font-medium text-white px-6 py-4 text-left">
                  Razão Social
                 </th>
-                <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
+                <th scope="col" className="tg-k4e5 w-64 text-sm font-medium text-white px-6 py-4 text-left">
                  Editar
                 </th>
-                <th scope="col" className="tg-k4e5 text-sm font-medium text-white px-6 py-4 text-left">
+                <th scope="col" className="tg-k4e5 w-64 text-sm font-medium text-white px-6 py-4 text-left">
                  Deletar
                 </th>
               </tr>
@@ -643,10 +643,10 @@ return(
           <tbody>
             {assc.map((ascData, index) => {
               return (
-                <tr key={index} className="group bg-assemiperBlack font-bold border-b transition duration-300 ease-in-out hover:bg-red-700">
+                <tr key={index} className="group bg-assemiperBlack font-bold border-b break-all transition duration-300 ease-in-out hover:bg-red-700">
                   <td className="tg-dg7a group-hover:bg-slate-200 px-6 py-4 text-sm font-bold text-white">{ascData.associateId}</td>
                   <td className="tg-dg7a group-hover:bg-slate-200 px-6 py-4 text-sm font-light text-white">{ascData.numeroDaPasta}</td>
-                  <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosPessoais?.nomeCompleto}</td>
+                  <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l break-all font-light px-6 py-4"><p className="break-all">{ascData.dadosPessoais?.nomeCompleto}</p></td>
                   <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.razaoSocial}</td>
                   <td className=" group-hover:bg-slate-200 text-center tg-dg7a"><button name="editAsc" onClick={() => getEditAssociate(ascData._id)}  className="transition ease-in duration-100 cursor-pointer text-xl w-6 hover:scale-125 text-blue-500 hover:text-blue-600  rounded-xl bi bi-pencil"></button></td>
                   <td className=" group-hover:bg-slate-200 text-center tg-dg7a"><button name="deleteAsc" onClick={() => openModalDelete(ascData._id, ascData.dadosProfissionais.nomeFantasia)} className="deleteAsc transition ease-in duration-100 cursor-pointer text-red-500 hover:text-red-700 text-xl w-6 hover:scale-150 rounded-xl"><i className="bi bi-trash"></i></button></td>
