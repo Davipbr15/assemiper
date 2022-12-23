@@ -75,7 +75,7 @@ function ShowAssociate(){
         <div className="w-screen sm:-mx-6 lg:-mx-8">
           <div className="py-2 sm:px-6 lg:px-8">
             <div className="py-2">
-              <div className="">
+              <div className="overflow-x-auto">
                   <table className="tg min-w-screen">
                     <thead className="min-w-screen">
                       <tr>
@@ -99,7 +99,7 @@ function ShowAssociate(){
                   <tbody>
                     {assc.map((ascData, index) => {
                       return (
-                        <tr key={index} className="group bg-assemiperBlack font-bold border border-l transition duration-100 ease-in-out hover:bg-red-700">
+                        <tr key={index} className="group whitespace-normal bg-assemiperBlack font-bold border border-l transition duration-100 ease-in-out hover:bg-red-700">
                           <td className="tg-dg7a group-hover:bg-slate-200 px-6 py-4 text-sm font-medium text-white">{ascData.associateId}</td>
                           <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.razaoSocial}</td>
                           <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.nomeFantasia}</td>

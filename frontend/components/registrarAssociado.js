@@ -508,7 +508,7 @@ CPF</label>
 <div className="col-span-3">
 <label htmlFor="emailPessoalI" className="form-label inline-block mb-2 text-white">
   E-mail pessoal</label>
-  <input type="text"
+  <input type="email"
      name="emailPessoalb"
      required
      className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -689,7 +689,7 @@ CPF</label>
 <div className="col-span-3">
 <label htmlFor="emailProfissionalI" className="form-label inline-block mb-2 text-white">
   Email Profissional</label>
-  <input type="text"
+  <input type="email"
      name="emailProfissionalb"
      required
      className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"

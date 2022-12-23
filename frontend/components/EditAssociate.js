@@ -464,17 +464,8 @@ const [clicko, setClicko ] = useState(false);
     }
   };
 
-  async function baixada(result){
 
-    if(result == "Sim"){
-      setSimBaixa(true);
-    }else{
-      setNaoBaixa(true);
-    }
-    
-  }
-
-
+  const [simBaixa, setSimBaixa] = useState(false);
 
   var result = ""
   async function editingAssociate(value){
@@ -488,7 +479,14 @@ const [clicko, setClicko ] = useState(false);
     }
     await setEditando(result)
     setClicko(true);
-    baixada(result[0].pastaDeDocumentos.declaracaoDeBaixaInscricao.baixada)
+    var baixadoI = result[0].pastaDeDocumentos.declaracaoDeBaixaInscricao.baixada;
+    if(baixadoI == "Não"){
+      console.log("Foi NÃO")
+      setSimBaixa(false)
+    }else{
+      console.log("Foi SIM")
+      setSimBaixa(true)
+    }
     // contrato()
   };
 
@@ -584,9 +582,6 @@ const valorContrato = ()=>{
 
   }
 }
-
-const [simBaixa, setSimBaixa] = useState(false);
-const [naoBaixa, setNaoBaixa] = useState(false);
 
 
 return(
@@ -925,7 +920,7 @@ return(
   <div className="col-span-3">
   <label htmlFor="emailPessoalI" className="form-label inline-block mb-2 text-white">
     e-mail pessoal</label>
-    <input type="text"
+    <input type="email"
        name="emailPessoalb"
        required
       defaultValue={editando[0].dadosPessoais.emailPessoal}
@@ -1118,7 +1113,7 @@ return(
   <div className="col-span-3">
   <label htmlFor="emailProfissionalI" className="form-label inline-block mb-2 text-white">
     Email Profissional</label>
-    <input type="text"
+    <input type="email"
        name="emailProfissionalb"
        required
   defaultValue={editando[0].dadosProfissionais.emailProfissional}
@@ -1363,26 +1358,19 @@ return(
     <label htmlFor="baixadab" className="form-label inline-block mb-2 text-white">
       Baixada
     </label>
-    <input type="text"
-      name="baixadab"
-      className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
-      id="baixadaI"
-      defaultValue={editando[0].pastaDeDocumentos.declaracaoDeBaixaInscricao.baixada}
-      onChange={onChange}
-      placeholder="Baixada"
-    />
-  {simBaixa && (
-        <select id="baixa" className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none" name="select" onChange={valorBaixa}>
-        <option value="sim" defaultValue>Sim</option>
-        <option value="nao">Não</option>
-      </select>
+
+  {!simBaixa ?
+  (<select id="baixa" className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none" name="select" onChange={valorBaixa}>
+    <option value="sim" >Sim</option>
+    <option value="nao" selected>Não</option>
+  </select>
   )
-  }
-  {naoBaixa && (
-        <select id="baixa" className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none" name="select" onChange={valorBaixa}>
-        <option value="sim">Sim</option>
-        <option value="nao" defaultValue>Não</option>
-      </select>
+  :
+  (
+  <select id="baixa" className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none" name="select" onChange={valorBaixa}>
+    <option value="sim" selected>Sim</option>
+    <option value="nao" >Não</option>
+  </select>
   )
   }
 
