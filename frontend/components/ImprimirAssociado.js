@@ -445,28 +445,28 @@ function ImprimirAssociado(){
             <Header/>
         <div className="App">
             <div className="flex flex-col">
-                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                        <div className="overflow-hidden">
-                            <table className="table-fixed min-w-screen">
-                            <thead>
+                <div className="w-screen sm:-mx-6 lg:-mx-8">
+                    <div className="py-2 sm:px-6 lg:px-8">
+                        <div className="overflow-x-auto">
+                            <table className="tg min-w-screen">
+                            <thead className="">
                                 <tr>
-                                    <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                                    <th scope="col" className="tg-k4e5 w-10 text-sm font-medium text-white px-6 py-4 text-center">
                       ID
                                     </th>
-                                    <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                                    <th scope="col" className="tg-k4e5 max-w-60 text-sm font-medium text-white px-6 py-4 text-center">
                       Nome Completo
                                     </th>
-                                    <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                                    <th scope="col" className="tg-k4e5 max-w-60 text-sm font-medium text-white px-6 py-4 text-center">
                                       Razão Social
                                     </th>
-                                    <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                                    <th scope="col" className="tg-k4e5 max-w-60 text-sm font-medium text-white px-6 py-4 text-center">
                      Nome Fantasia
                                     </th>
-                                    <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                                    <th scope="col" className="tg-k4e5 max-w-60 text-sm font-medium text-white px-8 py-4 text-center">
                      CNPJ
                                     </th>
-                                    <th scope="col" className="text-sm font-medium text-white px-6 py-4 text-left">
+                                    <th scope="col" className="tg-k4e5  max-w-60 text-sm font-medium text-white px-6 py-4 text-center">
                      Imprimir
                                     </th>
                                     </tr>
@@ -474,13 +474,13 @@ function ImprimirAssociado(){
                                 <tbody>
                 {assc.map((ascData, index) => {
                   return (
-                    <tr key={index} className="bg-assemiperBlack font-bold border border-ltransition duration-300 ease-in-out text-center hover:bg-red-700">
-                      <td className="px-6 py-4 text-sm font-medium text-white">{ascData.associateId}</td>
-                      <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosPessoais?.nomeCompleto}</td>
-                      <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosProfissionais?.nomeFantasia}</td>
-                      <td className="text-sm text-white border-l font-light px-6 py-4 whitespace-nowrap">{ascData.dadosProfissionais?.razaoSocial}</td>
-                      <td className="text-sm text-white border-l border-r font-light px-6 py-4 whitespace-nowrap">{ascData.dadosProfissionais?.cnpj}</td>
-                      <td><button name="imprimirAsc" onClick={() => getPrintAssociate(ascData._id)} className="hover:scale-125 transition duration-150 linear text-blue-600 bg-black bg-opacity-50 rounded-full p-2"><i className="bi bi-printer"></i></button></td>
+                    <tr key={index} className="group bg-assemiperBlack font-bold border-b break-all transition duration-300 ease-in-out hover:bg-red-700">
+                      <td className="tg-dg7a group-hover:bg-slate-200 px-6 py-4 text-sm font-bold text-white">{ascData.associateId}</td>
+                      <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l break-all font-light py-4"><p className="break-words w-32">{ascData.dadosPessoais?.nomeCompleto}</p></td>
+                      <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.nomeFantasia}</td>
+                      <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{ascData.dadosProfissionais?.razaoSocial}</td>
+                      <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l font-light whitespace-nowrap">{ascData.dadosProfissionais?.cnpj}</td>
+                      <td className="group-hover:bg-slate-200 text-center"><button name="imprimirAsc" onClick={() => getPrintAssociate(ascData._id)} className="hover:scale-125 transition  duration-150 linear text-black bg-opacity-50 rounded-full p-2"><i className="bi bi-printer"></i></button></td>
                     </tr>
                   )
                 })

@@ -284,7 +284,7 @@ border-width:0px;
 color:#333;
 font-family:Arial, sans-serif;
 overflow:hidden;
-padding:8px 40px;
+padding:8px 20px;
 word-break:normal;
 
 }
@@ -305,7 +305,6 @@ position:-webkit-sticky;
 position:sticky;
 text-align:center;
 top:-1px;
-
 vertical-align:top;
 will-change:transform
 }
