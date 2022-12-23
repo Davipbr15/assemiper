@@ -154,6 +154,9 @@ function LoginUser(){
                 </p> */}
                 <h1 className="text-assemiperBlack pt-5 text-center">Work in Progress.</h1>
             </div>
+            <a className="" href="https://github.com/Davipbr15/assemiper">
+            <small className="px-5 underline text-white">Version 1.0.2</small>
+            </a>
         </div>
 
     )
