@@ -123,7 +123,7 @@ function LoginUser(){
                     <i className={view ? "bi bi-eye" : "bi bi-eye-slash"} id="togglePassword"></i> Mostrar Senha
                     </div>
                     <hr></hr>
-                    <div className="pt-2">
+                    {/* <div className="pt-2">
                         <a
                             href="#"
                             onClick={onEsqueceu}
@@ -131,7 +131,7 @@ function LoginUser(){
                         >
                             Esqueceu a senha?
                         </a>
-                    </div>
+                    </div> */}
                     <div className="mt-6">
                         <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-assemiperRed rounded-md hover:bg-gray-900 focus:outline-none focus:bg-red-700">
                             Logar
@@ -139,7 +139,7 @@ function LoginUser(){
                     </div>
                 </form>
 
-                <p className="mt-8 text-xs font-light text-center text-gray-700">
+                {/* <p className="mt-8 text-xs font-light text-center text-gray-700">
                     {" "}
                     Não tem conta{" "}
                     <Link href="/registerUser">
@@ -151,7 +151,8 @@ function LoginUser(){
                     </a>
                 </Link>
 
-                </p>
+                </p> */}
+                <h1 className="text-assemiperBlack pt-5 text-center">Work in Progress.</h1>
             </div>
         </div>
 
