@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { browserHistory } from 'react-router'
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Axios from 'axios';
 import {ipatual} from './ip.js';

@@ -1,5 +1,5 @@
 import LoginUser from "../components/LoginUser.js";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Axios from 'axios';
 import {ipatual} from '../components/ip.js';
 

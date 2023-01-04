@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Axios from "axios";
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {ipatual} from './ip.js';
 
 function DeleteUser(){

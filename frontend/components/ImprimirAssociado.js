@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
 import Axios from 'axios';
 import Image from 'next/image';
 import Header from "../components/Header.js";
