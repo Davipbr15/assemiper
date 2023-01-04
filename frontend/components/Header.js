@@ -65,7 +65,7 @@ function Header(){
           }else{
             if (typeof window !== "undefined") {
               // window.alert("Rapa Fora")
-              //   window.location.replace("/")
+              // window.location.replace("/")
             }
         }
       }
@@ -75,6 +75,7 @@ function Header(){
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isNavOpen2, setIsNavOpen2] = useState(false);
   const [isNavOpen3, setIsNavOpen3] = useState(false);
+  const [isNavOpen4, setIsNavOpen4] = useState(false);
   const [isNavBanco, setIsNavBanco] = useState(false);
   const [isNavBoletos, setIsNavBoletos] = useState(false);
 
@@ -163,6 +164,8 @@ function Header(){
           </div>
       </div>
 
+
+
       <div className="Servicos-aba">
           <div
             className="p-2.5 mt-3 btn-13 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-assemiperBlack text-white"
@@ -243,6 +246,40 @@ function Header(){
              </div>
             </div>
             
+
+            <div className="reuniao-aba">
+          <div
+            className="p-2.5 mt-3 btn-13 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-assemiperBlack text-white"
+            onClick={() => setIsNavOpen4((prev) => !prev)}      
+          >
+            <i className="bi bi-chat-left-text-fill"></i>
+            <div className="flex hover:bg-assemiperBlack justify-between w-full items-center">
+              <span className="text-[15px] ml-4 text-gray-200 font-bold">Reunião</span>
+              <span className="text-sm rotate-180" id="arrow">
+              <div className={isNavOpen4 ? "bi-caret-down" : "bi-caret-up"}>
+              <i className="bi"></i>
+              </div>
+              </span>
+            </div>
+          </div>
+          <div className={isNavOpen4 ? "show" : "hidden"}>
+          <div
+            className="text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold"
+            id="submenu"
+          >
+            <Link href="/atasReunioes">
+              <h1 className="cursor-pointer btn-13 p-2 hover:bg-assemiperBlack rounded-md mt-1">
+                Atas
+              </h1>
+            </Link>
+            <Link href="/reunioesAgendadas">
+              <h1 className="cursor-pointer btn-13 hover:bg-assemiperBlack p-2 placeholder:rounded-md mt-1">
+                Reuniões Agendadas
+              </h1>
+            </Link>
+          </div>
+          </div>
+      </div>
             
 
       <div className="my-4 bg-gray-600 h-[1px]"></div>

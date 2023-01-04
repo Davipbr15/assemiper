@@ -71,7 +71,7 @@ require("./details/userDetails");
 require("./details/loginDetail");
 const Login = mongoose.model("LoginUser");
 const Associate = mongoose.model("AssociateInfo");
-var logged = true;
+var logged = false;
 
 const os = require('os');
 
@@ -88,7 +88,7 @@ app.get("/api/ipConfig", async(req,res)=>{
 app.post('/', async(req,res)=>{
 
     console.log("Entrou na página inicial/Deslogou.");
-    logged = true;
+    logged = false;
 
 })
 
@@ -465,6 +465,33 @@ app.post("/api/registerAssociate", async(req,res)=>{
         });
         res.send({status:"Ok"});
         console.log(nomeCompletob + " registrado com sucesso!");
+
+    } catch (error){
+
+        res.send({status: "Error"});
+        console.log(error);
+
+    }
+
+    
+
+
+})
+
+
+app.post("/api/registerReuniao", async(req,res)=>{
+
+    const {a} = req.body;
+    try{
+        await Associate.create({
+            
+
+            
+
+        });
+        res.send({status:"Ok"});
+
+        console.log("Reunião registrada com sucesso!");
 
     } catch (error){
 
