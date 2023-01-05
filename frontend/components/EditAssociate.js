@@ -467,7 +467,7 @@ const [clicko, setClicko ] = useState(false);
 
   const [simBaixa, setSimBaixa] = useState(false);
 
-  var result = ""
+  var result = "";
   async function editingAssociate(value){
     try{ 
       console.log("Try")

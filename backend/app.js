@@ -60,12 +60,9 @@ Ata Reunião
 require("./details/services/reunioes/ataReuniaoDetail");
 const AtaReuniao = mongoose.model("AtaReuniao");
 
-Reuniões
-Convite
-require("./details/services/reunioes/conviteReuniaoDetail");
-const ConviteReuniao = mongoose.model("conviteReuniao");
-
 */
+require("./details/reunioes/conviteReuniaoDetail");
+const ConviteReuniao = mongoose.model("ConviteReuniao");
 
 require("./details/userDetails");
 require("./details/loginDetail");
@@ -478,33 +475,6 @@ app.post("/api/registerAssociate", async(req,res)=>{
 
 })
 
-
-app.post("/api/registerReuniao", async(req,res)=>{
-
-    const {a} = req.body;
-    try{
-        await Associate.create({
-            
-
-            
-
-        });
-        res.send({status:"Ok"});
-
-        console.log("Reunião registrada com sucesso!");
-
-    } catch (error){
-
-        res.send({status: "Error"});
-        console.log(error);
-
-    }
-
-    
-
-
-})
-
 app.post('/api/deleteAssociate',async(req,res)=>{
 
     const {associateIdb} = req.body;
@@ -534,6 +504,71 @@ app.post('/api/deleteAssociate',async(req,res)=>{
     //     });
 
 })
+
+app.post("/api/registerReuniao", async(req,res)=>{
+
+    const { 
+        temaReuniaob,
+        dataDaReuniaob,
+        horarioReuniaob,
+        convidadosReuniaob
+      } = req.body
+    try{
+        await ConviteReuniao.create({
+            
+            temaReuniao: temaReuniaob,
+            dataDaReuniao: dataDaReuniaob,
+            horarioReuniao: horarioReuniaob,
+            convidadosReuniao: convidadosReuniaob,
+
+        });
+        res.send({status:"Ok"});
+
+        console.log("Reunião registrada com sucesso!");
+
+    } catch (error){
+
+        res.send({status: "Error"});
+        console.log(error);
+
+    }
+
+    
+
+
+})
+
+app.post("/api/searchReuniao", async(req,res)=>{  
+    console.log("Procurou as reuniões")
+
+    try {
+        const Reuniao = await ConviteReuniao.find().sort({ dataDaReuniao: -1 });
+        res.status(200).json(Reuniao);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        console.log("Running")
+    }
+    
+})
+
+app.post("/api/getReuniao", async(req,res)=>{  
+    console.log("Procurou as reuniões")
+    const {reuniaoId} = req.body;
+    try {
+        const Reuniao = await ConviteReuniao.find({_id:reuniaoId});
+        res.status(200).json(Reuniao);
+        console.log(Reuniao)
+    } catch (e) {
+        console.error(e);
+    } finally {
+        console.log("Running")
+        console.log(req.body)
+    }
+    
+})
+
+
 
 app.post('/api/changePassword', async (req, res) => {
 	const { token, newPassword: passwordb } = req.body

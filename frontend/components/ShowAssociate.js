@@ -37,7 +37,7 @@ function ShowAssociate(){
       
         fetchData();
 
-      }, []);
+    }, []);
 
       const [vendoDados, setVendoDados ] = useState(false);
 
@@ -49,7 +49,7 @@ function ShowAssociate(){
           console.log("Try")
           values.associateIdb = value;
           const resposta = await axios.post('http://'+ ipatual +'/api/editAssociate', values);
-          result = resposta?.data    
+          result = resposta?.data;
         }catch(error){
           console.log(error);
         }
@@ -869,7 +869,7 @@ disabled
     </button>
   </div>
 
-  </div>
+        </div>
 
         )}
         </>
