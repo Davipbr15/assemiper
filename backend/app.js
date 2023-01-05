@@ -285,7 +285,7 @@ app.post("/api/editAssociate", async(req,res)=>{
     const {associateIdb} = req.body;
     console.log("/api/editAssociate RESPONSE")
     try {
-        const Asc = await Associate.find({_id:associateIdb})
+        const Asc = await Associate.findOne( { _id:associateIdb } )
         console.log(Asc)
         res.status(200).json(Asc);
     } catch (e) {
@@ -537,7 +537,6 @@ app.post("/api/registerReuniao", async(req,res)=>{
 
 
 })
-
 app.post("/api/searchReuniao", async(req,res)=>{  
     console.log("Procurou as reuniões")
 
@@ -551,19 +550,18 @@ app.post("/api/searchReuniao", async(req,res)=>{
     }
     
 })
-
 app.post("/api/getReuniao", async(req,res)=>{  
-    console.log("Procurou as reuniões")
+    console.log("Procurou as reuniões");
     const {reuniaoId} = req.body;
+    console.log(reuniaoId);
     try {
-        const Reuniao = await ConviteReuniao.find({_id:reuniaoId});
+        const Reuniao = await ConviteReuniao.find({ _id:reuniaoId });
         res.status(200).json(Reuniao);
-        console.log(Reuniao)
+        console.log(Reuniao);
     } catch (e) {
         console.error(e);
     } finally {
         console.log("Running")
-        console.log(req.body)
     }
     
 })

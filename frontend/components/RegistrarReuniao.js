@@ -155,6 +155,7 @@ const [dados, setDados] = useState([]);
 var result = "";
 
 async function dataReunioes(value){
+  console.log(values)
   try{ 
     console.log("Try")
     values._id = value;
