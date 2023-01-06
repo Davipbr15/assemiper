@@ -494,15 +494,6 @@ app.post('/api/deleteAssociate',async(req,res)=>{
         res.status(500).send(error);
     }
 
-    // const assc = req.params.assc;
-    //     try{
-
-    //     Associate.findOneAndDelete({"associateId": assc}
-
-    //     }catch(error => {
-    //         res.status(500).send(error);
-    //     });
-
 })
 
 app.post("/api/registerReuniao", async(req,res)=>{
@@ -553,9 +544,8 @@ app.post("/api/searchReuniao", async(req,res)=>{
 app.post("/api/getReuniao", async(req,res)=>{  
     console.log("Procurou as reuniões");
     const {reuniaoId} = req.body;
-    console.log(reuniaoId);
     try {
-        const Reuniao = await ConviteReuniao.find({ _id:reuniaoId });
+        const Reuniao = await ConviteReuniao.findOne( {  _id:reuniaoId });
         res.status(200).json(Reuniao);
         console.log(Reuniao);
     } catch (e) {
@@ -564,6 +554,28 @@ app.post("/api/getReuniao", async(req,res)=>{
         console.log("Running")
     }
     
+})
+
+app.post('/api/deleteReuniao',async(req,res)=>{
+
+    const {r_id} = await req.body;
+    
+    console.log( r_id);
+    console.log(typeof( r_id));
+    var query = { _id: r_id };
+    try{
+        ConviteReuniao.deleteOne(query).then(function(){
+            console.log("Removeu.")
+            return res.status(200)
+        }).catch(function(error){
+            console.log(error);
+        })
+        
+
+    }catch(error){
+        res.status(500).send(error);
+    }
+
 })
 
 

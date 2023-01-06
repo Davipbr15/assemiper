@@ -90,6 +90,7 @@ const onSubmit = async(ev) => {
     
     // values.nomeCompletob = editando[0].dadosPessoais.nomeCompleto;
     // values.estadoCivilb = editando[0].dadosPessoais.estadoCivil ?? null;
+    if(1==1){
       if(values.nomeCompletob == ''){
         values.nomeCompletob = editando[0].dadosPessoais.nomeCompleto 
       }else{
@@ -371,6 +372,7 @@ const onSubmit = async(ev) => {
     }else{
       values.enderecoSedeb = values.enderecoSedeb 
     }
+    }
   
 
       const resposta = await Axios.post('http://'+ipatual+'/api/updateAssociate', values) 
@@ -479,14 +481,14 @@ const [clicko, setClicko ] = useState(false);
     }
     await setEditando(result)
     setClicko(true);
-    var baixadoI = result[0].pastaDeDocumentos.declaracaoDeBaixaInscricao.baixada;
-    if(baixadoI == "Não"){
-      console.log("Foi NÃO")
-      setSimBaixa(false)
-    }else{
-      console.log("Foi SIM")
-      setSimBaixa(true)
-    }
+              var baixadoI = result[0].pastaDeDocumentos.declaracaoDeBaixaInscricao.baixada;
+              if(baixadoI == "Não"){
+                console.log("Foi NÃO")
+                setSimBaixa(false)
+              }else{
+                console.log("Foi SIM")
+                setSimBaixa(true)
+              }
     // contrato()
   };
 
