@@ -70,9 +70,9 @@ function ShowAssociate(){
     return( 
         <>
         {!vendoDados && (
-        <div className="App">
+        <div className="App5">
 
-        <div className="w-screen sm:-mx-6 lg:-mx-8">
+        <div className="sm:-mx-6 lg:-mx-8">
           <div className="py-2 sm:px-6 lg:px-8">
             <div className="py-2">
               <div className="overflow-x-auto">

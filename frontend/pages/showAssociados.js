@@ -10,7 +10,11 @@ function App() {
     
     <Header />
 
+    <div className='mx-auto'>
+
     <ShowAssociate />
+
+    </div>
 
     </div>
   );

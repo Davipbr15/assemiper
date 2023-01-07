@@ -502,7 +502,9 @@ app.post("/api/registerReuniao", async(req,res)=>{
         temaReuniaob,
         dataDaReuniaob,
         horarioReuniaob,
-        convidadosReuniaob
+        convidadosReuniaob,
+        resumoReuniaob,
+        presentesReuniaob,
       } = req.body
     try{
         await ConviteReuniao.create({
@@ -511,6 +513,8 @@ app.post("/api/registerReuniao", async(req,res)=>{
             dataDaReuniao: dataDaReuniaob,
             horarioReuniao: horarioReuniaob,
             convidadosReuniao: convidadosReuniaob,
+            resumoReuniao: resumoReuniaob,
+            presentesReuniao: presentesReuniaob,
 
         });
         res.send({status:"Ok"});
@@ -574,6 +578,40 @@ app.post('/api/deleteReuniao',async(req,res)=>{
 
     }catch(error){
         res.status(500).send(error);
+    }
+
+})
+
+
+app.post("/api/updateReuniao", async(req,res)=>{
+    const {
+        r_id,
+        temaReuniaob,
+        dataDaReuniaob,
+        horarioReuniaob,
+        convidadosReuniaob,
+        resumoReuniaob,
+        presentesReuniaob,
+    } = req.body;
+
+    console.log(req.body)
+    console.log("/api/updateReuniao RESPONSE")
+    try {
+        const Asc = await ConviteReuniao.updateOne({_id:r_id}, {$set:{
+        
+            temaReuniao: temaReuniaob,
+            dataDaReuniao: dataDaReuniaob,
+            horarioReuniao: horarioReuniaob,
+            convidadosReuniao: convidadosReuniaob,
+            resumoReuniao: resumoReuniaob,
+            presentesReuniao: presentesReuniaob,
+
+        }})
+        res.status(200).json(Asc);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        console.log("Running")
     }
 
 })

@@ -6,7 +6,12 @@
 
 
 .App{
-background: #0F0F0F;
+min-height: 100%;
+
+min-width: 100%;
+
+background-image: url('../public/img/homepageblur.png');
+
 }
 
 .App2{
@@ -35,6 +40,15 @@ min-height: 100%;
 min-width: 100%;
 
 background: rgba(0,0,0,.1);
+
+}
+
+.App5{
+min-height: 100%;
+
+min-width: 100%;
+
+background-image: url('../public/img/homepage.jpg');
 
 }
 

@@ -23,7 +23,9 @@ function App() {
     temaReuniaob: "",
     dataDaReuniaob: "",
     horarioReuniaob: "",
-    convidadosReuniaob: ""
+    convidadosReuniaob: "",
+    resumoReuniaob: '',
+    presentesReuniaob: '',
   }
 
   const [values, setValues] = useState(initialValue);
@@ -200,14 +202,26 @@ async function getDados(value){
 
 const [deletarReuniaoModal, setDeletarReuniaoModal] = useState(false);
 
+const [deletarReuniaoModalA, setDeletarReuniaoModalA] = useState(false);
+
 async function deletarReuniaoA(){
 
   setDeletarReuniaoModal(true)
 
 }
 
-const deletarReuniao = async(value) => {
+async function deletarReuniaoB(value){
+
   values.r_id = value;
+
+  setDeletarReuniaoModalA(true)
+
+}
+
+const deletarReuniao = async(value) => {
+
+  values.r_id = value;
+
   console.log("Apertou " + value + " pra deletar")
   try{ 
     console.log("Try")
@@ -248,7 +262,7 @@ useEffect(() => {
 return(
 
 
-<div className="App">
+<div className='mt-10'>
 
 {/* <form  action="#" onSubmit={onSubmit} method="POST" className="flex p-4 rounded-lg justify-self-center mx-auto shadow-2xl bg-assemiperBlack">
 <div className="col-span-3">
@@ -392,7 +406,8 @@ return(
 
 <>
 
-  <form  action="#" method="POST" className="flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 justify-center text-center p-4 rounded-lg justify-self-center m-auto w-screen h-screen  shadow-2xl bg-assemiperBlack bg-opacity-60">
+
+  <form  action="#" method="POST" className="flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 justify-center text-center p-4 rounded-lg justify-self-center m-auto w-screen h-screen  shadow-2xl bg-assemiperBlack bg-opacity-80">
 
   <div className="fixed p-5">
     <button onClick={desagendarModal} className="rounded-xl text-2xl w-16 bg-assemiperRed h-10">
@@ -400,7 +415,7 @@ return(
     </button>
   </div>
 
-  <div className="m-auto">
+  <div className="m-auto bg-black p-5 rounded-md bg-opacity-70">
 
     <div className="mb-5 whitespace-normal">
     <h1 className="text-xl text-center text-white font-semibold">Agende uma Reunião</h1>
@@ -517,19 +532,47 @@ return(
 {!agendando && (
 
 <div>
-  <div className='tg-dg7a group-hover:bg-slate-200 text-sm text-center text-white border-l font-light px-6 py-4 whitespace-normal'>
-      <button className="transition ease-in duration-100 cursor-pointer text-xl w-12 group-hover:text-assemiperBlack hover:scale-150 rounded-xl">
-        Agendar
-      </button>
-  </div>
 
-            <div className="App">
+{deletarReuniaoModalA && (
 
-      <div className="w-screen sm:-mx-6 lg:-mx-8">
+<div id="popup-modal" tabIndex="1" className="App4 whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-20 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+    <div className="fixed w-full h-full max-w-xl md:h-auto">
+        <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <button onClick={() => setDeletarReuniaoModal(false)} type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
+                <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                <span className="sr-only">Fechar</span>
+            </button>
+            <div className="p-6 text-center">
+                <svg aria-hidden="true" className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h3 className="mb-5 text-lg font-normal text-white dark:text-white">Deseja realmente excluir essa reunião? (Ação Irreversível)</h3>
+                <button onClick={() => deletarReuniao(values.r_id)} data-modal-toggle="popup-modal" type="submit" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                    Sim, deletar reunião.
+                </button>
+                <button onClick={() => setDeletarReuniaoModalA(false)} data-modal-toggle="popup-modal" type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Não, cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+)
+}
+ 
+
+      <div className="">
+
+      <div className="sm:-mx-6 lg:-mx-8">
+
         <div className="py-2 sm:px-6 lg:px-8">
           <div className="py-2">
-            <div className="overflow-x-auto">
+
+          <div onClick={agendarModal} className="mb-5 m-auto h-16 text-center w-1/2 cursor-pointer group bg-red-800 hover:bg-red-700 transition ease-in-out duration-300 relative  flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
+                    <h2 className="cursor-pointer m-auto text-white text-center">AGENDAR REUNIÃO</h2>
+            </div>
+
+            <div className="overflow-x-auto min-w-screen">
+
                 <table className="tg min-w-screen">
+
                   <thead className="min-w-screen">
                     <tr>
                       <th scope="col" className="tg-k4e5 w-48 text-sm font-medium text-white px-6 py-4 text-left">
@@ -544,8 +587,11 @@ return(
                       <th scope="col" className="tg-k4e5 w-32 text-sm font-medium text-white px-6 py-4 text-left">
                         Convidados
                       </th>
-                      <th scope="col" className="tg-k4e5 w-32 text-sm font-medium text-white px-6 py-4 text-left">
+                      <th scope="col" className="tg-k4e5 w-8 text-sm font-medium text-white px-6 py-4 text-left">
                       Visualizar Dados
+                      </th>
+                      <th scope="col" className="tg-k4e5 w-8 text-sm font-medium text-white px-6 py-4 text-left">
+                      Deletar
                       </th>
                     </tr>
                   </thead>
@@ -553,15 +599,16 @@ return(
                   {reunas.map((reuniaoData, index) => {
                     return (
                       <tr key={index} className="group whitespace-normal bg-assemiperBlack font-bold border border-l transition duration-100 ease-in-out hover:bg-red-700">
-                        <td className="tg-dg7a group-hover:bg-slate-200 px-6 py-4 text-sm font-medium text-white">{reuniaoData.temaReuniao}</td>
-                        <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.dataDaReuniao}</td>
-                        <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.horarioReuniao}</td>
-                        <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.convidadosReuniao}</td>
-                        <td className="tg-dg7a group-hover:bg-slate-200 text-sm text-center text-white border-l font-light px-6 py-4 whitespace-normal">
+                        <td className="tg-dg7a group-hover:bg-slate-300 px-6 py-4 text-sm font-medium text-white">{reuniaoData.temaReuniao}</td>
+                        <td className="tg-dg7a group-hover:bg-slate-300 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.dataDaReuniao}</td>
+                        <td className="tg-dg7a group-hover:bg-slate-300 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.horarioReuniao}</td>
+                        <td className="tg-dg7a group-hover:bg-slate-300 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.convidadosReuniao}</td>
+                        <td className="tg-dg7a group-hover:bg-slate-300 text-sm text-center text-white border-l font-light px-6 py-4 whitespace-normal">
                           <button onClick={() => getDados(reuniaoData._id)} className="transition ease-in duration-100 cursor-pointer text-xl w-12 group-hover:text-assemiperBlack hover:scale-150 rounded-xl">
                           <i className="bi bi-eye"></i>
                           </button>
-                          </td>
+                        </td>
+                        <td className=" group-hover:bg-slate-300 text-center tg-dg7a"><button name="deleteAsc" onClick={() => deletarReuniaoB(reuniaoData._id)} className="deleteAsc transition ease-in duration-100 cursor-pointer text-red-500 hover:text-red-700 text-xl w-6 hover:scale-150 rounded-xl"><i className="bi bi-trash"></i></button></td>
                       </tr>
                     )
                   })

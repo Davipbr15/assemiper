@@ -9,7 +9,11 @@ export default function Home() {
 
     <Header />
 
-    <RegisterReuniao />                       
+    <div className='mx-auto'>
+
+    <RegisterReuniao /> 
+
+    </div>                      
 
     </div>
     </>
