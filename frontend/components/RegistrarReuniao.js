@@ -17,15 +17,15 @@ function App() {
   var dataFinal = dataFormatada.format('LLLL')
 
   const initialValue = {
-    r_id: "",
-    _id: "",
-    reuniaoId: "",
-    temaReuniaob: "",
-    dataDaReuniaob: "",
-    horarioReuniaob: "",
-    convidadosReuniaob: "",
-    resumoReuniaob: '',
-    presentesReuniaob: '',
+    r_id: " ",
+    _id: " ",
+    reuniaoId: " ",
+    temaReuniaob: " ",
+    dataDaReuniaob: " ",
+    horarioReuniaob: " ",
+    convidadosReuniaob: " ",
+    resumoReuniaob: "N/A",
+    presentesReuniaob: "N/A",
   }
 
   const [values, setValues] = useState(initialValue);
@@ -227,9 +227,16 @@ const deletarReuniao = async(value) => {
     console.log("Try")
     values._id = value;
     values.r_id = value;
-    const resposta = await Axios.post('http://'+ ipatual +'/api/deleteReuniao', values).then(
-    window.location.reload()
-    )
+    const resposta = await Axios.post('http://'+ ipatual +'/api/deleteReuniao', values);
+
+    var result = resposta?.status;
+
+    if(result == 200){
+      window.location.reload()
+    }else{
+      window.alert('Erro')
+    }
+
   }catch(error){
     console.log(error);
   }

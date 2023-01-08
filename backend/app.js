@@ -514,17 +514,20 @@ app.post("/api/registerReuniao", async(req,res)=>{
             horarioReuniao: horarioReuniaob,
             convidadosReuniao: convidadosReuniaob,
             resumoReuniao: resumoReuniaob,
-            presentesReuniao: presentesReuniaob,
+            presentesReuniao: presentesReuniaob
 
         });
-        res.send({status:"Ok"});
+        
 
         console.log("Reunião registrada com sucesso!");
 
-    } catch (error){
+        return res.status(200);
 
-        res.send({status: "Error"});
+    } catch (error){
+        
         console.log(error);
+        return res.status(201);
+        
 
     }
 

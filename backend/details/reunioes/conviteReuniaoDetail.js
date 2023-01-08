@@ -8,8 +8,8 @@ const ConviteReuniaoSchema = new mongoose.Schema(
        dataDaReuniao:{type:String, trim:true, required: true},
        convidadosReuniao:{type:String, trim:true, required: true},
        horarioReuniao:{type:String, trim:true, required: true},
-       resumoReuniao:{type:String, trim:true, required: true},
-       presentesReuniao:{type:String, trim:true, required: true},
+       resumoReuniao:{type:String, trim:true},
+       presentesReuniao:{type:String, trim:true},
     },
     {
         collection:"ConviteReuniao",
