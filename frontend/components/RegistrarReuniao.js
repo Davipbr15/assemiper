@@ -52,10 +52,12 @@ const onSubmit = async(ev) => {
 
       const resposta = await Axios.post('http://'+ipatual+'/api/registerReuniao', values);
 
-      var result = resposta?.status;
+      var result = resposta.status;
 
       if(result == 200){
         window.location.reload()
+      }else{
+        console.log('ERROR')
       }
     
     }catch(error){
@@ -177,7 +179,7 @@ async function dataReunioes(value){
     values._id = value;
     values.reuniaoId = value;
     const resposta = await Axios.post('http://'+ ipatual +'/api/getReuniao', values);
-    result = resposta?.data  
+    result = resposta?.data 
   }catch(error){
     console.log(error);
   }
@@ -229,7 +231,7 @@ const deletarReuniao = async(value) => {
     values.r_id = value;
     const resposta = await Axios.post('http://'+ ipatual +'/api/deleteReuniao', values);
 
-    var result = resposta?.status;
+    var result = resposta.status;
 
     if(result == 200){
       window.location.reload()
