@@ -101,7 +101,7 @@ function ImprimirAssociado(){
         {imprimindo &&
         (
         <div className="App2 p-5 whitespace-nowrap">
-          <button onClick={voltar} x-data="topBtn" id="topButton"
+          <button onClick={() => voltar()} x-data="topBtn" id="topButton"
             className="no-print motion-reduced fixed z-50 show p-5 text-2xl bg-red-500 text-white rounded-full shadow-md top-20 left-5">
             <i className="pr-3 bi bi-arrow-left-circle-fill"></i>Voltar
           </button>
@@ -124,7 +124,7 @@ function ImprimirAssociado(){
           </div>
         </div> 
           <h1 className='text-sm text-right'>
-          Criado em: {imprimir[0].dataCriacao}
+          Criado em: {imprimir.dataCriacao}
           </h1>
           <h1 className="bg-assemiperRed pl-6 text-3xl text-white font-bold rounded-xl p-2">Dados Pessoais:</h1>
           {/* <div className="bg-assemiperRed h-1">
@@ -135,17 +135,17 @@ function ImprimirAssociado(){
                 <ul className="pl-2">
             <li>                
               <div className="flex mt-2">
-                <h1 className="text-xl p-1">Nome completo:</h1><h1 className="font-semibold p-1 text-xl">{imprimir[0].dadosPessoais.nomeCompleto}</h1>
+                <h1 className="text-xl p-1">Nome completo:</h1><h1 className="font-semibold p-1 text-xl">{imprimir.dadosPessoais.nomeCompleto}</h1>
               </div>
             </li>
             <li>
               <div className="flex">
-                <h1 className="text-xl p-1">Estado Civil:</h1><h1 className="font-semibold p-1 text-xl">{imprimir[0].dadosPessoais.estadoCivil}</h1>
+                <h1 className="text-xl p-1">Estado Civil:</h1><h1 className="font-semibold p-1 text-xl">{imprimir.dadosPessoais.estadoCivil}</h1>
               </div>
             </li>
             <li>
               <div className="flex">
-                <h1 className="text-xl p-1">Nacionalidade:</h1><h1 className="font-semibold p-1 text-xl">{imprimir[0].dadosPessoais.nacionalidade}</h1>
+                <h1 className="text-xl p-1">Nacionalidade:</h1><h1 className="font-semibold p-1 text-xl">{imprimir.dadosPessoais.nacionalidade}</h1>
               </div>
             </li>
             <li>
@@ -154,44 +154,44 @@ function ImprimirAssociado(){
                   Naturalidade:
                 </h1>
                 <h1 className="font-semibold p-1 text-xl">
-                  {imprimir[0].dadosPessoais.naturalidade}
+                  {imprimir.dadosPessoais.naturalidade}
                 </h1>
               </div>
             </li>
             <li>
               <div className="flex">
                 <h1 className="text-xl p-1">Data de Nascimento:</h1><h1 className="font-semibold p-1 text-xl">
-                  {imprimir[0].dadosPessoais.dataDeNascimento.charAt(8)+
-                  imprimir[0].dadosPessoais.dataDeNascimento.charAt(9)
+                  {imprimir.dadosPessoais.dataDeNascimento.charAt(8)+
+                  imprimir.dadosPessoais.dataDeNascimento.charAt(9)
                   +"/"+
-                  imprimir[0].dadosPessoais.dataDeNascimento.charAt(5)+
-                  imprimir[0].dadosPessoais.dataDeNascimento.charAt(6)
+                  imprimir.dadosPessoais.dataDeNascimento.charAt(5)+
+                  imprimir.dadosPessoais.dataDeNascimento.charAt(6)
                   +"/"+
-                  imprimir[0].dadosPessoais.dataDeNascimento.charAt(0)+
-                  imprimir[0].dadosPessoais.dataDeNascimento.charAt(1)+
-                  imprimir[0].dadosPessoais.dataDeNascimento.charAt(2)+
-                  imprimir[0].dadosPessoais.dataDeNascimento.charAt(3)
+                  imprimir.dadosPessoais.dataDeNascimento.charAt(0)+
+                  imprimir.dadosPessoais.dataDeNascimento.charAt(1)+
+                  imprimir.dadosPessoais.dataDeNascimento.charAt(2)+
+                  imprimir.dadosPessoais.dataDeNascimento.charAt(3)
                   }
                 </h1>
               </div>
             </li>
             <li>
               <div className="flex">
-                <h1 className="text-xl p-1">CPF:</h1><h1 className="font-semibold p-1 text-xl">{imprimir[0].dadosPessoais.cpf}</h1>
+                <h1 className="text-xl p-1">CPF:</h1><h1 className="font-semibold p-1 text-xl">{imprimir.dadosPessoais.cpf}</h1>
               </div>
             </li>
             <li>
               <div className="flex">
-                <h1 className="text-xl p-1">Profissão:</h1><h1 className="font-semibold p-1 text-xl">{imprimir[0].dadosPessoais.profissao}</h1>
+                <h1 className="text-xl p-1">Profissão:</h1><h1 className="font-semibold p-1 text-xl">{imprimir.dadosPessoais.profissao}</h1>
               </div>
             </li>
             <li>
               <div className="flex">
-                <h1 className="text-xl p-1">Documento de Identificação:</h1><h1 className="font-semibold p-1 text-xl">{imprimir[0].dadosPessoais.documentoIdentificacao}</h1>
+                <h1 className="text-xl p-1">Documento de Identificação:</h1><h1 className="font-semibold p-1 text-xl">{imprimir.dadosPessoais.documentoIdentificacao}</h1>
               </div>
             </li>
             <div className="flex">
-              <h1 className="text-xl p-1">Número do Documento de Identificação:</h1><h1 className="font-semibold p-1 text-xl">{imprimir[0].dadosPessoais.numeroDocumento}</h1>
+              <h1 className="text-xl p-1">Número do Documento de Identificação:</h1><h1 className="font-semibold p-1 text-xl">{imprimir.dadosPessoais.numeroDocumento}</h1>
             </div>
             <li>
               <div className="flex">
@@ -199,7 +199,7 @@ function ImprimirAssociado(){
                   Orgão Expeditor:
                 </h1>
                 <h1 className="font-semibold p-1 text-xl">
-                  {imprimir[0].dadosPessoais.orgaoExpeditor}
+                  {imprimir.dadosPessoais.orgaoExpeditor}
                 </h1>
               </div>
             </li>
@@ -214,7 +214,7 @@ function ImprimirAssociado(){
                     <h1 className="text-xl p-1">
                       Endereço Pessoal:</h1>
                     <h1 className="font-semibold p-1 text-xl">
-                      {imprimir[0].dadosPessoais.enderecoPessoal}
+                      {imprimir.dadosPessoais.enderecoPessoal}
                     </h1>
                   </div>
                 </li>
@@ -223,7 +223,7 @@ function ImprimirAssociado(){
                   <h1 className="text-xl p-1">
                     Número Endereço:</h1>
                   <h1 className="font-semibold p-1 text-xl">
-                    {imprimir[0].dadosPessoais.numeroEnderecoPessoal}
+                    {imprimir.dadosPessoais.numeroEnderecoPessoal}
                   </h1>
                 </div>
                 </li>
@@ -232,7 +232,7 @@ function ImprimirAssociado(){
                   <h1 className="text-xl p-1">
                     Complemento:</h1>
                   <h1 className="font-semibold p-1 text-xl">
-                    {imprimir[0].dadosPessoais.complementoPessoal}
+                    {imprimir.dadosPessoais.complementoPessoal}
                   </h1>
                 </div>
                 </li>
@@ -241,7 +241,7 @@ function ImprimirAssociado(){
                   <h1 className="text-xl p-1">
                     Bairro:</h1>
                   <h1 className="font-semibold p-1 text-xl">
-                    {imprimir[0].dadosPessoais.bairroPessoal}
+                    {imprimir.dadosPessoais.bairroPessoal}
                   </h1>
                 </div>
                 </li>
@@ -250,7 +250,7 @@ function ImprimirAssociado(){
                   <h1 className="text-xl p-1">
                     CEP:</h1>
                   <h1 className="font-semibold p-1 text-xl">
-                    {imprimir[0].dadosPessoais.cep}
+                    {imprimir.dadosPessoais.cep}
                   </h1>
                 </div>
                 </li>
@@ -259,7 +259,7 @@ function ImprimirAssociado(){
                   <h1 className="text-xl p-1">
                     Cidade e Estado:</h1>
                   <h1 className="font-semibold p-1 text-xl">
-                    {imprimir[0].dadosPessoais.cidadeEstadoPessoal}
+                    {imprimir.dadosPessoais.cidadeEstadoPessoal}
                   </h1>
                 </div>
                 </li>
@@ -274,7 +274,7 @@ function ImprimirAssociado(){
                 <h1 className="text-xl p-1">
                   Email:</h1>
                 <h1 className="font-semibold p-1 text-xl">
-                  {imprimir[0].dadosPessoais.emailPessoal}
+                  {imprimir.dadosPessoais.emailPessoal}
                 </h1>
               </div>
             </li>
@@ -283,7 +283,7 @@ function ImprimirAssociado(){
                 <h1 className="text-xl p-1">
                   Telefone Fixo:</h1>
                 <h1 className="font-semibold p-1 text-xl">
-                  {imprimir[0].dadosPessoais.telefoneFixoPessoal}
+                  {imprimir.dadosPessoais.telefoneFixoPessoal}
                 </h1>
               </div>
             </li>
@@ -292,7 +292,7 @@ function ImprimirAssociado(){
                 <h1 className="text-xl pb-5 p-1">
                   Telefone Celular:</h1>
                 <h1 className="font-semibold p-1 text-xl">
-                  {imprimir[0].dadosPessoais.celularPessoal}
+                  {imprimir.dadosPessoais.celularPessoal}
                 </h1>
               </div>
             </li>
@@ -312,7 +312,7 @@ function ImprimirAssociado(){
               <h1 className="text-xl p-1">
                 Razão Social:</h1>
               <h1 className="font-semibold p-1 text-xl">
-                {imprimir[0].dadosProfissionais.razaoSocial}
+                {imprimir.dadosProfissionais.razaoSocial}
               </h1>
             </div>
           </li>
@@ -321,7 +321,7 @@ function ImprimirAssociado(){
               <h1 className="text-xl p-1">
                 Nome Fantasia:</h1>
               <h1 className="font-semibold p-1 text-xl">
-                {imprimir[0].dadosProfissionais.nomeFantasia}
+                {imprimir.dadosProfissionais.nomeFantasia}
               </h1>
             </div>
           </li>
@@ -330,7 +330,7 @@ function ImprimirAssociado(){
               <h1 className="text-xl p-1">
                 CNPJ:</h1>
               <h1 className="font-semibold p-1 text-xl">
-                {imprimir[0].dadosProfissionais.cnpj}
+                {imprimir.dadosProfissionais.cnpj}
               </h1>
             </div>
           </li>
@@ -339,7 +339,7 @@ function ImprimirAssociado(){
               <h1 className="text-xl p-1">
                 Número de Inscrição:</h1>
               <h1 className="font-semibold p-1 text-xl">
-                {imprimir[0].dadosProfissionais.numeroInscricao}
+                {imprimir.dadosProfissionais.numeroInscricao}
               </h1>
             </div>
           </li>
@@ -353,42 +353,42 @@ function ImprimirAssociado(){
               <h1 className="text-xl p-1">
                 Endereço:</h1>
               <h1 className="font-semibold p-1 text-xl">
-                {imprimir[0].dadosProfissionais.enderecoSede}
+                {imprimir.dadosProfissionais.enderecoSede}
               </h1>
             </div>
             <div className="flex">
               <h1 className="text-xl p-1">
                 Número:</h1>
               <h1 className="font-semibold p-1 text-xl">
-                {imprimir[0].dadosProfissionais.numeroSede}
+                {imprimir.dadosProfissionais.numeroSede}
               </h1>
             </div>
             <div className="flex">
               <h1 className="text-xl p-1">
                 Complemento:</h1>
               <h1 className="font-semibold p-1 text-xl">
-                {imprimir[0].dadosProfissionais.complementoSede}
+                {imprimir.dadosProfissionais.complementoSede}
               </h1>
             </div>
             <div className="flex">
               <h1 className="text-xl p-1">
                 Bairro:</h1>
               <h1 className="font-semibold p-1 text-xl">
-                {imprimir[0].dadosProfissionais.bairroSede}
+                {imprimir.dadosProfissionais.bairroSede}
               </h1>
             </div>
             <div className="flex">
               <h1 className="text-xl p-1">
                 CEP:</h1>
               <h1 className="font-semibold p-1 text-xl">
-                {imprimir[0].dadosProfissionais.cepSede}
+                {imprimir.dadosProfissionais.cepSede}
               </h1>
             </div>
             <div className="flex">
               <h1 className="text-xl p-1">
                 Cidade e Estado:</h1>
               <h1 className="font-semibold p-1 text-xl">
-                {imprimir[0].dadosProfissionais.cidadeEstadoSede}
+                {imprimir.dadosProfissionais.cidadeEstadoSede}
               </h1>
             </div>
           </ul>
@@ -403,23 +403,23 @@ function ImprimirAssociado(){
               <h1 className="text-xl p-1">
                 Email Profissional:</h1>
               <h1 className="font-semibold p-1 text-xl">
-                {imprimir[0].dadosProfissionais.emailProfissional}
+                {imprimir.dadosProfissionais.emailProfissional}
               </h1>
             </div>
             <div className="flex">
               <h1 className="text-xl p-1">
                 Data de abertura:</h1>
               <h1 className="font-semibold p-1 text-xl">
-              {imprimir[0].dadosProfissionais.dataDeAbertura.charAt(8)+
-                imprimir[0].dadosProfissionais.dataDeAbertura.charAt(9)
+              {imprimir.dadosProfissionais.dataDeAbertura.charAt(8)+
+                imprimir.dadosProfissionais.dataDeAbertura.charAt(9)
                 +"/"+
-                imprimir[0].dadosProfissionais.dataDeAbertura.charAt(5)+
-                imprimir[0].dadosProfissionais.dataDeAbertura.charAt(6)
+                imprimir.dadosProfissionais.dataDeAbertura.charAt(5)+
+                imprimir.dadosProfissionais.dataDeAbertura.charAt(6)
                 +"/"+
-                imprimir[0].dadosProfissionais.dataDeAbertura.charAt(0)+
-                imprimir[0].dadosProfissionais.dataDeAbertura.charAt(1)+
-                imprimir[0].dadosProfissionais.dataDeAbertura.charAt(2)+
-                imprimir[0].dadosProfissionais.dataDeAbertura.charAt(3)
+                imprimir.dadosProfissionais.dataDeAbertura.charAt(0)+
+                imprimir.dadosProfissionais.dataDeAbertura.charAt(1)+
+                imprimir.dadosProfissionais.dataDeAbertura.charAt(2)+
+                imprimir.dadosProfissionais.dataDeAbertura.charAt(3)
                 }
               </h1>
             </div>
@@ -427,7 +427,7 @@ function ImprimirAssociado(){
               <h1 className="text-xl p-1">
                Ramo da Atividade:</h1>
               <h1 className="font-semibold p-1 text-xl">
-                {imprimir[0].dadosProfissionais.ramoDaAtividade}
+                {imprimir.dadosProfissionais.ramoDaAtividade}
               </h1>
             </div>
           </ul>
@@ -442,8 +442,8 @@ function ImprimirAssociado(){
         {!imprimindo &&(
         <>
             <Header/>
-        <div className="App">
-            <div className="flex flex-col">
+        <div className="App mx-auto">
+            <div className="flex mx-auto flex-col">
                 <div className="w-screen sm:-mx-6 lg:-mx-8">
                     <div className="py-2 sm:px-6 lg:px-8">
                         <div className="overflow-x-auto">

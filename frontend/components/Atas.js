@@ -306,7 +306,7 @@ useEffect(() => {
 return(
 
 
-<div className="App">
+<div className="">
 
 {/* <form  action="#" onSubmit={onSubmit} method="POST" className="flex p-4 rounded-lg justify-self-center mx-auto shadow-2xl bg-assemiperBlack">
 <div className="col-span-3">
@@ -332,7 +332,7 @@ return(
 
 <div className="m-auto bg-assemiperBlack p-5 rounded-xl bg-opacity-90">
 
-  <div className="mb-5 whitespace-normal">
+  <div className="mb-2 whitespace-normal">
   <h1 className="text-xl text-center text-white font-semibold">Reunião Agendada</h1>
   </div>
   <div className="mb-5 bg-assemiperRed p-0.5 text-center"></div>
@@ -612,36 +612,27 @@ return(
 
 {!agendando && (
 
-<div className='bg-black'>
+<div className='bg-assemiper mt-12'>
  
-    {/* <div className="col-span-4">
-          <div onClick={agendarModal} className="cursor w-64 point group bg-red-800 hover:bg-red-700 transition ease-in-out duration-300 relative  flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
-              <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-              </span>
-              <h2 className="cursor-pointer text-white">Agendar Reunião</h2>
-          </div>
-    </div> */}
-  
+    <div className="mx-auto">
 
-            <div className="App">
-
-      <div className="w-screen sm:-mx-6 lg:-mx-8">
+      <div className="sm:-mx-6 lg:-mx-8">
         <div className="py-2 sm:px-6 lg:px-8">
           <div className="py-2">
             <div className="overflow-x-auto">
                 <table className="tg min-w-screen">
                   <thead className="min-w-screen">
                     <tr>
-                      <th scope="col" className="tg-k4e5 w-48 text-sm font-medium text-white px-6 py-4 text-left">
+                      <th scope="col" className="tg-k4e5 w-48 text-md font-medium text-white px-6 py-4 text-left">
                         Tema da Reunião
                       </th>
-                      <th scope="col" className="tg-k4e5 w-32 text-sm font-medium text-white px-6 py-4 text-left">
+                      <th scope="col" className="tg-k4e5 w-32 text-md font-medium text-white px-6 py-4 text-left">
                         Data da Reunião
                       </th>
-                      <th scope="col" className="tg-k4e5 w-32 text-sm font-medium text-white px-6 py-4 text-left">
+                      <th scope="col" className="tg-k4e5 w-32 text-md font-medium text-white px-6 py-4 text-left">
                         Horário da Reunião
                       </th>
-                      <th scope="col" className="tg-k4e5 w-32 text-sm font-medium text-white px-6 py-4 text-left">
+                      <th scope="col" className="tg-k4e5 w-48 text-md font-medium text-white px-6 py-4 text-left">
                         Resumo da Reunião
                       </th>
                     </tr>
@@ -650,10 +641,10 @@ return(
                   {reunas.map((reuniaoData, index) => {
                     return (
                       <tr key={index} className="group whitespace-normal bg-assemiperBlack font-bold border border-l transition duration-100 ease-in-out hover:bg-red-700">
-                        <td className="tg-dg7a group-hover:bg-slate-300 px-6 py-4 text-sm font-medium text-white">{reuniaoData.temaReuniao}</td>
-                        <td className="tg-dg7a group-hover:bg-slate-300 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.dataDaReuniao}</td>
-                        <td className="tg-dg7a group-hover:bg-slate-300 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.horarioReuniao}</td>
-                        <td className="tg-dg7a group-hover:bg-slate-300 text-sm text-center text-white border-l font-light px-6 py-4 whitespace-normal">
+                        <td className="tg-dg7a group-hover:bg-slate-300 px-6 py-4 text-md font-medium text-white">{reuniaoData.temaReuniao}</td>
+                        <td className="tg-dg7a group-hover:bg-slate-300 text-md text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.dataDaReuniao}</td>
+                        <td className="tg-dg7a group-hover:bg-slate-300 text-md text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.horarioReuniao}</td>
+                        <td className="tg-dg7a group-hover:bg-slate-300 text-md text-center text-white border-l font-light px-6 py-4 whitespace-normal">
                           <button onClick={() => getDados(reuniaoData._id)} className="transition ease-in duration-100 cursor-pointer text-xl w-12 group-hover:text-assemiperBlack hover:scale-150 rounded-xl">
                           <i className="bi bi-eye"></i>
                           </button>

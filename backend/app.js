@@ -61,6 +61,10 @@ require("./details/services/reunioes/ataReuniaoDetail");
 const AtaReuniao = mongoose.model("AtaReuniao");
 
 */
+
+require("./details/oficiosDetail");
+const Oficios = mongoose.model("OficioDoc");
+
 require("./details/reunioes/conviteReuniaoDetail");
 const ConviteReuniao = mongoose.model("ConviteReuniao");
 
@@ -123,7 +127,7 @@ app.post("/api/loginUser", async(req,res)=>{
         }
     
         console.log("Senha ou Usuário Inválido")
-            return res.status(201)
+        return res.status(201)
     }
 
     teste();
@@ -249,7 +253,7 @@ app.get('/api/home',async(req,res)=>{
 
 // });
 
-
+//////////////////
 app.post("/api/searchAssociate", async(req,res)=>{  
     console.log("Procurou os associados")
 
@@ -497,6 +501,9 @@ app.post('/api/deleteAssociate',async(req,res)=>{
     }
 
 })
+///////////////////
+
+///////////////////
 app.post("/api/registerReuniao", async(req,res)=>{
 
     const { 
@@ -562,7 +569,6 @@ app.post("/api/getReuniao", async(req,res)=>{
     }
     
 })
-
 app.post('/api/deleteReuniao',async(req,res)=>{
 
     const {r_id} = await req.body;
@@ -585,8 +591,6 @@ app.post('/api/deleteReuniao',async(req,res)=>{
     }
 
 })
-
-
 app.post("/api/updateReuniao", async(req,res)=>{
     const {
         r_id,
@@ -619,7 +623,7 @@ app.post("/api/updateReuniao", async(req,res)=>{
     }
 
 })
-
+//////////////////////
 
 
 app.post('/api/changePassword', async (req, res) => {

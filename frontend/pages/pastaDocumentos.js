@@ -1,6 +1,6 @@
 import Header from "../components/Header.js";
 
-
+import Oficios from "../components/Oficios.js";
 
 
 export default function Home() {
@@ -9,8 +9,14 @@ export default function Home() {
 
 
     <Header />
+
+
     
     <h1>Work In Progress. . .</h1>
+
+
+
+    <Oficios />
 
     </div>
   )

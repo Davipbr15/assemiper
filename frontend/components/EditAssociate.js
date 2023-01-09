@@ -593,7 +593,7 @@ const valorContrato = ()=>{
 
 return(
 
-<div className="">
+<div className="mx-auto">
 {deleting && (
 
 <div id="popup-modal" tabindex="1" class="App3 whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
@@ -1358,7 +1358,7 @@ return(
     />
   </div> */}
 
-  <div className="col-span-3">
+<div className="col-span-3">
   <label htmlFor="tipoContratob" className="form-label inline-block mb-2 text-white">
     Tipo de Contrato
   </label>

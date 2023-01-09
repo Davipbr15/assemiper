@@ -17,15 +17,10 @@ function App() {
   var dataFinal = dataFormatada.format('LLLL')
 
   const initialValue = {
-    r_id: " ",
-    _id: " ",
-    reuniaoId: " ",
-    temaReuniaob: " ",
-    dataDaReuniaob: " ",
-    horarioReuniaob: " ",
-    convidadosReuniaob: " ",
-    resumoReuniaob: "N/A",
-    presentesReuniaob: "N/A",
+    o_id: "",
+    numeroOficiob: "",
+    dataDeExpedicaob: "",
+    estadoOficiob: "",
   }
 
   const [values, setValues] = useState(initialValue);
@@ -50,19 +45,75 @@ const onSubmit = async(ev) => {
 
   try{
 
-      const resposta = await Axios.post('http://'+ipatual+'/api/registerReuniao', values)
+      const resposta = await Axios.post('http://'+ipatual+'/api/registerReuniao', values);
 
       var result = resposta?.status;
 
       if(result == 200){
         window.location.reload()
       }
-
-
+    
     }catch(error){
         console.log(error);
     }
-  
+    
+    // Go to /some/path.
+}
+
+const salvarResumo = async(value) => {
+
+  setConfirmRegistro(false)
+          
+  console.log(values)
+
+  values.r_id = value;
+
+  try{
+
+    if(1==1){
+        if(values.r_id == ''){
+          values.r_id = dados._id;
+        }else{
+          values.r_id = values.r_id;
+        }
+
+        if(values.temaReuniaob == ''){
+          values.temaReuniaob = dados.temaReuniao;
+        }else{
+          values.temaReuniaob = values.temaReuniaob;
+        }
+
+        if(values.dataDaReuniaob == ''){
+          values.dataDaReuniaob = dados.dataDaReuniao;
+        }else{
+          values.dataDaReuniaob = values.dataDaReuniaob;
+        }
+
+        if(values.horarioReuniaob == ''){
+          values.horarioReuniaob = dados.horarioReuniao;
+        }else{
+          values.horarioReuniaob = values.horarioReuniaob;
+        }
+
+        if(values.convidadosReuniaob == ''){
+          values.convidadosReuniaob = dados.convidadosReuniao;
+        }else{
+          values.convidadosReuniaob = values.convidadosReuniaob ;
+        }
+      }
+
+      const resposta = await Axios.post('http://'+ipatual+'/api/updateReuniao', values);
+
+      var result = resposta?.status;
+
+      if(result == 200){
+        window.location.reload()
+      }
+    
+    }catch(error){
+        console.log(error);
+    }
+    
     // Go to /some/path.
 }
 
@@ -119,22 +170,20 @@ const valorBaixa = ()=>{
 
   }
 }
-const valorContrato = ()=>{
-  var e = document.getElementById("contrato");
+const valorEstado = ()=>{
+  var e = document.getElementById("estado");
   var value = e.value;
   var text = e.options[e.selectedIndex].text;
   console.log(value)
   console.log(text)
-  if(value=="arrendamento"){
-    values.contratob = "Arrendamento";
-  }else if(value=="compraevenda"){
-    values.contratob = "Compra e venda";
-  }else if(value=="locacao"){
-    values.contratob = "Locação";
-  }else if(value=="aluguel"){
-    values.contratob = "Aluguel";
-  }else if(value=="comodato"){
-    values.contratob = "Comodato";
+  if(value=="enviado"){
+    values.estadoOficiob = "Enviado";
+  }else if(value=="pendente"){
+    values.estadoOficiob = "Pendente";
+  }else if(value=="recebido"){
+    values.estadoOficiob = "Recebido";
+  }else if(value=="respondido"){
+    values.estadoOficiob = "Respondido";
   }else{
 
   }
@@ -146,12 +195,6 @@ const [visualizando, setVisualizar] = useState(false);
 function agendarModal(){
 
   setAgendando(true)
-
-}
-
-function deletarReuniaoModalModal(){
-
-  setDeletarReuniaoModal(false);
 
 }
 
@@ -184,7 +227,7 @@ async function dataReunioes(value){
     values._id = value;
     values.reuniaoId = value;
     const resposta = await Axios.post('http://'+ ipatual +'/api/getReuniao', values);
-    result = resposta?.data 
+    result = resposta?.data  
   }catch(error){
     console.log(error);
   }
@@ -209,51 +252,25 @@ async function getDados(value){
 
 const [deletarReuniaoModal, setDeletarReuniaoModal] = useState(false);
 
-const [deletarReuniaoModalA, setDeletarReuniaoModalA] = useState(false);
-
 async function deletarReuniaoA(){
 
   setDeletarReuniaoModal(true)
 
 }
 
-async function deletarReuniaoB(value){
-
-  values.r_id = value;
-
-  setDeletarReuniaoModalA(true)
-
-}
-
 const deletarReuniao = async(value) => {
-
   values.r_id = value;
-
   console.log("Apertou " + value + " pra deletar")
-
-  values._id = value;
-  values.r_id = value;
-
   try{ 
-    
-    const resposta = await Axios.post('http://'+ ipatual +'/api/deleteReuniao', values);
-
-    var result = resposta?.status;
-
-    if(result == 200){
-      window.location.reload()
-    }
-
+    console.log("Try")
+    values._id = value;
+    values.r_id = value;
+    const resposta = await Axios.post('http://'+ ipatual +'/api/deleteReuniao', values).then(
+    window.location.reload()
+    )
   }catch(error){
-    console.log(error)
-  }finally{
-    console.log("Foi")
+    console.log(error);
   }
-
-
-
-
-
 };
 
 function showReq(){
@@ -283,7 +300,7 @@ useEffect(() => {
 return(
 
 
-<div className='mt-10'>
+<div className="">
 
 {/* <form  action="#" onSubmit={onSubmit} method="POST" className="flex p-4 rounded-lg justify-self-center mx-auto shadow-2xl bg-assemiperBlack">
 <div className="col-span-3">
@@ -309,7 +326,7 @@ return(
 
 <div className="m-auto bg-assemiperBlack p-5 rounded-xl bg-opacity-90">
 
-  <div className="mb-5 whitespace-normal">
+  <div className="mb-2 whitespace-normal">
   <h1 className="text-xl text-center text-white font-semibold">Reunião Agendada</h1>
   </div>
   <div className="mb-5 bg-assemiperRed p-0.5 text-center"></div>
@@ -322,7 +339,7 @@ return(
       name="temaReuniaob"
       defaultValue={dados.temaReuniao}
       disabled
-      className="text-center form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="text-center form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-gray-300 bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
       id="temaReuniaoI"
       onChange={onChange}
       placeholder="Tema"
@@ -337,7 +354,7 @@ return(
       name="dataDaReuniaob"
       disabled
       defaultValue={dados.dataDaReuniao}
-      className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-gray-300 bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDaReuniaoI"
       onChange={onChange}
       placeholder="Data da Reunião"
@@ -351,7 +368,7 @@ return(
       name="horarioReuniaob"
       disabled
       defaultValue={dados.horarioReuniao}
-      className="form-control px-3 w-full block py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="form-control px-3 w-full block py-1.5 text-lg font-semibold text-assemiperBlack bg-gray-300 bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
       id="horarioReuniaoI"
       onChange={onChange}
       placeholder="Horário"
@@ -359,14 +376,25 @@ return(
   </div>
 
   <div className="col-span-4">
+  <label htmlFor="resumoReuniaoI" className="form-label font-bold inline-block mb-2 text-white">
+    Resumo da Reunião</label>
+    <textarea type="text"
+      rows="4"
+      name="resumoReuniaob"
+      defaultValue={dados.resumoReuniao}
+      className="form-control text-center block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      id="resumoReuniaoI"
+      onChange={onChange}
+      placeholder="Resumo da Reunião"
+    />
+  </div>
+
+  <div className="col-span-4">
   <label htmlFor="convidadosReuniaoI" className="form-label font-bold inline-block mb-2 text-white">
     Convidados</label>
     <textarea type="text"
-      rows="4"
+      rows="1"
       name="convidadosReuniaob"
-      max="2010-12-12"
-      min="1800-05-01"
-      disabled
       defaultValue={dados.convidadosReuniao}
       className="form-control text-center block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
       id="convidadosReuniaoI"
@@ -375,11 +403,29 @@ return(
     />
   </div>
 
+  {/* <div className="col-span-4">
+  <label htmlFor="presentesReuniaoI" className="form-label font-bold inline-block mb-2 text-white">
+    Presentes</label>
+    <textarea type="text"
+      rows="2"
+      name="presentesReuniaob"
+      defaultValue={dados.presentesReuniao}
+      className="form-control text-center block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      id="presentesReuniaoI"
+      onChange={onChange}
+      placeholder=""
+    />
+  </div> */}
+
   {deletarReuniaoModal && (
 
   <div id="popup-modal" tabIndex="1" className="App4 whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-20 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
       <div className="fixed w-full h-full max-w-xl md:h-auto">
           <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+              <button onClick={() => setDeletarReuniaoModal(false)} type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
+                  <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                  <span className="sr-only">Fechar</span>
+              </button>
               <div className="p-6 text-center">
                   <svg aria-hidden="true" className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                   <h3 className="mb-5 text-lg font-normal text-white dark:text-white">Deseja realmente excluir essa reunião? (Ação Irreversível)</h3>
@@ -395,13 +441,24 @@ return(
   )
   }
 
-<div className="col-span-4">
-          <div onClick={() => deletarReuniaoA()} className="w-full cursor-pointer group bg-red-800 hover:bg-assemiperBlack hover:scale-125 transition ease-in-out duration-150 relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
+<div onClick={() => salvarResumo(dados._id)} className="col-span-4">
+          <div className="cursor-pointer group bg-blue-600 hover:bg-blue-500 transition ease-in-out duration-300 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+
               </span>
-              <h2 className="cursor-pointer text-white">Deletar Reunião</h2>
+              <h2 className="cursor-pointer text-white">Salvar alterações</h2>
           </div>
-</div>
+  </div>
+
+{/* <div className="col-span-4">
+          <div className="cursor-pointer group bg-black hover:bg-red-900 transition ease-in-out duration-300 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
+              <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+
+              </span>
+              <h2 className="cursor-pointer text-white">Imprimir ///</h2>
+          </div>
+  </div> */}
+
   <div className="col-span-4">
           <div onClick={() => setVendoDados(false)} className="cursor-pointer group bg-red-800 hover:bg-red-700 transition ease-in-out duration-300 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
@@ -410,6 +467,8 @@ return(
               <h2 className="cursor-pointer text-white">Fechar</h2>
           </div>
   </div>
+
+
   
   
   </div>
@@ -419,12 +478,11 @@ return(
 </>
 )}
 
-{agendando && (
+{!agendando && (
 
 <>
 
-
-  <form  action="#" method="POST" className="flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 justify-center text-center p-4 rounded-lg justify-self-center m-auto w-screen h-screen  shadow-2xl bg-assemiperBlack bg-opacity-80">
+  <form  action="#" method="POST" className="flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 justify-center text-center p-4 rounded-lg justify-self-center m-auto w-screen h-screen  shadow-2xl bg-assemiperBlack bg-opacity-60">
 
   <div className="fixed p-5">
     <button onClick={desagendarModal} className="rounded-xl text-2xl w-16 bg-assemiperRed h-10">
@@ -432,94 +490,53 @@ return(
     </button>
   </div>
 
-  <div className="m-auto bg-black p-5 rounded-md bg-opacity-70">
+  <div className="m-auto">
 
     <div className="mb-5 whitespace-normal">
-    <h1 className="text-xl text-center text-white font-semibold">Agende uma Reunião</h1>
+    <h1 className="text-xl text-center text-white font-semibold">Importar Oficio</h1>
     </div>
 
     <div className="grid grid-cols-4 gap-x-10 gap-y-5">
 
     <div className="col-span-4">
-      <label htmlFor="temaReuniaoI" className="form-label inline-block mb-2 text-white">
-        Tema da Reunião</label>
+      <label htmlFor="numeroDoOficioI" className="form-label inline-block mb-2 text-white">
+        Número do Ofício</label>
       <input type="text"
-        name="temaReuniaob"
+        name="numeroDoOficiob"
         required
         className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-        id="temaReuniaoI"
+        id="numeroDoOficioI"
         onChange={onChange}
-        placeholder="Tema"
-      />
-    </div>
-
-    <div className="col-span-2">
-    <label htmlFor="dataDaReuniaoI" className="form-label inline-block mb-2 text-white">
-      Data</label>
-      <input type="date"
-        name="dataDaReuniaob"
-        max="2050-01-01"
-        min="2023-01-01"
-        required
-        className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-        id="dataDaReuniaoI"
-        onChange={onChange}
-        placeholder="Data da Reunião"
-      />
-    </div>
-
-    <div className="col-span-2">
-    <label htmlFor="horarioReuniaoI" className="form-label inline-block mb-2 text-white">
-      Horário</label>
-      <input type="time"
-        name="horarioReuniaob"
-        required
-        className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-        id="horarioReuniaoI"
-        onChange={onChange}
-        placeholder="Horário"
+        placeholder="Número do Ofício"
       />
     </div>
 
     <div className="col-span-4">
-    <label htmlFor="convidadosReuniaoI" className="form-label inline-block mb-2 text-white">
-      Convidados</label>
-      <textarea type="text"
-        rows="2"
-        name="convidadosReuniaob"
-        max="2010-12-12"
-        min="1800-05-01"
+      <label htmlFor="dataDeExpedidoI" className="form-label inline-block mb-2 text-white">
+        Data de Expedição</label>
+      <input type="date"
+        name="numeroDoOficiob"
         required
         className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-        id="convidadosReuniaoI"
+        id="numeroDoOficioI"
         onChange={onChange}
-        placeholder="Convidados"
+        placeholder="Data"
       />
     </div>
 
-    {confirmRegistro && (
-
-    <div id="popup-modal" tabIndex="1" className="App4 whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-20 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-        <div className="fixed w-full h-full max-w-xl md:h-auto">
-            <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <button onClick={() => closeModalConfirm()} type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
-                    <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-                    <span className="sr-only">Fechar</span>
-                </button>
-                <div className="p-6 text-center">
-                    <svg aria-hidden="true" className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <h3 className="mb-5 text-lg font-normal text-white dark:text-white">Confirmar reunião?</h3>
-                    <button onClick={onSubmit} data-modal-toggle="popup-modal" type="submit" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                        Sim, registrar reunião
-                    </button>
-                    <button onClick={() => closeModalConfirm()} data-modal-toggle="popup-modal" type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Não, cancelar</button>
-                </div>
-            </div>
-        </div>
+    <div className="col-span-4">
+    <label htmlFor="tipoContratob" className="form-label inline-block mb-2 text-white">
+        Estado
+    </label>
+        <select onChange={valorEstado} id="estado" className="text-left block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
+            <option value="enviado">Enviado</option>
+            <option value="recebido">Recebido</option>
+            <option value="pendente">Pendente</option>
+            <option value="respondidos">Respondido</option>
+        </select>
     </div>
 
-    )
-    }
+
 
     <div className="col-span-4">
             <div onClick={() => openModalConfirm()} className="group bg-red-800 hover:bg-red-700 transition ease-in-out duration-300 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
@@ -548,63 +565,28 @@ return(
 
 {!agendando && (
 
-<div>
-
-{deletarReuniaoModalA && (
-
-<div id="popup-modal" tabIndex="1" className="App4 whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-20 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-    <div className="fixed w-full h-full max-w-xl md:h-auto">
-        <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <div className="p-6 text-center">
-                <svg aria-hidden="true" className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                <h3 className="mb-5 text-lg font-normal text-white dark:text-white">Deseja realmente excluir essa reunião? (Ação Irreversível)</h3>
-                <button onClick={() => deletarReuniao(values.r_id)} data-modal-toggle="popup-modal" type="submit" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                    Sim, deletar reunião.
-                </button>
-                <button onClick={() => setDeletarReuniaoModalA(false)} data-modal-toggle="popup-modal" type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Não, cancelar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-)
-}
+<div className='bg-assemiper mt-12'>
  
-
-      <div className="">
+    <div className="mx-auto">
 
       <div className="sm:-mx-6 lg:-mx-8">
-
         <div className="py-2 sm:px-6 lg:px-8">
           <div className="py-2">
-
-          <div onClick={agendarModal} className="mb-5 m-auto h-12 text-center w-1/3 cursor-pointer group bg-red-800 hover:bg-red-700 transition ease-in-out duration-300 relative  flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
-                    <h2 className="cursor-pointer m-auto text-white text-center">AGENDAR REUNIÃO</h2>
-            </div>
-
-            <div className="overflow-x-auto min-w-screen">
-
-                <table className="tg min-w-screen">
-
+            <div className="overflow-x-auto">
+                {/* <table className="tg min-w-screen">
                   <thead className="min-w-screen">
                     <tr>
-                      <th scope="col" className="tg-k4e5 w-48 text-sm font-medium text-white px-6 py-4 text-left">
+                      <th scope="col" className="tg-k4e5 w-48 text-md font-medium text-white px-6 py-4 text-left">
                         Tema da Reunião
                       </th>
-                      <th scope="col" className="tg-k4e5 w-32 text-sm font-medium text-white px-6 py-4 text-left">
+                      <th scope="col" className="tg-k4e5 w-32 text-md font-medium text-white px-6 py-4 text-left">
                         Data da Reunião
                       </th>
-                      <th scope="col" className="tg-k4e5 w-32 text-sm font-medium text-white px-6 py-4 text-left">
+                      <th scope="col" className="tg-k4e5 w-32 text-md font-medium text-white px-6 py-4 text-left">
                         Horário da Reunião
                       </th>
-                      <th scope="col" className="tg-k4e5 w-32 text-sm font-medium text-white px-6 py-4 text-left">
-                        Convidados
-                      </th>
-                      <th scope="col" className="tg-k4e5 w-8 text-sm font-medium text-white px-6 py-4 text-left">
-                      Visualizar Dados
-                      </th>
-                      <th scope="col" className="tg-k4e5 w-8 text-sm font-medium text-white px-6 py-4 text-left">
-                      Deletar
+                      <th scope="col" className="tg-k4e5 w-48 text-md font-medium text-white px-6 py-4 text-left">
+                        Resumo da Reunião
                       </th>
                     </tr>
                   </thead>
@@ -612,22 +594,20 @@ return(
                   {reunas.map((reuniaoData, index) => {
                     return (
                       <tr key={index} className="group whitespace-normal bg-assemiperBlack font-bold border border-l transition duration-100 ease-in-out hover:bg-red-700">
-                        <td className="tg-dg7a group-hover:bg-slate-300 px-6 py-4 text-sm font-medium text-white">{reuniaoData.temaReuniao}</td>
-                        <td className="tg-dg7a group-hover:bg-slate-300 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.dataDaReuniao}</td>
-                        <td className="tg-dg7a group-hover:bg-slate-300 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.horarioReuniao}</td>
-                        <td className="tg-dg7a group-hover:bg-slate-300 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.convidadosReuniao}</td>
-                        <td className="tg-dg7a group-hover:bg-slate-300 text-sm text-center text-white border-l font-light px-6 py-4 whitespace-normal">
+                        <td className="tg-dg7a group-hover:bg-slate-300 px-6 py-4 text-md font-medium text-white">{reuniaoData.temaReuniao}</td>
+                        <td className="tg-dg7a group-hover:bg-slate-300 text-md text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.dataDaReuniao}</td>
+                        <td className="tg-dg7a group-hover:bg-slate-300 text-md text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.horarioReuniao}</td>
+                        <td className="tg-dg7a group-hover:bg-slate-300 text-md text-center text-white border-l font-light px-6 py-4 whitespace-normal">
                           <button onClick={() => getDados(reuniaoData._id)} className="transition ease-in duration-100 cursor-pointer text-xl w-12 group-hover:text-assemiperBlack hover:scale-150 rounded-xl">
                           <i className="bi bi-eye"></i>
                           </button>
-                        </td>
-                        <td className=" group-hover:bg-slate-300 text-center tg-dg7a"><button name="deleteAsc" onClick={() => deletarReuniaoB(reuniaoData._id)} className="deleteAsc transition ease-in duration-100 cursor-pointer text-red-500 hover:text-red-700 text-xl w-6 hover:scale-150 rounded-xl"><i className="bi bi-trash"></i></button></td>
+                          </td>
                       </tr>
                     )
                   })
                   }
                 </tbody>
-                </table>
+                </table> */}
 
       </div>
       </div>
