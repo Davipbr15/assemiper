@@ -8,7 +8,12 @@ export default function Home() {
 
     <Header />
 
-    <Tabela/>
+    <div className="mx-auto">
+      
+      <Tabela/>
+
+    </div>  
+
 
     </div>
   )

@@ -427,8 +427,8 @@ return(
   <form  action="#" method="POST" className="flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 justify-center text-center p-4 rounded-lg justify-self-center m-auto w-screen h-screen  shadow-2xl bg-assemiperBlack bg-opacity-80">
 
   <div className="fixed p-5">
-    <button onClick={desagendarModal} className="rounded-xl text-2xl w-16 bg-assemiperRed h-10">
-      Sair
+    <button onClick={desagendarModal} className="rounded-xl text-xl w-16 bg-assemiperRed h-10">
+      SAIR
     </button>
   </div>
 

@@ -682,22 +682,25 @@ app.post("/api/updateOficio", async(req,res)=>{
         o_id,
         numeroOficiob,
         dataDeExpedicaob,
-        estadoOficiob,
+        estadoOficiob
     } = req.body;
+
+    var query = { _id: o_id };
 
     console.log(req.body)
 
     console.log("/api/updateOficio RESPONSE")
     try {
-        Oficios.updateOne( { _id: o_id }, {$set:{
+        const Ofc = await Oficios.updateOne( query, {$set:{
         
-            numeroOficio: numeroOficiob,
-            dataDeExpedicaob: dataDeExpedicaob,
-            estadoOficio: estadoOficiob,
+            "numeroOficio": numeroOficiob,
+            "dataDeExpedicaob": dataDeExpedicaob,
+            "estadoOficio": estadoOficiob,
 
         }})
-        res.sendStatus(200);
+        console.log(Ofc);
         console.log("Tentou Mudar!")
+        res.sendStatus(200);
     } catch (e) {
         console.error(e);
     } finally {

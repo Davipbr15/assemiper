@@ -21,7 +21,7 @@ function App() {
     numeroOficiob: "",
     dataDeExpedicaob: "",
     estadoOficiob: "",
-    senhaSeguranca: "",
+    senhaSegurancab: "",
   }
 
   const [values, setValues] = useState(initialValue);
@@ -243,54 +243,62 @@ async function deletarReuniaoA(){
 
 const [senhaErradaModal, setSenhaErradaModal] = useState(false);
 
+function deletar(value){
+
+    console.log(values.senhaSegurancab)
+
+    if(values.senhaSegurancab == "micro130716"){
+        deletarOficio(value);
+    }else{
+        setDeletarOficioModal(false)
+        setSenhaErradaModal(true)
+    }
+
+} 
 
 const deletarOficio = async(value) => {
-
-  if(values.senhaSeguranca == "micro130716"){
 
     values.o_id = value;
     console.log("Apertou " + value + " pra deletar")
     try{ 
         console.log("Try")
-        values._id = value;
-        const resposta = await Axios.post('http://'+ ipatual +'/api/deleteOficio', values).then(
-        window.location.reload()
-        )
+        const resposta = await Axios.post('http://'+ ipatual +'/api/deleteOficio', values);
+        if(resposta.status == 200){
+            window.location.reload()
+        }
     }catch(error){
         console.log(error);
     }
 
-  }else{
-    setSenhaErradaModal(true)
-  }
 };
 
-const editarEstadoOficio = async() => {
-    if(1 == 1){
-        if(values.numeroOficiob == ""){
-          values.numeroOficiob = dados.numeroOficio
-        }else{
-          values.numeroOficiob = values.numeroOficiob
-        }
-        if(values.dataDeExpedicaob == ""){
-            values.dataDeExpedicaob = dados.dataDeExpedicao
-          }else{
-            values.dataDeExpedicaob = values.dataDeExpedicaob
-          }
-        if(values.estadoOficiob == ""){
-            values.estadoOficiob = dados.estadoOficio
-        }else{
-            values.estadoOficiob = values.estadoOficiob
-        }
-    }
+const editarEstadoOficio = async(value) => {
 
     try{
 
-        const resposta = await Axios.post('http://'+ipatual+'/api/updateOficio', values) 
+        if(1 == 1){
+            if(values.numeroOficiob == ""){
+              values.numeroOficiob = dados.numeroOficio
+            }else{
+              values.numeroOficiob = values.numeroOficiob;
+            }
+            if(values.dataDeExpedicaob == ""){
+                values.dataDeExpedicaob = dados.dataDeExpedicao
+              }else{
+                values.dataDeExpedicaob = values.dataDeExpedicaob
+              }
+            if(values.estadoOficiob == ""){
+                values.estadoOficiob = dados.estadoOficio
+            }else{
+                values.estadoOficiob = values.estadoOficiob
+            }
+            values.o_id = value;
+        }
 
-        var result = resposta?.status
+        const resposta = await Axios.post('http://'+ipatual+'/api/updateOficio', values);
+        
 
-        if(result == 200){
+        if(resposta.status == 200){
             window.location.reload()
         }
   
@@ -307,13 +315,13 @@ const valorEstado = ()=>{
         var text = e.options[e.selectedIndex].text;
         console.log(value)
         console.log(text)
-        if(value=="enviado"){
+        if(value == "enviado"){
           values.estadoOficiob = "Enviado";
-        }else if(value=="pendente"){
+        }else if(value == "pendente"){
           values.estadoOficiob = "Pendente";
-        }else if(value=="recebido"){
+        }else if(value == "recebido"){
           values.estadoOficiob = "Recebido";
-        }else if(value=="respondido"){
+        }else if(value == "respondido"){
           values.estadoOficiob = "Respondido";
         }else{
       
@@ -427,17 +435,156 @@ return(
     />
   </div>
 
-  <div className="col-span-4">
-    <label htmlFor="tipoContratob" className="form-label inline-block mb-2 text-white">
-        Estado do Ofício
-    </label>
-        <select onChange={valorEstado} required id="estado" className="text-left block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
-            <option value="enviado">Enviado</option>
-            <option value="recebido">Recebido</option>
-            <option value="pendente">Pendente</option>
-            <option value="respondido">Respondido</option>
-        </select>
-    </div>
+    {dados.estadoOficio == 'Pendente' && (
+        <div className="col-span-4">
+        <label htmlFor="estado" className="form-label inline-block mb-2 text-white">
+            Estado do Ofício
+        </label>
+            <select onChange={valorEstado} required id="estado" className="text-left block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
+                <option value="enviado">Enviado</option>
+                <option value="recebido">Recebido</option>
+                <option value="pendente" selected>Pendente</option>
+                <option value="respondido">Respondido</option>
+            </select>
+        </div>
+    )
+    }
+
+    {dados.estadoOficio == 'Respondido' && (
+        <div className="col-span-4">
+        <label htmlFor="estado" className="form-label inline-block mb-2 text-white">
+            Estado do Ofício
+        </label>
+            <select onChange={valorEstado} required id="estado" className="text-left block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
+                <option value="enviado">Enviado</option>
+                <option value="recebido">Recebido</option>
+                <option value="pendente">Pendente</option>
+                <option value="respondido" selected>Respondido</option>
+            </select>
+        </div>
+    )
+    }
+
+    {dados.estadoOficio == 'Enviado' && (
+            <div className="col-span-4">
+            <label htmlFor="estado" className="form-label inline-block mb-2 text-white">
+                Estado do Ofício
+            </label>
+                <select onChange={valorEstado} required id="estado" className="text-left block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
+                    <option value="enviado" selected>Enviado</option>
+                    <option value="recebido">Recebido</option>
+                    <option value="pendente">Pendente</option>
+                    <option value="respondido">Respondido</option>
+                </select>
+            </div>
+        )
+        }
+
+    {dados.estadoOficio == 'Recebido' && (
+            <div className="col-span-4">
+            <label htmlFor="estado" className="form-label inline-block mb-2 text-white">
+                Estado do Ofício
+            </label>
+                <select onChange={valorEstado} required id="estado" className="text-left block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
+                    <option value="enviado">Enviado</option>
+                    <option value="recebido" selected>Recebido</option>
+                    <option value="pendente">Pendente</option>
+                    <option value="respondido">Respondido</option>
+                </select>
+            </div>
+    )
+    }
+
+{/* 
+{() => {
+
+
+    switch(dados.estadoOficio){
+        case 'Pendente' : return (
+            <div className="col-span-4">
+            <label htmlFor="estado" className="form-label inline-block mb-2 text-white">
+                Estado do Ofício
+            </label>
+                <select onChange={valorEstado} required id="estado" className="text-left block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
+                    <option value="enviado">Enviado</option>
+                    <option value="recebido">Recebido</option>
+                    <option value="pendente selected">Pendente</option>
+                    <option value="respondido">Respondido</option>
+                </select>
+            </div>
+        );
+        case "Recebido": return (
+            <div className="col-span-4">
+            <label htmlFor="estado" className="form-label inline-block mb-2 text-white">
+                Estado do Ofício
+            </label>
+                <select onChange={valorEstado} required id="estado" className="text-left block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
+                    <option value="enviado">Enviado</option>
+                    <option value="recebido" selected>Recebido</option>
+                    <option value="pendente">Pendente</option>
+                    <option value="respondido">Respondido</option>
+                </select>
+            </div>
+        );
+        case "Pendente": return (
+            <div className="col-span-4">
+            <label htmlFor="estado" className="form-label inline-block mb-2 text-white">
+                Estado do Ofício
+            </label>
+                <select onChange={valorEstado} required id="estado" className="text-left block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
+                    <option value="enviado">Enviado</option>
+                    <option value="recebido">Recebido</option>
+                    <option value="pendente" selected>Pendente</option>
+                    <option value="respondido">Respondido</option>
+                </select>
+            </div>
+        );
+        case "Respondido": return (
+            <div className="col-span-4">
+            <label htmlFor="estado" className="form-label inline-block mb-2 text-white">
+                Estado do Ofício
+            </label>
+                <select onChange={valorEstado} required id="estado" className="text-left block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
+                    <option value="enviado">Enviado</option>
+                    <option value="recebido">Recebido</option>
+                    <option value="pendente">Pendente</option>
+                    <option value="respondido" selected>Respondido</option>
+                </select>
+            </div>
+        );
+        case "Enviado": return (
+            <div className="col-span-4">
+            <label htmlFor="estado" className="form-label inline-block mb-2 text-white">
+                Estado do Ofício
+            </label>
+                <select onChange={valorEstado} required id="estado" className="text-left block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
+                    <option value="enviado" selected>Enviado</option>
+                    <option value="recebido">Recebido</option>
+                    <option value="pendente">Pendente</option>
+                    <option value="respondido">Respondido</option>
+                </select>
+            </div>
+        );
+        default: return (
+            <div className="col-span-4">
+            <label htmlFor="estado" className="form-label inline-block mb-2 text-white">
+                Estado do Ofício
+            </label>
+                <select onChange={valorEstado} required id="estado" className="text-left block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
+                    <option value="enviado" selected>Enviado</option>
+                    <option value="recebido">Recebido</option>
+                    <option value="pendente">Pendente</option>
+                    <option value="respondido">Respondido</option>
+                </select>
+            </div>
+        );
+
+    }
+
+}
+
+} */}
+
 
 
   {/* <div className="col-span-4">
@@ -466,20 +613,20 @@ return(
               <div className="p-6 text-center">
                 
                   <svg aria-hidden="true" className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  <h3 className="mb-5 text-lg font-normal text-white dark:text-white">Deseja realmente excluir essa reunião? (Ação Irreversível)</h3>
+                  <h3 className="mb-5 text-lg font-normal text-white dark:text-white">Deseja realmente excluir esse ofício? (Ação Irreversível)</h3>
                   
                   <label htmlFor="senhaSegurancaI" className="form-label inline-block mb-2 text-white">
                     Senha de Segurança</label>
-                <input type="password"
-                    name="senhaSegurancab"
-                    required
-                    className="form-control text-center mx-auto block w-1/2 mb-4 px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-                    id="senhaSegurancaI"
-                    onChange={onChange}
-                    placeholder="Insira a senha"
-                />
+                    <input type="password"
+                        name="senhaSegurancab"
+                        required
+                        className="form-control text-center mx-auto block w-1/2 mb-4 px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+                        id="senhaSegurancaI"
+                        onChange={onChange}
+                        placeholder="Insira a senha"
+                    />
 
-                  <button onClick={() => deletarOficio(dados._id)} data-modal-toggle="popup-modal" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                  <button type="button" onClick={() => deletar(dados._id)} data-modal-toggle="popup-modal" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                       Sim, deletar ofício.
                   </button>
                   <button onClick={() => setDeletarOficioModal(false)} data-modal-toggle="popup-modal" type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Não, cancelar</button>
@@ -492,7 +639,7 @@ return(
   }
 
 
-<div onClick={editarEstadoOficio} className="col-span-4">
+<div onClick={() => editarEstadoOficio(dados._id)} className="col-span-4">
           <div className="cursor-pointer group bg-red-600 hover:bg-red-900 transition ease-in-out duration-300 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
 
@@ -538,6 +685,33 @@ return(
 </>
 )}
 
+{senhaErradaModal && (
+
+<div className="z-50">
+
+    <div id="popup-modal" tabIndex="1" className="whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+        <div className="fixed w-full h-full max-w-xl md:h-auto">
+            <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <button onClick={() => setSenhaErradaModal(false)} type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
+                    <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                    <span className="sr-only">Fechar</span>
+                </button>
+                <div className="p-6 text-center">
+                    <svg aria-hidden="true" className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3 className="mb-5 text-lg font-normal text-white dark:text-white">Senha incorreta</h3>
+                    <button onClick={() => setSenhaErradaModal(false)} data-modal-toggle="popup-modal" type="submit" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+)
+}
+
 {agendando && (
 
 <>
@@ -545,18 +719,18 @@ return(
   <form action="#" method="POST" className="flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 justify-center text-center p-4 rounded-lg justify-self-center m-auto w-screen h-screen  shadow-2xl bg-assemiperBlack bg-opacity-60">
 
   <div className="fixed p-5">
-    <button onClick={desagendarModal} className="rounded-xl text-2xl w-16 bg-assemiperRed h-10">
-      Sair
+    <button onClick={desagendarModal} className="rounded-xl text-xl w-16 bg-assemiperRed h-10">
+      SAIR
     </button>
   </div>
 
   <div className="m-auto">
 
     <div className="mb-5 whitespace-normal">
-    <h1 className="text-xl text-center text-white font-semibold">Importar Oficio</h1>
+    <h1 className="text-xl text-center text-white font-semibold">Registrar Oficio</h1>
     </div>
 
-    <div className="grid grid-cols-4 gap-x-10 gap-y-5">
+    <div className="grid grid-cols-4 gap-x-32 gap-y-5">
 
     <div className="col-span-4">
       <label htmlFor="numeroOficioI" className="form-label inline-block mb-2 text-white">
@@ -598,33 +772,6 @@ return(
         </select>
     </div>
 
-    
-{senhaErradaModal && (
-
-<div>
-
-<div id="popup-modal" tabIndex="1" className="App4 whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-20 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
-    <div className="fixed w-full h-full max-w-xl md:h-auto">
-        <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <button onClick={() => closeModalConfirm()} type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
-                <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-                <span className="sr-only">Fechar</span>
-            </button>
-            <div className="p-6 text-center">
-                <svg aria-hidden="true" className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                <h3 className="mb-5 text-lg font-normal text-white dark:text-white">Senha incorreta</h3>
-                <button data-modal-toggle="popup-modal" type="submit" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                    Cancelar
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-    
-</div>
-
-)
-}
 
 {confirmRegistro && (
 
