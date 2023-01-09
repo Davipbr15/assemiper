@@ -54,6 +54,7 @@ function ShowAssociate(){
           console.log(error);
         }
         await setDados(result)
+        console.log(result)
       };
 
       const getDados = async(value) => {
@@ -70,7 +71,7 @@ function ShowAssociate(){
     return( 
         <>
         {!vendoDados && (
-        <div className="App5">
+        <div className="App">
 
         <div className="sm:-mx-6 lg:-mx-8">
           <div className="py-2 sm:px-6 lg:px-8">
@@ -126,9 +127,9 @@ function ShowAssociate(){
 
         {vendoDados && (
 
-        <div className="App">
+        <div className="">
 
-          <div className="App bg-assemiperBlack">
+          <div className="bg-assemiperBlack">
   <button onClick={reload} className="text-center m-5 group hover:scale-110 bg-red-800 hover:bg-red-700 transition ease-in-out duration-150 flex justify-center py-2 px-6 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
     Voltar
   </button>
@@ -141,7 +142,7 @@ function ShowAssociate(){
   
   <div className="grid grid-cols-3 gap-6">
 
-    <h1 className="whitespace-nowrap text-sm">Data de criação do associado: {dados[0].dataCriacao}</h1>
+    <h1 className="whitespace-nowrap text-sm">Data de criação do associado: {dados.dataCriacao}</h1>
   
   <div className="col-span-3">
     <label htmlFor="nomeCompletoI" className="form-label inline-block mb-2 text-white">Nome completo</label>
@@ -149,7 +150,7 @@ function ShowAssociate(){
       name="nomeCompletob"
       required
       disabled
-      defaultValue={dados[0].dadosPessoais.nomeCompleto}
+      defaultValue={dados.dadosPessoais.nomeCompleto}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="nomeCompletoI"
       onChange={onChange}
@@ -163,7 +164,7 @@ function ShowAssociate(){
       name="estadoCivilb"
       required
       disabled
-      defaultValue={dados[0].dadosPessoais.estadoCivil}
+      defaultValue={dados.dadosPessoais.estadoCivil}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="estadoCivilI"
       onChange={onChange}
@@ -179,7 +180,7 @@ function ShowAssociate(){
          name="nacionalidadeb"
          required
 disabled
-  defaultValue={dados[0].dadosPessoais.nacionalidade}
+  defaultValue={dados.dadosPessoais.nacionalidade}
          className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
          id="nacionalidadeI"
          onChange={onChange}
@@ -194,7 +195,7 @@ disabled
        name='naturalidadeb'
        required
 disabled
-  defaultValue={dados[0].dadosPessoais.naturalidade}
+  defaultValue={dados.dadosPessoais.naturalidade}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="naturalidadeI"
        onChange={onChange}
@@ -213,7 +214,7 @@ disabled
        min="1910-05-01"
        required
 disabled
-       defaultValue={dados[0].dadosPessoais.dataDeNascimento}
+       defaultValue={dados.dadosPessoais.dataDeNascimento}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="dataDeNascimentoI"
        onChange={onChange}
@@ -230,7 +231,7 @@ disabled
        name='cpfb'
        required
 disabled
-       defaultValue={dados[0].dadosPessoais.cpf}
+       defaultValue={dados.dadosPessoais.cpf}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="cpfI"
        onChange={onChange}
@@ -247,7 +248,7 @@ disabled
        name="profissaob"
        required
 disabled
-  defaultValue={dados[0].dadosPessoais.profissao}
+  defaultValue={dados.dadosPessoais.profissao}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="profissaoI"
        onChange={onChange}
@@ -264,7 +265,7 @@ disabled
        name="documentoIdentificacaob"
        required
 disabled
-  defaultValue={dados[0].dadosPessoais.documentoIdentificacao}
+  defaultValue={dados.dadosPessoais.documentoIdentificacao}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="documentoIdentificacaoI"
        onChange={onChange}
@@ -281,7 +282,7 @@ disabled
        name="numeroDocumentob"
        required
 disabled
-  defaultValue={dados[0].dadosPessoais.numeroDocumento}
+  defaultValue={dados.dadosPessoais.numeroDocumento}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="numeroDocumentoI"
        onChange={onChange}
@@ -298,7 +299,7 @@ disabled
        name="orgaoExpeditorb"
        required
 disabled
-  defaultValue={dados[0].dadosPessoais.orgaoExpeditor}
+  defaultValue={dados.dadosPessoais.orgaoExpeditor}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="orgaoExpeditorI"
        onChange={onChange}
@@ -315,7 +316,7 @@ disabled
        name="enderecoPessoalb"
        required
 disabled
-  defaultValue={dados[0].dadosPessoais.enderecoPessoal}
+  defaultValue={dados.dadosPessoais.enderecoPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="enderecoPessoalI"
        onChange={onChange}
@@ -330,7 +331,7 @@ disabled
        name="numeroEnderecoPessoalb"
        required
 disabled
-  defaultValue={dados[0].dadosPessoais.numeroEnderecoPessoal}
+  defaultValue={dados.dadosPessoais.numeroEnderecoPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="numeroEnderecoPesssoalI"
        onChange={onChange}
@@ -345,7 +346,7 @@ disabled
        name="complementoPessoalb"
        required
 disabled
-  defaultValue={dados[0].dadosPessoais.complementoPessoal}
+  defaultValue={dados.dadosPessoais.complementoPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="complementoPessoalI"
        onChange={onChange}
@@ -360,7 +361,7 @@ disabled
        name="bairroPessoalb"
        required
 disabled
-  defaultValue={dados[0].dadosPessoais.bairroPessoal}
+  defaultValue={dados.dadosPessoais.bairroPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="bairroPessoalI"
        onChange={onChange}
@@ -375,7 +376,7 @@ disabled
        name="cepb"
        required
 disabled
-  defaultValue={dados[0].dadosPessoais.cep}
+  defaultValue={dados.dadosPessoais.cep}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="cepI"
        onChange={onChange}
@@ -390,7 +391,7 @@ disabled
        name="cidadeEstadoPessoalb"
        required
 disabled
-  defaultValue={dados[0].dadosPessoais.cidadeEstadoPessoal}
+  defaultValue={dados.dadosPessoais.cidadeEstadoPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="cidadeEstadoPessoalI"
        onChange={onChange}
@@ -405,7 +406,7 @@ disabled
        name="emailPessoalb"
        required
 disabled
-  defaultValue={dados[0].dadosPessoais.emailPessoal}
+  defaultValue={dados.dadosPessoais.emailPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="emailPessoalI"
        onChange={onChange}
@@ -420,7 +421,7 @@ disabled
        name="telefoneFixoPessoalb"
        required
 disabled
-  defaultValue={dados[0].dadosPessoais.telefoneFixoPessoal}
+  defaultValue={dados.dadosPessoais.telefoneFixoPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="telefoneFixoPessoalI"
        onChange={onChange}
@@ -435,7 +436,7 @@ disabled
        name="celularPessoalb"
        required
 disabled
-  defaultValue={dados[0].dadosPessoais.celularPessoal}
+  defaultValue={dados.dadosPessoais.celularPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="celularPessoalI"
         maxLength="15"
@@ -456,7 +457,7 @@ disabled
        name="razaoSocialb"
        required
 disabled
-        defaultValue={dados[0].dadosProfissionais.razaoSocial}
+        defaultValue={dados.dadosProfissionais.razaoSocial}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="razaoSocialI"
        onChange={onChange}
@@ -471,7 +472,7 @@ disabled
        name="nomeFantasiab"
        required
 disabled
-        defaultValue={dados[0].dadosProfissionais.nomeFantasia}
+        defaultValue={dados.dadosProfissionais.nomeFantasia}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="nomeFantasiaI"
        onChange={onChange}
@@ -486,7 +487,7 @@ disabled
        name="cnpjb"
        required
 disabled
-  defaultValue={dados[0].dadosProfissionais.cnpj}
+  defaultValue={dados.dadosProfissionais.cnpj}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="cnpjI"
        onChange={onChange}
@@ -501,7 +502,7 @@ disabled
        name="numeroInscricaob"
        required
 disabled
-  defaultValue={dados[0].dadosProfissionais.numeroInscricao}
+  defaultValue={dados.dadosProfissionais.numeroInscricao}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="numeroInscricaoI"
        onChange={onChange}
@@ -516,7 +517,7 @@ disabled
        name="enderecoSedeb"
        required
       disabled
-      defaultValue={dados[0].dadosProfissionais.enderecoSede}
+      defaultValue={dados.dadosProfissionais.enderecoSede}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="enderecoSedeI"
        onChange={onChange}
@@ -531,7 +532,7 @@ disabled
        name="numeroSedeb"
        required
 disabled
-  defaultValue={dados[0].dadosProfissionais.numeroSede}
+  defaultValue={dados.dadosProfissionais.numeroSede}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="numeroSedeI"
        onChange={onChange}
@@ -546,7 +547,7 @@ disabled
        name="complementoSedeb"
        required
 disabled
-  defaultValue={dados[0].dadosProfissionais.complementoSede}
+  defaultValue={dados.dadosProfissionais.complementoSede}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="complementoSedeI"
        onChange={onChange}
@@ -561,7 +562,7 @@ disabled
        name="bairroSedeb"
        required
 disabled
-  defaultValue={dados[0].dadosProfissionais.bairroSede}
+  defaultValue={dados.dadosProfissionais.bairroSede}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="bairroSedeI"
        onChange={onChange}
@@ -576,7 +577,7 @@ disabled
        name="cepSedeb"
        required
 disabled
-  defaultValue={dados[0].dadosProfissionais.cepSede}
+  defaultValue={dados.dadosProfissionais.cepSede}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="cepSedeI"
        onChange={onChange}
@@ -591,7 +592,7 @@ disabled
        name="cidadeEstadoSedeb"
        required
 disabled
-  defaultValue={dados[0].dadosProfissionais.cidadeEstadoSede}
+  defaultValue={dados.dadosProfissionais.cidadeEstadoSede}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="cidadeEstadoSedeI"
        onChange={onChange}
@@ -606,7 +607,7 @@ disabled
        name="emailProfissionalb"
        required
 disabled
-  defaultValue={dados[0].dadosProfissionais.emailProfissional}
+  defaultValue={dados.dadosProfissionais.emailProfissional}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="emailProfissionalI"
        onChange={onChange}
@@ -621,7 +622,7 @@ disabled
        name="dataDeAberturab"
        required
 disabled
-  defaultValue={dados[0].dadosProfissionais.dataDeAbertura}
+  defaultValue={dados.dadosProfissionais.dataDeAbertura}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="dataDeAberturaI"
        onChange={onChange}
@@ -636,7 +637,7 @@ disabled
        name="quantidadePessoasOcupadasb"
        required
 disabled
-  defaultValue={dados[0].dadosProfissionais.quantidadePessoasOcupadas}
+  defaultValue={dados.dadosProfissionais.quantidadePessoasOcupadas}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="quantidadePessoasOcupadasI"
        onChange={onChange}
@@ -651,7 +652,7 @@ disabled
        name="ramoDaAtividadeb"
        required
 disabled
-  defaultValue={dados[0].dadosProfissionais.ramoDaAtividade}
+  defaultValue={dados.dadosProfissionais.ramoDaAtividade}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="ramoDaAtividadeI"
        onChange={onChange}
@@ -665,7 +666,7 @@ disabled
       name="numeroDaPastab"
       required
 disabled
-      defaultValue={dados[0].numeroDaPasta}
+      defaultValue={dados.numeroDaPasta}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="numeroDaPastaI"
       onChange={onChange}
@@ -688,7 +689,7 @@ disabled
     <label htmlFor="validadeAlvarab" className="form-label inline-block mb-2 text-white">Validade</label>
     <input type="text"
       name="validadeAlvarab"
-      defaultValue={dados[0].pastaDeDocumentos.alvaraDeFuncionamento.validadeAlvara}
+      defaultValue={dados.pastaDeDocumentos.alvaraDeFuncionamento.validadeAlvara}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="validadeAlvaraI"
       onChange={onChange}
@@ -701,7 +702,7 @@ disabled
     </label>
     <input type="text"
       name="areaM2Funcionamentob"
-      defaultValue={dados[0].pastaDeDocumentos.alvaraDeFuncionamento.areaM2Funcionamento}
+      defaultValue={dados.pastaDeDocumentos.alvaraDeFuncionamento.areaM2Funcionamento}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="areaM2FuncionamentoI"
       onChange={onChange}
@@ -716,7 +717,7 @@ disabled
       name="numeroInscricaoMunicipalb"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="numeroInscricaoMunicipalI"
-      defaultValue={dados[0].pastaDeDocumentos.alvaraDeFuncionamento.numeroInscricaoMunicipal}
+      defaultValue={dados.pastaDeDocumentos.alvaraDeFuncionamento.numeroInscricaoMunicipal}
       onChange={onChange}
       placeholder="Número de Inscrição Municipal"
     />
@@ -733,7 +734,7 @@ disabled
       name="dataDeEmissaoBombeirosb"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeEmissaoBombeirosI"
-      defaultValue={dados[0].pastaDeDocumentos.certificadoBombeiros.dataDeEmissaoBombeiros}
+      defaultValue={dados.pastaDeDocumentos.certificadoBombeiros.dataDeEmissaoBombeiros}
       onChange={onChange}
       placeholder="Data de Emissão"
     />
@@ -746,7 +747,7 @@ disabled
       name="dataDeValidadeBombeirosb"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeValidadeBombeirosI"
-      defaultValue={dados[0].pastaDeDocumentos.certificadoBombeiros.dataDeValidadeBombeiros}
+      defaultValue={dados.pastaDeDocumentos.certificadoBombeiros.dataDeValidadeBombeiros}
       onChange={onChange}
       placeholder="Data de Validade"
     />
@@ -761,7 +762,7 @@ disabled
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="areaM2BombeirosI"
       onChange={onChange}
-      defaultValue={dados[0].pastaDeDocumentos.certificadoBombeiros.areaM2Bombeiros}
+      defaultValue={dados.pastaDeDocumentos.certificadoBombeiros.areaM2Bombeiros}
       placeholder="Área M²"
     />
   </div>
@@ -777,7 +778,7 @@ disabled
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeValidadeVigilanciaI"
       onChange={onChange}
-      defaultValue={dados[0].pastaDeDocumentos.alvaraDeVigilanciaSanitaria.dataDeValidadeVigilancia}
+      defaultValue={dados.pastaDeDocumentos.alvaraDeVigilanciaSanitaria.dataDeValidadeVigilancia}
       placeholder="Data de Validade"
     />
   </div>
@@ -790,7 +791,7 @@ disabled
       name="inscricaoVigilanciaSanitariab"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="inscricaoVigilanciaSanitariaI"
-      defaultValue={dados[0].pastaDeDocumentos.alvaraDeVigilanciaSanitaria.inscricaoVigilanciaSanitaria}
+      defaultValue={dados.pastaDeDocumentos.alvaraDeVigilanciaSanitaria.inscricaoVigilanciaSanitaria}
       onChange={onChange}
       placeholder="Inscrição Vigilância Sanitária"
     />
@@ -805,7 +806,7 @@ disabled
     </label>
     <input type="date"
       name="dataDeEmissaoLicencaAmbientalb"
-      defaultValue={dados[0].pastaDeDocumentos.licencaAmbiental.dataDeEmissaoLicencaAmbiental}
+      defaultValue={dados.pastaDeDocumentos.licencaAmbiental.dataDeEmissaoLicencaAmbiental}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeEmissaoLicencaAmbientalI"
       onChange={onChange}
@@ -819,7 +820,7 @@ disabled
     </label>
     <input type="date"
       name="dataDeValidadeLicencaAmbientalb"
-      defaultValue={dados[0].pastaDeDocumentos.licencaAmbiental.dataDeValidadeLicencaAmbiental}
+      defaultValue={dados.pastaDeDocumentos.licencaAmbiental.dataDeValidadeLicencaAmbiental}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeValidadeLicencaAmbientalI"
       onChange={onChange}
@@ -838,7 +839,8 @@ disabled
       name="tipoContratob"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="tipoContratoI"
-      defaultValue={dados[0].pastaDeDocumentos.contratoDeImovel.tipoContrato}
+      disabled
+      defaultValue={dados.pastaDeDocumentos.contratoDeImovel.tipoContrato}
       onChange={onChange}
       placeholder="Tipo de Contrato"
     />
@@ -855,7 +857,7 @@ disabled
       name="baixadab"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="baixadaI"
-      defaultValue={dados[0].pastaDeDocumentos.declaracaoDeBaixaInscricao.baixada}
+      defaultValue={dados.pastaDeDocumentos.declaracaoDeBaixaInscricao.baixada}
       onChange={onChange}
       placeholder="Baixada"
     />

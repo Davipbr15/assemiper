@@ -484,10 +484,11 @@ app.post('/api/deleteAssociate',async(req,res)=>{
     try{
         Associate.deleteOne(query).then(function(){
             console.log("Tentou remover.")
-            return res.status(200)
         }).catch(function(error){
             console.log(error);
         })
+
+        return res.status(200)
         
 
     }catch(error){
@@ -507,6 +508,7 @@ app.post("/api/registerReuniao", async(req,res)=>{
         presentesReuniaob,
       } = req.body
     try{
+
         await ConviteReuniao.create({
             
             temaReuniao: temaReuniaob,
@@ -516,17 +518,14 @@ app.post("/api/registerReuniao", async(req,res)=>{
             resumoReuniao: resumoReuniaob,
             presentesReuniao: presentesReuniaob
 
-        });
+        })
         
-
-        console.log("Reunião registrada com sucesso!");
-
-        return res.status(200);
+        res.status(200);
 
     } catch (error){
         
         console.log(error);
-        return res.status(201);
+        res.status(201);
         
 
     }
@@ -572,15 +571,15 @@ app.post('/api/deleteReuniao',async(req,res)=>{
     var query = { _id: r_id };
     try{
         ConviteReuniao.deleteOne(query).then(function(){
-            console.log("Removeu.")
-            return res.status(200)
         }).catch(function(error){
-            console.log(error);
+            console.log(error)
         })
+
+        res.status(200)
         
 
     }catch(error){
-        res.status(500).send(error);
+        res.status(500).send(error)
     }
 
 })

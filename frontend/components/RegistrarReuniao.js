@@ -50,20 +50,16 @@ const onSubmit = async(ev) => {
 
   try{
 
-      const resposta = await Axios.post('http://'+ipatual+'/api/registerReuniao', values);
+      const resposta = await Axios.post('http://'+ipatual+'/api/registerReuniao', values)
 
       var result = resposta.status;
 
-      if(result == 200){
-        window.location.reload()
-      }else{
-        console.log('ERROR')
-      }
-    
+      console.log(resposta)
+
     }catch(error){
         console.log(error);
     }
-    
+  
     // Go to /some/path.
 }
 
@@ -226,22 +222,27 @@ const deletarReuniao = async(value) => {
 
   console.log("Apertou " + value + " pra deletar")
   try{ 
-    console.log("Try")
+    console.log("Try - ")
     values._id = value;
     values.r_id = value;
-    const resposta = await Axios.post('http://'+ ipatual +'/api/deleteReuniao', values);
+    const resposta = await Axios.post('http://'+ ipatual +'/api/deleteReuniao', values)
 
-    var result = resposta.status;
+    var result = resposta?.status;
 
-    if(result == 200){
-      window.location.reload()
-    }else{
-      window.alert('Erro')
-    }
+    console.log(resposta);
+
+    console.log(result);
 
   }catch(error){
-    console.log(error);
+    console.log(error)
+  }finally{
+    console.log("Foi")
   }
+
+
+
+
+
 };
 
 function showReq(){

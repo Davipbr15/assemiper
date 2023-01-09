@@ -10,8 +10,12 @@ export default function Home() {
       <div className="App flex">
       
       <Header />
+
+      <div className="mx-auto">
   
       <EditAssociate />
+
+      </div>
   
   
       </div>

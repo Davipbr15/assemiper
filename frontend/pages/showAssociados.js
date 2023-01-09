@@ -6,7 +6,7 @@ function App() {
 
   return (
 
-    <div className="App flex">
+    <div className="AppB flex">
     
     <Header />
 

@@ -88,287 +88,287 @@ const onSubmit = async(ev) => {
 
     console.log(editando)
     
-    // values.nomeCompletob = editando[0].dadosPessoais.nomeCompleto;
-    // values.estadoCivilb = editando[0].dadosPessoais.estadoCivil ?? null;
+    // values.nomeCompletob = editando.dadosPessoais.nomeCompleto;
+    // values.estadoCivilb = editando.dadosPessoais.estadoCivil ?? null;
     if(1==1){
       if(values.nomeCompletob == ''){
-        values.nomeCompletob = editando[0].dadosPessoais.nomeCompleto 
+        values.nomeCompletob = editando.dadosPessoais.nomeCompleto 
       }else{
         values.nomeCompletob = values.nomeCompletob 
       }
 
       if(values.estadoCivilb == ''){
-        values.estadoCivilb = editando[0].dadosPessoais.estadoCivil 
+        values.estadoCivilb = editando.dadosPessoais.estadoCivil 
       }else{
         values.estadoCivilb = values.estadoCivilb 
       }
 
       if(values.nacionalidadeb == ''){
-        values.nacionalidadeb = editando[0].dadosPessoais.nacionalidade 
+        values.nacionalidadeb = editando.dadosPessoais.nacionalidade 
       }else{
         values.nacionalidadeb = values.nacionalidadeb 
       }
 
       if(values.naturalidadeb == ''){
-        values.naturalidadeb = editando[0].dadosPessoais.naturalidade 
+        values.naturalidadeb = editando.dadosPessoais.naturalidade 
     }else{
       values.naturalidadeb = values.naturalidadeb 
     }
 
       if(values.dataDeNascimentob == ''){
-        values.dataDeNascimentob  = editando[0].dadosPessoais.dataDeNascimento 
+        values.dataDeNascimentob  = editando.dadosPessoais.dataDeNascimento 
       }else{
         values.dataDeNascimentob = values.dataDeNascimentob 
       }
 
       if(values.cpfb == ''){
-        values.cpfb  = editando[0].dadosPessoais.cpf 
+        values.cpfb  = editando.dadosPessoais.cpf 
     }else{
         values.cpfb = values.cpfb 
     }
 
       if(values.profissaob == ''){
-        values.profissaob  = editando[0].dadosPessoais.profissao 
+        values.profissaob  = editando.dadosPessoais.profissao 
       }else{
     values.profissaob = values.profissaob 
     }
 
     if(values.documentoIdentificacaob == ''){
-      values.documentoIdentificacaob  = editando[0].dadosPessoais.documentoIdentificacao 
+      values.documentoIdentificacaob  = editando.dadosPessoais.documentoIdentificacao 
   }else{
     values.documentoIdentificacaob = values.documentoIdentificacaob 
   }
     
     if(values.numeroDocumentob == ''){
-      values.numeroDocumentob = editando[0].dadosPessoais.numeroDocumento 
+      values.numeroDocumentob = editando.dadosPessoais.numeroDocumento 
     }else{
       values.numeroDocumentob = values.numeroDocumentob 
     }
 
     if(values.orgaoExpeditorb == ''){
-      values.orgaoExpeditorb = editando[0].dadosPessoais.orgaoExpeditor 
+      values.orgaoExpeditorb = editando.dadosPessoais.orgaoExpeditor 
     }else{
       values.orgaoExpeditorb = values.orgaoExpeditorb 
     }
 
     if(values.enderecoPessoalb  == ''){
-      values.enderecoPessoalb = editando[0].dadosPessoais.enderecoPessoal 
+      values.enderecoPessoalb = editando.dadosPessoais.enderecoPessoal 
     }else{
       values.enderecoPessoalb = values.enderecoPessoalb 
     }
 
     if(values.numeroEnderecoPessoalb == ''){
-      values.numeroEnderecoPessoalb  = editando[0].dadosPessoais.numeroEnderecoPessoal 
+      values.numeroEnderecoPessoalb  = editando.dadosPessoais.numeroEnderecoPessoal 
     }else{
       values.numeroEnderecoPessoalb = values.numeroEnderecoPessoalb 
     }
 
     if(values.complementoPessoalb == ''){
-      values.complementoPessoalb  = editando[0].dadosPessoais.complementoPessoal 
+      values.complementoPessoalb  = editando.dadosPessoais.complementoPessoal 
     }else{
       values.complementoPessoalb = values.complementoPessoalb 
     }
       
     if(values.bairroPessoalb == ''){
-      values.bairroPessoalb  = editando[0].dadosPessoais.bairroPessoal 
+      values.bairroPessoalb  = editando.dadosPessoais.bairroPessoal 
     }else{
       values.bairroPessoalb = values.bairroPessoalb 
     }   
         
     if(values.cepb == ''){
-      values.cepb  = editando[0].dadosPessoais.cep 
+      values.cepb  = editando.dadosPessoais.cep 
     }else{
       values.cepb = values.cepb 
     }
 
     if(values.cidadeEstadoPessoalb == ''){
-      values.cidadeEstadoPessoalb = editando[0].dadosPessoais.cidadeEstadoPessoal 
+      values.cidadeEstadoPessoalb = editando.dadosPessoais.cidadeEstadoPessoal 
     }else{
       values.cidadeEstadoPessoalb = values.cidadeEstadoPessoalb 
     }
 
     if(values.emailPessoalb == ''){
-      values.emailPessoalb  = editando[0].dadosPessoais.emailPessoal 
+      values.emailPessoalb  = editando.dadosPessoais.emailPessoal 
     }else{
       values.emailPessoalb = values.emailPessoalb 
     }
 
     if(values.telefoneFixoPessoalb == ''){
-      values.telefoneFixoPessoalb = editando[0].dadosPessoais.telefoneFixoPessoal 
+      values.telefoneFixoPessoalb = editando.dadosPessoais.telefoneFixoPessoal 
     }else{
       values.telefoneFixoPessoalb = values.telefoneFixoPessoalb 
     }
         
     if(values.celularPessoalb  == ''){
-      values.celularPessoalb   = editando[0].dadosPessoais.celularPessoal 
+      values.celularPessoalb   = editando.dadosPessoais.celularPessoal 
     }else{
       values.celularPessoalb  = values.celularPessoalb  
     }
 
     if(values.razaoSocialb  == ''){
-      values.razaoSocialb   = editando[0].dadosProfissionais.razaoSocial 
+      values.razaoSocialb   = editando.dadosProfissionais.razaoSocial 
     }else{
       values.razaoSocialb  = values.razaoSocialb  
     }
 
     if(values.nomeFantasiab  == ''){
-      values.nomeFantasiab   = editando[0].dadosProfissionais.nomeFantasia 
+      values.nomeFantasiab   = editando.dadosProfissionais.nomeFantasia 
     }else{
       values.nomeFantasiab  = values.nomeFantasiab  
     }
 
     if(values.cnpjb  == ''){
-      values.cnpjb   = editando[0].dadosProfissionais.cnpj 
+      values.cnpjb   = editando.dadosProfissionais.cnpj 
     }else{
       values.cnpjb  = values.cnpjb  
     }
 
     if(values.numeroInscricaob  == ''){
-      values.numeroInscricaob  = editando[0].dadosProfissionais.numeroInscricao 
+      values.numeroInscricaob  = editando.dadosProfissionais.numeroInscricao 
     }else{
       values.numeroInscricaob  = values.numeroInscricaob 
     }
 
     if(values.numeroSedeb  == ''){
-      values.numeroSedeb = editando[0].dadosProfissionais.numeroSede 
+      values.numeroSedeb = editando.dadosProfissionais.numeroSede 
     }else{
       values.numeroSedeb = values.numeroSedeb  
     }
 
     if(values.complementoSedeb == ''){
-      values.complementoSedeb  = editando[0].dadosProfissionais.complementoSede 
+      values.complementoSedeb  = editando.dadosProfissionais.complementoSede 
     }else{
       values.complementoSedeb  = values.complementoSedeb 
     }
       
     if(values.bairroSedeb  == ''){
-      values.bairroSedeb = editando[0].dadosProfissionais.bairroSede 
+      values.bairroSedeb = editando.dadosProfissionais.bairroSede 
     }else{
       values.bairroSedeb = values.bairroSedeb 
     }
 
     if(values.cepSedeb == ''){
-      values.cepSedeb  = editando[0].dadosProfissionais.cepSede 
+      values.cepSedeb  = editando.dadosProfissionais.cepSede 
     }else{
       values.cepSedeb  = values.cepSedeb 
     }
 
     if(values.cidadeEstadoSedeb == ''){
-      values.cidadeEstadoSedeb = editando[0].dadosProfissionais.cidadeEstadoSede 
+      values.cidadeEstadoSedeb = editando.dadosProfissionais.cidadeEstadoSede 
     }else{
       values.cidadeEstadoSedeb = values.cidadeEstadoSedeb 
     }
 
     if(values.emailProfissionalb  == ''){
-      values.emailProfissionalb  = editando[0].dadosProfissionais.emailProfissional 
+      values.emailProfissionalb  = editando.dadosProfissionais.emailProfissional 
     }else{
       values.emailProfissionalb  = values.emailProfissionalb 
     }
 
     if(values.dataDeAbertura  == ''){
-      values.dataDeAbertura = editando[0].dadosProfissionais.dataDeAbertura 
+      values.dataDeAbertura = editando.dadosProfissionais.dataDeAbertura 
     }else{
       values.dataDeAbertura = values.dataDeAbertura 
     }
 
     if(values.quantidadePessoasOcupadasb == ''){
-      values.quantidadePessoasOcupadasb = editando[0].dadosProfissionais.quantidadePessoasOcupadas 
+      values.quantidadePessoasOcupadasb = editando.dadosProfissionais.quantidadePessoasOcupadas 
     }else{
       values.quantidadePessoasOcupadasb = values.quantidadePessoasOcupadasb 
     }
 
     if(values.ramoDaAtividadeb == ''){
-      values.ramoDaAtividadeb = editando[0].dadosProfissionais.ramoDaAtividade 
+      values.ramoDaAtividadeb = editando.dadosProfissionais.ramoDaAtividade 
     }else{
       values.ramoDaAtividadeb = values.ramoDaAtividadeb 
     }
 
     if(values.dataDeAberturab == ''){
-      values.dataDeAberturab = editando[0].dadosProfissionais.dataDeAbertura
+      values.dataDeAberturab = editando.dadosProfissionais.dataDeAbertura
     }else{
       values.dataDeAberturab = values.dataDeAberturab
     }
 
     if(values.numeroDaPastab  == ''){
-      values.numeroDaPastab = editando[0].numeroDaPasta
+      values.numeroDaPastab = editando.numeroDaPasta
     }else{
       values.numeroDaPastab = values.numeroDaPastab 
     }
 
     if(values.validadeAlvarab  == ''){
-      values.validadeAlvarab  = editando[0].pastaDeDocumentos.alvaraDeFuncionamento.validadeAlvara 
+      values.validadeAlvarab  = editando.pastaDeDocumentos.alvaraDeFuncionamento.validadeAlvara 
     }else{
       values.validadeAlvarab = values.validadeAlvarab 
     }
 
     if(values.areaM2Funcionamentob == ''){
-      values.areaM2Funcionamentob = editando[0].pastaDeDocumentos.alvaraDeFuncionamento.areaM2Funcionamento 
+      values.areaM2Funcionamentob = editando.pastaDeDocumentos.alvaraDeFuncionamento.areaM2Funcionamento 
     }else{
       values.areaM2Funcionamentob = values.areaM2Funcionamentob 
     }
 
     if(values.numeroInscricaoMunicipalb == ''){
-      values.numeroInscricaoMunicipalb = editando[0].pastaDeDocumentos.alvaraDeFuncionamento.numeroInscricaoMunicipal 
+      values.numeroInscricaoMunicipalb = editando.pastaDeDocumentos.alvaraDeFuncionamento.numeroInscricaoMunicipal 
     }else{
       values.numeroInscricaoMunicipalb = values.numeroInscricaoMunicipalb 
     }
 
     if(values.dataDeEmissaoBombeirosb == ''){
-      values.dataDeEmissaoBombeirosb = editando[0].pastaDeDocumentos.certificadoBombeiros.dataDeEmissaoBombeiros 
+      values.dataDeEmissaoBombeirosb = editando.pastaDeDocumentos.certificadoBombeiros.dataDeEmissaoBombeiros 
     }else{
       values.dataDeEmissaoBombeirosb = values.dataDeEmissaoBombeirosb 
     }
 
     if(values.dataDeValidadeBombeirosb == ''){
-      values.dataDeValidadeBombeirosb = editando[0].pastaDeDocumentos.certificadoBombeiros.dataDeValidadeBombeiros 
+      values.dataDeValidadeBombeirosb = editando.pastaDeDocumentos.certificadoBombeiros.dataDeValidadeBombeiros 
     }else{
       values.dataDeValidadeBombeirosb = values.dataDeValidadeBombeirosb 
     }
       
     if(values.areaM2Bombeirosb == ''){
-      values.areaM2Bombeirosb = editando[0].pastaDeDocumentos.certificadoBombeiros.areaM2Bombeiros 
+      values.areaM2Bombeirosb = editando.pastaDeDocumentos.certificadoBombeiros.areaM2Bombeiros 
     }else{
       values.areaM2Bombeirosb = values.areaM2Bombeirosb 
     }
 
     if(values.dataDeValidadeVigilanciab == ''){
-      values.dataDeValidadeVigilanciab = editando[0].pastaDeDocumentos.alvaraDeVigilanciaSanitaria.dataDeValidadeVigilancia 
+      values.dataDeValidadeVigilanciab = editando.pastaDeDocumentos.alvaraDeVigilanciaSanitaria.dataDeValidadeVigilancia 
     }else{
       values.dataDeValidadeVigilanciab = values.dataDeValidadeVigilanciab 
     }
 
     if(values.inscricaoVigilanciaSanitariab == ''){
-      values.inscricaoVigilanciaSanitariab = editando[0].pastaDeDocumentos.alvaraDeVigilanciaSanitaria.inscricaoVigilanciaSanitaria 
+      values.inscricaoVigilanciaSanitariab = editando.pastaDeDocumentos.alvaraDeVigilanciaSanitaria.inscricaoVigilanciaSanitaria 
     }else{
       values.inscricaoVigilanciaSanitariab = values.inscricaoVigilanciaSanitariab 
     }
 
     if(values.dataDeEmissaoLicencaAmbientalb == ''){
-      values.dataDeEmissaoLicencaAmbientalb = editando[0].pastaDeDocumentos.licencaAmbiental.dataDeEmissaoLicencaAmbiental 
+      values.dataDeEmissaoLicencaAmbientalb = editando.pastaDeDocumentos.licencaAmbiental.dataDeEmissaoLicencaAmbiental 
     }else{
       values.dataDeEmissaoLicencaAmbientalb = values.dataDeEmissaoLicencaAmbientalb 
     }
 
     if(values.dataDeValidadeLicencaAmbientalb == ''){
-      values.dataDeValidadeLicencaAmbientalb = editando[0].pastaDeDocumentos.licencaAmbiental.dataDeValidadeLicencaAmbiental 
+      values.dataDeValidadeLicencaAmbientalb = editando.pastaDeDocumentos.licencaAmbiental.dataDeValidadeLicencaAmbiental 
     }else{
       values.dataDeValidadeLicencaAmbientalb = values.dataDeValidadeLicencaAmbientalb 
     }
 
     if(values.tipoContratob == ''){
-      values.tipoContratob = editando[0].pastaDeDocumentos.contratoDeImovel.tipoContrato 
+      values.tipoContratob = editando.pastaDeDocumentos.contratoDeImovel.tipoContrato 
     }else{
       values.tipoContratob = values.tipoContratob 
     }
 
     if(values.baixadab == ''){
-      values.baixadab = editando[0].pastaDeDocumentos.declaracaoDeBaixaInscricao.baixada 
+      values.baixadab = editando.pastaDeDocumentos.declaracaoDeBaixaInscricao.baixada 
     }else{
       values.baixadab = values.baixadab 
     }
 
     if(values.enderecoSedeb == ''){
-      values.enderecoSedeb = editando[0].dadosProfissionais.enderecoSede
+      values.enderecoSedeb = editando.dadosProfissionais.enderecoSede
     }else{
       values.enderecoSedeb = values.enderecoSedeb 
     }
@@ -480,8 +480,9 @@ const [clicko, setClicko ] = useState(false);
       console.log(error);
     }
     await setEditando(result)
+    console.log(result)
     setClicko(true);
-              var baixadoI = result[0].pastaDeDocumentos.declaracaoDeBaixaInscricao.baixada;
+              var baixadoI = result.pastaDeDocumentos.declaracaoDeBaixaInscricao.baixada;
               if(baixadoI == "Não"){
                 console.log("Foi NÃO")
                 setSimBaixa(false)
@@ -592,7 +593,7 @@ const valorContrato = ()=>{
 
 return(
 
-<div className="App">
+<div className="">
 {deleting && (
 
 <div id="popup-modal" tabindex="1" class="App3 whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-50 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
@@ -690,7 +691,7 @@ return(
     <input type="text"
       name="nomeCompletob"
       required
-      defaultValue={editando[0].dadosPessoais.nomeCompleto}
+      defaultValue={editando.dadosPessoais.nomeCompleto}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="nomeCompletoI"
       onChange={onChange}
@@ -703,7 +704,7 @@ return(
     <input type="text"
       name="estadoCivilb"
       required
-      defaultValue={editando[0].dadosPessoais.estadoCivil}
+      defaultValue={editando.dadosPessoais.estadoCivil}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="estadoCivilI"
       onChange={onChange}
@@ -718,7 +719,7 @@ return(
       <input type="text"
          name="nacionalidadeb"
          required
-  defaultValue={editando[0].dadosPessoais.nacionalidade}
+  defaultValue={editando.dadosPessoais.nacionalidade}
          className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
          id="nacionalidadeI"
          onChange={onChange}
@@ -732,7 +733,7 @@ return(
     <input type="text"
        name='naturalidadeb'
        required
-  defaultValue={editando[0].dadosPessoais.naturalidade}
+  defaultValue={editando.dadosPessoais.naturalidade}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="naturalidadeI"
        onChange={onChange}
@@ -750,7 +751,7 @@ return(
        max="2004-12-12"
        min="1910-05-01"
        required
-       defaultValue={editando[0].dadosPessoais.dataDeNascimento}
+       defaultValue={editando.dadosPessoais.dataDeNascimento}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="dataDeNascimentoI"
        onChange={onChange}
@@ -766,7 +767,7 @@ return(
         mask='999.999.999-99'
         id="cpfI"
         name="cpfb"
-        defaultValue={editando[0].dadosPessoais.cpf}
+        defaultValue={editando.dadosPessoais.cpf}
         placeholder='CPF'
         onChange={onChange}
     />
@@ -780,7 +781,7 @@ return(
     <input type="text"
        name="profissaob"
        required
-  defaultValue={editando[0].dadosPessoais.profissao}
+  defaultValue={editando.dadosPessoais.profissao}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="profissaoI"
        onChange={onChange}
@@ -796,7 +797,7 @@ return(
     <input type="text"
        name="documentoIdentificacaob"
        required
-  defaultValue={editando[0].dadosPessoais.documentoIdentificacao}
+  defaultValue={editando.dadosPessoais.documentoIdentificacao}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="documentoIdentificacaoI"
        onChange={onChange}
@@ -812,7 +813,7 @@ return(
     <input type="text"
        name="numeroDocumentob"
        required
-  defaultValue={editando[0].dadosPessoais.numeroDocumento}
+  defaultValue={editando.dadosPessoais.numeroDocumento}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="numeroDocumentoI"
        onChange={onChange}
@@ -828,7 +829,7 @@ return(
     <input type="text"
        name="orgaoExpeditorb"
        required
-  defaultValue={editando[0].dadosPessoais.orgaoExpeditor}
+  defaultValue={editando.dadosPessoais.orgaoExpeditor}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="orgaoExpeditorI"
        onChange={onChange}
@@ -844,7 +845,7 @@ return(
     <input type="text"
        name="enderecoPessoalb"
        required
-  defaultValue={editando[0].dadosPessoais.enderecoPessoal}
+  defaultValue={editando.dadosPessoais.enderecoPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="enderecoPessoalI"
        onChange={onChange}
@@ -858,7 +859,7 @@ return(
     <input type="text"
        name="numeroEnderecoPessoalb"
        required
-  defaultValue={editando[0].dadosPessoais.numeroEnderecoPessoal}
+  defaultValue={editando.dadosPessoais.numeroEnderecoPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="numeroEnderecoPesssoalI"
        onChange={onChange}
@@ -872,7 +873,7 @@ return(
     <input type="text"
        name="complementoPessoalb"
        required
-  defaultValue={editando[0].dadosPessoais.complementoPessoal}
+  defaultValue={editando.dadosPessoais.complementoPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="complementoPessoalI"
        onChange={onChange}
@@ -886,7 +887,7 @@ return(
     <input type="text"
        name="bairroPessoalb"
        required
-  defaultValue={editando[0].dadosPessoais.bairroPessoal}
+  defaultValue={editando.dadosPessoais.bairroPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="bairroPessoalI"
        onChange={onChange}
@@ -903,7 +904,7 @@ return(
         id="cepI"
         required
         name="cepb"
-        defaultValue={editando[0].dadosPessoais.cep}
+        defaultValue={editando.dadosPessoais.cep}
         placeholder='CEP'
         onChange={onChange}
     />
@@ -915,7 +916,7 @@ return(
     <input type="text"
        name="cidadeEstadoPessoalb"
        required
-        defaultValue={editando[0].dadosPessoais.cidadeEstadoPessoal}
+        defaultValue={editando.dadosPessoais.cidadeEstadoPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="cidadeEstadoPessoalI"
        onChange={onChange}
@@ -929,7 +930,7 @@ return(
     <input type="email"
        name="emailPessoalb"
        required
-      defaultValue={editando[0].dadosPessoais.emailPessoal}
+      defaultValue={editando.dadosPessoais.emailPessoal}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="emailPessoalI"
        onChange={onChange}
@@ -941,7 +942,7 @@ return(
 <label htmlFor="telefoneFixoPessoalI" className="form-label inline-block mb-2 text-white">
   Telefone fixo pessoal</label>
   <InputMask
-    defaultValue={editando[0].dadosPessoais.telefoneFixoPessoal}
+    defaultValue={editando.dadosPessoais.telefoneFixoPessoal}
       className="form-control bg-white block w-full px-3 py-1.5 text-lg  text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
       mask='(99)99999-9999'
       id="telefoneFixoPessoalI"
@@ -956,7 +957,7 @@ return(
 <label htmlFor="celularPessoalI" className="form-label inline-block mb-2 text-white">
   Celular pessoal</label>
   <InputMask
-     defaultValue={editando[0].dadosPessoais.celularPessoal}
+     defaultValue={editando.dadosPessoais.celularPessoal}
       required
       className="form-control bg-white block w-full px-3 py-1.5 text-lg  text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
       mask='(99) 99999-9999'
@@ -981,7 +982,7 @@ return(
     <input type="text"
        name="razaoSocialb"
        required
-        defaultValue={editando[0].dadosProfissionais.razaoSocial}
+        defaultValue={editando.dadosProfissionais.razaoSocial}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="razaoSocialI"
        onChange={onChange}
@@ -995,7 +996,7 @@ return(
     <input type="text"
        name="nomeFantasiab"
        required
-        defaultValue={editando[0].dadosProfissionais.nomeFantasia}
+        defaultValue={editando.dadosProfissionais.nomeFantasia}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="nomeFantasiaI"
        onChange={onChange}
@@ -1008,7 +1009,7 @@ return(
 <label htmlFor="cnpjI" className="form-label inline-block mb-2 text-white">
   CNPJ</label>
      <InputMask
-       defaultValue={editando[0].dadosProfissionais.cnpj}
+       defaultValue={editando.dadosProfissionais.cnpj}
       className="form-control bg-white block w-full px-3 py-1.5 text-lg  text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
       mask='999.999.999/9999-99'
       id="cnpjI"
@@ -1024,7 +1025,7 @@ return(
     <input type="text"
        name="numeroInscricaob"
        required
-  defaultValue={editando[0].dadosProfissionais.numeroInscricao}
+  defaultValue={editando.dadosProfissionais.numeroInscricao}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="numeroInscricaoI"
        onChange={onChange}
@@ -1038,7 +1039,7 @@ return(
     <input type="text"
        name="enderecoSedeb"
        required
-  defaultValue={editando[0].dadosProfissionais.enderecoSede}
+  defaultValue={editando.dadosProfissionais.enderecoSede}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="enderecoSedeI"
        onChange={onChange}
@@ -1052,7 +1053,7 @@ return(
     <input type="text"
        name="numeroSedeb"
        required
-  defaultValue={editando[0].dadosProfissionais.numeroSede}
+  defaultValue={editando.dadosProfissionais.numeroSede}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="numeroSedeI"
        onChange={onChange}
@@ -1066,7 +1067,7 @@ return(
     <input type="text"
        name="complementoSedeb"
        required
-  defaultValue={editando[0].dadosProfissionais.complementoSede}
+  defaultValue={editando.dadosProfissionais.complementoSede}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="complementoSedeI"
        onChange={onChange}
@@ -1080,7 +1081,7 @@ return(
     <input type="text"
        name="bairroSedeb"
        required
-  defaultValue={editando[0].dadosProfissionais.bairroSede}
+  defaultValue={editando.dadosProfissionais.bairroSede}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="bairroSedeI"
        onChange={onChange}
@@ -1092,7 +1093,7 @@ return(
 <label htmlFor="cepSedeI" className="form-label inline-block mb-2 text-white">
   CEP Sede</label>
   <InputMask
-      defaultValue={editando[0].dadosProfissionais.cepSede}
+      defaultValue={editando.dadosProfissionais.cepSede}
       className="form-control bg-white block w-full px-3 py-1.5 text-lg  text-assemiperBlack bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
       mask='99999-999'
       id="cepSedeI"
@@ -1108,7 +1109,7 @@ return(
     <input type="text"
        name="cidadeEstadoSedeb"
        required
-  defaultValue={editando[0].dadosProfissionais.cidadeEstadoSede}
+  defaultValue={editando.dadosProfissionais.cidadeEstadoSede}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="cidadeEstadoSedeI"
        onChange={onChange}
@@ -1122,7 +1123,7 @@ return(
     <input type="email"
        name="emailProfissionalb"
        required
-  defaultValue={editando[0].dadosProfissionais.emailProfissional}
+  defaultValue={editando.dadosProfissionais.emailProfissional}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="emailProfissionalI"
        onChange={onChange}
@@ -1136,7 +1137,7 @@ return(
     <input type="date"
        name="dataDeAberturab"
        required
-       defaultValue={editando[0].dadosProfissionais.dataDeAbertura}
+       defaultValue={editando.dadosProfissionais.dataDeAbertura}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="dataDeAberturaI"
        onChange={onChange}
@@ -1150,7 +1151,7 @@ return(
     <input type="text"
        name="quantidadePessoasOcupadasb"
        required
-       defaultValue={editando[0].dadosProfissionais.quantidadePessoasOcupadas}
+       defaultValue={editando.dadosProfissionais.quantidadePessoasOcupadas}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="quantidadePessoasOcupadasI"
        onChange={onChange}
@@ -1164,7 +1165,7 @@ return(
     <input type="text"
        name="ramoDaAtividadeb"
        required
-  defaultValue={editando[0].dadosProfissionais.ramoDaAtividade}
+  defaultValue={editando.dadosProfissionais.ramoDaAtividade}
        className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
        id="ramoDaAtividadeI"
        onChange={onChange}
@@ -1177,7 +1178,7 @@ return(
     <input type="text"
       name="numeroDaPastab"
       required
-      defaultValue={editando[0].numeroDaPasta}
+      defaultValue={editando.numeroDaPasta}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="numeroDaPastaI"
       onChange={onChange}
@@ -1200,7 +1201,7 @@ return(
     <label htmlFor="validadeAlvarab" className="form-label inline-block mb-2 text-white">Validade</label>
     <input type="text"
       name="validadeAlvarab"
-      defaultValue={editando[0].pastaDeDocumentos.alvaraDeFuncionamento.validadeAlvara}
+      defaultValue={editando.pastaDeDocumentos.alvaraDeFuncionamento.validadeAlvara}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="validadeAlvaraI"
       onChange={onChange}
@@ -1213,7 +1214,7 @@ return(
     </label>
     <input type="text"
       name="areaM2Funcionamentob"
-      defaultValue={editando[0].pastaDeDocumentos.alvaraDeFuncionamento.areaM2Funcionamento}
+      defaultValue={editando.pastaDeDocumentos.alvaraDeFuncionamento.areaM2Funcionamento}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="areaM2FuncionamentoI"
       onChange={onChange}
@@ -1228,7 +1229,7 @@ return(
       name="numeroInscricaoMunicipalb"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="numeroInscricaoMunicipalI"
-      defaultValue={editando[0].pastaDeDocumentos.alvaraDeFuncionamento.numeroInscricaoMunicipal}
+      defaultValue={editando.pastaDeDocumentos.alvaraDeFuncionamento.numeroInscricaoMunicipal}
       onChange={onChange}
       placeholder="Número de Inscrição Municipal"
     />
@@ -1245,7 +1246,7 @@ return(
       name="dataDeEmissaoBombeirosb"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeEmissaoBombeirosI"
-      defaultValue={editando[0].pastaDeDocumentos.certificadoBombeiros.dataDeEmissaoBombeiros}
+      defaultValue={editando.pastaDeDocumentos.certificadoBombeiros.dataDeEmissaoBombeiros}
       onChange={onChange}
       placeholder="Data de Emissão"
     />
@@ -1258,7 +1259,7 @@ return(
       name="dataDeValidadeBombeirosb"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeValidadeBombeirosI"
-      defaultValue={editando[0].pastaDeDocumentos.certificadoBombeiros.dataDeValidadeBombeiros}
+      defaultValue={editando.pastaDeDocumentos.certificadoBombeiros.dataDeValidadeBombeiros}
       onChange={onChange}
       placeholder="Data de Validade"
     />
@@ -1273,7 +1274,7 @@ return(
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="areaM2BombeirosI"
       onChange={onChange}
-      defaultValue={editando[0].pastaDeDocumentos.certificadoBombeiros.areaM2Bombeiros}
+      defaultValue={editando.pastaDeDocumentos.certificadoBombeiros.areaM2Bombeiros}
       placeholder="Área M²"
     />
   </div>
@@ -1289,7 +1290,7 @@ return(
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeValidadeVigilanciaI"
       onChange={onChange}
-      defaultValue={editando[0].pastaDeDocumentos.alvaraDeVigilanciaSanitaria.dataDeValidadeVigilancia}
+      defaultValue={editando.pastaDeDocumentos.alvaraDeVigilanciaSanitaria.dataDeValidadeVigilancia}
       placeholder="Data de Validade"
     />
   </div>
@@ -1302,7 +1303,7 @@ return(
       name="inscricaoVigilanciaSanitariab"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="inscricaoVigilanciaSanitariaI"
-      defaultValue={editando[0].pastaDeDocumentos.alvaraDeVigilanciaSanitaria.inscricaoVigilanciaSanitaria}
+      defaultValue={editando.pastaDeDocumentos.alvaraDeVigilanciaSanitaria.inscricaoVigilanciaSanitaria}
       onChange={onChange}
       onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
       placeholder="Inscrição Vigilância Sanitária"
@@ -1318,7 +1319,7 @@ return(
     </label>
     <input type="date"
       name="dataDeEmissaoLicencaAmbientalb"
-      defaultValue={editando[0].pastaDeDocumentos.licencaAmbiental.dataDeEmissaoLicencaAmbiental}
+      defaultValue={editando.pastaDeDocumentos.licencaAmbiental.dataDeEmissaoLicencaAmbiental}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeEmissaoLicencaAmbientalI"
       onChange={onChange}
@@ -1332,7 +1333,7 @@ return(
     </label>
     <input type="date"
       name="dataDeValidadeLicencaAmbientalb"
-      defaultValue={editando[0].pastaDeDocumentos.licencaAmbiental.dataDeValidadeLicencaAmbiental}
+      defaultValue={editando.pastaDeDocumentos.licencaAmbiental.dataDeValidadeLicencaAmbiental}
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="dataDeValidadeLicencaAmbientalI"
       onChange={onChange}
@@ -1343,7 +1344,7 @@ return(
   <h1 className="text-white mt-10 text-center font-bold whitespace-nowrap">Contrato de Imóvel - </h1>
   
   
-  <div className="col-span-3">
+  {/* <div className="col-span-3">
     <label htmlFor="tipoContratob" className="form-label inline-block mb-2 text-white">
       Tipo de Contrato
     </label>
@@ -1351,11 +1352,24 @@ return(
       name="tipoContratob"
       className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none"
       id="tipoContratoI"
-      defaultValue={editando[0].pastaDeDocumentos.contratoDeImovel.tipoContrato}
+      defaultValue={editando.pastaDeDocumentos.contratoDeImovel.tipoContrato}
       onChange={onChange}
       placeholder="Tipo de Contrato"
     />
-  </div>
+  </div> */}
+
+  <div className="col-span-3">
+  <label htmlFor="tipoContratob" className="form-label inline-block mb-2 text-white">
+    Tipo de Contrato
+  </label>
+      <select onChange={valorContrato} id="contrato" className="form-control block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
+      <option value="comodato">Comodato</option>
+      <option value="arrendamento">Arrendamento</option>
+      <option value="compraevenda">Compra e Venda</option>
+      <option value="aluguel">Aluguel</option>
+      <option value="locacao">Locação</option>
+    </select>
+</div>
   
   <h1 className="text-white mt-10 text-center font-bold whitespace-nowrap">Declaração de Baixa de Inscrição Municipal  - </h1>
   

@@ -409,7 +409,7 @@ return(
     />
   </div>
 
-  <div className="col-span-4">
+  {/* <div className="col-span-4">
   <label htmlFor="presentesReuniaoI" className="form-label font-bold inline-block mb-2 text-white">
     Presentes</label>
     <textarea type="text"
@@ -421,7 +421,7 @@ return(
       onChange={onChange}
       placeholder=""
     />
-  </div>
+  </div> */}
 
   {deletarReuniaoModal && (
 
@@ -456,14 +456,14 @@ return(
           </div>
   </div>
 
-<div className="col-span-4">
+{/* <div className="col-span-4">
           <div className="cursor-pointer group bg-black hover:bg-red-900 transition ease-in-out duration-300 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
 
               </span>
               <h2 className="cursor-pointer text-white">Imprimir ///</h2>
           </div>
-  </div>
+  </div> */}
 
   <div className="col-span-4">
           <div onClick={() => setVendoDados(false)} className="cursor-pointer group bg-red-800 hover:bg-red-700 transition ease-in-out duration-300 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
@@ -612,7 +612,7 @@ return(
 
 {!agendando && (
 
-<div>
+<div className='bg-black'>
  
     {/* <div className="col-span-4">
           <div onClick={agendarModal} className="cursor w-64 point group bg-red-800 hover:bg-red-700 transition ease-in-out duration-300 relative  flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">

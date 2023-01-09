@@ -229,7 +229,7 @@ const valorContrato = ()=>{
 
 return(
 
-<div className="App bg-assemiperBlack">
+<div className="bg-assemiperBlack">
 
 {/* <form  action="#" onSubmit={onSubmit} method="POST" className="flex p-4 rounded-lg justify-self-center mx-auto shadow-2xl bg-assemiperBlack">
 <div className="col-span-3">

@@ -10,7 +10,11 @@ export default function Home() {
 
     <Header/>
 
+    <div className="App bg-black">
+
     <Atas />
+
+    </div>
 
 
     </div>

@@ -1,2 +1,2 @@
-var ip = '192.168.1.4:3005'
+var ip = '127.0.0.1:3005'
 export const ipatual = ip;
