@@ -460,6 +460,7 @@ app.post("/api/registerAssociate", async(req,res)=>{
             }
 
         });
+
         res.send({status:"Ok"});
         console.log(nomeCompletob + " registrado com sucesso!");
 
@@ -496,7 +497,6 @@ app.post('/api/deleteAssociate',async(req,res)=>{
     }
 
 })
-
 app.post("/api/registerReuniao", async(req,res)=>{
 
     const { 
@@ -518,15 +518,16 @@ app.post("/api/registerReuniao", async(req,res)=>{
             resumoReuniao: resumoReuniaob,
             presentesReuniao: presentesReuniaob
 
-        })
+        });
+
+        console.log("Criou")
         
-        res.status(200);
+        res.sendStatus(200)
 
     } catch (error){
         
         console.log(error);
         res.status(201);
-        
 
     }
 
@@ -575,7 +576,8 @@ app.post('/api/deleteReuniao',async(req,res)=>{
             console.log(error)
         })
 
-        res.status(200)
+        res.sendStatus(200)
+        console.log("Deletou")
         
 
     }catch(error){
