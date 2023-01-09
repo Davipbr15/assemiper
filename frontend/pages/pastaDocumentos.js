@@ -10,13 +10,10 @@ export default function Home() {
 
     <Header />
 
-
-    
-    <h1>Work In Progress. . .</h1>
-
-
-
+    <div className="mx-auto">
     <Oficios />
+    </div>
+
 
     </div>
   )

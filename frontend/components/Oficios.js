@@ -21,6 +21,7 @@ function App() {
     numeroOficiob: "",
     dataDeExpedicaob: "",
     estadoOficiob: "",
+    senhaSeguranca: "",
   }
 
   const [values, setValues] = useState(initialValue);
@@ -45,7 +46,7 @@ const onSubmit = async(ev) => {
 
   try{
 
-      const resposta = await Axios.post('http://'+ipatual+'/api/registerReuniao', values);
+      const resposta = await Axios.post('http://'+ipatual+'/api/registerOficio', values);
 
       var result = resposta?.status;
 
@@ -170,24 +171,6 @@ const valorBaixa = ()=>{
 
   }
 }
-const valorEstado = ()=>{
-  var e = document.getElementById("estado");
-  var value = e.value;
-  var text = e.options[e.selectedIndex].text;
-  console.log(value)
-  console.log(text)
-  if(value=="enviado"){
-    values.estadoOficiob = "Enviado";
-  }else if(value=="pendente"){
-    values.estadoOficiob = "Pendente";
-  }else if(value=="recebido"){
-    values.estadoOficiob = "Recebido";
-  }else if(value=="respondido"){
-    values.estadoOficiob = "Respondido";
-  }else{
-
-  }
-}
 
 const [agendando, setAgendando] = useState(false);
 const [visualizando, setVisualizar] = useState(false);
@@ -224,9 +207,9 @@ var result = "";
 async function dataReunioes(value){
   try{ 
     console.log("Try")
-    values._id = value;
+    values.o_id = value;
     values.reuniaoId = value;
-    const resposta = await Axios.post('http://'+ ipatual +'/api/getReuniao', values);
+    const resposta = await Axios.post('http://'+ ipatual +'/api/getOficio', values);
     result = resposta?.data  
   }catch(error){
     console.log(error);
@@ -258,20 +241,85 @@ async function deletarReuniaoA(){
 
 }
 
-const deletarReuniao = async(value) => {
-  values.r_id = value;
-  console.log("Apertou " + value + " pra deletar")
-  try{ 
-    console.log("Try")
-    values._id = value;
-    values.r_id = value;
-    const resposta = await Axios.post('http://'+ ipatual +'/api/deleteReuniao', values).then(
-    window.location.reload()
-    )
-  }catch(error){
-    console.log(error);
+const [senhaErradaModal, setSenhaErradaModal] = useState(false);
+
+
+const deletarOficio = async(value) => {
+
+  if(values.senhaSeguranca == "micro130716"){
+
+    values.o_id = value;
+    console.log("Apertou " + value + " pra deletar")
+    try{ 
+        console.log("Try")
+        values._id = value;
+        const resposta = await Axios.post('http://'+ ipatual +'/api/deleteOficio', values).then(
+        window.location.reload()
+        )
+    }catch(error){
+        console.log(error);
+    }
+
+  }else{
+    setSenhaErradaModal(true)
   }
 };
+
+const editarEstadoOficio = async() => {
+    if(1 == 1){
+        if(values.numeroOficiob == ""){
+          values.numeroOficiob = dados.numeroOficio
+        }else{
+          values.numeroOficiob = values.numeroOficiob
+        }
+        if(values.dataDeExpedicaob == ""){
+            values.dataDeExpedicaob = dados.dataDeExpedicao
+          }else{
+            values.dataDeExpedicaob = values.dataDeExpedicaob
+          }
+        if(values.estadoOficiob == ""){
+            values.estadoOficiob = dados.estadoOficio
+        }else{
+            values.estadoOficiob = values.estadoOficiob
+        }
+    }
+
+    try{
+
+        const resposta = await Axios.post('http://'+ipatual+'/api/updateOficio', values) 
+
+        var result = resposta?.status
+
+        if(result == 200){
+            window.location.reload()
+        }
+  
+      
+      }catch(error){
+          console.log(error);
+      }
+
+}
+
+const valorEstado = ()=>{
+        var e = document.getElementById("estado");
+        var value = e.value;
+        var text = e.options[e.selectedIndex].text;
+        console.log(value)
+        console.log(text)
+        if(value=="enviado"){
+          values.estadoOficiob = "Enviado";
+        }else if(value=="pendente"){
+          values.estadoOficiob = "Pendente";
+        }else if(value=="recebido"){
+          values.estadoOficiob = "Recebido";
+        }else if(value=="respondido"){
+          values.estadoOficiob = "Respondido";
+        }else{
+      
+        }
+}
+    
 
 function showReq(){
   window.alert();
@@ -284,7 +332,7 @@ useEffect(() => {
   async function fetchData(){
     try{
       
-    const resposta = await Axios.post('http://'+ ipatual +'/api/searchReuniao')
+    const resposta = await Axios.post('http://'+ ipatual +'/api/searchOficios')
     setReunioes(resposta?.data)
     }catch(error){
       console.log(error);
@@ -294,6 +342,15 @@ useEffect(() => {
   fetchData();
 
 }, []);
+
+const [deletarOficioModal, setDeletarOficioModal] = useState(false);
+
+function deletarOficioAbrir(){
+    setDeletarOficioModal(true)
+}
+function deletarOficioFechar(){
+    setDeletarOficioModal(false)
+}
 
 
 
@@ -322,24 +379,24 @@ return(
 {vendoDados && (
   <>
 
-<form  action="#" method="POST" className="flex absolute z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 justify-center text-center p-8 rounded-lg justify-self-center m-auto w-screen h-screen  shadow-2xl bg-assemiperBlack bg-opacity-80">
+<form autocomplete="off" action="#" method="POST" className="flex absolute z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 justify-center text-center rounded-lg justify-self-center m-auto w-full h-screen  shadow-2xl bg-assemiperBlack bg-opacity-80">
 
 <div className="m-auto bg-assemiperBlack p-5 rounded-xl bg-opacity-90">
 
   <div className="mb-2 whitespace-normal">
-  <h1 className="text-xl text-center text-white font-semibold">Reunião Agendada</h1>
+  <h1 className="text-xl text-center text-white font-semibold">Ofício</h1>
   </div>
-  <div className="mb-5 bg-assemiperRed p-0.5 text-center"></div>
-  <div className="grid grid-cols-4 gap-x-20 gap-y-5">
+  <div className="mb-5 bg-assemiperRed p-0.5 px-5 text-center"></div>
+  <div className="grid grid-cols-4 min-w-18 max-w-screen gap-x-30 gap-y-5">
 
   <div className="col-span-4">
     <label htmlFor="temaReuniaoI" className="form-label font-bold inline-block mb-2 text-white">
-      Tema da Reunião</label>
+      Número do Ofício</label>
     <input type="text"
       name="temaReuniaob"
-      defaultValue={dados.temaReuniao}
+      defaultValue={dados.numeroOficio}
       disabled
-      className="text-center form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-gray-300 bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      className="text-center form-control block w-full px-32 py-1.5 text-lg font-semibold text-assemiperBlack bg-gray-300 bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
       id="temaReuniaoI"
       onChange={onChange}
       placeholder="Tema"
@@ -347,61 +404,41 @@ return(
   </div>
 
 
-  <div className="col-span-2">
-  <label htmlFor="dataDaReuniaoI" className="form-label text-center font-bold inline-block mb-2 text-white">
-    Data</label>
-    <input type="date"
-      name="dataDaReuniaob"
+  <div className="col-span-4">
+    <label htmlFor="dataDeExpedicaoI" className="mx-auto form-label font-bold inline-block mb-2 text-white">
+      Data de Expedição</label>
+    <input type="text"
+      name="dataDeExpedicaob"
+      defaultValue={dados.dataDeExpedicao.charAt(8)+
+        dados.dataDeExpedicao.charAt(9)
+        +"/"+
+        dados.dataDeExpedicao.charAt(5)+
+        dados.dataDeExpedicao.charAt(6)
+        +"/"+
+        dados.dataDeExpedicao.charAt(0)+
+        dados.dataDeExpedicao.charAt(1)+
+        dados.dataDeExpedicao.charAt(2)+
+        dados.dataDeExpedicao.charAt(3)}
       disabled
-      defaultValue={dados.dataDaReuniao}
-      className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-gray-300 bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-      id="dataDaReuniaoI"
+      className="form-control text-center mx-auto block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-gray-300 bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+      id="dataDeExpedicaoI"
       onChange={onChange}
-      placeholder="Data da Reunião"
-    />
-  </div>
-
-  <div className="col-span-2">
-  <label htmlFor="horarioReuniaoI" className="form-label font-bold inline-block mb-2 text-white">
-    Horário</label>
-    <input type="time"
-      name="horarioReuniaob"
-      disabled
-      defaultValue={dados.horarioReuniao}
-      className="form-control px-3 w-full block py-1.5 text-lg font-semibold text-assemiperBlack bg-gray-300 bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-      id="horarioReuniaoI"
-      onChange={onChange}
-      placeholder="Horário"
+      placeholder="Data de Expedição"
     />
   </div>
 
   <div className="col-span-4">
-  <label htmlFor="resumoReuniaoI" className="form-label font-bold inline-block mb-2 text-white">
-    Resumo da Reunião</label>
-    <textarea type="text"
-      rows="4"
-      name="resumoReuniaob"
-      defaultValue={dados.resumoReuniao}
-      className="form-control text-center block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-      id="resumoReuniaoI"
-      onChange={onChange}
-      placeholder="Resumo da Reunião"
-    />
-  </div>
+    <label htmlFor="tipoContratob" className="form-label inline-block mb-2 text-white">
+        Estado do Ofício
+    </label>
+        <select onChange={valorEstado} required id="estado" className="text-left block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
+            <option value="enviado">Enviado</option>
+            <option value="recebido">Recebido</option>
+            <option value="pendente">Pendente</option>
+            <option value="respondido">Respondido</option>
+        </select>
+    </div>
 
-  <div className="col-span-4">
-  <label htmlFor="convidadosReuniaoI" className="form-label font-bold inline-block mb-2 text-white">
-    Convidados</label>
-    <textarea type="text"
-      rows="1"
-      name="convidadosReuniaob"
-      defaultValue={dados.convidadosReuniao}
-      className="form-control text-center block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-      id="convidadosReuniaoI"
-      onChange={onChange}
-      placeholder="Convidados"
-    />
-  </div>
 
   {/* <div className="col-span-4">
   <label htmlFor="presentesReuniaoI" className="form-label font-bold inline-block mb-2 text-white">
@@ -417,22 +454,35 @@ return(
     />
   </div> */}
 
-  {deletarReuniaoModal && (
+  {deletarOficioModal && (
 
   <div id="popup-modal" tabIndex="1" className="App4 whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-20 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
       <div className="fixed w-full h-full max-w-xl md:h-auto">
           <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-              <button onClick={() => setDeletarReuniaoModal(false)} type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
+              <button onClick={() => setDeletarOficioModal(false)} type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
                   <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                   <span className="sr-only">Fechar</span>
               </button>
               <div className="p-6 text-center">
+                
                   <svg aria-hidden="true" className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                   <h3 className="mb-5 text-lg font-normal text-white dark:text-white">Deseja realmente excluir essa reunião? (Ação Irreversível)</h3>
-                  <button onClick={() => deletarReuniao(dados._id)} data-modal-toggle="popup-modal" type="submit" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                      Sim, deletar reunião.
+                  
+                  <label htmlFor="senhaSegurancaI" className="form-label inline-block mb-2 text-white">
+                    Senha de Segurança</label>
+                <input type="password"
+                    name="senhaSegurancab"
+                    required
+                    className="form-control text-center mx-auto block w-1/2 mb-4 px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+                    id="senhaSegurancaI"
+                    onChange={onChange}
+                    placeholder="Insira a senha"
+                />
+
+                  <button onClick={() => deletarOficio(dados._id)} data-modal-toggle="popup-modal" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                      Sim, deletar ofício.
                   </button>
-                  <button onClick={() => setDeletarReuniaoModal(false)} data-modal-toggle="popup-modal" type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Não, cancelar</button>
+                  <button onClick={() => setDeletarOficioModal(false)} data-modal-toggle="popup-modal" type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Não, cancelar</button>
               </div>
           </div>
       </div>
@@ -441,12 +491,22 @@ return(
   )
   }
 
-<div onClick={() => salvarResumo(dados._id)} className="col-span-4">
-          <div className="cursor-pointer group bg-blue-600 hover:bg-blue-500 transition ease-in-out duration-300 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
+
+<div onClick={editarEstadoOficio} className="col-span-4">
+          <div className="cursor-pointer group bg-red-600 hover:bg-red-900 transition ease-in-out duration-300 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
 
               </span>
-              <h2 className="cursor-pointer text-white">Salvar alterações</h2>
+              <h2 className="cursor-pointer text-white">Salvar Ofício</h2>
+          </div>
+  </div>
+
+<div onClick={deletarOficioAbrir} className="col-span-4">
+          <div className="cursor-pointer group bg-red-600 hover:bg-red-900 transition ease-in-out duration-300 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
+              <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+
+              </span>
+              <h2 className="cursor-pointer text-white">Deletar Ofício</h2>
           </div>
   </div>
 
@@ -460,7 +520,7 @@ return(
   </div> */}
 
   <div className="col-span-4">
-          <div onClick={() => setVendoDados(false)} className="cursor-pointer group bg-red-800 hover:bg-red-700 transition ease-in-out duration-300 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
+          <div onClick={() => setVendoDados(false)} className="cursor-pointer group bg-red-800 hover:bg-red-500 transition ease-in-out duration-300 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
 
               </span>
@@ -478,11 +538,11 @@ return(
 </>
 )}
 
-{!agendando && (
+{agendando && (
 
 <>
 
-  <form  action="#" method="POST" className="flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 justify-center text-center p-4 rounded-lg justify-self-center m-auto w-screen h-screen  shadow-2xl bg-assemiperBlack bg-opacity-60">
+  <form action="#" method="POST" className="flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 justify-center text-center p-4 rounded-lg justify-self-center m-auto w-screen h-screen  shadow-2xl bg-assemiperBlack bg-opacity-60">
 
   <div className="fixed p-5">
     <button onClick={desagendarModal} className="rounded-xl text-2xl w-16 bg-assemiperRed h-10">
@@ -499,28 +559,30 @@ return(
     <div className="grid grid-cols-4 gap-x-10 gap-y-5">
 
     <div className="col-span-4">
-      <label htmlFor="numeroDoOficioI" className="form-label inline-block mb-2 text-white">
+      <label htmlFor="numeroOficioI" className="form-label inline-block mb-2 text-white">
         Número do Ofício</label>
       <input type="text"
-        name="numeroDoOficiob"
+        name="numeroOficiob"
         required
         className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-        id="numeroDoOficioI"
+        id="numeroOficioI"
         onChange={onChange}
         placeholder="Número do Ofício"
       />
     </div>
 
     <div className="col-span-4">
-      <label htmlFor="dataDeExpedidoI" className="form-label inline-block mb-2 text-white">
+      <label htmlFor="dataDeExpedicaoI" className="form-label inline-block mb-2 text-white">
         Data de Expedição</label>
       <input type="date"
-        name="numeroDoOficiob"
+        name="dataDeExpedicaob"
         required
+        max="2050-01-01"
+        min="2010-01-01"
         className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-        id="numeroDoOficioI"
+        id="dataDeExpedicaoI"
         onChange={onChange}
-        placeholder="Data"
+        placeholder="Data de Expedição"
       />
     </div>
 
@@ -528,17 +590,79 @@ return(
     <label htmlFor="tipoContratob" className="form-label inline-block mb-2 text-white">
         Estado
     </label>
-        <select onChange={valorEstado} id="estado" className="text-left block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
+        <select onChange={valorEstado} required id="estado" className="text-left block w-full px-3 py-1.5 text-base font-normal text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-assemiperBlack focus:bg-white focus:border-blue-600 focus:outline-none" name="select">
             <option value="enviado">Enviado</option>
             <option value="recebido">Recebido</option>
             <option value="pendente">Pendente</option>
-            <option value="respondidos">Respondido</option>
+            <option value="respondido">Respondido</option>
         </select>
     </div>
 
+    
+{senhaErradaModal && (
+
+<div>
+
+<div id="popup-modal" tabIndex="1" className="App4 whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-20 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+    <div className="fixed w-full h-full max-w-xl md:h-auto">
+        <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <button onClick={() => closeModalConfirm()} type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
+                <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                <span className="sr-only">Fechar</span>
+            </button>
+            <div className="p-6 text-center">
+                <svg aria-hidden="true" className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h3 className="mb-5 text-lg font-normal text-white dark:text-white">Senha incorreta</h3>
+                <button data-modal-toggle="popup-modal" type="submit" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+)
+}
+
+{confirmRegistro && (
+
+<div>
 
 
-    <div className="col-span-4">
+    
+<div id="popup-modal" tabindex="1" class="App4 whitespace-nowrap flex h-screen justify-center items-center fixed top-0 left-0 right-0 bottom-0 z-20 show p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+    {/* Nós é liso igual neymar */}
+    <div class="fixed w-full h-full max-w-xl md:h-auto">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <button onClick={() => setConfirmRegistro(false)} type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="popup-modal">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                <span class="sr-only">Fechar</span>
+            </button>
+
+            <div class="p-6 text-center">
+                <svg aria-hidden="true" class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h3 class="mb-5 text-lg font-normal text-white dark:text-white">Confirmar registro de oficio?</h3>
+                <div className="col-span-4">
+
+                </div>
+                <button onClick={onSubmit} data-modal-toggle="popup-modal" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                    Sim, registrar
+                </button>
+                <button onClick={() => setConfirmRegistro(false)} data-modal-toggle="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Não, cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+)
+}
+
+
+    <div className="col-span-4 cursor-pointer">
             <div onClick={() => openModalConfirm()} className="group bg-red-800 hover:bg-red-700 transition ease-in-out duration-300 relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                 <svg xmlns="http://www.w3.org/2000/svg" className="mx-auto fill-white" width="20pt" height="20pt" version="1.1" viewBox="0 0 700 700">
@@ -572,33 +696,45 @@ return(
       <div className="sm:-mx-6 lg:-mx-8">
         <div className="py-2 sm:px-6 lg:px-8">
           <div className="py-2">
+          <div onClick={() => setAgendando(true)} className="mb-5 m-auto h-12 text-center w-1/3 cursor-pointer group bg-red-800 hover:bg-red-700 transition ease-in-out duration-300 relative  flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-roxo hover:bg-roxo focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-roxo">
+                    <h2 className="cursor-pointer m-auto text-white text-center">Registrar Ofício</h2>
+            </div>
             <div className="overflow-x-auto">
-                {/* <table className="tg min-w-screen">
+                <table className="tg min-w-screen">
                   <thead className="min-w-screen">
                     <tr>
                       <th scope="col" className="tg-k4e5 w-48 text-md font-medium text-white px-6 py-4 text-left">
-                        Tema da Reunião
+                        Número do Ofício
                       </th>
-                      <th scope="col" className="tg-k4e5 w-32 text-md font-medium text-white px-6 py-4 text-left">
-                        Data da Reunião
+                      <th scope="col" className="tg-k4e5 w-64 text-md font-medium text-white px-6 py-4 text-left">
+                        Data de Expedição
                       </th>
-                      <th scope="col" className="tg-k4e5 w-32 text-md font-medium text-white px-6 py-4 text-left">
-                        Horário da Reunião
+                      <th scope="col" className="tg-k4e5 w-52 text-md font-medium text-white px-6 py-4 text-left">
+                        Estado
                       </th>
-                      <th scope="col" className="tg-k4e5 w-48 text-md font-medium text-white px-6 py-4 text-left">
-                        Resumo da Reunião
+                      <th scope="col" className="tg-k4e5 w-52 text-md font-medium text-white px-6 py-4 text-left">
+                        Detalhes
                       </th>
                     </tr>
                   </thead>
                 <tbody>
-                  {reunas.map((reuniaoData, index) => {
+                  {reunas.map((oficioData, index) => {
                     return (
-                      <tr key={index} className="group whitespace-normal bg-assemiperBlack font-bold border border-l transition duration-100 ease-in-out hover:bg-red-700">
-                        <td className="tg-dg7a group-hover:bg-slate-300 px-6 py-4 text-md font-medium text-white">{reuniaoData.temaReuniao}</td>
-                        <td className="tg-dg7a group-hover:bg-slate-300 text-md text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.dataDaReuniao}</td>
-                        <td className="tg-dg7a group-hover:bg-slate-300 text-md text-white border-l font-light px-6 py-4 whitespace-normal">{reuniaoData.horarioReuniao}</td>
+                      <tr key={index} className="group whitespace-normal bg-assemiperBlack font-bold border border-assemiperBlack border-l transition duration-100 ease-in-out hover:bg-red-700">
+                        <td className="tg-dg7a group-hover:bg-slate-300 px-6 py-4 text-md font-medium text-white">{oficioData.numeroOficio}</td>
+                        <td className="tg-dg7a group-hover:bg-slate-300 text-md text-white border-l font-light px-6 py-4 whitespace-normal">{oficioData.dataDeExpedicao.charAt(8)+
+        oficioData.dataDeExpedicao.charAt(9)
+        +" / "+
+        oficioData.dataDeExpedicao.charAt(5)+
+        oficioData.dataDeExpedicao.charAt(6)
+        +" / "+
+        oficioData.dataDeExpedicao.charAt(0)+
+        oficioData.dataDeExpedicao.charAt(1)+
+        oficioData.dataDeExpedicao.charAt(2)+
+        oficioData.dataDeExpedicao.charAt(3)}</td>
+                        <td className="tg-dg7a group-hover:bg-slate-300 text-md text-white border-l font-light px-6 py-4 whitespace-normal">{oficioData.estadoOficio}</td>
                         <td className="tg-dg7a group-hover:bg-slate-300 text-md text-center text-white border-l font-light px-6 py-4 whitespace-normal">
-                          <button onClick={() => getDados(reuniaoData._id)} className="transition ease-in duration-100 cursor-pointer text-xl w-12 group-hover:text-assemiperBlack hover:scale-150 rounded-xl">
+                          <button onClick={() => getDados(oficioData._id)} className="transition ease-in duration-100 cursor-pointer text-xl w-12 group-hover:text-assemiperBlack hover:scale-150 rounded-xl">
                           <i className="bi bi-eye"></i>
                           </button>
                           </td>
@@ -607,7 +743,7 @@ return(
                   })
                   }
                 </tbody>
-                </table> */}
+                </table>
 
       </div>
       </div>

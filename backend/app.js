@@ -625,6 +625,118 @@ app.post("/api/updateReuniao", async(req,res)=>{
 })
 //////////////////////
 
+app.post("/api/getOficio", async(req,res)=>{  
+    console.log("Procurou o Ofício");
+    const {o_id} = req.body;
+    try {
+        const Ofc = await Oficios.findOne( {  _id:o_id });
+        res.status(200).json(Ofc);
+        console.log(Ofc);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        console.log("Running")
+    }
+    
+})
+
+app.post('/api/deleteOficio',async(req,res)=>{
+
+    const {o_id} = await req.body;
+
+    var query = { _id: o_id };
+    try{
+        Oficios.deleteOne(query).then(function(){
+        }).catch(function(error){
+            console.log(error)
+        })
+
+        res.sendStatus(200)
+        console.log("Deletou")
+        
+
+    }catch(error){
+        res.status(500).send(error)
+    }
+
+    
+})
+
+app.post("/api/searchOficios", async(req,res)=>{  
+    console.log("Procurou os Oficios")
+
+    try {
+        const Oficio = await Oficios.find().sort({ numeroOficio: -1 });
+        res.status(200).json(Oficio);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        console.log("Running")
+    }
+    
+})
+
+app.post("/api/updateOficio", async(req,res)=>{
+
+    const {
+        o_id,
+        numeroOficiob,
+        dataDeExpedicaob,
+        estadoOficiob,
+    } = req.body;
+
+    console.log(req.body)
+
+    console.log("/api/updateOficio RESPONSE")
+    try {
+        Oficios.updateOne( { _id: o_id }, {$set:{
+        
+            numeroOficio: numeroOficiob,
+            dataDeExpedicaob: dataDeExpedicaob,
+            estadoOficio: estadoOficiob,
+
+        }})
+        res.sendStatus(200);
+        console.log("Tentou Mudar!")
+    } catch (e) {
+        console.error(e);
+    } finally {
+        console.log("Running")
+    }
+
+
+})
+
+app.post("/api/registerOficio", async(req,res)=>{
+
+    
+    const { 
+        numeroOficiob,
+        dataDeExpedicaob,
+        estadoOficiob,
+      } = req.body
+    try{
+
+        await Oficios.create({
+            
+           numeroOficio: numeroOficiob,
+           dataDeExpedicao: dataDeExpedicaob,
+           estadoOficio: estadoOficiob,
+
+        });
+
+        console.log("Criou")
+        
+        res.sendStatus(200)
+
+    } catch (error){
+        
+        console.log(error);
+        res.status(201);
+
+    }
+
+})
 
 app.post('/api/changePassword', async (req, res) => {
 	const { token, newPassword: passwordb } = req.body
