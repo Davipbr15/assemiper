@@ -10,15 +10,15 @@ import InputMask from 'react-input-mask';
 function App() {
 
   var dataFormatada = moment()
-  var dataFinal = dataFormatada.format('LLLL')
+  var dataFinal = dataFormatada.format('LLL')
 
   const initialValue = {
-    bcf_id: " ",
-    nomeBCFb: " ",
-    cpfBCFb: " ",
-    telefoneBCFb: " ",
-    dataDoCadastroBCFb: " ",
-    dataDoEnvioBCFb: " ",
+    bcj_id: "",
+    razaoSocialBCJb: "",
+    nomeFantasiaBCJb: "",
+    cnpjBCJb: "",
+    dataAtualBCJb: dataFinal,
+    dataEnvioBCJb: "",
 
   }
 
@@ -44,7 +44,7 @@ const onSubmit = async(ev) => {
 
   try{
 
-      const resposta = await Axios.post('http://'+ipatual+'/api/registerBCF', values)
+      const resposta = await Axios.post('http://'+ipatual+'/api/registerBCJ', values)
 
       var result = resposta?.status;
 
@@ -108,8 +108,8 @@ async function dataReunioes(value){
   try{ 
     console.log("Try")
     values._id = value;
-    values.bcf_id = value;
-    const resposta = await Axios.post('http://'+ ipatual +'/api/getBCF', values);
+    values.bcj_id = value;
+    const resposta = await Axios.post('http://'+ ipatual +'/api/getBCJ', values);
     result = resposta?.data 
   }catch(error){
     console.log(error);
@@ -137,25 +137,25 @@ const [deletarReuniaoModal, setDeletarReuniaoModal] = useState(false);
 
 const [deletarReuniaoModalA, setDeletarReuniaoModalA] = useState(false);
 
-function deletarBCFB(value){
-  values.bcf_id = value;
+function deletarBCJB(value){
+  values.bcj_id = value;
 
   setDeletarReuniaoModalA(true)
   
 }
 
-const deletarBCF = async(value) => {
+const deletarBCJ = async(value) => {
 
-  values.bcf_id = value;
+  values.bcj_id = value;
 
   console.log("Apertou " + value + " pra deletar")
 
   values._id = value;
-  values.bcf_id = value;
+  values.bcj_id = value;
 
   try{ 
     
-    const resposta = await Axios.post('http://'+ ipatual +'/api/deleteBCF', values);
+    const resposta = await Axios.post('http://'+ ipatual +'/api/deleteBCJ', values);
 
     var result = resposta?.status;
 
@@ -178,7 +178,7 @@ useEffect(() => {
   async function fetchData(){
     try{
       
-    const resposta = await Axios.post('http://'+ ipatual +'/api/searchBCF')
+    const resposta = await Axios.post('http://'+ ipatual +'/api/searchBCJ')
     setReunioes(resposta?.data)
     }catch(error){
       console.log(error);
@@ -218,67 +218,56 @@ return(
           <div className="grid grid-cols-4 gap-x-10 gap-y-5">
 
           <div className="col-span-4">
-            <label htmlFor="nomeBCFI" className="form-label inline-block mb-2 text-white">
-              Nome</label>
+            <label htmlFor="razaoSocialBCJI" className="form-label inline-block mb-2 text-white">
+              Razão Social</label>
             <input type="text"
-              name="nomeBCFb"
+              name="razaoSocialBCJb"
               required
               className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="nomeBCF"
+              id="razaoSocialBCJI"
               onChange={onChange}
-              placeholder="Nome"
+              placeholder="Razão Social"
+            />
+          </div>
+
+          <div className="col-span-4">
+            <label htmlFor="nomeFantasiaBCJI" className="form-label inline-block mb-2 text-white">
+              Nome Fantasia</label>
+            <input type="text"
+              name="nomeFantasiaBCJb"
+              required
+              className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+              id="nomeFantasiaBCJI"
+              onChange={onChange}
+              placeholder="Nome Fantasia"
             />
           </div>
 
           <div className="col-span-2">
-          <label htmlFor="cpfBCFI" className="form-label inline-block mb-2 text-white">
-            CPF</label>
+          <label htmlFor="cnpjBCJI" className="form-label inline-block mb-2 text-white">
+            CNPJ</label>
               <InputMask
               className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-              mask='999.999.999-99'
-              id="cpfBCFI"
-              name="cpfBCFb"
-              placeholder='CPF'
+              mask='999.999.999/9999-99'
+              id="cnpjBCJI"
+              name="cnpjBCJb"
+              placeholder='CNPJ'
               onChange={onChange}
           />
           </div>
 
           <div className="col-span-2">
-          <label htmlFor="telefoneBCFI" className="form-label inline-block mb-2 text-white">
-            Telefone</label>
-            <InputMask
-              className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-              mask='(99) 99999-9999'
-              id="telefoneBCFI"
-              name="telefoneBCFb"
-              placeholder='Telefone'
-              onChange={onChange}
-          />
-          </div>
-
-          <div className="col-span-2">
-          <label htmlFor="dataDoCadastroBCFI" className="form-label inline-block mb-2 text-white">
-            Data do Cadastro</label>
-            <input type="date"
-              name="dataDoCadastroBCFb"
-              required
-              className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="dataDoCadastroBCFI"
-              onChange={onChange}
-              placeholder="Data do Cadastro"
-            />
-          </div>
-
-          <div className="col-span-2">
-          <label htmlFor="dataDoEnvioBCFI" className="form-label inline-block mb-2 text-white">
+          <label htmlFor="dataEnvioBCJI" className="form-label inline-block mb-2 text-white">
             Data do Envio</label>
             <input type="date"
-              name="dataDoEnvioBCFb"
+              name="dataEnvioBCJb"
               required
+              max="2050-01-01"
+              min="2010-01-01"
               className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="dataDoEnvioBCFI"
+              id="dataEnvioBCJI"
               onChange={onChange}
-              placeholder="Data do Envio"
+              placeholder="Data de envio"
             />
           </div>
 
@@ -338,12 +327,6 @@ return(
 
       <div action="#" method="POST" className="flex z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 justify-center text-center p-4 rounded-lg justify-self-center m-auto w-screen h-screen  shadow-2xl bg-assemiperBlack bg-opacity-90">
 
-      <div className="fixed p-5">
-        <button onClick={() => setVendoDados(false)} className="rounded-xl text-xl w-16 bg-assemiperRed h-10">
-          SAIR
-        </button>
-      </div>
-
       <div className="m-auto bg-black p-5 rounded-md bg-opacity-70">
 
         <div className="mb-5 whitespace-normal">
@@ -351,76 +334,76 @@ return(
         </div>
 
         <div className="grid grid-cols-4 gap-x-10 gap-y-5">
-
         <div className="col-span-4">
-          <label htmlFor="nomeBCFI" className="form-label inline-block mb-2 text-white">
-            Nome</label>
-          <input type="text"
-            name="nomeBCFb"
-            defaultValue={dados.nomeBCF}
-            disabled
-            className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-slate-200 bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-            id="nomeBCF"
-            onChange={onChange}
-            placeholder="Nome"
-          />
-        </div>
+            <label htmlFor="razaoSocialBCJI" className="form-label inline-block mb-2 text-white">
+              Razão Social</label>
+            <input type="text"
+              name="razaoSocialBCJb"
+              disabled
+              defaultValue={dados.razaoSocialBCJ}
+              className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-slate-200 bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+              id="razaoSocialBCJI"
+              onChange={onChange}
+              placeholder="Razão Social"
+            />
+          </div>
 
-        <div className="col-span-2">
-        <label htmlFor="cpfBCFI" className="form-label inline-block mb-2 text-white">
-          CPF</label>
-          <input type="text"
-            name="cpfBCFb"
-            disabled
-            defaultValue={dados.cpfBCF}
-            className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-slate-200 bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-            id="cpfBCFI"
-            onChange={onChange}
-            placeholder="CPF"
-          />
-        </div>
+          <div className="col-span-4">
+            <label htmlFor="nomeFantasiaBCJI" className="form-label inline-block mb-2 text-white">
+              Nome Fantasia</label>
+            <input type="text"
+              name="nomeFantasiaBCJb"
+              disabled
+              defaultValue={dados.nomeFantasiaBCJ}
+              className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-slate-200  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+              id="nomeFantasiaBCJI"
+              onChange={onChange}
+              placeholder="Nome Fantasia"
+            />
+          </div>
 
-        <div className="col-span-2">
-        <label htmlFor="telefoneBCFI" className="form-label inline-block mb-2 text-white">
-          Telefone</label>
-          <input type="text"
-          disabled
-            name="telefoneBCFb"
-            defaultValue={dados.telefoneBCF}
-            className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-slate-200 bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-            id="telefoneBCFI"
-            onChange={onChange}
-            placeholder="Telefone"
+          <div className="col-span-2">
+          <label htmlFor="cnpjBCJI" className="form-label inline-block mb-2 text-white">
+            CNPJ</label>
+              <input type="text"
+              className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-slate-200  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+              mask='999.999.999/9999-99'
+              id="cnpjBCJI"
+              disabled
+              defaultValue={dados.cnpjBCJ}
+              name="cnpjBCJb"
+              placeholder='CNPJ'
+              onChange={onChange}
           />
-        </div>
+          </div>
 
-        <div className="col-span-2">
-        <label htmlFor="dataDoCadastroBCFI" className="form-label inline-block mb-2 text-white">
-          Data do Cadastro</label>
-          <input type="date"
-            name="dataDoCadastroBCFb"
-            disabled
-            defaultValue={dados.dataDoCadastroBCF}
-            className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-slate-200 bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-            id="dataDoCadastroBCFI"
-            onChange={onChange}
-            placeholder="Data do Cadastro"
-          />
-        </div>
+          <div className="col-span-2">
+          <label htmlFor="dataEnvioBCJI" className="form-label inline-block mb-2 text-white">
+            Data do Envio</label>
+            <input type="date"
+              name="dataEnvioBCJb"
+              disabled
+              defaultValue={dados.dataEnvioBCJ}
+              className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-slate-200  bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
+              id="dataEnvioBCJI"
+              onChange={onChange}
+              placeholder="Data de envio"
+            />
+          </div>
 
-        <div className="col-span-2">
-        <label htmlFor="dataDoEnvioBCFI" className="form-label inline-block mb-2 text-white">
-          Data do Envio</label>
-          <input type="date"
-            name="dataDoEnvioBCFb"
-            disabled
-            defaultValue={dados.dataDoEnvioBCF}
-            className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-slate-200 bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
-            id="dataDoEnvioBCFI"
-            onChange={onChange}
-            placeholder="Data do Envio"
-          />
-        </div>
+          <div className="col-span-4">
+          <label htmlFor="dataAtualBCJI" className="form-label inline-block mb-2 text-white">
+            Data de Criação</label>
+            <input type="text"
+              name="dataAtualBCJb"
+              disabled
+              defaultValue={dados.dataAtualBCJ}
+              className="form-control text-center block w-full px-3 py-1.5 text-lg font-semibold text-white bg-clip-padding rounded-xl transition ease-in-out m-0 focus:outline-none"
+              id="dataAtualBCJI"
+              onChange={onChange}
+              placeholder="Data Atual"
+            />
+          </div>
 
         {confirmRegistro && (
 
@@ -482,7 +465,7 @@ return(
                   <div className="p-6 text-center">
                       <svg aria-hidden="true" className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                       <h3 className="mb-5 text-lg font-normal text-white dark:text-white">Deseja realmente excluir essa reunião? (Ação Irreversível)</h3>
-                      <button onClick={() => deletarBCF(values.bcf_id)} data-modal-toggle="popup-modal" type="submit" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                      <button onClick={() => deletarBCJ(values.bcj_id)} data-modal-toggle="popup-modal" type="submit" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                           Sim, deletar cadastro.
                       </button>
                       <button onClick={() => setDeletarReuniaoModalA(false)} data-modal-toggle="popup-modal" type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Não, cancelar</button>
@@ -510,13 +493,10 @@ return(
                 <thead className="min-w-screen">
                   <tr>
                     <th scope="col" className="tg-k4e5 w-64 text-sm font-medium text-white py-4 text-left">
-                      Nome
+                      Razão Social
                     </th>
                     <th scope="col" className="tg-k4e5 w-48 text-sm font-medium text-white px-2 py-4 text-left">
-                      Telefone
-                    </th>
-                    <th scope="col" className="tg-k4e5 w-32 text-sm font-medium text-white px-6 py-4 text-left">
-                      Data do Cadastro
+                      Nome Fantasia
                     </th>
                     <th scope="col" className="tg-k4e5 w-32 text-sm font-medium text-white px-6 py-4 text-left">
                       Data do Envio
@@ -533,32 +513,19 @@ return(
                 {cadastradosPF.map((cadastradosData, index) => {
                   return (
                     <tr key={index} className="group whitespace-normal bg-assemiperBlack font-bold border border-l transition duration-100 ease-in-out hover:bg-red-700">
-                      <td className="tg-dg7a group-hover:bg-slate-300 px-6 py-4 text-sm font-medium text-white">{cadastradosData.nomeBCF}</td>
-                      <td className="tg-dg7a group-hover:bg-slate-300 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{cadastradosData.telefoneBCF}</td>
+                      <td className="tg-dg7a group-hover:bg-slate-300 px-6 py-4 text-sm font-medium text-white">{cadastradosData.razaoSocialBCJ}</td>
+                      <td className="tg-dg7a group-hover:bg-slate-300 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">{cadastradosData.nomeFantasiaBCJ}</td>
                       <td className="tg-dg7a group-hover:bg-slate-300 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">
-                        {cadastradosData.dataDoCadastroBCF.charAt(8)+
-                        cadastradosData.dataDoCadastroBCF.charAt(9)
+                        {cadastradosData.dataEnvioBCJ.charAt(8)+
+                        cadastradosData.dataEnvioBCJ.charAt(9)
                         +"/"+
-                        cadastradosData.dataDoCadastroBCF.charAt(5)+
-                        cadastradosData.dataDoCadastroBCF.charAt(6)
+                        cadastradosData.dataEnvioBCJ.charAt(5)+
+                        cadastradosData.dataEnvioBCJ.charAt(6)
                         +"/"+
-                        cadastradosData.dataDoCadastroBCF.charAt(0)+
-                        cadastradosData.dataDoCadastroBCF.charAt(1)+
-                        cadastradosData.dataDoCadastroBCF.charAt(2)+
-                        cadastradosData.dataDoCadastroBCF.charAt(3)
-                        }
-                        </td>
-                      <td className="tg-dg7a group-hover:bg-slate-300 text-sm text-white border-l font-light px-6 py-4 whitespace-normal">
-                        {cadastradosData.dataDoEnvioBCF.charAt(8)+
-                        cadastradosData.dataDoEnvioBCF.charAt(9)
-                        +"/"+
-                        cadastradosData.dataDoEnvioBCF.charAt(5)+
-                        cadastradosData.dataDoEnvioBCF.charAt(6)
-                        +"/"+
-                        cadastradosData.dataDoEnvioBCF.charAt(0)+
-                        cadastradosData.dataDoEnvioBCF.charAt(1)+
-                        cadastradosData.dataDoEnvioBCF.charAt(2)+
-                        cadastradosData.dataDoEnvioBCF.charAt(3)
+                        cadastradosData.dataEnvioBCJ.charAt(0)+
+                        cadastradosData.dataEnvioBCJ.charAt(1)+
+                        cadastradosData.dataEnvioBCJ.charAt(2)+
+                        cadastradosData.dataEnvioBCJ.charAt(3)
                         }
                         </td>
                       <td className="tg-dg7a group-hover:bg-slate-300 text-sm text-center text-white border-l font-light px-6 py-4 whitespace-normal">
@@ -566,7 +533,7 @@ return(
                         <i className="bi bi-eye"></i>
                         </button>
                       </td>
-                      <td className=" group-hover:bg-slate-300 text-center tg-dg7a"><button name="deleteAsc" onClick={() => deletarBCFB(cadastradosData._id)} className="deleteAsc transition ease-in duration-100 cursor-pointer text-red-500 hover:text-red-700 text-xl w-6 hover:scale-150 rounded-xl"><i className="bi bi-trash"></i></button></td>
+                      <td className=" group-hover:bg-slate-300 text-center tg-dg7a"><button name="deleteAsc" onClick={() => deletarBCJB(cadastradosData._id)} className="deleteAsc transition ease-in duration-100 cursor-pointer text-red-500 hover:text-red-700 text-xl w-6 hover:scale-150 rounded-xl"><i className="bi bi-trash"></i></button></td>
                     </tr>
                   )
                 })

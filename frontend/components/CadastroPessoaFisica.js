@@ -262,6 +262,8 @@ return(
             <input type="date"
               name="dataDoCadastroBCFb"
               required
+              max="2050-01-01"
+              min="2010-01-01"
               className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
               id="dataDoCadastroBCFI"
               onChange={onChange}
@@ -275,6 +277,8 @@ return(
             <input type="date"
               name="dataDoEnvioBCFb"
               required
+              max="2050-01-01"
+              min="2010-01-01"
               className="form-control block w-full px-3 py-1.5 text-lg font-semibold text-assemiperBlack bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-black focus:bg-white focus:border-blue-600 focus:outline-none"
               id="dataDoEnvioBCFI"
               onChange={onChange}

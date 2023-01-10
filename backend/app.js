@@ -57,6 +57,9 @@ const BCJ = mongoose.model("BancoCadastroJuridico");
 /*
 */
 
+require("./details/services/banco/cadastroJuridicoDetail");
+const BCJ = mongoose.model("BancoCadastroJuridico");
+
 require("./details/services/banco/cadastroFisicaDetail");
 const BCF = mongoose.model("BancoCadastroFisica");
 
@@ -793,7 +796,7 @@ app.post("/api/searchBCF", async(req,res)=>{
     console.log("Procurou os BCF")
 
     try {
-        const Oficio = await BCF.find().sort({ numeroOficio: -1 });
+        const Oficio = await BCF.find().sort({ dataDoCadastroBCF: -1 });
         res.status(200).json(Oficio);
     } catch (e) {
         console.error(e);
@@ -807,22 +810,26 @@ app.post("/api/updateBCF", async(req,res)=>{
 
     const {
         o_id,
-        numeroOficiob,
-        dataDeExpedicaob,
-        estadoOficiob
+        nomeBCFb,
+        cpfBCFb,
+        telefoneBCFb,
+        dataDoCadastroBCFb,
+        dataDoEnvioBCFb
     } = req.body;
 
     var query = { _id: o_id };
 
     console.log(req.body)
 
-    console.log("/api/updateOficio RESPONSE")
+    console.log("/api/updateBCF RESPONSE")
     try {
         const Ofc = await BCF.updateOne( query, {$set:{
         
-            "numeroOficio": numeroOficiob,
-            "dataDeExpedicaob": dataDeExpedicaob,
-            "estadoOficio": estadoOficiob,
+        nomeBCF: nomeBCFb,
+        cpfBCF: cpfBCFb,
+        telefoneBCF: telefoneBCFb,
+        dataDoCadastroBCF: dataDoCadastroBCFb,
+        dataDoEnvioBCF: dataDoEnvioBCFb,
 
         }})
         console.log(Ofc);
@@ -858,6 +865,138 @@ app.post("/api/registerBCF", async(req,res)=>{
             dataDoCadastroBCF: dataDoCadastroBCFb,
             dataDoEnvioBCF: dataDoEnvioBCFb
 
+
+        });
+
+        console.log("Criou")
+        
+        res.sendStatus(200)
+
+    } catch (error){
+        
+        console.log(error);
+        res.status(201);
+
+    }
+
+})
+
+//////////////////
+/////////////////
+
+
+///////////////////
+//PESSOA J U R I D I C A
+///////////////////
+
+app.post("/api/getBCJ", async(req,res)=>{  
+    console.log("Procurou a pessoa juríridca");
+    const {bcj_id} = req.body;
+    try {
+        const CJ = await BCJ.findOne( {  _id: bcj_id });
+        res.status(200).json(CJ);
+        console.log(Ofc);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        console.log("Running")
+    }
+    
+})
+
+app.post('/api/deleteBCJ',async(req,res)=>{
+
+    const {bcj_id} = await req.body;
+
+    var query = { _id: bcj_id };
+    try{
+     BCJ.deleteOne(query).then(function(){
+        }).catch(function(error){
+            console.log(error)
+        })
+
+        res.sendStatus(200)
+        console.log("Deletou")
+        
+
+    }catch(error){
+        res.status(500).send(error)
+    }
+
+    
+})
+
+app.post("/api/searchBCJ", async(req,res)=>{  
+    console.log("Procurou os BCJ")
+
+    try {
+        const Oficio = await BCJ.find().sort({ dataEnvioBCJ: -1 });
+        res.status(200).json(Oficio);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        console.log("Running")
+    }
+    
+})
+
+app.post("/api/updateBCJ", async(req,res)=>{
+
+    const {
+        bcj_id,
+        razaoSocialBCJb,
+        nomeFantasiaBCJb,
+        cnpjBCJb,
+        dataAtualBCJb,
+        dataEnvioBCJb,
+    } = req.body;
+
+    var query = { _id: bcj_id };
+
+    console.log(req.body)
+
+    console.log("/api/updateBCJ RESPONSE")
+    try {
+        const Ofc = await BCJ.updateOne( query, {$set:{
+        
+        razaoSocialBCJ:razaoSocialBCJb,
+        nomeFantasiaBCJ:nomeFantasiaBCJb,
+        cnpjBCJ:cnpjBCJb,
+        dataAtualBCJ:dataAtualBCJb,
+        dataEnvioBCJ:dataEnvioBCJb,
+
+        }})
+        console.log(Ofc);
+        console.log("Tentou Mudar!")
+        res.sendStatus(200);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        console.log("Running")
+    }
+
+
+})
+
+app.post("/api/registerBCJ", async(req,res)=>{
+
+    
+    const { 
+        razaoSocialBCJb,
+        nomeFantasiaBCJb,
+        cnpjBCJb,
+        dataAtualBCJb,
+        dataEnvioBCJb,
+      } = req.body
+    try{
+
+        await BCJ.create({
+            
+            razaoSocialBCJ:razaoSocialBCJb,
+            nomeFantasiaBCJ:nomeFantasiaBCJb,
+            cnpjBCJ:cnpjBCJb,
+            dataAtualBCJ:dataAtualBCJb,
+            dataEnvioBCJ:dataEnvioBCJb,
 
         });
 
