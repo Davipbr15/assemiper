@@ -55,12 +55,10 @@ require("./details/services/banco/cadastroJuridicoDetail");
 const BCJ = mongoose.model("BancoCadastroJuridico");
 */
 /*
-Reuniões
-Ata Reunião
-require("./details/services/reunioes/ataReuniaoDetail");
-const AtaReuniao = mongoose.model("AtaReuniao");
-
 */
+
+require("./details/services/banco/cadastroFisicaDetail");
+const BCF = mongoose.model("BancoCadastroFisica");
 
 require("./details/oficiosDetail");
 const Oficios = mongoose.model("OficioDoc");
@@ -253,6 +251,8 @@ app.get('/api/home',async(req,res)=>{
 
 // });
 
+//////////////////
+//ASSOCIADOS//////
 //////////////////
 app.post("/api/searchAssociate", async(req,res)=>{  
     console.log("Procurou os associados")
@@ -502,7 +502,7 @@ app.post('/api/deleteAssociate',async(req,res)=>{
 
 })
 ///////////////////
-
+//REUNIÕES////////
 ///////////////////
 app.post("/api/registerReuniao", async(req,res)=>{
 
@@ -624,7 +624,12 @@ app.post("/api/updateReuniao", async(req,res)=>{
 
 })
 //////////////////////
+//////////////////////
 
+
+//////////////////////
+// OFICIOS ///////////
+//////////////////////
 app.post("/api/getOficio", async(req,res)=>{  
     console.log("Procurou o Ofício");
     const {o_id} = req.body;
@@ -740,6 +745,137 @@ app.post("/api/registerOficio", async(req,res)=>{
     }
 
 })
+////////////////////
+///////////////////
+
+///////////////////
+//PESSOA F I S I C A 
+///////////////////
+
+app.post("/api/getBCF", async(req,res)=>{  
+    console.log("Procurou a pessoa física");
+    const { bcf_id} = req.body;
+    try {
+        const CF = await BCF.findOne( {  _id: bcf_id });
+        res.status(200).json(CF);
+        console.log(Ofc);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        console.log("Running")
+    }
+    
+})
+
+app.post('/api/deleteBCF',async(req,res)=>{
+
+    const {bcf_id} = await req.body;
+
+    var query = { _id: bcf_id };
+    try{
+     BCF.deleteOne(query).then(function(){
+        }).catch(function(error){
+            console.log(error)
+        })
+
+        res.sendStatus(200)
+        console.log("Deletou")
+        
+
+    }catch(error){
+        res.status(500).send(error)
+    }
+
+    
+})
+
+app.post("/api/searchBCF", async(req,res)=>{  
+    console.log("Procurou os BCF")
+
+    try {
+        const Oficio = await BCF.find().sort({ numeroOficio: -1 });
+        res.status(200).json(Oficio);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        console.log("Running")
+    }
+    
+})
+
+app.post("/api/updateBCF", async(req,res)=>{
+
+    const {
+        o_id,
+        numeroOficiob,
+        dataDeExpedicaob,
+        estadoOficiob
+    } = req.body;
+
+    var query = { _id: o_id };
+
+    console.log(req.body)
+
+    console.log("/api/updateOficio RESPONSE")
+    try {
+        const Ofc = await BCF.updateOne( query, {$set:{
+        
+            "numeroOficio": numeroOficiob,
+            "dataDeExpedicaob": dataDeExpedicaob,
+            "estadoOficio": estadoOficiob,
+
+        }})
+        console.log(Ofc);
+        console.log("Tentou Mudar!")
+        res.sendStatus(200);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        console.log("Running")
+    }
+
+
+})
+
+app.post("/api/registerBCF", async(req,res)=>{
+
+    
+    const { 
+        nomeBCFb,
+        cpfBCFb,
+        telefoneBCFb,
+        dataDoCadastroBCFb,
+        dataDoEnvioBCFb
+      } = req.body
+    try{
+
+        await BCF.create({
+            
+           
+            nomeBCF: nomeBCFb,
+            cpfBCF: cpfBCFb,
+            telefoneBCF: telefoneBCFb,
+            dataDoCadastroBCF: dataDoCadastroBCFb,
+            dataDoEnvioBCF: dataDoEnvioBCFb
+
+
+        });
+
+        console.log("Criou")
+        
+        res.sendStatus(200)
+
+    } catch (error){
+        
+        console.log(error);
+        res.status(201);
+
+    }
+
+})
+
+//////////////////
+/////////////////
 
 app.post('/api/changePassword', async (req, res) => {
 	const { token, newPassword: passwordb } = req.body

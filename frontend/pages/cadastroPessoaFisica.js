@@ -1,6 +1,6 @@
 
 import Header from "../components/Header.js";
-import CPJ from "../components/CadastroPessoaJuridica.js";
+import CPF from "../components/CadastroPessoaFisica.js";
 
 export default function Home() {
   return (
@@ -8,7 +8,11 @@ export default function Home() {
 
     <Header />
 
-    <CPJ></CPJ>
+    <div className="mx-auto">
+    <CPF/>
+    </div>
+
+   
 
     </div>
   )
